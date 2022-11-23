@@ -1,0 +1,59 @@
+% Version of Document Management
+% $Revision: $
+
+% Version with Table of Contents generation, to create pdf version
+
+\def\newcharencode{utf8}        % set character encoding
+\input{mystyles/booleans}       % boolean declaration
+% booleans already defined and set in mystyles/booleans, eventually set to an other value here ...
+\setboolean{urlreg}{true}       % for url catalogue
+\setboolean{bibreg}{false}      % for bibliography
+\setboolean{indreg}{false}      % for index generation
+\setboolean{shortdocu}{true}    % oneside document
+%\setboolean{figreg}{true}       % for figure list
+%\setboolean{tabreg}{true}       % for table list
+%\setboolean{html}{true}
+
+%\def\lngfr{french}
+%\def\lngen{english}
+%\def\lngge{german}
+
+%%%%% options %%%%%%%%%
+\def\lang{french}
+\def\graphmode{final}           % graphmodes: draft: box; final: including figures
+
+% generate url catalog for toolchain
+\def\urlfilename{mystyles/url_codeblocks}
+
+%%%%%%%% parameter for titlepage %%%%%%%%%%
+\def\Subject{Code::Blocks}
+\def\Title{Manuel Utilisateur}
+\def\DocVersion{2.1 }
+
+% style for documentation
+\input{mystyles/format_docu}
+\input{mystyles/new_interface}
+%\usepackage[french]{babel}
+
+% own macro file
+\input{user_settings_en}
+
+\begin{document}
+\renewcommand{\contentsname}{Table des Matières}	% ou Sommaire % Ici car \usepackage[french]{babel} donne des erreurs
+\include{mystyles/cb_titlepage_fr}
+\ifhtml
+	% No tableofcontents
+\else
+	\tableofcontents{}
+\fi
+\include{basics_fr}
+\include{plugins_fr}
+%\include{more_plugins_fr}      % already called in plugins_fr
+\include{params_fr}
+\include{working_with_cb_fr}
+\include{install_configure_fr}
+\include{generate_fr}
+\appendix % generation of appendix	...creates an appendices.aux file, but after, what to do ?
+\include{appendices}
+\include{mystyles/lists}
+\end{document}

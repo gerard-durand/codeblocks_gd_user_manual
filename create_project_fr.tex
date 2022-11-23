@@ -1,0 +1,191 @@
+\section{Création d'un Nouveau Projet}\label{sec:create_project}
+
+Ces pages sont un guide sur les fonctionnalités de base (et quelques intermédiaires) pour la création et la modification d'un projet \codeblocks. Si c'est votre première exéprience avec \codeblocks, alors ceci est un bon point de départ. 
+ 
+\subsection{L'assistant de Projet}
+
+Lancez l'assistant de Projet par \menu{Fichier,Nouveau,Projet...} afin de démarrer un nouveau projet. Ici, il y a plusieurs modèles pré-configurés pour divers types de projets, incluant l'option de création de modèles personnalisés. Sélectionnez  \textbf{Console application}, car c'est le plus commun pour un usage général, puis cliquez sur \textbf{Aller} ou \textbf{Go}. 
+
+\screenshot{ProjectWizard}{L'assistant de Projet}
+
+\hint{Un texte en rouge au lieu d'un texte en noir sous n'importe quelle icône signifie que l'on utilise un script assistant personnalisé.}
+
+L'assistant Application console apparaitra ensuite. Continuez dans les menus, en sélectionnant \textbf{C++} quand on vous demandera le langage. Sur l'écran suivant, donnez un nom au projet et tapez ou sélectionnez un répertoire de destination. Comme on voit ci-dessous, \codeblocks génèrera les entrées restantes à partir de ces deux là. 
+
+\figures[H][width=.6\columnwidth]{ConsoleApplication}{Application Console}
+
+Finalement, l'assistant vous demandera si ce projet doit utiliser le compilateur par défaut (normalement GCC) et les deux générations par défaut : \textbf{Debug} et \textbf{Release}. Toutes ces configurations sont correctes. Appuyez sur Terminer et le projet va se générer. La fenêtre principale va se griser, mais ce n'est pas un problème, le fichier source doit encore être ouvert. Dans l'onglet \textbf{Projets} du panneau de \textbf{Gestion} sur la gauche, dépliez les répertoires et double-cliquez sur le fichier source \textbf{main.cpp} afin de l'ouvrir dans l'éditeur. 
+
+\figures[H][width=.45\columnwidth]{SelectSource}{Selection d'un fichier Source}
+Ce fichier contient le code standard suivant.
+
+main.cpp 
+\begin{lstlisting}
+#include <iostream>
+using namespace std;
+int main()
+{
+    cout << "Hello world!" << endl;
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Changer la composition du fichier}
+
+Un simple fichier source est d'un intérêt limité dans des programmes plus ou moins complexes. Pour traiter cela, \codeblocks possède plusieurs méthodes très simples permettant d'ajouter des fichiers supplémentaires au projet.
+
+\genterm{Ajout d'un fichier vide}
+
+Dans cet exemple, nous allons isoler la fonction
+
+main.cpp
+\begin{lstlisting}
+    cout << "Hello world!" << endl;
+\end{lstlisting}
+
+dans un fichier séparé.
+
+\hint{Généralement, c'est un mauvais style de programmation que de créer une fonction dans un aussi petit fichier ; ici, ce n'est fait qu'à titre d'exemple.}
+
+Pour ajouter un nouveau fichier au projet, appelez l'assistant de modèle de fichier soit par le \menu{Fichier,Nouveau,Fichier...} soit par \menu{Barre d'outils principale,Nouveau fichier (bouton),Fichier...} 
+Utilisez le menu \menu{Générer,Générer l'espace de travail} pour générer un espace de travail (c.a.d tous les projets qui y sont contenus). 
+
+\figures[H][width=1.1\columnwidth]{NewFile}{Nouveau Fichier}
+Sélectionnez la source en \textbf{C/C++} et cliquez sur \textbf{Aller} (ou \textbf{Go}). Continuez dans les dialogues suivants tout comme lors de la création du projet original, en sélectionnant \textbf{C++} quand on vous demandera le langage. La page finale vous présentera plusieurs options. La première boîte détermine le nouveau nom du fichier et l'emplacement (comme noté, le chemin complet est requis). Vous pouvez utiliser en option le bouton \codeline{...} pour afficher une fenêtre de navigateur de fichiers pour enregistrer l'emplacement du fichier. En cochant \textbf{Ajouter le fichier au projet actif} vous enregistrerez le nom du fichier dans le répertoire \textbf{Sources} de l'onglet \textbf{Projets} du panneau de \textbf{Gestion}. En cochant une ou plusieurs cibles de génération vous informerez \codeblocks que le fichier devra être compilé puis de faire l'édition de liens pour la(les) cible(s) sélectionnée(s). Ce peut être utile si, par exemple, le fichier contient du code spécifique de débogage, car cela permettra l'inclusion dans (ou l'exclusion de) la (les) cible(s) de génération appropriée(s). Dans cet exemple, toutefois, la fonction hello est indispensable, et donc requise dans toutes les sources. Par conséquent, sélectionnez toutes les cases et cliquez sur \textbf{Terminer} pour générer le fichier.
+
+\figures[H][width=.55\columnwidth]{Hello}{Configurations du Programme Hello }
+Le fichier nouvellement créé devrait s'ouvrir automatiquement ; si ce n'est pas le cas, ouvrez le en double-cliquant sur ce fichier dans l'onglet \textbf{Projets} du panneau de \textbf{Gestion}. Ajoutez-y maintenant le code de la fonction que \textbf{main.cpp} appelera.
+
+hello.cpp
+\begin{lstlisting}
+#include <iostream>
+using namespace std;
+  
+void hello()
+{
+    cout << "Hello world!" << endl;
+} 
+\end{lstlisting}
+
+\genterm{Ajout d'un fichier déjà existant}
+
+Maintenant que la fonction \textbf{hello()} est dans un fichier séparé, la fonction doit être déclarée dans \textbf{main.cpp} pour pouvoir être utilisée. Lancez un éditeur de texte (par exemple Notepad ou Gedit), et ajoutez le code suivant :
+
+hello.h 
+\begin{lstlisting}
+#ifndef HELLO_H_INCLUDED
+#define HELLO_H_INCLUDED
+     
+void hello();
+     
+#endif // HELLO_H_INCLUDED
+\end{lstlisting}
+
+Enregistrez ce fichier en tant que fichier d'en-tête (\textbf{hello.h}) dans le même répertoire que les autres fichiers source de ce projet. Revenez dans \codeblocks, cliquez sur \menu{Projet,Ajouter des  fichiers...} pour ouvrir un navigateur de fichiers. Là, vous pouvez sélectionner un ou plusieurs fichiers (en utilisant les combinations de \textit{Ctrl} et \textit{Maj}). (L'option \menu{Projet,Ajouter des fichiers récursivement...} va chercher dans tous les sous-répertoires d'un répertoire donné, en sélectionnant les fichiers adéquats à inclure.) Sélectionnez \textbf{hello.h}, et cliquez sur \textbf{Open} pour obtenir le dialoque vous demandant dans quelles cibles le(les) fichiers doivent appartenir. Dans cet exemple, sélectionnez les deux cibles. 
+
+\figures[H][width=.6\columnwidth]{TargetBelonging}{Appartenance aux cibles de génération}
+
+\hint{Si le projet en cours n'a qu'une seule cible, on ne passera pas par ce dialogue.}
+
+De retour dans le source principal (\textbf{main.cpp}), incluez le fichier d'en-tête et replacez la fonction \codeline{cout} afin de se conformer à la nouvelle configuration du projet.
+
+main.cpp
+\begin{lstlisting}
+#include "hello.h"
+
+int main()
+{
+    hello();
+    return 0;
+}
+\end{lstlisting}
+
+Pressez Ctrl-F9, \menu{Générer,Générer}, ou \menu{Barre d'outils du Compilateur,Générer (bouton - la roue dentée)} pour compiler le projet. Si la sortie suivante s'affiche dans le journal de génération (dans le panneau du bas) c'est que toutes les étapes se sont correctement déroulées.
+
+\begin{lstlisting}
+-------------- Build: Debug in HelloWorld ---------------
+
+Compiling: main.cpp
+Compiling: hello.cpp
+Linking console executable: bin\Debug\HelloWorld.exe
+Output size is 923.25 KB
+Process terminated with status 0 (0 minutes, 0 seconds)
+0 errors, 0 warnings (0 minutes, 0 seconds)
+\end{lstlisting}
+
+L'exécutable peut maintenant être lancé soit en cliquant sur le bouton Run soit en tapant sur Ctrl-F10.
+
+\hint{L'option F9 (pour Générer et exécuter) combine ces commandes, et peut être encore plus utile dans certaines situations.}
+
+Observez le processus de génération de \codeblocks pour voir ce qui se passe en arrière-plan lors d'une compilation.
+
+\genterm{Suppression d'un fichier}
+
+En utilisant les étapes ci-dessus, ajoutez un nouveau fichier source C++, \textbf{useless.cpp}, au projet. La suppression de ce fichier inutile dans le projet est triviale. Faites tout simplement un clic droit sur \textbf{useless.cpp} dans l'onglet \textbf{Projets} du panneau de \textbf{Gestion} puis sélectionnez \textbf{Enlever le fichier du projet}.
+
+\figures[H][width=.5\columnwidth]{RemoveFile}{Enlever un fichier d'un projet}
+ 
+\hint{Enlever un fichier d'un projet ne le supprime pas physiquement ; \codeblocks l'enlève seulement de la gestion du projet.}
+
+
+\subsection{Modifier les Options de Génération}
+ 
+Jusqu'ici, les cibles de génération ont été évoquées à plusieurs reprises. Changer entre les 2 versions générées par défaut - \textbf{Debug} et \textbf{Release} - peut simplement se faire via le menu déroulant de la \textbf{Barre d'outils de Compilation}. Chacune de ces cibles qui peut être choisie parmi différents types (par exemple : librairie statique ; application console), contient differentes configurations de fichiers source, variables personnalisées, différents commutateurs de génération (par exemple : symboles de débogage \textit{-p} ; optimisation de la taille \textit{-Os} ; optimisations à l'édition de liens \textit{-flto)}, et bien d'autres options.
+ 
+\figures[H][width=.6\columnwidth]{TargetSelect}{Sélection de Cible}
+ 
+Le menu \menu{Ouvrir un Projet,Propriétés...} permet d'accéder aux propriétés principales du projet actif, \textbf{HelloWorld}. La plupart des configurations du premier onglet, \textbf{Configuration du Projet}, changent rarement. \textbf{Titre} : permet de changer le nom du projet. Si \textbf{Platforme}: est changé en toute autre valeur que celle par défaut \textbf{All}, \codeblocks ne vous permettra de générer que les cibles sélectionnées. Ceci est utile, par exemple, si le code source contient de l'API Windows, et serait donc non valide ailleurs que sous Windows (ou toutes autres situations dépendant spécifiquement du système d'exploitation). \textbf{Makefile}: options qui sont utilisées si le projet doit utiliser un makefile plutôt que le système de génération interne de \codeblocks' (voir \codeblocks et les Makefiles [\pxref{sec:cb_makefiles]} pour plus details).
+
+\genterm{Ajouter une nouvelle cible de génération}
+
+Basculez vers l'onglet \textbf{Générer les cibles}. Cliquez sur \textbf{Ajouter} pour créer une nouvelle cible de génération et nommez-là \textbf{Release Small}. La mise en avant dans la colonne de gauche devrait automatiquement basculer sur la nouvelle cible (si ce n'est pas le cas, cliquez dessus pour changer le focus). Comme la configuration par défaut de \textbf{Type}: - "Application graphique" - est incorrecte pour un programme de type \textbf{HelloWorld}, changez-le en "Application console" via la liste déroulante. Le nom du fichier de sortie \textbf{HelloWorld.exe} est correct sauf que la sortie de l'exécutable se fera dans le répertoire principal. Ajoutez le chemin "bin\osp ReleaseSmall\osp " (Windows) ou "bin/ReleaseSmall/" (Linux) devant le nom pour changer ce répertoire (c'est un chemin en relatif par rapport à la racine du projet). Le \textbf{Répertoire de travail d'exécution}: se rapporte à l'emplacement ou sera exécuté le programme lorsqu'on sélectionnera \textbf{Exécuter} ou \textbf{Générer et exécuter}. La configuration par défaut "." est correcte (elle se réfère au répertoire du projet). Le \textbf{Répertoire de sortie des objets}: doit être changé en "obj\osp ReleaseSmall\osp" (Windows) ou "obj/ReleaseSmall/" (Linux) de façon à rester cohérent avec le reste du projet. \textbf{Générer les fichiers cibles}: pour l'instant, rien n'y est sélectionné. C'est un problème, car rien ne sera compilé si on génère cette cible. Cochez toutes les cases. 
+
+\figures[H][width=0.95\columnwidth]{TargetOptions}{Options de Cible}
+
+L'étape suivante est de changer les paramètres de cible. Cliquez sur \textbf{Options de génération...} pour accéder aux paramètres. Le premier onglet qui s'affiche possède toute une série de commutateurs de compilation (flags) accessibles via des cases à cocher. Sélectionnez "Retirez tous les symboles du binaire" et "Optimiser le code généré pour la taille". Les flags ici contiennent bien d'autres options communément utilisées, cependant, on peut passer outre. Basculez vers le sous-onglet \textbf{Autres options} et ajoutez-y les commutateurs suivants :
+
+\begin{lstlisting}
+-fno-rtti
+-fno-exceptions
+-ffunction-sections
+-fdata-sections
+-flto
+\end{lstlisting}
+
+Maintenant basculer dans l'onglet \textbf{Options de l'éditeur de liens}. La boîte \textbf{Librairies à lier:} vous affiche un bouton pour ajouter diverses librairies (par exemple, \textit{wxmsw28u} pour la version Windows Unicode de la librairie dynamique wxWidgets monolithique version 2.8). Ce programme ne requiert pas de telles librairies. Les  commutateurs personnalisés de l'étape précédente requièrent leur contrepartie lors de l'édition de liens. Ajoutez
+
+\begin{lstlisting}
+-flto
+-Os
+-Wl,--gc-sections
+-shared-libgcc
+-shared-libstdc++
+\end{lstlisting}
+
+dans l'onglet \textbf{Autre options de l'éditeur de liens :}. (Pour plus de détails sur ce que font ces commutateurs, se référer à la documentation de GCC sur les options d'optimisation et les options de l'éditeur de liens.)
+
+\genterm{Cibles Virtuelles}
+
+Cliquez sur \textbf{OK} pour accepter ces changements et retournez au dialogue précédent. Maintenant, vous avez deux cibles de génération "Release", qui auront deux compilations séparées pour lancer \textbf{Générer} ou \textbf{Générer et exécuter}. Heureusement, \codeblocks possède une option pour enchaîner plusieurs générations ensemble. Cliquez sur \textbf{Cibles Virtuelles...}, puis \textbf{Ajouter}. Nommez la cible virtuelle \textbf{Releases} puis cliquez sur \textbf{OK}. Dans la boîte de droite \textbf{Générer les cibles contenues}, sélectionnez les deux \textbf{Release} et \textbf{Release small}. Fermez cette boîte et cliquez sur \textbf{OK} dans la fenètre principale. 
+
+\figures[H][width=.6\columnwidth]{VirtualTargets}{Cibles Virtuelles}
+
+La cible virtuelle "Releases" est maintenant disponible dans la barre d'outils du Compilateur ; la générer produira les sorties suivantes :
+
+\begin{lstlisting}
+-------------- Build: Release in HelloWorld ---------------
+
+Compiling: main.cpp
+Compiling: hello.cpp
+Linking console executable: bin\Release\HelloWorld.exe
+Output size is 457.50 KB
+
+-------------- Build: Release Small in HelloWorld ---------------
+
+Compiling: main.cpp
+Compiling: hello.cpp
+Linking console executable: bin\ReleaseSmall\HelloWorld.exe
+Output size is 8.00 KB
+Process terminated with status 0 (0 minutes, 1 seconds)
+0 errors, 0 warnings (0 minutes, 1 seconds) 
+\end{lstlisting}

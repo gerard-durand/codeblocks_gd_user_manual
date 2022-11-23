@@ -1,0 +1,32 @@
+\section{Extension Editor Tweaks}\label{sec:editor_tweaks}
+
+Le plugin EditorTweaks (modifications d'édition) apporte plusieurs fonctionnalités différentes. Sur une base de travail fichier à fichier, il contrôle :
+
+\begin{itemize}[noitemsep]
+\item le repliement de mots ;
+\item la numérotation des lignes ;
+\item l'interprétation de la touche tab (caractère de tabulation ou espaces) ;
+\item le nombre de caractères espace remplaçant la touche tab ;
+\item les caractères de fin de ligne (carriage-return + linefeed; carriage-return; linefeed) ;
+\item la visualisation des caractères de fin de ligne ;
+\item sur demande, la suppression des espaces blancs en fin de ligne ;
+\item sur demande, la synchronisation des caractères de fin de ligne ;
+\item la suppression de la touche d'insertion.
+\end{itemize}
+
+Depuis la fusion avec le plugin "Aligner", il peut rendre des sections de code plus lisibles en les alignant sur un caractère spécifique.\newline
+Par exemple, aligner sur le caractère "=" dans :
+
+\begin{lstlisting}
+int var = 1;
+int longVarName = 2;
+int foobar = 3;
+\end{lstlisting}
+
+se traduira par :
+
+\begin{lstlisting}
+int var         = 1;
+int longVarName = 2;
+int foobar      = 3;
+\end{lstlisting}

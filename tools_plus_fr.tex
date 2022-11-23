@@ -1,0 +1,243 @@
+\section{Tools+}\label{sec:tools+}
+
+Créer un nouvel outil est assez facile, et cela peut s'effectuer en quelques étapes simples. D'abord ouvrir \menu{Tools(+),Configurer les outils...} pour accéder au dialogue des Outils définis par l'utilisateur.
+
+\screenshot{tools_setup}{Dialogue des Outils définis par l'utilisateur}
+
+\genterm{Nom de l'outil}
+
+C'est le nom qui sera affiché dans le menu déroulant de Tools(+). Il sera aussi affiché comme nom d'onglet pour les Tools+ redirigés vers la fenêtre Outils.
+
+\genterm{Ligne de Commande}
+
+Toute ligne de commande valide, fonction et paramètres, peut être entrée ici. La substitution de variable est également acceptée. La liste suivante contient les variables les plus utiles (voir \pxref{sec:builtin_variables} pour la liste complète).
+
+\begin{description}
+\item[\$relfile, \$file] Respectivement, le nom relatif et absolu d'un fichier sélectionné.
+\item[\$reldir, \$dir] Respectivement, le nom relatif et absolu d'un répertoire sélectionné.
+\item[\$relpath, \$path] Le nom relatif et absolu d'un fichier ou répertoire sélectionné.
+\item[\$mpaths] Une liste de fichiers ou de répertoires sélectionnés (seulement des chemins en absolu).
+\item[\$fname, \$fext] Le nom sans extension et l'extension sans le nom d'un fichier sélectionné.
+\item[\$inputstr\{prompt\}] Demande à l'utilisateur d'entrer une chaîne de texte qui sera substituée dans la ligne de commande.
+\item[\$if(condition)\{true clause\}\{false clause\}] Résolution en \codeline{false clause} si la \codeline{condition} est vide, 0, ou fausse; sinon \codeline{true clause}.
+\end{description}
+
+\genterm{Types de fichiers}
+
+Les expressions avec un caractère joker (*) séparées par des points virgules vont restreindre le choix par le sous-menu clic droit sur un fichier, répertoire, chemin multiple dans l'arborescence des projets, de l'explorateur de fichiers, ou du panneau d'éditeur à un/des type/s spécifiés. Laisser vide pour traiter tous les types de fichiers/répertoires.
+
+\genterm{Répertoire de Travail}
+
+Le répertoire sur lequel exécuter la commande. Les variables de \codeblocks, les variables de projet, et les variables globales sont disponibles. De même,
+
+\begin{enumerate}
+\item Si \codeline{\$dir} est entré dans la ligne de commande, alors \codeline{\$dir} peut aussi être utilisé ici.
+\item \codeline{\$parentdir} est disponible pour \codeline{\$relfile}, \codeline{\$file}, \codeline{\$reldir}, \codeline{\$dir}, \codeline{\$relpath}, \codeline{\$path}, \codeline{\$fname}, \codeline{\$fext}, pour l'évaluation du chemin absolu d'un répertoire contenant cet élément.
+\end{enumerate}
+
+\genterm{Chemin du Menu Outils}
+
+Contrôle l'emplacement de la commande dans le menu de Tools(+), donnant la possibilité d'ajouter des sous-menus (les niveaux multiples sont autorisés).
+
+\begin{itemize}
+  \item Submenu/Tool1
+  \item Submenu/Tool2
+  \item Tool3
+\end{itemize}
+
+Va créer cette structure.
+
+\figures[H][width=.6\columnwidth]{tools_menu_path}{Structure des menus de Tools}
+
+Le nom de la commande sera utilisé si cette entrée est vide. Si le premier caractère est un point, la commande sera cachée.
+
+\genterm{Chemin du Menu de Contexte}
+
+Ceci contrôle l'emplacement de la commande dans le menu clic-droit des Projets et des onglets de fichiers du panneau de Gestion. Les mêmes règles que pour la structure des menu de Tools+ s'appliquent ici.
+
+\figures[H][width=.8\columnwidth]{tools_context_path}{Structure des menus de Contexte}
+
+Notez SVP que la commande n'apparaîtra dans les menus de contexte que si la ligne de commande contient un ou plusieurs des éléments suivants : \codeline{\$relfile}, \codeline{\$file}, \codeline{\$reldir}, \codeline{\$dir}, \codeline{\$relpath}, \codeline{\$path}, \codeline{\$fname}, et \codeline{\$fext}.
+
+\genterm{Sortie vers}
+
+Ceci détermine vers où la sortie de la commande sera redirigée. Le but et la fonction de la commande détermineront ce qui est le mieux à faire.
+\genterm{Tools Output Window}
+Les outils qui ne requièrent que des résultats de sortie en ligne de commande (et ne demandent pas d'entrées) utilisent généralement cette façon de faire. Le programme sera lancé en mode invisible et toutes les sorties seront redirigées vers l'onglet approprié de la fenêtre de sortie des Outils Tools+. Le texte [DONE/TERMINÉ] sera ajouté en fin d'exécution de l'Outil.
+
+\figures[H][width=.5\columnwidth]{tool_output}{Fenêtre de sortie de l'Outil}
+
+\hint{Si la fenêtre de sortie des Outils Tools+ est ouverte à la clôture de \codeblocks, il se peut que \codeblocks plante.}
+
+\genterm{Console de \codeblocks}
+Ceci va permettre de lancer le programme via l'exécutable \file{cb\_console\_runner} (ce même programme qui est lancé après Générer et exécuter). Généralement, c'est utilisé par les outils en ligne de commande pour obtenir des interactions utilisateur avancées, bien que des programmes graphiques puissent aussi être utilisés (notamment si le programme n'est pas stable ou s'il affiche des messages dans la sortie standard). Le "Console runner" mettra la fenêtre en pause (l'empêchant de se fermer), affichera le temps d'exécution, ainsi que le code de sortie quand le programme s'arrêtera.
+
+\genterm{Shell Standard}
+C'est la même chose que de placer cette commande dans un script batch ou un script Shell puis de l'exécuter. Le programme s'exécutera quelle que soit la méthode par défaut, et lorsqu'il aura terminé, sa fenêtre se fermera.. Ce paramètre est utile pour exécuter un programme (par exemple un fichier ou un navigateur Web) qui doit rester ouvert après la fermeture de \codeblocks.
+
+\hint{Comme le plugin Tools+ plugin est en cours de développement, quelques fonctionnalités - par exemple Priorité de Menu et Variables d'environnement - peuvent ne pas être disponibles.}
+
+\subsection{Exemple d'Outils Tools+}
+
+\genterm{Ouvrir l'explorateur sur un fichier sélectionné}
+
+\begin{itemize}
+\item Windows Explorer
+\begin{itemize}
+\item Menu Outils Tools+
+\begin{verbatim}
+explorer /select,"$(PROJECTFILE)"
+\end{verbatim}
+\item Menu de Contexte
+\begin{verbatim}
+explorer /select,"$path"
+\end{verbatim}
+\end{itemize}
+
+\item Dolphin
+\begin{itemize}
+\item Menu Outils Tools+
+\begin{verbatim}
+dolphin --select "$(PROJECTFILE)"
+\end{verbatim}
+\item Menu de Contexte
+\begin{verbatim}
+dolphin --select "$path"
+\end{verbatim}
+\end{itemize}
+
+\hint{Les trois commandes suivantes du menu contextuel ne prennent en charge que les dossiers (mais pas les fichiers).}
+
+\item Nautilus
+\begin{itemize}
+\item Menu Outils Tools+
+\begin{verbatim}
+nautilus --no-desktop --browser "$(PROJECTDIR)"
+\end{verbatim}
+\item Menu de Contexte
+\begin{verbatim}
+nautilus --no-desktop --browser "$dir"
+\end{verbatim}
+\end{itemize}
+
+\item Thunar
+\begin{itemize}
+\item Menu Outils Tools+
+\begin{verbatim}
+thunar "$(PROJECTDIR)"
+\end{verbatim}
+\item Menu de Contexte
+\begin{verbatim}
+thunar "$dir"
+\end{verbatim}
+\end{itemize}
+
+\item PCMan File Manager
+\begin{itemize}
+\item Menu Outils Tools+
+\begin{verbatim}
+pcmanfm "$(PROJECTDIR)"
+\end{verbatim}
+\item Menu de Contexte
+\begin{verbatim}
+pcmanfm "$dir"
+\end{verbatim}
+\end{itemize}
+\end{itemize}
+
+\genterm{Mise à jour d'un répertoire Subversion}
+
+\begin{itemize}
+\item Windows
+\begin{itemize}
+\item Menus Outils Tools+
+\begin{verbatim}
+"path_to_svn\bin\svn" update "$inputstr{Directory}"
+\end{verbatim}
+\item Menu de Contexte
+\begin{verbatim}
+"path_to_svn\bin\svn" update "$dir"
+\end{verbatim}
+\end{itemize}
+
+\item Linux
+\begin{itemize}
+\item Menus Outil Tools+
+\begin{verbatim}
+svn update "$inputstr{Directory}"
+\end{verbatim}
+\item Menu de Contexte
+\begin{verbatim}
+svn update "$dir"
+\end{verbatim}
+\end{itemize}
+\end{itemize}
+
+\genterm{Exporter un makefile}
+
+\hint{Utilisation de l'outil en ligne de commande cbp2make.}\label{sec:tool_cbp2make}
+
+\begin{itemize}
+\item Windows
+\begin{itemize}
+\item Menus Outil Tools+
+\begin{verbatim}
+"path_to_cbp2make\cbp2make" -in "$(PROJECTFILE)"
+\end{verbatim}
+\end{itemize}
+
+\item Linux
+\begin{itemize}
+\item Menus Outil Tools+
+\begin{verbatim}
+"path_to_cbp2make/cbp2make" -in "$(PROJECTFILE)"
+\end{verbatim}
+\end{itemize}
+\end{itemize}
+
+\genterm{Compresser le projet actif dans une archive}
+
+\begin{itemize}
+\item Windows
+\begin{itemize}
+\item 7z ou zip - Menus Outil Tools+ (sur 1 seule ligne)
+\begin{verbatim}
+"path_to_7z\7z" a -t$if(zip == $inputstr{7z or zip?}){zip -mm=Deflate
+     -mmt=on -mx9 -mfb=128 -mpass=10}{7z -m0=LZMA -mx9 
+     -md=64m -mfb=64 -ms=on} -sccUTF-8 "-w$(PROJECTDIR).."
+     "$(PROJECTDIR)..\$(PROJECT_NAME)" "$(PROJECTDIR)*"
+\end{verbatim}
+
+\item tar.gz ou tar.bz2 - Menus Outil Tools+  (sur 1 seule ligne)
+\begin{verbatim}
+cmd /c ""path_to_7z\7z" a -ttar -mx0 -sccUTF-8 "-w$(PROJECTDIR).."
+      "$(PROJECTDIR)..\$(PROJECT_NAME)" "$(PROJECTDIR)*" && 
+      "path_to_7z\7z" a -t$if(gz == $inputstr{gz or bz2?}){gzip -mx9 
+      -mfb=128 -mpass=10 -sccUTF-8 "-w$(PROJECTDIR).." 
+      "$(PROJECTDIR)..\$(PROJECT_NAME).tar.gz}{bzip2 -mmt=on -mx9 
+      -md=900k -mpass=7 -sccUTF-8 "-w$(PROJECTDIR).." 
+      "$(PROJECTDIR)..\$(PROJECT_NAME).tar.bz2}"
+      "$(PROJECTDIR)..\$(PROJECT_NAME).tar" && 
+       cmd /c del "$(PROJECTDIR)..\$(PROJECT_NAME).tar""
+\end{verbatim}
+
+\hint{L'interpréteur en ligne de commande de Windows a été invoqué directement ici (\cmdline{cmd /c}), ce qui permet à des commandes multiples de s'enchaîner en une seule ligne. Cependant, cela peut provoquer un échec de l'exécution de la commande dans la console \codeblocks.}
+
+\end{itemize}
+
+\item Linux
+\begin{itemize}
+\item 7z ou zip - Menu Outils Tools+ (sur 1 seule ligne)
+\begin{verbatim}
+7z a -t$if(zip == $inputstr{7z or zip?}){zip -mm=Deflate -mmt=on -mx9
+    -mfb=128 -mpass=10}{7z -m0=LZMA -mx9 -md=64m -mfb=64 -ms=on}
+    -sccUTF-8 "-w$(PROJECTDIR).." "$(PROJECTDIR)../$(PROJECT_NAME)"
+    "$(PROJECTDIR)*"
+\end{verbatim}
+\item tar.gz ou tar.bz2 - Menu Outils Tools+ (sur 1 seule ligne)
+\begin{verbatim}
+tar -cf "$(PROJECTDIR)../$(PROJECT_NAME).tar.$if(gz == $inputstr{gz 
+     ou bz2?}){gz" -I 'gzip}{bz2" -I 'bzip2} -9' "$(PROJECTDIR)*"
+\end{verbatim}
+\end{itemize}
+\end{itemize}

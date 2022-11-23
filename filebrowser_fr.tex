@@ -1,0 +1,120 @@
+\section{Extensions FileManager et PowerShell}\label{sec:file_explorer}
+
+L'explorateur de fichiers \pxref{fig:file_explorer} est inclus dans l'extension FileManager, et se trouve dans l'onglet  \samp{Fichiers}. L'aspect de File Explorer est montré à la \pxref{fig:file_explorer}.
+
+En haut vous trouverez le champ d'entrée du chemin. En cliquant sur le bouton à l'extrémité de ce champ, la flèche vers le bas listera un historique des entrées précédentes dans lesquelles on peut naviguer à l'aide d'une barre de défilement. La flèche vers le haut à droite du champ déplace d'un cran vers le haut dans la structure des répertoires.
+
+Dans le champ \samp{Joker} vous pouvez entrer un filtre de visualisation pour l'affichage des fichiers. En laissant vide ce champ ou en y entrant \codeline{*} vous afficherez tous les fichiers. En y entrant \codeline{*.c;*.h} par exemple, vous n'afficherez que les fichiers sources en C et les fichiers d'en-têtes (headers). Ouvrir la flèche du bas, affiche de nouveau la liste des dernières entrées.
+
+\figures[hbt!]{file_explorer}{Le gestionnaire de fichiers}
+
+Appuyer sur la touche Maj tout en cliquant, sélectionne un groupe de fichiers ou de répertoires, alors qu'appuyer sur la touche Ctrl tout en cliquant sélectionne des fichiers multiples ou des répertoires séparés.
+
+Les opérations suivantes peuvent être obtenues via le menu de contexte si un ou plusieurs répertoires ont été sélectionnés dans l'Explorateur de Fichiers :
+
+\begin{description}
+\item[Make Root] défini le répertoire courant comme répertoire de base.
+\item[Ajouter aux favoris] configure un marqueur pour ce répertoire et l'enregistre dans les favoris. Cette fonction permet de naviguer rapidement entre des répertoires fréquemment utilisés ou encore sur des disques réseau.
+\item[Nouveau Fichier] crée un nouveau fichier dans le répertoire sélectionné.
+\item[Nouveau Répertoire] crée un nouveau sous répertoire dans le répertoire sélectionné.
+\end{description}
+
+Les opérations suivantes peuvent être obtenues via le menu de contexte si un ou plusieurs fichiers ou même un ou plusieurs répertoires ont été sélectionnés dans l'Explorateur de Fichiers :
+
+\begin{description}
+\item[Dupliquer] copie un fichier/répertoire et le renomme.
+\item[Copier vers] ouvre une boîte de dialogue pour entrer un répertoire cible dans lequel on copiera les fichiers/répertoires.
+\item[Déplacer vers] déplace la sélection vers un autre endroit.
+\item[Supprimer] supprime les fichiers/répertoires sélectionnés.
+\item[Afficher les fichiers masqués] active/désactive l'affichage des fichiers systèmes masqués. Si activé, le menu est coché par un marqueur.
+\item[Actualiser] actualise l'affichage de l'arborescence des répertoires.
+\end{description}
+
+Les opérations suivantes peuvent être obtenues via le menu de contexte si un ou plusieurs fichiers ont été sélectionnés dans l'Explorateur de Fichiers :
+
+\begin{description}
+\item[Ouvrir dans l'éditeur CB] ouvre le fichier sélectionné dans l'éditeur de \codeblocks.
+\item[Renommer] renomme le fichier sélectionné.
+\item[Ajouter au projet actif] ajoute le(s) fichier(s) au projet actif.
+\end{description}
+
+\hint{Les fichiers/répertoires sélectionnés dans l'explorateur de fichiers peuvent être accédés dans l'extension PowerShell à l'aide de la variable \codeline{mpaths}.}
+
+On peut spécifier via la commande de menu \menu{Paramètres,Environnement,PowerShell} des fonctions utilisateur. Dans le masque de PowerShell, une nouvelle fonction qui peut être nommée aléatoirement, est créée via le bouton \samp{Nouveau}. Dans le champ \samp{ShellCommand Executable}, le programme exécutable est spécifié, et dans le champ en bas de la fenêtre, des paramètres additionnels peuvent être passés au programme.
+En cliquant sur la fonction dans le menu de contexte ou dans le menu de PowerShell, la fonction s'exécute et traite les fichiers/répertoires sélectionnés. La sortie est redirigée vers une fenêtre de Shell séparée.
+
+Par exemple une entrée de menu a été créée dans \menu{PowerShell,SVN} et dans le menu de contexte en tant que \samp{SVN}. Dans ce contexte \codeline{$file} signifie le fichier sélectionné dans l'explorateur de fichiers, \codeline{$mpath} les fichiers ou répertoires sélectionnés (voir \pxref{sec:builtin_variables}).
+
+\begin{lstlisting}
+ Ajouter;$interpreter add $mpaths;;;
+\end{lstlisting}
+
+Celle-ci et toutes les commandes suivantes créeront un sous-menu, dans ce cas \menu{Extensions,SVN,Ajouter}. Le menu de contexte est étendu de même. Cliquez sur la commande du menu de contexte pour faire exécuter la commande SVN \codeline{add} sur les fichiers/répertoires sélectionnés.
+
+TortoiseSVN est un programme SVN très répandu qui s'intègre dans l'explorateur. Le programme \file{TortoiseProc.exe} de TortoiseSVN peut être démarré en ligne de commande et affiche une boîte de dialogue pour y entrer les données de l'utilisateur. Ainsi vous pouvez lancer des commandes, disponibles en tant que menus de contexte dans l'explorateur, également en ligne de commande. Vous pouvez donc l'intégrer en tant qu'extension du Shell dans  \codeblocks. Par exemple, la commande
+
+\begin{lstlisting}
+TortoiseProc.exe /command:diff /path:$file
+\end{lstlisting}
+
+affichera les différences entre un fichier sélectionné dans l'explorateur de \codeblocks et celui de la base de SVN. Voir \pxref{fig:interpreter} comment intégrer cette commande.
+\hint{Pour les fichiers qui sont sous le contrôle de SVN l'explorateur de fichier affiche des icônes superposées qui s'activent via le menu \menu{Vue,SVN Decorators}.}
+
+\screenshot{interpreter}{Ajout d'une extension Shell au menu de contexte}
+
+\genterm{Exemple}
+
+Vous pouvez utiliser l'explorateur de fichiers pour afficher les différences sur des fichiers ou des répertoires. Suivez les étapes suivantes :
+
+\begin{enumerate}
+\item Ajoutez le nom via le menu \menu{Paramètres,Environnement,PowerShell}. C'est affiché comme une entrée par l'interpréteur de menu et le menu de contexte.
+\item Sélectionnez le chemin absolu de l'exécutable Diff (notamment kdiff3). Le programme est accédé avec la variable \codeline{$interpreter}.
+\item Ajoutez les paramètres de l'interpréteur
+\begin{lstlisting}
+Diff;$interpreter $mpaths;;;
+\end{lstlisting}
+\end{enumerate}
+
+Cette commande sera exécutée en utilisant les fichiers ou répertoires sélectionnés en tant que paramètres. La sélection peut être accédée via la variable \codeline{$mpaths}. Ceci est une façon commode de différentier des fichiers ou des répertoires.
+
+\hint{L'extension supporte l'utilisation des variables de \codeblocks dans l'extension du Shell.}
+
+% Actions string format: Name;Command;[W|C];WorkDir;EnvVarSet
+% (the last two ; delimit settings for the working directory and (not implemented) environment variable set)
+%
+\begin{description}
+\item[\$interpreter] Appelle cet exécutable.
+\item[\$fname] Nom du fichier sans son extension.
+\item[\$fext] Extension du fichier sélectionné.
+\item[\$file] Nom du fichier.
+\item[\$relfile] Nom du fichier sans l'information de chemin.
+\item[\$dir] Nom du répertoire sélectionné.
+\item[\$reldir] Nom du répertoire sans l'information de chemin.
+\item[\$path] Chemin absolu.
+\item[\$relpath] Chemin relatif du fichier ou du répertoire
+\item[\$mpaths] Liste des fichiers et répertoires sélectionnés actuellement
+\item[\$inputstr\{ msg \}] Chaîne de caractères qui est entrée dans une fenêtre de message.
+\item[\$parentdir] Répertoire Parent (../).
+\end{description}
+
+\hint{Les entrées de l'extension Shell sont également disponibles en tant que menus de contexte dans l'éditeur de \codeblocks.}
+%Support for personalities.
+%Bsp:
+%%View;latex $fname.$fext;W;$parentdir
+%
+%\subsection{Support for Version Control Systems}
+%
+%Context menu \menu{View, SVN Decorators}
+% Run the processes using option 'W' in the action string (to run an interpreter in the cbconsole runnner use 'C' in the action string). for example a python run action string to run a script in a dockable window tab might look like this:
+%
+% \begin{lstlisting}
+% 'Run;$interpeter -u $file;W;;'
+% \end{lstlisting}
+%
+% Command line variables:
+% \begin{lstlisting}
+% $interpreter, $file, $dir, $path, $mpaths
+% Working directory variables: $dir, $parentdir
+% \end{lstlisting}
+%
+

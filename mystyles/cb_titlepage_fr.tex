@@ -1,0 +1,61 @@
+\ProvidesFile{titlepage.tex}[2003/07/01 HighTec Vorlage]
+%%%%%%%%%%%% titlepage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+\pagenumbering{roman}
+\makeatletter
+\@ifundefined{htmlmode}{%
+    \begin{titlepage}
+    \begin{flushleft}
+    \includegraphics[width=\columnwidth]{mystyles/cb_splash}
+    \vfill
+    \makeatletter
+    \@ifundefined{Subtitle}{%
+        {\Huge\textbf{\Subject}\\ [2ex] \Title\\ [2ex] \large{Version \DocVersion}\\ [2ex]}
+    }{%
+        {\Huge\textbf{\Subject}\\ [2ex] \Title\\ \Subtitle\\ [2ex] \large{Version \DocVersion}\\ [2ex]}
+    }
+    \makeatother
+    \vfill
+    Merci à l'équipe \codeblocks  :\\
+
+    Anders F. Björklund (afb), Biplab Kumar Modak (biplab), Bartomiej wiecki (byo),
+    Paul A. Jimenez (ceniza), Koa Chong Gee (cyberkoa), Daniel Orb (daniel2000), Lieven de Cock (killerbot), Yiannis Mandravellos (mandrav), Mispunt (mispunt), Martin Halle (mortenmacfly), Jens Lody (jens), Jerome Antoine (dje), Damien Moore (dmoore),
+    Pecan Heber (pecan), Ricardo Garcia (rickg22), Thomas Denk (thomasdenk), tiwag (tiwag), stahta01 (stahta01), Teodor Petrov (oBFusCATed), BlueHazzard (BlueHazzard), Andrew Cottrell (AndrewCot), Miguel Gimenez (wh11204) 
+
+    Et bien d'autres contributeurs...
+
+    Manuel original en Anglais et en Allemand (V1.x) par Mario Cupelli (mariocup)\\
+    Traduction en français de la version originale anglaise et corrections/ajouts dans la version 2 par Gérard Durand (gd\_on).\\
+    Quelques paragraphes sont directement recopiés depuis le WiKi de \codeblocks. N'hésitez pas à le visiter sur \url{https://wiki.codeblocks.org/index.php/Main_Page}, les informations y sont peut-être plus à jour.\\
+
+    Il est permis de copier, distribuer et/ou modifier ce document dans le respect de la licence "GNU Free Documentation", Version 1.2 ou toute autre version postérieure publiée par la "Free Software Foundation".
+
+    Manuel Utilisateur mis à jour en novembre 2022
+    \end{flushleft}
+    \end{titlepage}
+    \pagestyle{headings}
+%%%%%%%%%%%% Table of contents %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This ifthenelse is desactivated, because it has problems with recent Miktex versions (22.10), though it was OK with a previous one (22.03).
+% More, it's only used when shortdocu is false, which is not the standard case for C::B documentation.
+%    \ifthenelse{\boolean{shortdocu}}{}{
+%%        \tableofcontents
+%        \ifthenelse{\boolean{figreg}}{\listoffigures}{}
+%        \ifthenelse{\boolean{tabreg}}{\listoftables}{}
+%    }
+    \clearemptydoublepage \pagestyle{headings}
+    \pagenumbering{arabic}
+}{%
+    \begin{titlepage}
+        \@ifundefined{Subtitle}{%
+            \Huge\textbf{{\Subject} {\Title}}\\
+        }{
+            \Huge\textbf{{\Subject} {\Title} {\Subtitle}}\\
+        }
+        \large{Version \DocVersion}
+    \end{titlepage}
+    \clearemptydoublepage \pagestyle{headings}
+    %\tableofcontents
+    \clearemptydoublepage \pagenumbering{arabic}
+    \pagenumbering{arabic}
+}
+\makeatother

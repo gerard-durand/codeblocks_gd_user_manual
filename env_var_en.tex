@@ -1,0 +1,55 @@
+\section{Environment Variables plugin}\label{sec:EnvVar_Plugin}
+
+From \codeblocks wiki. See also \pxref{sec:EnvVars_Cfg}.
+
+\textbf{Environment variables editor} plugin allows for the setting of system environment variables in the focus of \codeblocks.\newline
+A user can have several sets that contain 1..n environment variables.\newline
+A user can switch between these sets within the environment variables configuration dialog.\newline
+In addition the EnvVars plugin offers an option to projects (within project setup) to apply a certain EnvVar set to activate (and use during compilation).
+
+The dialog for editing the sets is located in \menu{Settings,Environment,Environment variables}.\newline
+The dialog for choosing the active set for the current project is located in \menu{Project,Properties,EnvVar options}. 
+
+\textbf{Script binding}
+
+This plugin provides its functionality through a squirrel binding: 
+
+{\footnotesize
+\begin{longtable}{|l|l|l|l|}\hline
+\textbf{Return value}&\textbf{Name}         &\textbf{Arguments}     &\textbf{Remarks}               \\ \hline
+\endhead   % To repeat the title line, if needed
+wxArrayString   &EnvvarGetEnvvarSetNames    &                       &Returns all envvars sets       \\
+                &                           &                       &available                      \\ \hline
+wxString        &EnvvarGetActiveSetName     &                       &Returns the name of the        \\
+                &                           &                       & currently active set          \\
+                &                           &                       &(from config, /active\_set)    \\ \hline
+wxArrayString   &EnvVarGetEnvvarsBySetPath  &const wxString         &Returns the envvars of         \\
+                &                           &set\_name              &an envvars set path in         \\
+                &                           &                       &the config                     \\ \hline
+bool            &EnvvarSetExists            &const wxString         &Verifies if an envvars set     \\
+                &                           &set\_name              &really exists in the config    \\ \hline
+bool            &EnvvarSetApply             &const wxString\&       &Applies a specific envvar      \\
+                &                           &set\_name,             &set from the config            \\
+                &                           &bool even\_if\_active  &(without UI interaction)       \\ \hline
+void            &EnvvarSetDiscard           &const wxString         &Discards a specific envvar     \\
+                &                           &                       &set from the config            \\
+                &                           &                       &(without UI interaction)       \\ \hline
+bool            &EnvvarApply                &const wxString key,    &Applies a specific envvar      \\
+                &                           &const wxString value   &                               \\ \hline
+bool            &EnvvarDiscard              &const wxString key     &Discards an envvar             \\ \hline
+\caption{Squirrel binding}
+\end{longtable}
+\par}
+
+\textbf{NOTE}: The value arguments are automatically expanded from macros. You do not have to call ReplaceMacros() on them.
+
+Many other script functions are available. Have a look to \url{http://wiki.codeblocks.org/index.php/Scripting_commands}
+
+\textbf{Example}
+
+On windows in the post or pre build steps:
+\begin{lstlisting}
+[[EnvvarApply(_("test"),_("testValue"));]]
+echo %test%
+\end{lstlisting}
+

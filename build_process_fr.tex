@@ -1,0 +1,127 @@
+\section{Le processus de génération de \codeblocks}\label{sec:build_process}
+
+Dans ces pages, le processus de génération est expliqué en détail. On y voit ce qui se passe en arrière-plan et "quand". Je vous souhaite une intéressante lecture :).
+ 
+\subsection{Étapes successives de la Génération}
+
+Comme vous l'avez peut-être déjà compris, \codeblocks ne lance pas au hasard les commandes de génération, mais effectue plutôt une séquence d'étapes bien pensées et préparées. Mais avant tout, regardons les différents composants qui sont utilisés lors d'une génération:
+
+\begin{description}
+\item [Espace de Travail :] contient un ou plusieurs projets (dénommé aussi workspace, comme en anglais)
+\item [Projet :] contient une ou plusieurs cibles de génération. Il contient également les fichiers de projet.
+\item [Cible de génération :] ce sont les variantes de projet qui lui-sont assignés, et qui seront générées par groupes afin de produire une sortie binaire. Cette sortie peut être soit un exécutable, une librairie  dynamique ou statique. NOTE : Il existe un type de cible de génération qui ne produit pas directement une sortie binaire mais se contente plutôt de seulement réaliser des étapes de pre/post génération (qui peuvent générer de façon externe une sortie binaire).
+\end{description}
+
+Décomposons ces sujets en sections et expliquons-les en détail.
+
+\subsection{Espace de Travail}
+
+Un espace de travail (ou Workspace) est un conteneur (celui de plus haut niveau) utilisé pour organiser vos projets. Comme il ne peut y avoir qu'un seul espace de travail ouvert à la fois, il n'y a pas d'ordre spécifique les concernant. Un seul espace, donc il suffit de le générer ;).
+
+Utilisez le menu \menu{Générer,Générer l'espace de travail} pour générer l'espace de travail (c.à.d. tous les projets qui y sont contenus). 
+
+\subsection{Projets}
+
+C'est ici que les choses deviennent intéressantes :).
+
+L'ordre de génération des projets est différent suivant que l'utilisateur a indiqué s'il y a des dépendances ou pas entre les projets. Alors, allons-y...
+
+\genterm{Sans dépendances inter-projets}
+
+Dans ce cas, les projets sont générés dans l'ordre d'apparition, du haut vers le bas. Dans la plupart des projets cependant (sauf ceux du genre "hello world"), vous allez vouloir créer des dépendances entre projets.
+
+\genterm{Utilisation de dépendances entre projets}
+
+Les dépendances de projets sont une façon simple d'indiquer à \codeblocks qu'un projet donné "dépend" d'un autre (toujours dans le même espace de travail).
+
+Alors imaginons que, dans votre espace de travail, vous avez un projet de librairie et un projet d'exécutable qui dépend de cette librairie. Vous pouvez alors (et devez) informer \codeblocks de cette dépendance. Pour faire cela, vous sélectionnez \menu{Projet,Propriétés} et cliquez sur le bouton des  "Dépendances de Projet...".
+
+\textit{Veuillez noter que les informations de dépendances sont enregistrées dans le fichier de l'espace de travail, et non dans un fichier projet car les dépendances se font entre deux projets à l'intérieur d'un même espace de travail.}
+
+\figures[H][width=.55\columnwidth]{Project_deps}{Configuration de dépendances de projet}
+
+C'est très facile d'utiliser ce dialogue. Sélectionnez le projet sur lequel vous voulez ajouter une dépendance et cochez la case sur tous les projets dont ce projet de base dépend. Cela aura pour conséquence que tous les projets que vous avez coché seront générés avant le projet qui en dépend, assurant ainsi une génération synchronisée.
+
+\textbf{Astuce :} Vous n'avez pas à fermer ce dialogue et lancer d'autres propriétés de projets de nouveau pour configurer leurs dépendances. Vous pouvez configurer toutes les dépendances de projets depuis cette même boîte de dialogue. Sélectionnez simplement un autre projet dans le menu déroulant :).
+
+Quelques choses à noter :
+
+\begin{itemize}
+\item Les dépendances sont configurées directement ou indirectement. Si le projet A dépend directement du projet B et que le projet B dépend du projet C, alors le projet A dépend également du projet C, mais indirectement.
+\item \codeblocks est suffisamment intelligent pour vérifier s'il y a des dépendances circulaires et donc les interdire. Une dépendance circulaire est obtenue quand un projet A dépend directement ou indirectement d'un projet B et que le projet B dépend directement ou indirectement du projet A.
+\item Les dépendances prennent effet soit lors de la génération d'un espace de travail entier soit sur un projet seul. Dans ce cas, seules les dépendances nécessaires au projet que vous êtes en train de générer seront aussi générées.
+\end{itemize}
+
+\subsection{Génération de Cibles}
+
+L'ordre de génération des cibles dépend de deux choses.
+
+\begin{enumerate}
+\item Si l'utilisateur a sélectionné une cible particulière dans le menu déroulant de la barre de compilation, alors seule cette cible sera générée. Si des dépendances de projet ont été configurées pour le projet contenant cette cible, tous les projets dépendants génèreront aussi leur cible sous le même nom. Si une telle cible n'existe pas, on passe au projet suivant.
+\item Si la cible virtuelle "All" est sélectionnée, alors toutes les cibles dans le projet (et tous les projets dépendants) sont générés dans l'ordre du haut vers le bas. Il y a deux exceptions à cela :
+    \begin{itemize}
+    \item Une cible n'est pas générée par "All" si l'option de cible (dans la page des propriétés du projet "Cibles de génération") "Générer cette cible par All" n'est pas sélectionnée.
+    \item Si aucune cible du projet n'a de sélectionnées l'option ci-dessus, alors la cible "All" n'apparait pas dans la liste.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Phase de Preprocessing}
+
+Avant que le processus de génération démarre (c.à.d. commence l'exécution des commandes de compilation/édition de liens), une étape de preprocessing est lancée pour générer toutes les lignes de commandes du processus complet de génération. Cette étape place dans un cache la plupart des informations qu'elle génère, ce qui a pour effet de rendre les générations suivantes plus rapides.
+
+Cette étape lance aussi tout script de génération qui y est attaché.
+
+
+\subsection{Commandes réelles d'exécution}
+
+C'est l'étape, du point de vue de l'utilisateur, où le processus de génération commence réellement. Les fichiers commencent à être compilés et au final liés entre eux pour générer les diverses sorties binaires définies par les cibles de génération.
+
+Dans cette étape sont aussi exécutées les cibles de pré-génération et de post-génération.
+
+
+\subsection{Étape de pré-génération et post-génération}
+
+Ce sont des commandes qui peuvent être configurées au niveau projet et/ou au niveau cible. Ce sont des commandes Shell qui par exemple copient des fichiers ou toute autre opération que vous pouvez réaliser par les commandes Shell habituelles de l'OS.
+
+Les variables spécifiées dans le paragraphe Expansion de Variables (\pxref{sec:variables_types}) peuvent être utilisées dans les scripts afin de récupérer des informations comme le répertoire de sortie, le répertoire de projet, le type de cible ou autres.
+
+Vous avez ci-dessous le déroulé dans l'ordre d'exécution des étapes de pré/post génération d'un projet imaginaire avec 2 cibles (Debug/Release) :
+
+\begin{enumerate}
+\item Étapes de pré-génération du Projet
+    \begin{enumerate}
+    \item Target "Debug" étapes de pré-génération
+    \item Target "Debug" compilation des fichiers
+    \item Target "Debug" édition de liens des fichiers et génération de la sortie binaire
+    \item Target "Debug" étapes de post-génération (voir les notes ci-dessous)
+    \item Target "Release" étapes de pré-génération
+    \item Target "Release" compilation des fichiers
+    \item Target "Release" édition de liens des fichiers et génération de la sortie binaire
+    \item Target "Release" étapes de post-génération (voir les notes ci-dessous)
+    \end{enumerate}
+\item Étapes de post-génération du Projet
+\end{enumerate}
+
+J'espère que c'est suffisamment clair :)
+
+\hint{Les étapes de Pré-génération sont toujours exécutées. Les étapes de Post-génération ne seront exécutées que si le projet/cible auxquelles elles sont rattachées n'est pas à jour (c.à.d. en train d'être généré). Vous pouvez changer cela en sélectionnant "Toujours exécuter, même si la cible est à jour" dans les options de génération.}
+
+\genterm{Exemples de Script}
+
+Script de Post-génération qui copie le fichier de sortie dans un répertoire \file{C:\osp Program\osp bin} sous Windows : 
+
+\begin{lstlisting}
+cmd /c copy "$(PROJECT_DIR)$(TARGET_OUTPUT_FILE)" "C:\Program\bin"
+\end{lstlisting}
+
+Exécution du script bash "copyresources.sh" sous Linux :
+
+\begin{lstlisting}
+/bin/sh copyresources.sh
+\end{lstlisting}
+
+Création d'un nouveau répertoire dans le répertoire de sortie :
+
+\begin{lstlisting}
+mkdir $(TARGET_OUTPUT_DIR)/data
+\end{lstlisting}  

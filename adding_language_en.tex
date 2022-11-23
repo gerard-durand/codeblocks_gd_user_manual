@@ -1,0 +1,107 @@
+\section{\codeblocks Adding support for non C/C++ files to the build system}\label{sec:cb_AddLanguage}
+
+This section describes how to add support for other languages than C or C++ in \codeblocks. (copied from the Wiki: Mandrav October 2007, Update: MortenMacFly June 2012).
+
+\subsection{Introduction}
+As you may already know, \codeblocks is designed mainly for C/C++ development. This means that when it "sees"  C/C++ files in your project it knows how to compile and link them to generate the resulting binary output. What about other types of files though? You may want to compile java or python files but, unfortunately, \codeblocks knows nothing about them...\
+
+And there's this other case: in real world projects, it's not unusual for some of the files belonging to a project to be auto-generated. This is done through the use of another program/script that possibly takes an input file and generates one (or more) files based on that input. \codeblocks, unfortunately, can't handle them either...\
+
+Or can it?\
+
+The answer is: ....... (drum-rolling) ........ (ta-da) ......... \textbf{It sure can!}.\
+
+\codeblocks has been updated so it can be configured to recognize non C/C++ files and act accordingly on them during the build process. This article will describe those changes and provide a simple but real world example of usage. 
+
+\subsection{How things used to work...}
+
+In case you never had a look in advanced compiler options, you can find them by clicking \menu{Settings,Compiler,Other settings}. Look for "Advanced options" in lower right, it's easy to miss.\
+
+In that dialog you will find the command line macros used to build files. For example, each file belonging to the project, that had its compile flag on, would be compiled with the macro named "Compile single file to object file" ("\codeline{$compiler $options $includes -c $file -o $object}", for the curious).\
+
+
+While this provide enough room for customizing the build system's configuration, it clearly didn't allow for some more generic customization.\
+
+If you wanted to include in your project and compile a java file, you would have to set a custom build command for that particular file, only for that file (right-click file in tree and choose properties). This is not only cumbersome (imagine having to do this for 10 or 100 java files) but impractical too.\
+
+\genterm{...and how things have evolved}
+
+The new functionality described in this article aims to remove the above problems and allow for more customization of the build system. So, what is different now? Goto to \menu{Settings, Compiler, Global compiler settings, Other settings} and click on Advanced options, you will get this dialog:
+
+\figures[H][width=.55\columnwidth]{AdvancedCompilerOptions}{Advanced Compiler Options}
+
+For starters, the command line macros are now paired with a list of source file extensions. So each command line macro (like the "Compile single file to object file") can now hold different macros depending on the source file extension. This is the core of the new functionality: by adding a new command-extension pair, you effectively add support for these extension(s) to the build system!\
+
+Another thing that also got added was the ability to keep a list of files the custom command will generate (for each command-extension pair). These generated files are then automatically shown in the project tree, become part of the build process, etc. In other words, they are dynamically - and transparently - affecting the project. If you find this confusing, have a look at the provided example and things will clear up :).\
+
+\subsection{Examples}
+
+\genterm{Let's see an example already}
+
+Here comes a real world example. I recently worked on a side project that required me to use SWIG. What the swig program does, in simple words, is take a special interface file (usually *.i) as input and, based on this input, it generates a C/C++ file to include in your project. This sounds like the perfect scenario to use as an example here :).
+
+Here's what I did: 
+\begin{verbatim}
+Command:         Compile single file to object file
+Extension:       i
+Macro:           swig -c++ -lua $includes -o $file_dir/$file_name.cpp $file
+Generated files: $file_dir/$file_name.cpp
+\end{verbatim}
+
+What do the above mean?
+
+For any file with extension i, use the above macro to process (compile) it. Also lets \codeblocks know that this macro will create a new file, named \codeline{$file_dir/$file_name.cpp}.
+
+With this info at hand, \codeblocks will now do the following auto-magically when you add any *.i file to a project:
+\begin{itemize}
+\item Add the generated file(s) also to the project (even if they don't yet exist).
+\item Will display the file under the new "Auto-generated" tree folder (if files categorization is enabled).
+\item Will know how to process (compile) the *.i files.
+\item Will also schedule all the generated files for processing (compiling) after the *.i file is processed.
+\item Will still track dependencies so when the *.i file is changed, its generated files will be re-generated too.
+\end{itemize}
+
+\genterm{Another example - Ragel}
+
+Compile Ragel State Machine Compiler source into C++ file.
+\begin{verbatim}
+Command:         Compile single file to object file
+Extension:       rl
+Macro:           ragel $file -C -L -o $file.cpp
+Generated files: $file.cpp
+\end{verbatim}
+(You have to ensure that the ragel executable is in the PATH.)\newline
+
+\genterm{Another example - Bison}
+
+Compile Bison Parser parser into C/C++ file.
+\begin{verbatim}
+Command:         Compile single file to object file
+Extension:       y
+Macro:           bison -v -d $file -o $file_dir/$file_name.parser.cc
+Generated files: $file_dir/$file_name.parser.cc
+                 $file_dir/$file_name.parser.hh
+\end{verbatim}
+(You have to ensure that the bison executable is in the PATH.)\newline
+
+\genterm{Another example - Flex}
+
+Compile Flex lexical analyser files into C/C++ file.
+\begin{verbatim}
+Command:         Compile single file to object file
+Extension:       l
+Macro:           flex -o$file_dir/$file_name.scanner.cc $file
+Generated files: $file_dir/$file_name.scanner.cc
+\end{verbatim}
+(You have to ensure that the flex executable is in the PATH.)
+
+\genterm{Notes}
+    All default commands are paired to no extension. These are used as fallback if a matching extension isn't defined.
+
+\genterm{Known issues}
+\begin{itemize}
+\item Currently, only the \codeline{$file*} macros are supported in the generated files names\newline
+   (\codeline{$file, $file_dir, $file_name and $file_ext}).
+\item If you change any of the settings mentioned here in advanced compiler options, you \textbf{must} close and re-open your project so the changes will take effect. No message is displayed currently to note this.
+\item If you are using a non-default compiler (to cross compile for example), you may need to make these settings in the default compiler, not the cross compiler where it seems to have no effect.
+\end{itemize}

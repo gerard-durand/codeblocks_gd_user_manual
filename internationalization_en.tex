@@ -1,0 +1,76 @@
+\section{\codeblocks Interface Internationalization}\label{sec:cb_Internationalization}
+
+This section describes how to obtain and use a localized version of \codeblocks.
+
+\codeblocks interface can be presented in your own language. Many of the strings used internally in \codeblocks interface are introduced with a wxWidgets macro : \_. Strings that do not change with the language are normally introduced by the macro wxT() or \_T(). To obtain a \codeblocks interface presented in your own language, you must simply tell to \codeblocks that a language file is available. To be understandable by \codeblocks, it must be a .mo file obtained after "compilation" of a .po file. Such files are available on the forum for "French" and in Launchpad web site for a wider set of languages.
+
+\begin{description}
+\item The original site on Launchpad is now obsolete : \url{https://launchpad.net/codeblocks }
+\item The forum topic concerning translation is \url{http://forums.codeblocks.org/index.php/topic,1022.0.html }. If you are interested, you'll can also find tools to extract strings from \codeblocks source files. These tools create a .pot file, which can then be completed with the translations to create a .po file. 
+\item A new web site has been created recently on \url{https://launchpad.net/codeblocks-gd }. It contains more than 9300 strings though the original site had only 2173! Many works has been done on \codeblocks !
+\end{description}
+
+In the translation page choose "View All languages", at the bottom, right.
+
+Old translations have been imported in that new page, only the most used languages (currently 14 languages). On request, it's possible to add new languages (but translators will have a little bit more work !).\newline
+Sorry for that, but original translators names have been lost in many cases  :-[.\newline
+French language has the greatest number of translated strings. The template (.pot file) has been updated for recent svn versions and Launchpad contain the translation work done until now. For Russian language, a quite recent web page has also been used but is not up to date. Many translations need to be approved, but I'm not the right guy to do that !\newline
+The launchpad page is opened as "structured". So you should be able to propose new translations or to correct them. In some cases, they should be approved by somebody before publication.\newline
+I'll try to maintain the "template" when new English strings will be available.
+
+You (translators) should be able to participate. You only need to have (or create) a launchpad (Ubuntu) account.
+
+Other users can request a download for the .po or .mo file. It's this last one (.mo file), the binary form, that you can use to obtain \codeblocks interface in your own language : simply put it in your "codeblocks installation directory"/share/CodeBlocks/locale/"language string" (for me, on Windows, it's\newline
+ \file{C:\osp Program Files\osp CodeBlocks\_wx32\_64\osp share\osp CodeBlocks\osp locale\osp fr\_FR}. Then in the menu Settings/Environment.../View you should be able to choose the language.
+
+Some more details for using translated menu strings in \codeblocks.
+
+\genterm{For users of translations only :}
+Download the .mo format file in the requested language button. The launchpad name may be something like : de\_LC\_MESSAGES\_All\_codeblocks.mo (here for german).
+
+You should put this file inside your codeblocks installation directory.
+
+On Windows, it's something like :\newline
+\file{C:\osp Program Files (x86)\osp CodeBlocks\osp share\osp CodeBlocks\osp locale\osp xxxx} for 32 bits\newline
+ or\newline
+\file{C:\osp Program Files\osp CodeBlocks\osp share\osp CodeBlocks\osp locale\osp xxxx} for 64 bits.
+
+Path under Linux is quite similar.
+
+xxxx has to be adapted to your language. It's :
+\begin{itemize}
+\item de\_DE for German,
+\item es\_ES for Spanish,
+\item fr\_FR for French,
+\item it\_IT for Italian,
+\item lt\_LT for Lithuanian,
+\item nl\_NL for Dutch,
+\item pl\_PL for Polish,
+\item pt\_BR for Portuguese Brazilian,
+\item pt\_PT for Portuguese,
+\item ru\_RU for Russian,
+\item si     for Sinhalese,
+\item zh\_CN for Chinese simplified,
+\item zh\_TW for Chinese traditional.
+\end{itemize}
+
+Create the sub-directories if needed. Then place your downloaded .mo file here. You can leave the filename as it is or only keep the first letters (as you want), but keep the extension .mo.
+
+Then start \codeblocks. In Setting/Environment/View you should be able to check the language box (internationalization) and choose your language. If not, you have probably forgotten something or made an error.\newline
+Restart \codeblocks to activate the new language.
+
+If you want to switch back to English, simply uncheck the language box.
+
+\genterm{For translators :}
+You can directly work in launchpad.
+
+\textbf{Problem} : the interface is not really friendly.
+
+You can also download the .po file, work on it with poedit for example (free version is OK). You can test your translations locally by compiling (creating a .mo file) and installing the .mo file in the right sub-directory of \codeblocks.
+
+When you have made sufficient progress (it's your decision), you can upload you .po file in launchpad. It may be necessary to approve your work or mark it as to be reviewed.
+
+Don't be afraid: it's quite a long work. In the old site, there was 2173 string to translate. Now it's more than 9300 ! But the job can be shared, Launchpad is done for that !
+
+\textbf{Tip :} Begin with menus that you use often : you'll see progress faster.
+

@@ -1,0 +1,55 @@
+\section{Description des Formats de Fichiers}\label{sec:file_formats}
+
+Extraits partiels du Wiki.
+
+Les projets/espaces de travail (workspaces) de \codeblocks sont décrits dans des fichiers XML. Ci-dessous une courte description de chacun d'entre eux.
+
+Cette information a de l'intérêt pour quiconque désirant écrire un importateur/exportateur/générateur pour d'autres systèmes/environnements de génération et par conséquent ajouter un support pour \codeblocks.
+
+\begin{description}
+\item[Fichier Espace de Travail] (*.workspace) Définit un espace de travail pour \codeblocks (une collection de projets). Voir les détails ci-dessous (\pxref{sec:workspace_file}) ou dans \url{https://wiki.codeblocks.org/index.php/Workspace_file}.
+\item[Fichier Projet] (*.cbp) Définit un projet de \codeblocks. Voir les détails dans \url{https://wiki.codeblocks.org/index.php/Project_file}.
+\end{description}
+
+Des fichiers complémentaires on été ajoutés depuis le 12 Décembre 2012 (à partir de la fusion avec la branche XML compiler):
+
+\begin{description}
+\item[Fichier de Compilateur] (compiler\_*.xml) Définit une interface vers les compilateurs pour \codeblocks et des procédures d'auto-détection. Voir les détails dans \url{https://wiki.codeblocks.org/index.php/Compiler_file}.
+\item[Fichier d'Options de Compilateur] (options\_*.xml) Définit les options et expressions régulières vers les compilateurs pour \codeblocks. Voir les détails dans \url{https://wiki.codeblocks.org/index.php/Compiler_options_file}.
+\end{description}
+
+\textit{\codeblocks génère aussi un couple d'autres fichiers (*.layout and *.depend) mais ils ne contiennet que des informations d'état qui ne sont réellement utiles qu'à \codeblocks lui-même.}
+
+\subsection*{Fichier Espace de Travail}\label{sec:workspace_file}
+
+Le fichier Espace de Travail en XML est très simple.
+
+Un espace de travail est une collection de projets. Essentiellement le fichier d'espace de travail fait exactement cela : il décrit un ensemble de projets. Mais voyons le contenu d'un exemple d'espace de travail :
+
+\begin{lstlisting}[language=XML]
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Test Workspace">
+		<Project filename="TestConsole/TestConsole.cbp" active="1">
+			<Depends filename="TestLib/TestLib.cbp" />
+		</Project>
+		<Project filename="TestLib/TestLib.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>
+\end{lstlisting}
+
+Ce texte en XML définit l'espace de travail dénommé "Test Workspace" contenant deux projets:
+
+\begin{itemize}
+\item TestConsole/TestConsole.cbp et
+\item TestLib/TestLib.cbp
+\end{itemize}
+
+De plus, il définit une dépendance de projet : le projet TestConsole \textit{dépend} du projet TestLib. Cela informe \codeblocks que le projet TestLib doit toujours être généré \textit{avant} le projet TestConsole.
+
+\textbf{NOTE}: \textit{C'est donc une dépendance sur l'ordre de génération qui est configurée. Cela ne forcera \_pas\_ une nouvelle édition de liens de la sortie de TestConsole (qui est un exécutable) si la bibliothèque générée par TestLib est mise à jour. Ce comportement est influencé par un autre paramètre dans le fichier de projet. Voir la description d'un fichier Projet pour ça.}
+
+Bien, j'aurais aimé ajouté quelques commentaires dans le fichier XML lui-même, pour décrire chaque élément, mais comme vous pouvez le voir, c'est assez simple et évident :). La seule chose qui réclame peut-être une explication, c'est l'attribut "active" qu'on voit comme élément de "Project" du projet TestConsole. Cet attribut n'apparaît que lorsqu'il vaut "1" et sur un seul élément "Project" d'un espace de travail. Tout ce qu'il fait c'est de dire lequel des projets de l'espace de travail sera celui actif par défaut, lors de l'ouverture de l'espace de travail dans \codeblocks.
+
+
+C'est tout. 

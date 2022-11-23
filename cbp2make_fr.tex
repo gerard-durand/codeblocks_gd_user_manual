@@ -1,0 +1,227 @@
+﻿\section{Utilitaire Cbp2make}\label{sec:cbp2make}
+
+Un outil de génération de Makefile pour l'IDE \codeblocks par Mirai Computing. Le texte de cette section provient de son Wiki de cbp2make sur SourceForge.
+\hint{Cbp2make n'est pas une extension de \codeblocks, mais une application console autonome, placée dans le répertoire principal de \codeblocks, et qui génère un (ou des) makefile(s) à partir du système de génération interne de \codeblocks}
+
+\subsection{À propos}
+
+"cbp2make" est un outil autonome qui vous permet de générer un (ou des) makefile(s) pour les utiliser via le Make de GNU et en externe aux projets ou aux espaces de travail de l'IDE \codeblocks. (Voir aussi \url{http://forums.codeblocks.org/index.php/topic,13675.0.html]})
+
+\subsection{Utilisation}
+\genterm{Création d'un makefile pour un projet unique ou un espace de travail}
+
+Supposons que vous ayez un projet "mon\_projet.cbp" et que vous ayez besoin d'un makefile pour ce projet. Dans le cas le plus simple, tout ce que vous avez à faire c'est :
+\begin{lstlisting}
+cbp2make -in mon_projet.cbp
+\end{lstlisting}
+
+La même chose s'applique pour les espaces de travail.
+\begin{lstlisting}
+cbp2make -in mes_projets.workspace
+\end{lstlisting}
+
+\genterm{Création d'un makefile avec un autre nom de fichier}
+Par défaut, "cbp2make" ajoutera l'extension ".mak" au nom du projet pour composer le nom de fichier du makefile.
+Si vous voulez change çà, utilisez la commande suivante :
+
+\begin{lstlisting}
+cbp2make -lstlisting mon_projet.cbp -out Makefile
+\end{lstlisting}
+
+\genterm{Création d'un makefile pour une autre plateforme}
+Si vous travaillez sous GNU/Linux et que vous voulez générer un makefile pour Windows ou toute autre combinaison, vous pouvez spécifier la ou les plateformes pour lesquelles vous avez besoin de ces makefiles.
+
+\begin{lstlisting}
+cbp2make -in mon_projet.cbp -windows
+cbp2make -in mon_projet.cbp -unix
+cbp2make -in mon_projet.cbp -unix -windows -mac
+cbp2make -in mon_projet.cbp --all-os
+\end{lstlisting}
+"cbp2make" ajoutera le suffixe ".unix" ou ".windows" ou ".mac" au nom du makefile pour chacune des plateformes respectivement.
+
+\genterm{Création de makefile pour des projets ou espaces de travail multiples}
+Si vous avez plus d'un projet ou espace de travail indépendants, vous pouvez les traiter tous à la fois, en ayant recours à un fichier de texte contenant la liste des projets, par ex., "projets.lst", avec un seul nom de projet par ligne.
+
+\begin{lstlisting}
+    mon_projet.cbp
+    mon_autre_projet.cbp 
+\end{lstlisting}
+
+Vous pouvez alors les traiter par la commande :
+\begin{lstlisting}
+cbp2make -list -in projets.lst
+\end{lstlisting}
+
+\subsection{Configuration}
+
+Quelques options spécifiques d'installation ou spécifiques de projet, essentiellement des configurations d'outils, peuvent être enregistrées dans un fichier de configuration. Par défaut (\textit{depuis la rev.110}), cbp2make n'enregistre aucun paramètre dans un fichier de configuration sauf si l'utilisateur spécifie explicitement l'option \codeline{"--config"}. Un fichier de configuration peut être soit global (enregistré dans le profil utilisateur / répertoire home) soit local (enregistré dans le répertoire courant).
+
+SVP, gardez à l'esprit que comme cbp2make est encore à un stade de développement précoce, un ancien fichier de configuration peut devenir incompatible avec la nouvelle version de l'outil et il pourrait être nécessaire de le mettre à jour à la main ou d'en initialiser un nouveau.
+
+\genterm{Initialisation}
+
+\begin{lstlisting}
+cbp2make --config options --global
+cbp2make --config options --local
+\end{lstlisting}
+
+\genterm{Utilisation suivante}
+
+Lorsqu'on invoque cbp2make, il commence par essayer de charger un fichier de configuration local. S'il n'y a pas de fichier de configuration local, il tentera d'en charger un global. Si ces tentatives échouent, la configuration construite en interne est alors utilisée. L'ordre de consultation des configurations peut se changer par les options en ligne de commande \codeline{"--local"} ou \codeline{"--global"}. Si une des options est fournie à cbp2make, la configuration non-spécifiée ne sera pas tentée même si celle spécifiée est absente et que la non-spécifiée existe.
+
+\genterm{Ordre de consultation par défaut}
+
+\begin{lstlisting}
+cbp2make -in project.cbp -out Makefile}
+\end{lstlisting}
+
+\genterm{Configuration spécifiée explicitement}
+
+\begin{lstlisting}
+cbp2make --local -in project.cbp -out Makefile
+cbp2make --global -in project.cbp -out Makefile
+\end{lstlisting}
+
+\subsection{Syntaxe de la Ligne de Commande}
+
+Génération de makefile :
+\begin{verbatim}
+cbp2make -in <project_file> [-cfg <configuration>] [-out <makefile>]
+[-unix] [-windows] [-mac] [--all-os] [-targets "<target1>[,<target2>[, ...]]"]
+[--flat-objects] [--flat-objpath] [--wrap-objects] [--wrap-options]
+[--with-deps] [--keep-objdir] [--keep-outdir] [--target-case keep|lower|upper]
+
+cbp2make -list -in <project_file_list> [-cfg <configuration>]
+[-unix] [-windows] [-mac] [--all-os] [-targets "<target1>[,<target2>[, ...]]"]
+[--flat-objects] [--flat-objpath] [--wrap-objects] [--wrap-options]
+[--with-deps] [--keep-objdir] [--keep-outdir] [--target-case keep|lower|upper]
+\end{verbatim}
+
+\begin{samepage}
+Gestion des outils :
+\begin{verbatim}
+cbp2make --config toolchain --add \[-unix|-windows|-mac\] -chain <toolchain>
+cbp2make --config toolchain --remove \[-unix|-windows|-mac\] -chain <toolchain>
+\end{verbatim}
+\end{samepage}
+
+Gestion des outils de génération :
+\begin{verbatim}
+cbp2make --config tool --add \[-unix|-windows|-mac\] -chain <toolchain>
+         -tool <tool> -type <type> <tool options>
+         
+cbp2make --config tool --remove \[-unix|-windows|-mac\] -chain <toolchain>
+         -tool <tool>
+\end{verbatim}
+
+Types d'outils :      
+\begin{verbatim}
+    pp=preprocessor as=assembler cc=compiler rc=resource compiler
+    sl=static linker dl=dynamic linker el=executable linker
+    nl=native linker
+\end{verbatim}
+
+Options des outils (communes) :
+\begin{verbatim}
+    -desc <description> -program <executable> -command <command_template>
+    -mkv <make_variable> -srcext <source_extensions> -outext <output_extension>
+    -quotepath <yes|no> -fullpath <yes|no> -unixpath <yes|no>
+\end{verbatim}
+
+Options des outils (compilateur) :
+\begin{verbatim}
+    -incsw <include_switch> -defsw <define_switch> -deps <yes|no>
+\end{verbatim}
+
+Options des outils (éditeur de liens):
+\begin{verbatim}
+    -ldsw <library_dir_switch> -llsw <link_library_switch> -lpfx <library_prefix>
+    -lext <library_extension> -objext <object_extension> -lflat <yes|no>
+\end{verbatim}
+
+Gestion des plateformes :
+\begin{verbatim}
+cbp2make --config platform \[-unix|-windows|-mac\] \[-pwd <print_dir_command>\]
+         \[-cd <change_dir_command>\] \[-rm <remove_file_command>\]
+         \[-rmf <remove_file_forced>\] \[-rmd <remove_dir_command>\]
+         \[-cp <copy_file_command>\] \[-mv <move_file_command>\]
+         \[-md <make_dir_command>\] \[-mdf <make_dir_forced>\]
+         \[-make <default_make_tool>\]         
+\end{verbatim}
+
+\begin{samepage}
+Gestion des variables globales du compilateur :
+\begin{verbatim}
+cbp2make --config variable --add \[-set <set_name>\] -name <var_name>
+        \[-desc <description>\] \[-field <field_name>\] -value <var_value>
+        
+cbp2make --config variable --remove \[-set <set_name>\] \[-name <var_name>\]
+        \[-field <field_name>\]
+\end{verbatim}
+\end{samepage}
+
+Options de gestion :
+\begin{verbatim}
+cbp2make --config options --default-options "<options>"    
+cbp2make --config show
+\end{verbatim}
+
+Options communes :
+\begin{verbatim}
+cbp2make --local         // utilise la configuration du répertoire courant
+cbp2make --global        // utilise la configuration du répertoire home
+cbp2make --verbose       // affiche les informations du projet
+cbp2make --quiet         // masque tous les messages
+cbp2make --help          // affiche ce message
+cbp2make --version       // affiche l'information de version
+\end{verbatim}
+
+\genterm{Options}
+
+\begin{verbatim}
+"Génération de Makefile"
+
+    -in <project_file>   // spécifie un fichier d'entrée ou une liste de fichiers;
+
+    -cfg <configuration> // spécifie un fichier de configuration, voir aussi les
+                            options "--local" et "--global";
+
+    -out <makefile>      // spécifie le nom d'un makefile ou une liste de
+                            makefiles;
+
+    -unix                // active la génération de makefile compatibles Unix/Linux;
+
+    -windows             // active la génération de makefile compatibles Windows;
+
+    -mac                 // active la génération de makefile compatibles Macintosh;
+
+    --all-os             // active la génération de makefile sur toutes les cibles
+                            à la fois;
+
+    -targets "<target1>[,<target2>[, ...]]" // spécifie la seule cible de génération 
+                                               pourlaquelle un makefile doit être 
+                                               généré;
+
+    --flat-objects       // force les noms "flat" pour les fichiers objets avec un
+                            "character set" limité;
+
+    --flat-objpath       // force les noms de chemins "flat" pour les fichiers objets
+                            sans sous-répertoires;
+
+    --wrap-objects       // permet l'utilisation de liste d'objets sur plusieurs 
+                            lignes ce qui rend un makefile plus facile à lire;
+
+    --wrap-options       // permet l'utilisation de macros sur plusieurs lignes;
+
+    --with-deps          // permet d'utiliser le scanner interne des dépendances 
+                            pour les projets C/C++;
+
+    --keep-objdir        // désactive la commande qui supprime les répertoires des
+                            fichiers objets dans la cible 'clean';
+
+    --keep-outdir        // désactive la commande qui supprime le répertoire de 
+                            sortie des fichiers binaires dans la cible 'clean';
+
+    --target-case [keep|lower|upper] // spécifie un style pour les cibles de 
+                                        makefile;
+\end{verbatim}

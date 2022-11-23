@@ -1,0 +1,302 @@
+\begin{samepage}
+\section{Code Completion in \codeblocks}\label{sec:codecompletion}
+
+Two plugins which provide code completion functionality and class browser. They are not compatible with each other. Only one of both can be activated.
+
+\hint {Extracted from Wikipedia: Intelligent code completion is a context-aware code completion feature in some programming environments that speeds up the process of coding applications by reducing typos and other common mistakes. Attempts at this are usually done through auto-completion popups while typing, querying parameters of functions, query hints related to syntax errors. Intelligent code completion and related tools serve as documentation and disambiguation for variable names, functions, and methods.}
+\end{samepage}
+ 
+\subsection{Code Completion plugin}
+
+\figures[H][width=.20\columnwidth]{Codecompletion_icon}{Code Completion Icon}
+
+\textbf{CodeCompletion} provides a symbols browser for your projects and code-completion inside the editor.
+During code-completion, a system of symbols is used to identify the type associated with the suggested tokens; these symbols are defined in the following table.
+
+\figures[H][width=.75\columnwidth]{CodeCompletion}{Code Completion Table}
+
+Note: This is the user document of Code Completion plugin.
+Only C/C++ language is supported by this plugin (currently)...
+
+
+\subsection{CB Clangd Client}
+
+This plugin provides code completion functionality and class browser by Clangd through LSP (Language Server Protocol).
+
+The home page of this plugin is: \url{https://sourceforge.net/projects/cb-clangd-client/}
+
+The main developer is Pecan.
+
+The related forum discussion is: Code completion using LSP and clangd\newline
+(\url{https://forums.codeblocks.org/index.php/topic,24357.msg166136.html})
+
+This documentation is extracted from the wiki: \url{https://wiki.codeblocks.org/index.php/CB_Clangd_Client}
+
+\subsubsection{What is Clangd}
+
+clangd understands your C++ code and adds smart features to your editor:
+\begin{itemize}[noitemsep]
+\item code completion
+\item compile errors
+\item go-to-definition
+\item go-to-implementation
+\item find references
+\end{itemize}
+and more.
+
+clangd is a language server that can work with your editor via a plugin.\newline
+\codeblocks provides Clangd\_client as the needed plugin.
+
+Clangd\_client additionally enhances the clangd server by providing:
+\begin{itemize}[noitemsep]
+\item call tips
+\item function definitions
+\item parameter definitions
+\item previous and next function positioning
+\item symbols browser
+\item go-to-file
+\item go-to-function
+\item symbol renaming
+\end{itemize}
+
+\subsubsection{Configuring clangd\_client}\label{sec:cfg_client}
+
+Clangd\_client requires the third-party binary clangd executable.
+
+See \textbf{Windows: Compiler Clangd/LLVM Package Installer} below (\pxref{sec:win_packages}) to install it, or \textbf{Linux: Clangd executable install process} (see \pxref{sec:linux_install})
+
+After a success clangd executable install, perform the following:
+
+\begin{itemize}[noitemsep]
+\item Disable the "CodeCompletion" plugin.
+\item Navigate to \menu{Plugins, Manage Plugins} and \textbf{disable} CodeCompletion.
+\item Navigate to \menu{Plugins, Manage Plugins} and \textbf{enable} Clangd\_client.
+\end{itemize}
+\textbf{Restart \codeblocks.}
+
+Tell (or verify) \codeblocks where the clangd executable resides:\par
+\begingroup
+\leftskip 6ex
+Navigate to \menu{Setting, Editor, Clangd\_client, C/C++ parser(tab)} and verify the location of the clangd executable in the box labeled "Specify clangd executable to use".
+\par
+\endgroup
+
+\subsubsection{Installing Clangd\_client from source or pre-built binary}
+
+\begin{enumerate}[noitemsep]
+\item Install the LLVM or Clangd.exe as documented in the section below entitled: \\
+          \textbf{Windows Clangd executable install process} (see \pxref{sec:win_install})
+
+\item Disable the Code completion plugin as follows:
+    \begin{enumerate}[noitemsep]
+    \item Open the Plugin manager via  \codeblocks menu \newline
+          \menu{MainMenu, Plugins, Manage plugins...} 
+    \item In the Manage Plugin dialog do the following:
+        \begin{enumerate}[noitemsep]
+        \item Find and select the "Code completion" plugin via it's title 
+        \item Press the "Disable" button on the right near the top
+        \item If you get any errors please try again.
+        \end{enumerate}
+    \end{enumerate}
+	   
+\item Install the Clangd-Client Plugin using one of the following options, which are documented below:
+    \begin{enumerate}[noitemsep]
+    \item Install via the Plugin Manager
+    \item Manually install the plugin files
+    \end{enumerate}
+	
+\item Configure the Clangd-Client Plugin for use as follows:
+    \begin{enumerate}[noitemsep]
+    \item Select the \codeblocks menu item \menu{Settings, Editor...}
+    \item In the list on the left click/select the "clangd\_client" option.
+    \item In the "C/C++ parser" tab change the "Specify clangd executable to use" to reference the clangd.exe you installed via step 1) above. \\ 
+    Some examples of this could be:
+    \begin{verbatim}
+    C:\msys64\clang64\bin\clangd.exe
+    C:\msys64\clang32\bin\clangd.exe
+    C:\LLVM\bin\clangd.exe
+    C:\compilers\clang\clangd.exe
+    \end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Manually Remove Clangd-Client Plugin}
+
+\begin{enumerate}[noitemsep]
+\item Exit \codeblocks !
+\item If you manually installed the files or used the Plugin manager then you can do the following: 
+    \begin{enumerate}[noitemsep]
+    \item In the \codeblocks \textbf{\file{...\osp share\osp CodeBlocks}} folder delete the \file{clangd\_client.zip} file
+    \item In the \codeblocks \textbf{\file{...\osp share\osp CodeBlocks\osp plugins}} folder delete the \file{clangd\_client.dll} file
+    \end{enumerate}
+\item If you installed via the Plugin manager then you can delete the files with the following commands:
+    \begin{enumerate}[noitemsep]
+    \item del \textbf{\file{\%APPDATA\%\osp CodeBlocks\osp share\osp codeblocks\osp plugins\osp clangd\_client.dll}}
+    \item del \textbf{\file{\%APPDATA\%\osp CodeBlocks\osp share\osp codeblocks\osp clangd\_client.zip}}
+    \end{enumerate}
+\item If you want to reuse older code completion remember to re-enable the plugin
+\end{enumerate}
+
+\subsubsection{Windows: Clangd executable install process}\label{sec:win_install}
+
+There are three main options to install the clangd.exe:
+\begin{enumerate}[noitemsep]
+\item Install the LLVM compiler.
+\item Manully extract the required files from the LLVM compiler.
+\item Install the Clangd package for the Windows compiler you are using if it is available.
+\end{enumerate}
+
+The  process for the three options above are detailed below.
+
+\paragraph*{Windows: Install the LLVM compiler}\label{sec:llvm_install}
+
+\begin{enumerate}[noitemsep]
+\item Download the latest (non RC/Beta) LLVM Windows executable for your OS (Win32 or Win64) from the following Github LLVM download page: \newline
+      \url{https://github.com/llvm/llvm-project/releases} \newline
+
+  As of Jan 2022 the Windows files are names as follows:
+  \begin{verbatim}
+     LLVM-<version>-win64.exe
+     LLVM-<version>-win32.exe
+  \end{verbatim}
+  where \file{<version>} is the LLVM version, like 13.0.0 or 13.0.1.\\
+
+\item Run the \file{LLVM-<version>-win<xx>.exe} you downloaded to install the LLVM compiler.
+\end{enumerate}
+
+\paragraph*{Windows: Manually Extract File from LLVM compiler}\label{sec:llvm_extract}
+\begin{enumerate}[noitemsep]
+\item Download the latest (non RC/Beta) LLVM Windows executable for your OS (Win32 or Win64) from the following Github LLVM download page:\newline
+      \url{https://github.com/llvm/llvm-project/releases} \newline
+
+  As of Jan 2022 the Windows files are names as follows:
+  \begin{verbatim}
+     LLVM-<version>-win64.exe
+     LLVM-<version>-win32.exe
+  \end{verbatim}
+  where \file{<version>} is the LLVM version, like 13.0.0 or 13.0.1.\\
+
+\item Unzip the \file{LLVM-<version>-win<xx>.exe} file you downloaded using 7ZIP or your prefered ZIP program into a sub-directory
+\item Create a new directory to put the clangd.exe and dll's
+\item Copy the following files into a the new directory created from the unziped LLVM directory:
+    \begin{verbatim}
+    bin\clangd.exe
+    bin\msvcp140.dll
+    bin\vcruntime140.dll
+    bin\vcruntime140\_1.dll
+    \end{verbatim}
+\end{enumerate}
+
+\paragraph*{Windows: Compiler Clangd/LLVM Package Installer}\label{sec:win_packages}         i) \\
+   Due to the number of different compilers available for Windows not all of the compilers will have either/both 
+   the Clang or LLVM required files.
+
+   If you want to install the specific package(s) for the Windows compiler you are using in order to use it's clangd.exe file please follow the instructions below for the specific compiler you have installed:
+
+   \subparagraph*{MSYS2 Compiler - MinGW64} \hspace{0pt} \\
+   There are two main options to install the clangd.exe as follows:
+   \begin{enumerate}[noitemsep]
+   \item The first option in order to  minimise disk space is to install the Clang extra tools using one of the following packages:       
+        {\footnotesize
+        \begin{longtable}{|l|l|}\hline
+        \textbf{Package}                            & \textbf{Clangd executable}    \\ \hline
+%        \endhead   % To repeat the title line, if needed
+        mingw-w64-clang-x86\_64-clang-tools-extra   & clang64/bin/clangd.exe        \\
+        mingw-w64-x86\_64-clang-tools-extra         & mingw64/bin/clangd.exe        \\ \hline
+%        \caption{Msys2 - Clang Extra Packages for MinGW64}
+        \end{longtable}
+        \par}
+ 
+        To intall the package do the following:
+        \begin{enumerate}[noitemsep]
+        \item Open the msys2.exe bash shell 
+        \item Run the following command: \newline
+              \file{pacman -S <Package name in the table above>} \newline
+        \end{enumerate}
+
+       "OR" \newline
+
+    \item The second option is to intall the full Clang tool chain as follows:
+        \begin{enumerate}[noitemsep]
+        \item Open the msys2.exe bash shell 
+        \item Run the following command:
+              \file{pacman -S mingw-w64-clang-x86\_64-toolchain}
+        \end{enumerate}
+    \end{enumerate}
+
+    \subparagraph*{MSYS2 Compiler - MinGW32} \hspace{0pt} \\
+     There are two main options to install the clangd.exe as follows:
+     \begin{enumerate}[noitemsep]
+     \item The first option in order to  minimise disk space is to install the Clang extra tools using one of the following packages:
+        {\footnotesize
+        \begin{longtable}{|l|l|}\hline
+        \textbf{Package}                            & \textbf{Clangd executable}    \\ \hline
+%        \endhead   % To repeat the title line, if needed
+        mingw-w64-clang-i686-clang-tools-extra      & clang32/bin/clangd.exe        \\
+        mingw-w64-i686-clang-tools-extra            & mingw32/bin/clangd.exe        \\ \hline
+%        \caption{Msys2 - Clang Extra Packages for MinGW32}
+        \end{longtable}
+        \par}
+
+        To intall the package do the following:
+        \begin{enumerate}[noitemsep]
+        \item Open the msys2.exe bash shell 
+        \item Run the following command:\newline
+              \file{pacman -S <Package name in the table above>}\newline
+        \end{enumerate}
+
+        "OR" \newline
+
+     \item The second option is to install the full Clang tool chain as follows:
+        \begin{enumerate}[noitemsep]
+        \item Open the msys2.exe bash shell 
+        \item Run the following command:\\
+              \file{pacman -S mingw-w64-clang-i686-toolchain}
+        \end{enumerate}
+    \end{enumerate}
+
+\rule{\textwidth}{0.4pt} \\    
+    \textbf{Notes from the \codeblocks forum to avoid mixing incompatible gcc/clangd executables.}\\
+\rule{\textwidth}{0.4pt} \\  
+    {\small \url{https://forums.codeblocks.org/index.php/topic,24357.msg169412.html#msg169412}}
+
+    \textbf{Don't mix mingw64 with clang64.}
+    
+    If you are using the gcc from msys2, (the compilers in the folder "\file{msys64\osp mingw64\osp bin}"), you should use "\file{mingw-w64-x86\_64-clang-tools-extra}", (the \file{clangd.exe} is under the folder "\file{msys64\osp mingw64\osp bin}") the same folder as your \file{gcc.exe}.
+ 
+	If you are using the clang tool chain, (the folder "\file{msys64\osp clang64\osp bin}"), you should use "\file{mingw-w64-clang-x86\_64-clang-tools-extra}".
+
+	I found that I just make a big mistake: that is I use the gcc toolchain from "\file{msys64\osp mingw64\osp bin}", but I use the \file{clangd.exe} from "\file{msys64\osp clang64\osp bin}".
+    The result is I got a lot of LSP diagnostics messages and errors.\\
+    Luckily I found the reason, and fix this issue. Hope this will help other guys.
+%}
+
+\subsubsection{Linux: Clangd executable install process}\label{sec:linux_install}
+
+NOTE: Clangd\_client plugin requires a clangd executable version 13 or greater.
+
+Check your current clangd version by running \file{clangd --version}.\newline
+If the version is less than 13 you will have to install a newer version.
+
+See \url{https://clangd.llvm.org/installation.html}
+
+Installing the clangd package will usually give you a slightly older version.\newline
+Test this by issuing \file{apt-get install --dry-run clangd}
+
+As of 2022/11/16, this suggest that clangd version 10 will be installed.\newline
+If the clangd version shows less than version 13, you'll have to install a specific version as follows:
+
+Install a packaged release (\textit{must be version 13 or greater}):
+
+\file{sudo apt-get install clangd-13} (\textit{Must be version 13 or greater}).
+
+This will install clangd as \file{/usr/bin/clangd-13}.
+
+You can now configure clangd\_client plugin by following the above instructions at
+\textbf{Configuring clangd\_client} (see \pxref{sec:cfg_client}
+
+If you prefer to install the entire LLVM/Clang package, for convenience, there is
+an automatic installation script available that installs LLVM for you.
+
+To install the latest stable version: see \url{https://apt.llvm.org/}, Automatic installation script.
+Note that you can specify the version number with this script.

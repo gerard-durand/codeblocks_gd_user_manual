@@ -1,0 +1,193 @@
+\section{Creating a New Project}\label{sec:create_project}
+
+These pages are a guide to many of the beginning (and some intermediate) features of the creation and modification of a \codeblocks project. If this is your first experience with \codeblocks, here is a good starting point. 
+ 
+\subsection{The project wizard}
+
+Launch the Project Wizard through \menu{File,New,Project...} to start a new project. Here there are many pre-configured templates for various types of projects, including the option to create custom templates. Select  \textbf{Console application}, as this is the most common for general purposes, and click \textbf{Go}. 
+
+\screenshot{ProjectWizard}{Project Wizard}
+
+\hint{red text instead of black text below any of the icons signifies it is using a customized wizard script.}
+
+The console application wizard will appear next. Continue through the menus, selecting \textbf{C++} when prompted for a language. In the next screen, give the project a name and type or select a destination folder. As seen below, \codeblocks will generate the remaining entries from these two. 
+
+\figures[H][width=.6\columnwidth]{ConsoleApplication}{Console Application}
+
+Finally, the wizard will ask if this project should use the default compiler (normally GCC) and the two default builds: \textbf{Debug} and \textbf{Release}. All of these settings are fine. Press finish and the project will be generated. The main window will turn gray, but that is not a problem, the source file needs only to be opened. In the \textbf{Projects} tab of the \textbf{Management} pane on the left expand the folders and double click on the source file \textbf{main.cpp} to open it in the editor. 
+
+\figures[H][width=.45\columnwidth]{SelectSource}{Select a Source}
+
+This file contains the following standard code.
+
+main.cpp 
+\begin{lstlisting}
+#include <iostream>
+using namespace std;
+int main()
+{
+    cout << "Hello world!" << endl;
+    return 0;
+}
+\end{lstlisting}
+
+\subsection{Changing file composition}
+
+A single source file is of little uses in programs of any useful complexity. In order to handle this, \codeblocks has several very simple methods of adding additional files to the project.
+
+\genterm{Adding a blank file}
+
+In this example, we will be splitting the function
+
+main.cpp
+\begin{lstlisting}
+    cout << "Hello world!" << endl;
+\end{lstlisting}
+
+into a separate file.
+
+\hint{it is generally improper programming style to create a function this small; it is done here to give a simple example.}
+
+To add the new file to the project, bring up the file template wizard through either \menu{File,New,File...} or \menu{Main Toolbar,New file (button),File...} 
+Use the menu \menu{Build,Build workspace} to build a workspace (i.e. all the projects contained in it). 
+
+\figures[H][width=1.1\columnwidth]{NewFile}{New File}
+Select \textbf{C/C++} source and click \textbf{Go}. Continue through the following dialogs very much like the original project creation, selecting \textbf{C++} when prompted for a language. On the final page, you will be presented with several options. The first box will determine the new filename and location (as noted, the full path is required). You may optionally use the \codeline{...} button to bring up a file browser window to save the file's location. Checking \textbf{Add file to active project} will store the filename in the \textbf{Sources} folder of the \textbf{Projects} tab of the \textbf{Management} panel. Checking any of the build targets will alert \codeblocks that the file should be compiled and linked into the selected target(s). This can be useful if, for example, the file contains debug specific code, as it will allow the inclusion to (or exclusion from) the appropriate build target(s). In this example, however, the hello function is of key importance, and is required in each target, so select all the boxes and click \textbf{Finish} to generate the file.
+
+\figures[H][width=.55\columnwidth]{Hello}{Hello Program Configurations}
+The newly created file should open automatically; if it does not, open it by double clicking on its file in the \textbf{Projects} tab of the \textbf{Management} panel. Now add in code for the function \textbf{main.cpp} will call.
+
+hello.cpp
+\begin{lstlisting}
+#include <iostream>    
+using namespace std;
+  
+void hello()
+{
+    cout << "Hello world!" << endl;
+} 
+\end{lstlisting}
+
+
+\genterm{Adding a pre-existing file}
+
+Now that the \textbf{hello()} function is in a separate file, the function must be declared for \textbf{main.cpp} to use it. Launch a plain text editor (for example Notepad or Gedit), and add the following code:
+
+hello.h 
+\begin{lstlisting}
+#ifndef HELLO_H_INCLUDED
+#define HELLO_H_INCLUDED
+     
+void hello();
+     
+#endif // HELLO_H_INCLUDED
+\end{lstlisting}
+
+Save this file as a header (\textbf{hello.h}) in the same directory as the other source files in this project. Back in \codeblocks, click \menu{Project,Add files...} to open a file browser. Here you may select one or multiple files (using combinations of \textit{Ctrl} and \textit{Shift}). (The option \menu{Project,Add files recursively...} will search through all the subdirectories in the given folder, selecting the relevant files for inclusion.) Select \textbf{hello.h}, and click \textbf{Open} to bring up a dialog requesting to which build targets the file(s) should belong. For this example, select both targets. 
+
+\figures[H][width=.6\columnwidth]{TargetBelonging}{Target Belonging}
+
+\hint{if the current project has only one build target, this dialog will be skipped.}
+
+Returning to the main source (\textbf{main.cpp}), include the header file and replace the \codeline{cout} function to match the new setup of the project.
+
+main.cpp
+\begin{lstlisting}
+#include "hello.h"
+
+int main()
+{
+    hello();
+    return 0;
+}
+\end{lstlisting}
+
+Press Ctrl-F9, \menu{Build,Build}, or \menu{Compiler Toolbar,Build (button - the gear)} to compile the project. If the following output is generated in the build log (in the bottom panel) then all steps were followed correctly.
+
+\begin{lstlisting}
+-------------- Build: Debug in HelloWorld ---------------
+
+Compiling: main.cpp
+Compiling: hello.cpp
+Linking console executable: bin\Debug\HelloWorld.exe
+Output size is 923.25 KB
+Process terminated with status 0 (0 minutes, 0 seconds)
+0 errors, 0 warnings (0 minutes, 0 seconds)
+\end{lstlisting}
+
+The executable may now be run by either clicking the Run button or hitting Ctrl-F10.
+
+\hint{the option F9 (for build and run) combines these commands, and may be more useful in some situations.}
+
+See the build process of \codeblocks for what occurs behind the scenes during a compile.
+
+\genterm{Removing a file}
+
+Using the above steps, add a new C++ source file, \textbf{useless.cpp}, to the project. Removing this unneeded file from the project is straightforward. Simply right-click on \textbf{useless.cpp} in the \textbf{Projects} tab of the \textbf{Management} pane and select \textbf{Remove file from project}.
+
+\figures[H][width=.5\columnwidth]{RemoveFile}{Remove a File from a Project}
+ 
+\hint{removing a file from a project does not physically delete it; \codeblocks only removes it from the project management.}
+
+
+\subsection{Modifying build options}
+ 
+Build targets have come up several times so far. Changing between the two default generated ones - \textbf{Debug} and \textbf{Release} - can simply be done through the drop-down list on the \textbf{Compiler Toolbar}. Each of these targets has the ability to be a different type (for example: static library; console application), contain a different set of source files, custom variables, different build flags (for example: debug symbols \textit{-p}; size optimization \textit{-Os}; link time optimization \textit{-flto)}, and several other options.
+ 
+\figures[H][width=.6\columnwidth]{TargetSelect}{Target Selection}
+ 
+\menu{Open Project,Properties...} to access the main properties of the active project, \textbf{HelloWorld}. Most of the settings on the first tab, \textbf{Project settings}, are rarely changed. \textbf{Title}: allows the name of the project to be changed. If \textbf{Platforms}: is changed to something other than its default \textbf{All}, \codeblocks will only allow the project to build on the selected targets. This is useful if, for example, the source code contains Windows API, and would therefore be invalid anywhere but Windows (or any other operating system specific situations). The \textbf{Makefile}: options are used only if the project should use a makefile instead of \codeblocks' internal build system (see \codeblocks and Makefiles [\pxref{sec:cb_makefiles}] for further details).
+
+\genterm{Adding a new build target}
+
+Switch to the \textbf{Build targets} tab. Click \textbf{Add} to create a new build target and name it \textbf{Release Small}. The highlight in the left hand column should automatically switch to the new target (if not, click on it to change the focus). As the default setting for \textbf{Type}: - "GUI application" - is incorrect for the \textbf{HelloWorld} program, change it to "Console application" via the drop-down list. The output filename \textbf{HelloWorld.exe} is fine except in that it will cause the executable to be output in the main directory. Add the path "bin\osp ReleaseSmall\osp " (Windows) or "bin/ReleaseSmall/" (Linux) in front of it to change the directory (it is a relative path from the root of the project). The \textbf{Execution working dir}: refers to where the program will be executed when \textbf{Run} or \textbf{Build and run} are selected. The default setting "." is fine (it refers to the project's directory). The \textbf{Objects output dir}: needs to be changed to "obj\osp ReleaseSmall\osp" (Windows) or "obj/ReleaseSmall/" (Linux) in order to be consistent with the remainder of the project. The \textbf{Build target files}: currently has nothing selected. This is a problem, as nothing will be compiled if this target is built. Check all the boxes. 
+
+\figures[H][width=0.95\columnwidth]{TargetOptions}{Target Options}
+
+The next step is to change the target's settings. Click \textbf{Build options...} to access the settings. The first tab the comes up has a series of compiler flags accessible through check boxes. Select "Strip all symbols from binary" and "Optimize generated code for size". The flags here contain many of the more common options, however, custom arguments may be passed. Switch to the \textbf{Other options} sub-tab and add the following switches:
+
+\begin{lstlisting}
+-fno-rtti
+-fno-exceptions
+-ffunction-sections
+-fdata-sections
+-flto
+\end{lstlisting}
+
+Now switch to the \textbf{Linker settings} tab. The \textbf{Link libraries:} box provides a spot to add various libraries (for example, \textit{wxmsw28u} for the Windows Unicode version of the wxWidgets monolithic dll). This program does not require any such libraries. The custom switches from the previous step require their link-time counterparts. Add
+
+\begin{lstlisting}
+-flto
+-Os
+-Wl,--gc-sections
+-shared-libgcc
+-shared-libstdc++
+\end{lstlisting}
+
+to the \textbf{Other linker options:} tab. (For further details on what these switches do, see the GCC documentation on optimization options and linker options.)
+
+\genterm{Virtual Targets}
+
+Click \textbf{OK} to accept these changes and return to the previous dialog. Now that there are two release builds, it will take two separate runs of \textbf{Build} or \textbf{Build and run} to compile both. Fortunately, \codeblocks provides the option to chain multiple builds together. Click \textbf{Virtual targets...}, then \textbf{Add}. Name the virtual target \textbf{Releases} and click \textbf{OK}. In the right-hand \textbf{Build targets contained} box, select both \textbf{Release} and \textbf{Release small}. Close out of this box and hit \textbf{OK} on the main window. 
+
+\figures[H][width=.6\columnwidth]{VirtualTargets}{Virtual Targets}
+
+The virtual target "Releases" will now be available from the Compiler Toolbar; building this should result in the following output.
+
+\begin{lstlisting}
+-------------- Build: Release in HelloWorld ---------------
+
+Compiling: main.cpp
+Compiling: hello.cpp
+Linking console executable: bin\Release\HelloWorld.exe
+Output size is 457.50 KB
+
+-------------- Build: Release Small in HelloWorld ---------------
+
+Compiling: main.cpp
+Compiling: hello.cpp
+Linking console executable: bin\ReleaseSmall\HelloWorld.exe
+Output size is 8.00 KB
+Process terminated with status 0 (0 minutes, 1 seconds)
+0 errors, 0 warnings (0 minutes, 1 seconds) 
+\end{lstlisting}

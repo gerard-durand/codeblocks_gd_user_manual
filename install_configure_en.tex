@@ -1,0 +1,144 @@
+\chapter{Installing and Configuring CodeBlocks with MinGW}\label{sec:install_codeblocks}
+
+This chapter describes how to install and configure \codeblocks. Install process is here described for Windows, but may be adapted to other OS.
+
+\section{Installing the latest official version of \codeblocks on Windows}
+
+Install steps:
+\begin{itemize}
+\item Download the \codeblocks installer (\url{https://codeblocks.org/downloads/26}). \textcolor{red}{If you know you don't have MinGW installed, or if you don't know which one to choose, \textbf{download the package which has MinGW bundled}}. For 20.03 version, the name of the installer is: codeblocks-20.03mingw-setup.exe. Previous version was identified by 17.12.
+\item Run the installer, it's a standard installer for Windows; just press Next after reading each screen.
+\item If you're planning installing a compiler after you've installed \codeblocks, read the information provided in the installer.
+\item If you downloaded the installer which doesn't come with MinGW, you may have to configure the compiler manually (usually \codeblocks' auto detects the compiler).
+\end{itemize}
+
+We'll see in the next section how to install and configure an other compiler.
+
+\textbf{Notes:}
+
+\begin{itemize}
+\item The codeblocks-20.03-setup.exe file includes \codeblocks with all plugins. The codeblocks-20.03-setup-nonadmin.exe file is provided for convenience to users that do not have administrator rights on their machine(s).
+\item The codeblocks-20.03mingw-setup.exe file includes additionally the GCC/G++ compiler and GDB debugger version MinGW64 8.1.0, 64 bit, seh. The codeblocks-20.03mingw\_fortran-setup.exe file includes additionally to that the Gfortran compiler.
+\item The codeblocks-20.03(mingw)-nosetup.zip files are provided for convenience to users that are allergic against installers. However, it will not allow to select plugins / features to install (it includes everything) and not create any menu shortcuts. For the "installation" you are on your own.
+\item It is possible to use a nightly build from the Forum. This builds does not come bundled with a compiler!! You need to install a compiler by yourself (if you have not already one). Before installing please have a look at \url{http://forums.codeblocks.org/index.php/topic,3232.0.html} 
+\item A good solution, is to install an official distribution with MinGW and to install on the top of this official version a nightly. You will have to follow the procedure carefully because there may have some incompatibilities. Mixing versions brings problems. 
+\item The full version of \codeblocks is distributed with a 64 bit MinGW included in a codeblocks sub-directory. Sometimes, it leads to troubles because the full path contains a space (within Program Files). So a good practice is to move this MinGW directory at the root of your disk. You can also rename it as C:\osp MinGW64. Compiler autodetection in \codeblocks should find it there.
+\end{itemize}
+
+\section{Configuring MinGW}
+
+This sections describes how to install and configure MinGW.
+
+\subsection{Overview}
+
+A compiler toolchain is what \codeblocks uses to turn the code you type into it into numbers that the computer understands. As a compiler toolchain is a very complex undertaking \textbf{it is not part of \codeblocks itself} but rather is a separate project that \codeblocks then uses. The kind of compiler toolchains talked about on this page are "MinGW" toolchains. Which means "Minimalist GNU for Windows." And "GNU" expands to "GNU's Not Unix." More information about the GNU project can be found on the GNU Home Page.
+
+For most MinGW-based compiler toolchains, having your toolchain in your PATH is important because it means that during development the toolchain libraries will be accessible by default to your programs as you develop them and also makes it easier to use utilities such as CMake as they will be able to find your compiler toolchain. When you actually distribute your programs to other computers then you will copy the needed .dll files out of your toolchain directory and include them as part of your installer. On your machine they are in your PATH so you always have them, on your users computers they won't have the compiler toolchain so there you provide the .dll files with your program. 
+
+\subsection{MinGW Compiler Toolchains}\label{sec:install_toolchains}
+
+You can find on the web several MinGW distributions. Here is a list of distributions, which is not exhaustive.
+
+\begin{description}
+\item[MinGW - The original project] \url{http://www.mingw.org/}: 32 bit only compilers;
+\item[TDM distribution]\url{http://tdm-gcc.tdragon.net/}: 32 and 64 bit, but old 5.1 distribution, now obsolete. Was used and distributed with \codeblocks 17.12;
+\item[New TDM distribution]\url{https://jmeubank.github.io/tdm-gcc/}: based on 10.3 distribution, 32 and 64 bit multilib. Seems to have sometime problems, at least to compile \codeblocks itself.
+\item[MinGW 64] \url{https://sourceforge.net/projects/mingw-w64/files/}: 32 and 64 bit, 8.1 distribution in Toolchains targetting. The parent project of MinGW-Builds, includes much more than is necessary - MinGW-Builds will usually suffice instead of the full works. Several choices are available: for a 32 bit compiler, you can choose the posix, sjlj version (i686-posix-sjlj) and for a 64 bits compiler you can choose the posix, seh version (x86\_64-posix-seh) (choices compatibles with the old TDM version). This is this last 64 bits-posix-seh version which is used in recent nightlies compiled versions of \codeblocks and distributed with 20.03 version. Other choices also work: depends on your needs. gcc, g++, gfortran, gdb, lto, omp, mingw32-make are in the distribution;
+\item[MinGW 64 Ray\_linn Personal build] \url{https://sourceforge.net/projects/mingw-w64/files/Multilib%20Toolchains%28Targetting%20Win32%20and%20Win64%29/ray_linn/gcc-10.x-with-ada/}: a 64/32 bit (multilib), 10.2 distribution (a little bit old) in the personal build sub-directory. Use \textbf{static libraries}, so no need to distribute dlls with your own executables, but they are bigger. ada, gcc, g++, gfortran, lto, objc, obj-c++, omp are in the distribution. Problem : gdb and make are not included.
+\item[MinGW Equation] \url{http://www.equation.com/servlet/equation.cmd?fa=fortran}: 32 and 64 bit recent versions (several choices). Use static libraries, so as with above version, produces bigger executables but no need to distribute dlls with your own executables.  gcc, g++, gfortran, gdb, lto, omp, make are in the distribution;
+\item[MinGW LH\_Mouse version] \url{https://gcc-mcf.lhmouse.com/}: recent 32 and 64 bits versions (but not the last one). No gfortran (?). Special thread model (mcf).  gcc, g++, gdb, lto, omp, mingw32-make are in the distribution ;
+\item[MinGW on Winlibs] \url{http://winlibs.com/}: recent 64 bit (or 32 bit) compiler (but not always the last one). gcc, g++, gfortran, gdb, lto, objc, obj-c++, omp, mingw32-make are in the distribution. Provide traditionnal msvcrt versions but also ucrt versions with a better support for recent Windows;
+\item[Msys2] \url{http://www.msys2.org/} and \url{https://packages.msys2.org/group/mingw-w64-x86_64-toolchain} and/or \url{https://packages.msys2.org/group/mingw-w64-i686-toolchain}: 64 and/or 32 bit versions, installed in \file{C:\osp msys64\osp mingw64} and/or \file{C:\osp msys64\osp mingw32}. Unlike the above all-in-one installers, additional work is necessary to adjust to your needs, your compilers, and your toolchains. Read carefully the documentation. Nevertheless, Msys2 produces recent compiler versions and gives access to an update facility: pacman. ada, gcc, g++, gfortran, gdb, lto, objc, obj-c++, omp, mingw32-make are in the distribution or may be installed via pacman;
+\end{description}
+
+\hint{Multilib versions are able to produce 32 or 64 bit code, useful if you need to produce executables for both environments. Other versions need to have 2 separated tool chains to produce 32 or 64 bit code. These two tool chains can coexist without problems on the same system.}
+\newpage
+\begin{samepage}
+\textbf{\textit{Some tips about msys2: }}\\
+\\
+Install msys2 from \url{http://www.msys2.org/}, a good choice is to install it in \file{C:\osp msys64}. It installs msys2 environment with several empty folders as clang32, clang64, mingw32, mingw64, ucrt64, ...\\
+Then, you need to install one or several compilers with pacman (package manager). Simply double click on msys2.exe and enter:\\
+\end{samepage}
+\file{pacman -S mingw-w64-x86\_64-toolchain}, will install 64 bit compilers in \\
+\file{C:\osp msys64\osp mingw64} ; \\
+\file{pacman -S mingw-w64-i686-toolchain}, will install 32 bit compilers in \file{C:\osp msys64\osp mingw32}, useful if you want to compile 32 bits applications;\\
+If you want to use the clangd\_client plugin, it might be useful to install:\\
+\file{pacman -S mingw-w64-x86\_64-clang-tools-extra} to add \file{clangd.exe} and some other tools within \file{mingw64}, for a 64 bit install;\\
+and/or \\
+\file{pacman -S mingw-w64-i686-clang-tools-extra} to add \file{clangd.exe} within \file{mingw32}, for a 32 bit install,\\
+if you don't need a full clang installation.\\
+But, if you prefer a full clang version you can install with pacman the package \\
+\file{mingw-w64-clang-x86\_64-toolchain} for 64 bit, or \file{mingw-w64-clang-i686-toolchain} for 32 bit.\\
+\\
+\textbf{\textit{Some other pacman or paccache tips:}}\\
+\\
+\file{pacman -Syu} will update your installation (eventually pacman itself, but in a separate pass);\\
+\file{pacman -Sc} will delete old packages;\\
+\file{pacman -Qe} list installed packages;\\
+\file{paccache -r} to only keep 3 last packages versions;\\
+\file{paccache -rk 1} to only keep the last packages version;\\
+\file{paccache -ruk0} to delete not installed packages.\\
+\file{Pacman} can also use wilcards. For example, to delete all clang 64 bit install, you can use:\\
+\file{pacman -R \$(pacman -Qsq 'mingw-w64-clang-x86\_64*')}\\
+All packages are stored in \file{C:\osp msys64\osp var\osp cache\osp pacman\osp pkg}.
+
+\newpage
+\subsection{\codeblocks Configuration}
+
+Go to your Compiler settings:
+
+\figures[H][width=.4\columnwidth]{Compiler_Settings}{Compiler Settings}
+
+And then under the "Toolchain executables" tab (red arrow), click on the ellipsis ("...", blue arrow) and choose the root directory where you installed MinGW (64-bit here). Once you have that directory chosen, in the "Program Files" sub-tab (green arrow) area fill out the fields as shown. If you aren't using the MinGW 64-bit toolchain there might be minor variation in the executable names. If you choose the blue arrow ellipsis first then for each ellipsis you click on under "Program Files" you will already be in your MinGW 64-bit bin directory where the actual programs are.
+
+\figures[H][width=.85\columnwidth]{CB_Toolchain}{\codeblocks Toolchain Configuration}
+
+\textbf{Note:} You can enter name as gcc.exe or x86\_64-w64-mingw32-gcc.exe or mingw32-gcc.exe (depends of the distribution): it's the same executable. Idem for g++.
+
+\hint{To configure a new compiler, gfortran for example, enter gfortran.exe in the 3 first text fields in the tab "Program Files", or the exact name as it is in your distribution.}
+
+Now, go to your Debugger settings:
+
+\figures[H][width=.4\columnwidth]{Settings_Debugger}{Settings Debugger}
+
+Choose your default debugger (red arrow), and then fill in the Executable path for it as shown for MinGW 64-bit (blue arrow).
+
+\figures[H][width=.7\columnwidth]{Debugger_Default}{Debugger Default Configuration}
+
+\genterm{Summary}
+
+You now have a \codeblocks environment that is configured to use MinGW 64-bit properly. Using this guide as a template you can easily set up alternative compiler toolchains no matter the source - just follow the same basic procedure.
+
+\genterm{Development Tools}
+Normally you should not need many of these tools. ZIP is convenient, especially when: building \codeblocks itself, is often already included with MinGW, but other than that these tools only serve specialized purposes.
+\begin{itemize}
+\item UnxUtils: differents Unix-Like tools on \url{https://sourceforge.net/projects/unxutils/}
+\item GnuWin32: Other Tools on \url{https://sourceforge.net/projects/gnuwin32/}
+\item ZIP: 32-bit or 64-bit on \url{ftp://ftp.info-zip.org/pub/infozip/win32/} : please choose a zip300xn version.
+\end{itemize}
+
+\section{Nightly version of \codeblocks on Windows}
+
+Nightly builds are provided "as is". They are "binary" distributions, normally provided daily, representing the latest and greatest state of the \codeblocks sources. Normally they are pretty stable, but however they can introduce new bugs, regressions, and on the other hand they can introduce new features, bug fixes, ...
+
+Before we describe what the builds contain, it might be better to start with what the nightly builds DO NOT contain. For starters ask yourself the question : what is \codeblocks ?\\
+Well it's an IDE (Integrated Development Environment), it means it integrates different tools and makes them work together. So \codeblocks is \textbf{NOT a compiler} (nor MS, nor Borland, nor GCC), it is not a debugger (nor MS, nor GDB), it is not a makefile system ! So these components are \textbf{NOT} part of \codeblocks, and therefore they are also not part of the nightly build distributions. However several of the mentioned development components can be combined to work together nicely through \codeblocks. For example, you can plug-in the GCC compiler and GDB debugger and compile and debug your hand written applications.\\
+\codeblocks itself is being compiled with GCC, on windows this is done by using the MinGW port. Since CB is a multi-threaded application it needs supporting routines providing it the multi-threading functionalities. This is provided by means of the MinGW port, more specifically the "mingwm10.dll", in every post announcing a new nightly build you can find a link to download this dll.
+\codeblocks has a GUI (Graphical User Interface). There are several ways to create a GUI: you can code by using the core Windows API (works only on Windows) or you can use MS-MFC (works only on Windows) or you can use some 3rd party abstraction of GUI's, like QT, wxWidgets, Tk, ...\\
+\codeblocks uses wxWidgets, next to GUI abstraction, wxWidgets brings many more abstractions (strings, files, streams, sockets, ...) and the good thing is : wxWidgets brings these abstractions for many different platforms (Windows, Linux, Apple, ...). This means \codeblocks needs to be equipped with the real functionalities from wxWidgets (say the binary code doing the actual work), this is being achieved through a dll : "wxmsw32u\_gcc\_cb.dll" (\textit{17.12 was built with "wxmsw28u\_gcc\_cb.dll"}). Again on every announcement post of a new nightly build you can find a download link for this dll and other prerequisites.
+
+When, on Windows, you install an official version with MinGW included (the recommended version), you'll find a MinGW directory in \file{C:\osp Program Files\osp codeblocks}. If it works well here for most of your usages, it's not the best place, at least because there is a space inside the path name and this space may trouble some of the components of MinGW. So, on Windows, move this MinGW directory to C:, for example. You can even rename it MinGW32 for a 32 bit toolchain version or MinGW64 for a 64 bit version.
+
+As told previously, a good solution to install a nightly is first to install an official version, then to \textbf{configure and try it}. Like that, your configuration files, associations, shortcuts, will be correctly set and they'll be kept for your nightly install. The link to find last nightlies is \url{http://forums.codeblocks.org/index.php/board,20.0.html}.
+
+If you install your nightly above a 20.03 version, you need to follow carefully this procedure because a few things have changed, at least they are compiled in 64 bits with a recent compiler, a different wxWidgets version and need some complementary dlls.
+
+Normally, you won't have such kind of problems with a 20.03 version.
+\begin{itemize}
+\item Unzip the downloaded nightly and copy all the files in your codeblocks subdirectory. If you have moved your MinGW subdirectory elsewhere, you can first erase all the contents of the codeblocks subdirectory to be sure that you won't mix versions. One exception : if you have installed in this subdirectory some specific things, as for example localization files, don't erase them.
+\item Unzip the wxWidgets dlls found with your nightly. You can install them directly in the codeblocks directory or for a larger usage, in the bin sub-directory of MinGW. Check that this bin subdirectory is in your PATH. It should be there if you had installed an official CB version with it's installer.
+\item Unzip the prerequisites dlls. You can install them directly in the codeblocks directory. Here too, for a larger usage, you can install them in the bin sub-directory of MinGW or any other directory accessible via your PATH variable. But take care, because they may be already present there, but in a different version, or compiled with an other MinGW version. In this case, it's better to keep them in codeblocks sub-directory for a private usage and to avoid problems due to mixing MinGW versions.
+\hint{wxWidgets and prerequisites dlls does not change so often. So, if you install a nightly over a previous one, it's not always necessary to update them. Read carefully the forum topic on this specific nightly.}
+\end{itemize}
+
+Normally, that's all. Your nightly is ready to use ...

@@ -1,0 +1,27 @@
+\section{Liste des "à faire"}\label{sec:todo_list}
+
+Dans des projets logiciels complexes, où différents développeurs sont impliqués, il est souvent nécessaire que différentes tâches soient effectuées par plusieurs utilisateurs. Pour cela, \codeblocks possède une Liste des "à faire". Cette liste s'ouvre via \menu{Vue,Liste des "A faire"}, et contient les tâches à effectuer ensemble, avec leurs priorités, le type et le responsable de la tâche. On peut filtrer la liste par tâches, utilisateurs et/ou fichiers sources. Un tri par colonnes peut être effectué en cliquant sur le titre de la colonne correspondante.
+
+\screenshot{todo_list}{Affichage de la Liste des "A faire"}
+
+\hint{La liste des "à faire" peut être ajoutée à la console de messages. Sélectionnez l'option \samp{Inclure la liste des "A faire" dans le panneau de messages} à l'aide du menu \menu{Paramètres,Environnement}.}
+
+Si les fichiers sources sont ouverts dans \codeblocks, un "à faire" peut être ajouté à la liste via la commande \samp{Ajouter un élément "à faire"} du menu de contexte. Un commentaire est ajouté dans le code sur la ligne sélectionnée.
+
+\begin{lstlisting}
+// TODO (user#1#): ajouter un nouveau dialogue pour la prochaine release
+\end{lstlisting}
+
+Quand on ajoute un "à faire", une boîte de dialogue apparaît où les paramétrages suivants peuvent être faits (voir \pxref{fig:add_todo}).
+
+\figures[hbt!][width=.5\columnwidth]{add_todo}{Dialogue pour ajouter un "à faire"}
+
+\begin{description}
+\item[Utilisateur] Nom de l'utilisateur \var{user} pour le système d'exploitation. Les tâches pour d'autres utilisateurs peuvent également être créées ici. Pour cela, le nom de l'utilisateur correspondant doit être créé par Ajouter un nouvel utilisateur. L'assignation d'un "à faire" est alors faite via une sélection d'entrées pour cet utilisateur.
+
+\hint{Notez que les Utilisateurs ici n'ont rien à voir avec les profils (ou personnalités) utilisés dans \codeblocks.}
+\item[Type] Par défaut, le type est TODO (à faire").
+\item[Priorité] Dans \codeblocks, l'importance de la tâche peut être exprimée par des priorités (1 - 9).
+\item[Position] Ce paramètre spécifie si le commentaire doit être inclus avant, après ou bien à la position exacte du curseur.
+\item[Style de commentaire] Une sélection de formats de commentaires (notamment doxygen).
+\end{description}

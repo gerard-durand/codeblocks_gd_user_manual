@@ -1,0 +1,138 @@
+\section{Debugger scripts}\label{sec:debugger_scripts}
+This section descibes the debugger scripts.
+\subsection{Basic principle of the debugger script}
+
+\figures[H][width=\columnwidth]{Debuggercommand}{Debugger command}
+
+Look at the image above, this will give a brief introduction of how the debugger script works. For example, you want to view the variable "msg". There are two handshake between the debugger plugin and gdb.
+
+First, the debugger plugin sends a command to gdb to query the type of msg
+
+\begin{lstlisting}
+whatis msg
+\end{lstlisting}
+
+then, the gdb will return the type
+
+\begin{lstlisting}
+type = wxString
+\end{lstlisting}
+
+Secondly, the debugger checks that wxString is already registered, and sends the command
+
+\begin{lstlisting}
+output /c msg.m_pchData[0]@((wxStringData*)msg.m_pchData-1)->nDataLength
+\end{lstlisting}
+
+Then, gdb replies with the string below:
+
+\begin{lstlisting}
+{119 'w', 120 'x', 87 'W', 105 'i', 100 'd', 103 'g', 101 'e', 116 't', 
+115 's', 32 ' ', 50 '2', 46 '.', 56 '8', 46 '.', 49 '1', 48 '0', 45 '-', 
+87 'W', 105 'i', 110 'n', 100 'd', 111 'o', 119 'w', 115 's', 45 '-', 
+85 'U', 110 'n', 105 'i', 99 'c', 111 'o', 100 'd', 101 'e', 32 ' ', 
+98 'b', 117 'u', 105 'i', 108 'l', 100 'd'}
+\end{lstlisting}
+
+Finally, the value is shown in the watch window.
+
+\subsection{Script functions}
+
+Debugger scripts are similar to Visual Studio Debugger Visualizer. It allows you to write a small piece of code that gets executed by the debugger whenever you try to view a specific type of variables and can be used to show custom text with the important information you need in it.
+
+Quote from Game\_Ender - March 23, 2006
+
+\textit{I don't think its possible to open up another window to visualize something.}
+
+Let's see how this works. Everything is inside a single file in the scripts/ folder, named gdb\_types.script :). Support for more (user-defined) scripts is planned for the future.
+
+
+This script is called by \codeblocks at two places:
+\begin{enumerate}
+\item when GDB is launched. It calls the script function RegisterTypes() to register all user-defined types known by the \codeblocks' debugger.
+\item whenever GDB encounters your variable type, it calls the script functions specific to this datatype (registered in RegisterTypes() - more on that below).
+\end{enumerate}
+
+That's the overview. Let's dissect the shipped gdb\_types.script and see how it adds \codeline{std::string} support to GDB.
+
+\begin{lstlisting}
+// Registers new types with driver
+function RegisterTypes(driver)
+{
+//    signature:
+//    driver.RegisterType(type_name, regex, eval_func, parse_func); 
+
+    // STL String
+    driver.RegisterType(
+        _T("STL String"),
+        _T("[^[:alnum:]_]+string[^[:alnum:]_]*"),
+        _T("Evaluate_StlString"),
+        _T("Parse_StlString")
+    );
+}
+\end{lstlisting}
+
+The "driver" parameter is the debugger driver but you don't need to care about it :) (currently this only works with GDB). This class contains a single method: RegisterType. Here's its C++ declaration:
+
+\begin{lstlisting}
+void GDB_driver::RegisterType(const wxString& name, const wxString& regex, 
+                      const wxString& eval_func, const wxString& parse_func)
+\end{lstlisting}
+
+So, in the above script code, the "STL String" (just a name - doesn't matter what) type is registered, providing a regular expression string for the debugger plugin to match against and, finally, it provides the names of the two mandatory functions needed for each registered type:
+
+\begin{enumerate}
+\item evaluation function: this must return a command understood by the actual debugger (GDB in this case). For the "STL string", the evaluate function returns an GDB "output" command which will be executed by the GDB debugger.
+\item parser function: once the debugger runs the command returned by the evaluation function, it passes its result to this function for further processing. What this function returns, is what is actually diplayed by \codeblocks (usually in the watches window or in a tooltip).
+\end{enumerate}
+
+
+Let's see the evaluation function for \codeline{std::string}:
+
+\begin{lstlisting}
+function Evaluate_StlString(type, a_str, start, count)
+{
+    local oper = _T(".");
+
+    if (type.Find(_T("*")) > 0)
+        oper = _T("->");
+
+    local result = _T("output ") + a_str + oper + _T("c_str()[") 
+                   + start + _T("]@");
+    if (count != 0)
+        result = result + count;
+    else
+        result = result + a_str + oper + _T("size()");
+    return result;
+}
+\end{lstlisting}
+
+I'm not going to explain what this function returns. I'll just tell you that it returns a GDB command that will make GDB print the actual \codeline{std::string}'s contents. \textit{Yes, you need to know your debugger and its commands before you try to extend it.}
+
+What I will tell you though, is what those function arguments are.
+
+\begin{itemize}
+\item type: the datatype, e.g. "char*", "const string", etc.
+\item \codeline{a_str}: the name of the variable GDB is trying to evaluate.
+\item start: the start offset (used for arrays).
+\item count: the count starting from the start offset (used for arrays).
+\end{itemize}
+
+Let's see the relevant parser function now:
+
+\begin{lstlisting}
+function Parse_StlString(a_str, start)
+{
+    // nothing needs to be done
+    return a_str;
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item \codeline{a_str}: the returned string when GDB ran the command returned by the evaluation function. In the case of \codeline{std::string}, it's the contents of the string.
+\item start: the start offset (used for arrays).
+\end{itemize}
+
+Well, in this example, nothing needs to be done. "\codeline{a_str}" already contains the \codeline{std:string}'s contents so we just return it :)
+
+I suggest you study how wxString is registered in that same file, as a more complex example. 

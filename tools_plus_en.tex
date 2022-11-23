@@ -1,0 +1,243 @@
+\section{Tools+}\label{sec:tools+}
+
+Creating a new tool is fairly simple, and can be completed in a few simple steps. First open \menu{Tools(+),Configure Tools...} to access the User-defined Tools dialog.
+
+\screenshot{tools_setup}{User-defined Tools dialog}
+
+\genterm{Tool Name}
+
+This is the name that will be displayed in the Tools(+) drop-down menu. It will also be displayed as the tab name for tools that redirect to the Tools output window.
+
+\genterm{Command Line}
+
+Any valid command line function and switches can be placed here. Variable substitution is also accepted. The following list contains the more useful variables (see \pxref{sec:builtin_variables} for the full list).
+
+\begin{description}
+\item[\$relfile, \$file] Respectively, the relative and absolute name of a selected file.
+\item[\$reldir, \$dir] Respectively, the relative and absolute name of a selected directory.
+\item[\$relpath, \$path] The relative and absolute name of the selected file or directory.
+\item[\$mpaths] A list of selected files or directories (absolute paths only).
+\item[\$fname, \$fext] The name without extension and the extension without the name of the selected file.
+\item[\$inputstr\{prompt\}] Prompts the user to enter a string of text which is substituted into the command line.
+\item[\$if(condition)\{true clause\}\{false clause\}] Resolves to \codeline{false clause} if \codeline{condition} is empty, 0, or false; otherwise \codeline{true clause}.
+\end{description}
+
+\genterm{File Types}
+
+Wildcard expressions separated by semicolons will restrict population of the right click menu of a file, directory, or multiple paths in the Project Tree, File Explorer, or Editor Pane to the specified type(s). Leave blank to handle all file/directory types.
+
+\genterm{Working Directory}
+
+The directory from which the command is executed. \codeblocks variables, project variables, and global variables are available. Also,
+
+\begin{enumerate}
+\item If \codeline{\$dir} is specified in the command line then \codeline{\$dir} may be used here as well.
+\item \codeline{\$parentdir} is available for \codeline{\$relfile}, \codeline{\$file}, \codeline{\$reldir}, \codeline{\$dir}, \codeline{\$relpath}, \codeline{\$path}, \codeline{\$fname}, \codeline{\$fext}, evaluating into the absolute path of the directory containing the item.
+\end{enumerate}
+
+\genterm{Tools Menu Path}
+
+Controls the placement of the command in the Tools(+) menu, giving the option of adding sub-menus (multiple levels are allowed).
+
+\begin{itemize}
+  \item Submenu/Tool1
+  \item Submenu/Tool2
+  \item Tool3
+\end{itemize}
+
+Will create this structure.
+
+\figures[H][width=.6\columnwidth]{tools_menu_path}{Tools menu structure}
+
+The command name will be used if this entry is blank. If the first character is a period, the command will be hidden.
+
+\genterm{Context Menu Path}
+
+This controls the command's placement in the right-click menu of the Projects and Files tabs of the Management pane. The same rules of structure with the Tools Menu Path apply here.
+
+\figures[H][width=.8\columnwidth]{tools_context_path}{Context menu structure}
+
+Please note that the command will not show up in the context menu unless the Command Line contains one or more of the following: \codeline{\$relfile}, \codeline{\$file}, \codeline{\$reldir}, \codeline{\$dir}, \codeline{\$relpath}, \codeline{\$path}, \codeline{\$fname}, and \codeline{\$fext}.
+
+\genterm{Output to}
+
+This determines where the output of the command will be redirected. The purpose and function of the command will determine which is best to select.
+\genterm{Tools Output Window}
+Tools that only output results command (and require no input) line generally use this setting. The program will be run invisibly and any output will be redirected to the appropriate tab of the Tools Output Window. The text [DONE] will be added upon the tool's completion.
+
+\figures[H][width=.5\columnwidth]{tool_output}{Tool Output window}
+
+\hint{If the Tools Output window is open when \codeblocks is closed, it may trigger \codeblocks to crash.}
+
+\genterm{\codeblocks Console}
+This will cause the program to be run through the executable \file{cb\_console\_runner} (the same program that is launched after Build and run). This is generally used for command line tools with more advanced user interactions, although GUI programs can also be used (especially if the program is unstable and/or also leaves messages in the standard output). Console runner will pause the window (prevent it from closing), display the run time, and the exit code when the program finishes.
+
+\genterm{Standard Shell}
+This is the same as placing the command in a batch or shell script, then running it. The program will run in whatever its default method is, and when it finishes, its window will close. This setting is useful for running a program (for example a file or web browser) that must remain open after \codeblocks is closed.
+
+\hint{As the Tools+ plugin is not yet complete, some functionality - specifically Menu Priority and Environment Variables - are not available.}
+
+\subsection{Example Tools}
+
+\genterm{Open file browser to selected file}
+
+\begin{itemize}
+\item Windows Explorer
+\begin{itemize}
+\item Tools Menu
+\begin{verbatim}
+explorer /select,"$(PROJECTFILE)"
+\end{verbatim}
+\item Context Menu
+\begin{verbatim}
+explorer /select,"$path"
+\end{verbatim}
+\end{itemize}
+
+\item Dolphin
+\begin{itemize}
+\item Tools Menu
+\begin{verbatim}
+dolphin --select "$(PROJECTFILE)"
+\end{verbatim}
+\item Context Menu
+\begin{verbatim}
+dolphin --select "$path"
+\end{verbatim}
+\end{itemize}
+
+\hint{The following three Context Menu commands only support folders (but not files).}
+
+\item Nautilus
+\begin{itemize}
+\item Tools Menu
+\begin{verbatim}
+nautilus --no-desktop --browser "$(PROJECTDIR)"
+\end{verbatim}
+\item Context Menu
+\begin{verbatim}
+nautilus --no-desktop --browser "$dir"
+\end{verbatim}
+\end{itemize}
+
+\item Thunar
+\begin{itemize}
+\item Tools Menu
+\begin{verbatim}
+thunar "$(PROJECTDIR)"
+\end{verbatim}
+\item Context Menu
+\begin{verbatim}
+thunar "$dir"
+\end{verbatim}
+\end{itemize}
+
+\item PCMan File Manager
+\begin{itemize}
+\item Tools Menu
+\begin{verbatim}
+pcmanfm "$(PROJECTDIR)"
+\end{verbatim}
+\item Context Menu
+\begin{verbatim}
+pcmanfm "$dir"
+\end{verbatim}
+\end{itemize}
+\end{itemize}
+
+\genterm{Update Subversion directory}
+
+\begin{itemize}
+\item Windows
+\begin{itemize}
+\item Tools Menu
+\begin{verbatim}
+"path_to_svn\bin\svn" update "$inputstr{Directory}"
+\end{verbatim}
+\item Context Menu
+\begin{verbatim}
+"path_to_svn\bin\svn" update "$dir"
+\end{verbatim}
+\end{itemize}
+
+\item Linux
+\begin{itemize}
+\item Tools Menu
+\begin{verbatim}
+svn update "$inputstr{Directory}"
+\end{verbatim}
+\item Context Menu
+\begin{verbatim}
+svn update "$dir"
+\end{verbatim}
+\end{itemize}
+\end{itemize}
+
+\genterm{Export makefile}
+
+\hint{this uses the command line-tool cbp2make.}\label{sec:tool_cbp2make}
+
+\begin{itemize}
+\item Windows
+\begin{itemize}
+\item Tools Menu
+\begin{verbatim}
+"path_to_cbp2make\cbp2make" -in "$(PROJECTFILE)"
+\end{verbatim}
+\end{itemize}
+
+\item Linux
+\begin{itemize}
+\item Tools Menu
+\begin{verbatim}
+"path_to_cbp2make/cbp2make" -in "$(PROJECTFILE)"
+\end{verbatim}
+\end{itemize}
+\end{itemize}
+
+\genterm{Compress active project to archive}
+
+\begin{itemize}
+\item Windows
+\begin{itemize}
+\item 7z or zip - Tools Menu (on a single line)
+\begin{verbatim}
+"path_to_7z\7z" a -t$if(zip == $inputstr{7z or zip?}){zip -mm=Deflate
+     -mmt=on -mx9 -mfb=128 -mpass=10}{7z -m0=LZMA -mx9 
+     -md=64m -mfb=64 -ms=on} -sccUTF-8 "-w$(PROJECTDIR).."
+     "$(PROJECTDIR)..\$(PROJECT_NAME)" "$(PROJECTDIR)*"
+\end{verbatim}
+
+\item tar.gz or tar.bz2 - Tools Menu (on a single line)
+\begin{verbatim}
+cmd /c ""path_to_7z\7z" a -ttar -mx0 -sccUTF-8 "-w$(PROJECTDIR).."
+      "$(PROJECTDIR)..\$(PROJECT_NAME)" "$(PROJECTDIR)*" && 
+      "path_to_7z\7z" a -t$if(gz == $inputstr{gz or bz2?}){gzip -mx9 
+      -mfb=128 -mpass=10 -sccUTF-8 "-w$(PROJECTDIR).." 
+      "$(PROJECTDIR)..\$(PROJECT_NAME).tar.gz}{bzip2 -mmt=on -mx9 
+      -md=900k -mpass=7 -sccUTF-8 "-w$(PROJECTDIR).." 
+      "$(PROJECTDIR)..\$(PROJECT_NAME).tar.bz2}"
+      "$(PROJECTDIR)..\$(PROJECT_NAME).tar" && 
+       cmd /c del "$(PROJECTDIR)..\$(PROJECT_NAME).tar""
+\end{verbatim}
+
+\hint{The Windows command line interpreter has been invoked directly here (\cmdline{cmd /c}), allowing for multiple commands to be chained in a single line. However, this causes the command to fail to execute in the \codeblocks Console.}
+
+\end{itemize}
+
+\item Linux
+\begin{itemize}
+\item 7z or zip - Tools Menu
+\begin{verbatim}
+7z a -t$if(zip == $inputstr{7z or zip?}){zip -mm=Deflate -mmt=on -mx9
+    -mfb=128 -mpass=10}{7z -m0=LZMA -mx9 -md=64m -mfb=64 -ms=on}
+    -sccUTF-8 "-w$(PROJECTDIR).." "$(PROJECTDIR)../$(PROJECT_NAME)"
+    "$(PROJECTDIR)*"
+\end{verbatim}
+\item tar.gz or tar.bz2 - Tools Menu
+\begin{verbatim}
+tar -cf "$(PROJECTDIR)../$(PROJECT_NAME).tar.$if(gz == $inputstr{gz 
+     or bz2?}){gz" -I 'gzip}{bz2" -I 'bzip2} -9' "$(PROJECTDIR)*"
+\end{verbatim}
+\end{itemize}
+\end{itemize}

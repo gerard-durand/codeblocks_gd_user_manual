@@ -1,0 +1,392 @@
+\chapter{Building CodeBlocks from sources}\label{sec:build_codeblocks}
+
+This chapter describes how to build \codeblocks itself.
+
+\hint{This chapter existed in the version 1 original .tex files but was not published in all languages. It needs to be reviewed and completed at least for Linux users.}
+
+\section{Introduction}
+
+This section will describe the process used in creating the nightly builds, and can be used as a guideline if you want to build \codeblocks yourself. It is described as a sequence of actions.
+
+In order to perform our build tasks, we will need several tools. Let's create an ingredient list for our cooking experiments
+
+\begin{itemize}
+\item a compiler
+\item an initial build system
+\item the \codeblocks sources
+\item zip program
+\item svn (version control system)
+\item wxWidgets
+\end{itemize}
+
+\section{Windows or Linux}
+
+This section is written for a Windows syntax, but can be easily adapted to Linux. 
+Other detailed instructions may be found in the Wiki: \url{ http://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Linux}
+
+Since the \codeblocks developers build \codeblocks using GCC, we might as well use that one under windows. The easiest and cleanest port is MinGW. This is the compiler distributed with \codeblocks when you download the FULL official package. With C::B 17.12 it was a version TDM 5.1.0 which was distributed, a rather old one. We will stick to version 8.1.0, which works nicely and which is now distributed with \codeblocks 20.03, but you can find more recent ones (as shown in MinGW Compiler Toolchains (\pxref{sec:install_toolchains}). You can obtain two MinGW versions : for generating 32 bits code, or for 64 bits code on \cite{url:mingw64}. Many sub-choices are available. For 32 bits, I would suggest i686-posix-sjlj and for 64 bits x86\_64-posix-seh.
+
+\hint{The 64 bits version can produce 64 bits code and 32 bits code. Simply add option -m64 or -m32 to your compilation AND link options. Normally, 32 bits version produces only 32 bits code. Just take care that if you use libraries, static or dynamic, they must have been generated with the same bits number}
+
+First, a brief explanation of MinGW components:
+
+\begin{description}
+\item[gcc-core] the core of the GCC suite
+\item[gcc-g++] the c and c++ compiler
+\item[gfortran] the fortran compiler. IMPORTANT : gfortran 5.1 has a bug : open instruction, to open a file for reading data, does not work ! Unfortunately, last TDM distribution use this gfortran and has not been corrected.
+\item[mingw Runtime] implementation of the run time libraries
+\item[mingw utils] several utilities (implementation of smaller programs that GCC itself uses)
+\item[win32Api] the APIs for creating Windows programs
+\item[binutils] several utilities used in build environments
+\item[make] the Gnu make program, so you can build from make files
+\item[GDB] the Gnu debugger
+\end{description}
+
+I would suggest extracting (and installing for the GDB if necessary) everything in the \file{C:\osp MinGW} directory. If you want to have both 32 bits and 64 bits version, you can install them respectively in \file{C:\osp MinGW32} and \file{C:\osp MinGW64}. The remainder of this article will assume that this is where you have put it. If you already have an installation of \codeblocks that came bundled with MinGW, I still advise you to install MinGW as described here. A compiler does not belong under the directory tree of an IDE; they are two separate things. \codeblocks just brings it along in the official versions so that the average user does not need to bother with this process. Nevertheless, some Unix Like tools have problems when they are installed in a path containing spaces (or even accentuated characters) in the name of subdirectories. For a simple usage of C::B, you won't have problems, but this may happen, so don't hesitate to move your \file{C:\osp Program Files\osp Codeblocks\osp MinGW} to something like \file{C:\osp MinGW}.
+
+You may need to add the \file{bin} directory of your MinGW (and/or MinGW32/MinGW64) installation to your path. An easy way to do this is with the following command at the command prompt:
+
+\begin{verbatim}
+set path=%PATH%;C:\MinGW32\bin;C:\MinGW32\i686-w64-mingw32\bin;
+\end{verbatim}
+or (for 64 bits installation):
+\begin{verbatim}
+set path=%PATH%;C:\MinGW64\bin;C:\MinGW64\x86_64-w64-mingw32\bin;
+\end{verbatim}
+
+It's necessary to run your executable outside \codeblocks IDE context.
+
+You can also modify the global (or user) PATH enviroment variable.
+
+
+\subsection{Initial Build System}
+
+For \cite{url:cb} a project description \file{CodeBlocks.cbp} is available. If you load this project file in \codeblocks then you are able to build \codeblocks from sources. All we need to do is get hold of a pre-built version \codeblocks.
+
+First, download a nightly build. You can make your selection from here (\cite{url:cbforum} in Nightly Builds). The nightly builds are unicode versions, containing the core and contributed plug-ins. Read carefully the first post of each nightly : it contains instructions to download and install additionnal dlls, necessary with recent MinGW versions, particularly version 8.1 used to build recent C::B nightly.
+
+Next, unpack the 7-zip file to any directory you like. If you don't have 7-zip, you can download it for free from \cite{url:zip}.
+
+Now, \codeblocks needs one more \file{dll} to work correctly: the WxWidgets dll. You can also download it at the nightly builds forum. Just unzip it into the same directory that you unpacked the \codeblocks nightly build. It also needs the \file{mingwm10.dll}. It's in the bin directory of our MinGW installation. So, it's important to make sure the bin directory of your MinGW installation is in your path variable.
+
+Finally, start up this new nightly build of \codeblocks. It should discover the MinGW compiler we just installed. If it's not the case, go to the menu "Settings / Compiler... / Toolchain executables" and adjust the MinGW path to your specific installation.
+
+\subsection{Version Control System}
+
+In order to be able to retrieve the latest and greatest \codeblocks sources, we need to install a Version Control System.
+
+The \codeblocks developers provide their sources through the version control system\cite{url:subversion}. So, we need a client to access their svn repository of sources. A nice, easy client for Windows is \cite{url:tortoisesvn}, which is freely available. Download and install it, keeping all suggested settings.
+
+Now, go create a directory wherever you like, for example \file{D:\osp projects\osp CodeBlocks}. Right click on that directory and choose from the pop-up menu: svn-checkout. In the dialog that pops up, fill in the following information for Url of Repository:
+
+\url{svn://svn.code.sf.net/p/codeblocks/code/trunk}
+
+and leave all other settings as they are.
+
+Now be patient while TortoiseSVN retrieves the most recent source files from the \codeblocks repository into our local directory. Yes; all those \codeblocks sources are coming your way!
+
+For more info on SVN settings, see info on SVN settings (Nevertheless, this C::B plugin does not exist anymore in recent \codeblocks versions). If you don't like an Explorer integration or look for a cross-plattform client you might want to have a look at RapidSVN.
+
+\subsection{wxWidgets}
+
+\cite{url:wx} is a platform abstraction that provides an API to support many things such as GUI, sockets, files, registry functionality. By using this API, you can create a platform independent program.
+
+\codeblocks is a wxWidgets (here after: wx) application, that means if you want to run \codeblocks you needed the wx functionality. This can be provided in a couple of ways. It could be a \file{.dll} or a static library. \codeblocks uses wx as a dll and this dll can also be downloaded from the nightly build section of the forum.
+
+However, if we want to build a wx application, we need to include the headers of the wx sources. They tell the compiler about the functionality of wx. In addition to those header files, our application needs to link to the wx import libraries. Well, let's take it step by step.
+
+Wx is provided as a zip file of it's sources, so we need to build that ourselves. We already shopped for the MinGW compiler, so we have all the tools we need at hand.
+
+Next, let's unzip the wx sources into \file{C:\osp Projects} so we will end up with a wx root directory like this: \file{C:\osp Projects\osp wxWidgets-3.2.0}. Next unzip the patch into the same directory letting it overwrite files. Note that we are going to refer to the wx root directory from now on as \var{wxDir}
+
+Now, we are going to build the wxWidgets. This is how we do it:
+
+First, make sure \file{C:\osp MingGW\osp bin} is in your path, during the build some programs will be called that reside in the the MinGW\osp bin directory. Also, Make has to be version 3.80 or above.
+
+Now it is time to compile wxWidgets. Open the command prompt and change to the wxWidgets directory:
+
+\begin{verbatim}
+cd <wxDir>\build\msw
+\end{verbatim}
+
+We are now in the right place. We are first going to clean up the source:
+
+\begin{verbatim}
+mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=release UNICODE=1 clean
+\end{verbatim}
+
+Once everything is clean, we can compile wxWidgets:
+
+\begin{verbatim}
+mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=release UNICODE=1
+\end{verbatim}
+
+If you are using TDM-gcc 5.1.0, or gcc 8.1.0, you will have to add the following options on the same command line: 
+\begin{verbatim}
+USE_XRC=1
+CXXFLAGS+="-fpermissive	-fno-keep-inline-dllexport -std=gnu++11
+ -Wno-deprecated-declarations"
+LDFLAGS="-Wl,--allow-multiple-definition"
+\end{verbatim}  
+
+If you are using more recent compilers as gcc 12.1.0, you can use this build command:
+\begin{verbatim}
+mingw32-make -f makefile.gcc -j 4 SHARED=1 MONOLITHIC=1 BUILD=release
+             CXXFLAGS="-std=gnu++20"
+\end{verbatim}
+because some parameters are now set by default in last wxWidgets builds or are not necessary anymore.\newline
+The parameter -j 4 allows a parallel build on 4 processors and thus strongly accelerates the build process. The value 4 has to be adjusted to your processor configuration.
+The best result is when the value is equal to the number of processors (4 in my case).
+
+\codeblocks for Windows, since SVN rev 11701, is generated to support DIRECT2D activated/forced (for faster and better quality graphics). wxWidgets generation needs some adjustments to be done directly in setup.h file(s). Normally the only file which needs to be modified is in the lib subdirectory, the one created the first time wxWidgets is generated, and used in following generations. For a gcc, dll build, it's something like : \file{C:\osp wxWidgets-3.2.0\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
+You can simply modify the line containing (line 1659 in wxWidgets 3.2.0):
+\begin{verbatim}
+    #define wxUSE_GRAPHICS_DIRECT2D 0 
+\end{verbatim}
+by
+\begin{verbatim}
+    #define wxUSE_GRAPHICS_DIRECT2D 1  
+\end{verbatim}
+Other setup.h may be modified, but it's normally not required.
+
+optionally :
+\begin{verbatim}
+USE_OPENGL=1
+DEBUG_FLAG=0
+\end{verbatim}
+
+\hint{USE\_OPENGL=1 creates an additional dll, used if your wxWidgets program requires an OpenGL windows, particularly when wxGLCanvas is used}
+
+It is also possible to personalise the name of the produced dll:
+\begin{verbatim}
+VENDOR=cb
+\end{verbatim}
+or for a 64 bits build :
+\begin{verbatim}
+VENDOR=cb_64
+\end{verbatim}
+
+\hint{If VENDOR is not specified, it's equivalent to VENDOR=custom. VENDOR=cb is used by \codeblocks team. So, to avoid confusion, it may be advisable to use an other "vendor" identifier.} 
+
+This is going to take some time.
+
+For making the debug build, follow these same steps and options (the only change is BUILD=debug):
+
+\begin{itemize}
+\item Clean any previous compilation with
+	\begin{verbatim}
+	mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=debug UNICODE=1 clean
+	\end{verbatim}
+\item Compile with
+	\begin{verbatim}
+	mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=debug UNICODE=1
+	\end{verbatim}
+\end{itemize}
+
+Eventually, add the same options as above.
+
+Well have a little look in the directory (\file{\var{wxDir}\osp lib\osp gcc\_dll}) now. The import libraries and the dll have shown up and there should also a \file{mswu\osp wx} subdirectory at that position containing \file{setup.h}.
+
+You can use strip.exe (distributed with MinGW) to reduce the size of the dlls.
+for ex:
+\begin{verbatim}
+strip ..\..\lib\gcc_dll\wxmsw32u_gcc_cb_64.dll
+strip ..\..\lib\gcc_dll\wxmsw32u_gl_gcc_cb_64.dll
+\end{verbatim}
+
+Congratulations! You have just built wxWidgets!
+
+Let's do some more preliminary tasks before we get to the real deal of compiling \codeblocks.
+
+\subsection{Zip}
+
+During the build of \codeblocks, several resources are going to be zipped in zip files. Therefore, the build process should have access to a zip.exe. We have to download that zip.exe (if it's not already in your MinGW distribution) and put it somewhere in our path. A good place is: \file{MingW\osp bin}.
+
+You can download zip.exe for free from this site (\url{http://www.info-zip.org/pub/infozip/Zip.html}), or frome here (\url{ftp://ftp.info-zip.org/pub/infozip/win32/}) which is a direct ftp link to the directory containing the most recent versions.
+
+Once downloaded, simply extract zip.exe to the appropriate location.
+
+\subsection{Workspace}
+This brings us to the last preliminary task. The \codeblocks code can be divided into 2 major parts: the core with internal plug-ins, and the contributed plug-ins. You always need to build the core/internal parts before building the contrib part.
+
+To build the internal part, you can use the \codeblocks project file which you can find at: \file{<cbDir>\osp src\osp CodeBlocks.cbp}. Our \codeblocks master directory is from now one mentioned as \file{<cbDir>}, by the way. A workspace is something that groups several projects together. To build the contrib plug-ins, they can be found at \file{<cbDir>\osp src\osp ContribPlugins.workspace}.
+
+But, let's create a workspace containing everything. Let's put that workspace in the master directory \file{<cbDir>}. Just use a regular text editor and create a file with the name "CbProjects.workspace". Such a file already exists in recent C::B versions. You can give it the following content : 
+
+{\footnotesize
+\begin{verbatim}
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+  <Workspace title="CodeBlocks Workspace wx3.1.x">
+    <Project filename="CodeBlocks_wx31.cbp" active="1" />
+    <Project filename="tools/Addr2LineUI/Addr2LineUI_wx31.cbp" />
+    <Project filename="tools/cb_share_config/cb_share_config_wx31.cbp" />
+    <Project filename="tools/CBLauncher/CbLauncher_wx31.cbp" />
+    <Project filename="tools/cbp2make/cbp2make_wx31.cbp" />
+    <Project filename="plugins/codecompletion/cctest_wx31.cbp" />
+    <Project filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp" />
+    <Project filename="plugins/contrib/wxSmith/wxSmith_wx31.cbp" />
+    <Project filename="plugins/contrib/wxSmithContribItems/wxSmithContribItems_wx31.cbp">
+      <Depends filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp" />
+      <Depends filename="plugins/contrib/wxSmith/wxSmith_wx31.cbp" />
+    </Project>
+    <Project filename="plugins/contrib/wxSmithAui/wxSmithAui_wx31.cbp">
+      <Depends filename="plugins/contrib/wxSmith/wxSmith_wx31.cbp" />
+    </Project>
+    <Project filename="plugins/contrib/AutoVersioning/AutoVersioning_wx31.cbp" />
+    <Project filename="plugins/contrib/BrowseTracker/BrowseTracker_wx31.cbp" />
+    <Project filename="plugins/contrib/byogames/byogames_wx31.cbp" />
+    <Project filename="plugins/contrib/cb_koders/cb_koders_wx31.cbp" />
+    <Project filename="plugins/contrib/Cccc/Cccc_wx31.cbp" />
+    <Project filename="plugins/contrib/codesnippets/codesnippets_wx31.cbp" />
+    <Project filename="plugins/contrib/codestat/codestat_wx31.cbp" />
+    <Project filename="plugins/contrib/copystrings/copystrings_wx31.cbp" />
+    <Project filename="plugins/contrib/CppCheck/CppCheck_wx31.cbp" />
+    <Project filename="plugins/contrib/Cscope/Cscope_wx31.cbp" />
+    <Project filename="plugins/contrib/devpak_plugin/DevPakPlugin_wx31.cbp" />
+    <Project filename="plugins/contrib/DoxyBlocks/DoxyBlocks_wx31.cbp" />
+    <Project filename="plugins/contrib/dragscroll/DragScroll_wx31.cbp" />
+    <Project filename="plugins/contrib/EditorConfig/EditorConfig_wx31.cbp" />
+    <Project filename="plugins/contrib/EditorTweaks/EditorTweaks_wx31.cbp" />
+    <Project filename="plugins/contrib/envvars/envvars_wx31.cbp" />
+    <Project filename="plugins/contrib/FileManager/FileManager_wx31.cbp" />
+    <Project filename="plugins/contrib/FortranProject/FortranProject_cbsvn_wx31.cbp" />
+    <Project filename="plugins/contrib/headerfixup/headerfixup_wx31.cbp" />
+    <Project filename="plugins/contrib/help_plugin/help-plugin_wx31.cbp" />
+    <Project filename="plugins/contrib/HexEditor/HexEditor_wx31.cbp" />
+    <Project filename="plugins/contrib/IncrementalSearch/IncrementalSearch_wx31.cbp" />
+    <Project filename="plugins/contrib/keybinder/keybinder_wx31.cbp" />
+    <Project filename="plugins/contrib/lib_finder/lib_finder_wx31.cbp">
+      <Depends filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp" />
+    </Project>
+    <Project filename="plugins/contrib/MouseSap/MouseSap_wx31.cbp" />
+    <Project filename="plugins/contrib/NassiShneiderman/NassiShneiderman_wx31.cbp" />
+    <Project filename="plugins/contrib/profiler/cbprofiler_wx31.cbp" />
+    <Project filename="plugins/contrib/ProjectOptionsManipulator/ProjectOptionsManipulator_wx31.cbp" />
+    <Project filename="plugins/contrib/regex_testbed/RegExTestbed_wx31.cbp" />
+    <Project filename="plugins/contrib/ReopenEditor/ReopenEditor_wx31.cbp" />
+    <Project filename="plugins/contrib/rndgen/rndgen_wx31.cbp" />
+    <Project filename="plugins/contrib/SmartIndent/SmartIndent_wx31.cbp" />
+    <Project filename="plugins/contrib/source_exporter/Exporter_wx31.cbp" />
+    <Project filename="plugins/contrib/SpellChecker/SpellChecker_wx31.cbp" />
+    <Project filename="plugins/contrib/symtab/symtab_wx31.cbp" />
+    <Project filename="plugins/contrib/ThreadSearch/ThreadSearch_wx31.cbp">
+      <Depends filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp" />
+    </Project>
+    <Project filename="plugins/contrib/ToolsPlus/ToolsPlus_wx31.cbp" />
+  </Workspace>
+</CodeBlocks_workspace_file>
+\end{verbatim}
+}
+
+\hint{Several variants of this file exists, depending on the OS, wxWidgets version, 32 or 64 bits build.}
+
+We will use this workspace to build all of \codeblocks. 
+
+
+\subsection{Building Codeblocks}
+
+This section describes the final process of building \codeblocks.
+
+\subsubsection{Windows}
+
+Finally we have arrived at the final step; our final goal. Run the \codeblocks executable from your nightly build download. Choose Open from the File menu and browse for our above created workspace, and open it up. Be a little patient while \codeblocks is parsing everything, and \codeblocks will ask us for 3 or 4 global variables, these global variables will tell the nightly \codeblocks where it can find wxWidgets (remember : header files and import libraries) and where it can find ... \codeblocks sources, this is needed for the contrib plug-ins, they need to know (as for any user created plug-in) where the sdk (\codeblocks header files) are. These are the values in our case : 
+\begin{description}
+\item[wx] \var{wxDir} base directory of wxWidgets.: the variable name may be wx31, wx31\_64, ...
+\item[cb] \file{\var{cbDir}/src} \codeblocks directory contaning the sources.
+\item[cb\_release\_type] : -O (for a release version, usual case.
+         For developpers you can put -g to debug C::B)
+\item[boost] : main directory where boost is installed (ex: \file{C:\osp boost}).
+         Used by the NassiShneiderman plugin,
+         fill with the same value the subsections include and lib
+\end{description}
+
+Now go to the Project Menu and choose (re)build workspace, and off you go. Watch how \codeblocks is building \codeblocks.
+
+After the creation of \codeblocks, the generated files with the debug information can be found in the \file{devel} subdirectory. By calling, or executing in a console, the batch file \file{update.bat} from the source directory \file{\var{cbDir}/src} (or more specifically the version adapted to your specific generation, as for example update31\_64.bat), the files are copied to the \file{\var{cbDir}/src/output} subdirectory (or the adapted version). In addition, it will strip out all debugging symbols. \textit{This step is very important - never ever forget it}.
+
+Now you can copy the wx dll in both that output and, optionally, the devel directory.
+
+Then you can close \codeblocks. That was the downloaded nightly remember?
+
+Time to test it. In the output directory, start up the CodeBlocks.exe. If everything went well, you'll have your very own home-built \codeblocks running.
+
+\subsubsection{Linux}
+
+\textbf{(Note: this section should be reviewed and completed. Does not seem to be totally updated)}
+
+\begin{description}
+\item[linux] Starting \file{update\_revision.sh}
+\end{description}
+
+With this function the SVN revision of the Nightly Builts is updated in the sources. The file can be found in the main directory of the \codeblocks sources.
+
+When generating under Linux, the following steps are necessary. In this example we assume that you are in the \codeblocks source directory.  Under Linux, the environment variable \codeline{PKG_CONFIG_PATH} must be set. The \var{prefix} directory has to contain the \file{codeblocks.pc} file.
+
+\begin{verbatim}
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:<prefix>
+\end{verbatim}
+
+
+\begin{verbatim}
+sh update_revsion.sh
+./bootstrap
+./configure --with-contrib=[all | plugin names separated with comma]
+     --prefix=<install-dir>
+make
+make install (as root)
+\end{verbatim}
+
+You can also build under Linux as under Windows, with a workspace file. Nevertheless, pkg\_config and wx-config must be set correctly.
+
+\subsection{Generate plugins only}
+
+This section is for generating only plugins.
+
+\subsubsection{Windows}
+
+Configure the global variables via \menu{Settings,Global Variables}.
+
+\genterm{Variable cb}
+
+For the \codeline{cb} variable, set the \codeline{base} entry to the source directory of \codeblocks.
+
+\begin{verbatim}
+<cbDir>/codeblocks/src
+\end{verbatim}
+
+\genterm{Variable wx}
+
+For the \codeline{wx} variable, set the \codeline{base} entry to the source directory of wx: e.g.
+
+\begin{verbatim}
+C:\wxWidgets-2.8.12
+\end{verbatim}
+
+or to build with a more recent version, wx31 (or wx31\_64)
+
+\begin{verbatim}
+C:\wxWidgets-3.1.4
+\end{verbatim}
+
+In the \codeblocks project, the project variable \codeline{WX_SUFFIX} is set to \codeline{u}. This means that, when generating \codeblocks linking will be carried out against the \file{*u\_gcc\_custom.dll} library (by default). The official nightly Builts of \codeblocks will be linked against \file{gcc\_cb.dll}. In doing so, the layout is as follows.
+
+\begin{verbatim}
+gcc_<VENDOR>.dll
+\end{verbatim}
+
+The \var{VENDOR} variable is set in the configuration file \file{compiler.gcc} or in the make command line as shown before. To ensure, that a distinction is possible between the officially generated \codeblocks and those generated by yourself, the default setting \codeline{VENDOR=custom} should never be changed.
+
+Afterwards create the workspace \file{ContribPlugins.cbp} via \menu{Project,Build workspace}. Then execute \file{update.bat} once more.
+
+\subsubsection{Linux}
+
+Configure the \codeline{wx} variable with the global variables.
+
+\begin{description}
+\item[base] /usr
+\item[include] /usr/include/wx-2.8 (or the version installed on your machine)
+\item[lib] /usr/lib
+\end{description}
+
+

@@ -1,0 +1,58 @@
+\section{Extension NassiShneiderman}\label{sec:nassishneiderman}
+
+L'extension NassiShneiderman permet de créer des diagrammes de Nassi Shneiderman depuis \codeblocks (\cite{url:nassi}). 
+
+\subsection{Création d'un diagramme}
+
+Vous avez deux possibilités pour créer un diagramme.
+
+\begin{enumerate}
+\item Pour créer un diagramme vide, sélectionnez les options de menu \menu{Fichier,Nouveau,Diagramme de Nassi Shneiderman}.
+\item La deuxième option consiste à créer un diagramme depuis le code source C/C++. 
+\end{enumerate}
+
+Dans une fenêtre de l'éditeur, sélectionnez une partie de code pour en créer un diagramme. Par exemple le corps d'une fonction/méthode depuis l'accolade ouvrante jusqu'à l'accolade fermante. Puis, via un clic droit sur la sélection, choisissez \menu{Nassi Shneiderman,Créer un diagramme} (voir \pxref{fig:NassiShneidermanCreate1}). 
+
+\screenshot{NassiShneidermanCreate1}{NassiShneiderman Création}
+
+Vous devriez obtenir un nouveau diagramme (voir \pxref{fig:NassiShneidermanCreate2}).
+
+\screenshot{NassiShneidermanCreate2}{NassiShneiderman Exemple de Diagramme}
+
+L'analyseur a quelques limitations:
+
+\begin{itemize}
+\item Des commentaires ne peuvent pas être placés en fin de branche.
+\item Depuis la définition d'une fonction, on ne peut analyser que le corps de la fonction, pas la déclaration.
+\item Bien sûr, vous en trouverez bien d'autres... 
+\end{itemize}
+
+\subsection{Édition de structogrammes}
+\subsubsection{Que faire avec un diagramme ?}
+
+Vous pouvez faire plein de choses avec un structogramme :
+
+\begin{enumerate}
+\item L'enregistrer pour l'utiliser plus tard. On peut l'enregistrer via \menu{Fichier,Enregistrer le fichier} ou \menu{Fichier,Enregistrer le fichier sous...}.
+\item On peut l'exporter dans différents formats \menu{Fichier,Exporter}
+    \begin{itemize}
+    \item "Exporter la source..." pour l'enregistrer comme fichier source en C.
+    \item "StrukTeX" pour l'utiliser dans une documentation sous LaTeX.
+    \item "PNG" ou "PS" et éventuellement "SVG" pour obtenir le diagramme dans un format image connu de nombreux autres outils.
+    \end{itemize}        
+\item Insérer directement le code dans l'éditeur : Ouvrir ou créer un diagramme. De retour dans la fenêtre d'édition, faites un clic droit et choisissez \menu{Nassi Shneiderman,insérer en xy} (Vous obtenez ici une liste de tous les diagrammes ouverts).
+\item Glisser/Déposer le diagramme (ou une partie) dans d'autres outils. Par exemple vers OpenOffice Writer afin d'y insérer une image dans votre documentation.
+\end{enumerate}
+
+Si le diagramme choisi comporte une sélection, l'exportation ou la génération de code ne portera que sur cette partie de diagramme. 
+
+\subsubsection{Extensions}
+
+L'extension NassiShneiderman supporte quelques extensions des diagrammes de Nassi-Shneiderman : 
+
+\begin{itemize}
+\item séparation d'une brique spécifique avec la "flèche droite"
+\item continuer sur une brique spécifique avec la "flèche gauche"
+\item Pour être en mesure de créer des diagrammes avec des instructions c/c++ "switch", la sélection ne doit pas être implicitement interrompue avant un "case". Les différents "cases" sont alignés verticalement. Support de C et C++.
+\end{itemize}
+

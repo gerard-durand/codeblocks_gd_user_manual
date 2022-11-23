@@ -1,0 +1,76 @@
+﻿\section{Internationalisation de l'interface de \codeblocks}\label{sec:cb_Internationalization}
+
+Cette section décrit comment obtenir et utiliser une version internationalisée de \codeblocks.
+
+L'interface de \codeblocks peut être affichée dans votre propre langue. La plupart des chaînes de caractères utilisée en interne pour l'interface de \codeblocks sont introduites par une macro wxWidgets : \_(). Les chaînes qui ne changent pas avec la langue sont normalement introduites par la macro wxT() ou \_T(). Pour obtenir l'interface de \codeblocks affichée dans votre propre langue, vous devez simplement dire à \codeblocks qu'un fichier de langue est disponible. Pour être compréhensible par \codeblocks, ce doit être un fichier .mo obtenu après "compilation" d'un fichier .po. De tels fichiers sont disponibles sur le forum pour le "Français" et sur le site web Launchpad pour un plus large ensemble de langues.
+
+\begin{description}
+\item Le site original sur Launchpad est maintenant obsolète : \url{https://launchpad.net/codeblocks }
+\item Le sujet du forum traitant de la traduction est \url{http://forums.codeblocks.org/index.php/topic,1022.0.html }. Vous pourrez aussi y trouver des outils d'extraction des chaînes de caractères des fichiers sources de \codeblocks si cela vous intéresse. Ces outils créent un fichier .pot qu'il suffit ensuite de compléter par les traductions afin d'en créer un fichier .po.
+\item Un nouveau site web a été créé récemment sur \url{https://launchpad.net/codeblocks-gd }. Il contient plus de 9300 chaînes de caractères alors que l'original n'en avait que 2173! Beaucoup de travail a été fait sur \codeblocks !
+\end{description}
+
+Dans la page "translation" choisissez "View All languages", en bas, à droite.
+
+Les anciennes traductions ont été importées dans cette nouvelle page, seulement les langues les plus utilisées (actuellement 14 langues). Sur demande, on peut ajouter des langues (mais les traducteurs auront un peu plus de travail !).\newline
+Désolé de cela, mais les noms des traducteurs d'origine ont été perdus dans la plupart des cas  :-[. \newline
+C'est la langue Française qui a le plus grand nombre de chaînes traduites. Le modèle (fichier .pot) a été mis à jour sur les versions svn récentes et Launchpad contient le travail de traduction effectué jusqu'à présent. Pour la langue Russe, on a aussi utilisé une page web assez récente mais pas tout à fait à jour. Pas mal de traductions doivent être approuvées, mais je ne suis pas le bon interlocuteur pour ça !\newline
+La page launchpad est ouverte en tant que "structured". Donc, vous êtes en mesure de proposer de nouvelles traductions, ou d'en corriger. Dans certains cas, elles devront être approuvées par quelqu'un d'autre avant sa publication.\newline
+J'essaierai de maintenir le "modèle" lorsque de nouvelles chaînes en Anglais seront disponibles.
+
+Vous (les traducteurs) devriez être capables de participer. Vous devez seulement posséder (ou créer) un compte launchpad (Ubuntu).
+
+Les autres utilisateurs peuvent demander à télécharger le fichier .po ou .mo. C'est ce dernier (le fichier .mo), la forme binaire, que vous pouvez utiliser pour avoir l'interface de \codeblocks dans votre propre langue : placez le simplement dans votre "répertoire d'installation de codeblocks"/share/CodeBlocks/locale/"language string" (pour moi, sous Windows, c'est\newline
+ \file{C:\osp Program Files\osp CodeBlocks\_wx32\_64\osp share\osp CodeBlocks\osp locale\osp fr\_FR}. Ensuite dans le menu Paramètres/Environnement.../Vue vous devriez être capable de choisir la langue.
+
+Quelques détails complémentaires pour utiliser les chaînes traduites dans \codeblocks.
+
+\genterm{Pour les utilisateurs de traductions seulement :}
+Téléchargez le fichier au format .mo via la bouton le "requested language". Le nom retourné par launchpad peut être quelque chose comme : de\_LC\_MESSAGES\_All\_codeblocks.mo (ici pour de l'allemand).
+
+Vous devriez mettre ce fichier dans votre répertoire d'installation de codeblocks.
+
+Sous Windows, c'est quelque chose comme :\newline
+\file{C:\osp Program Files (x86)\osp CodeBlocks\osp share\osp CodeBlocks\osp locale\osp xxxx} pour une version 32 bits\newline
+ ou\newline
+\file{C:\osp Program Files\osp CodeBlocks\osp share\osp CodeBlocks\osp locale\osp xxxx} pour une version 64 bits.
+
+Les chemins sous Linux sont assez semblables.
+
+xxxx doit être adapté à votre langue. C'est :
+\begin{itemize}
+\item de\_DE pour l'Allemand,
+\item es\_ES pour l'Espagnol,
+\item fr\_FR pour le Français,
+\item it\_IT pour l'Italien,
+\item lt\_LT pour le Lithuanien,
+\item nl\_NL pour le Hollandais,
+\item pl\_PL pour le Polonais,
+\item pt\_BR pour le Portugais brésilien,
+\item pt\_PT pour le Portugais ,
+\item ru\_RU pour le Russe,
+\item si     pour le Cingalais,
+\item zh\_CN pour le chinois simplifié,
+\item zh\_TW pour le chinois traditionnel.
+\end{itemize}
+
+Créez, si besoin, les sous-répertoires. Puis placez-y votre fichier .mo. Vous pouvez garder le nom du fichier tel que, ou ne garder que les premières lettres (c'est comme vous voulez), mais conservez l'extension .mo.
+
+Puis démarrez \codeblocks. Dans Paramètres/Environnement/Vue vous devez pouvoir cocher la case de la langue (internationalization) puis choisissez votre langue. Si ça ne marche pas, c'est que vous avez probablement oublié quelque chose ou fait une erreur.\newline
+Redémarrez \codeblocks pour activer la nouvelle langue.
+
+Si vous voulez retourner à l'anglais, décochez tout simplement la case du choix de la langue.
+
+\genterm{Pour les traducteurs :}
+Vous pouvez travailler directement dans launchpad.
+
+\textbf{Problème} : l'interface n'est pas très conviviale.
+
+Vous pouvez aussi télécharger le fichier .po, travailler dessus avec poedit par exemple (la version gratuite suffit). Vous pouvez tester vos traductions en local en la compilant (création d'un fichier .mo) puis en installant ce fichier .mo dans le sous-répertoire adéquat de \codeblocks.
+
+Quand vous aurez suffisamment avancé (c'est votre décision), vous pourrez envoyer ("upload") le fichier .po dans launchpad. Il peut être nécessaire que votre travail soit approuvé ou de le marquer comme à revoir ("to be reviewed").
+
+Ne soyez pas effrayé : c'est un travail assez long. Sur l'ancien site, il y avait 2173 chaînes à traduire. Maintenant il y en a plus de 9300 ! Mais le travail peut être partagé, Launchpad est fait pour ça !
+
+\textbf{Astuce :} Commencez par des menus que vous utilisez souvent : vous verrez les progrès plus vite.
+

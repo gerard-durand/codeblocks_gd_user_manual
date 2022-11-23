@@ -1,0 +1,548 @@
+\chapter{Gestion de Projet \codeblocks}
+
+Les textes de plusieurs paragraphes (par exemple le chapitre \pxref{sec:variables_types} ou la \pxref{sec:plugins}) sont les documentations officielles du site Wiki de \codeblocks (éventuellement revues et complétées) où elles ne sont disponibles qu'en anglais.
+Cette documentation est une extension de la version originale 1.1, assemblée et/ou écrite par Mario Cupelli.
+
+\hint{Remarque du traducteur : 
+Les références aux menus sont traduites en français. Cela suppose donc que vous avez installé la francisation de l'interface de \codeblocks que vous pouvez obtenir, notamment via le forum, dans la rubrique CodeBlocks Translation. Ne plus utiliser celle du site original LaunchPad bien trop ancienne et largement dépassée. Utiliser plutôt une nouvelle version, aussi sur Launchpad, via \url{https://launchpad.net/codeblocks-gd}. Les images ci-dessous sont celles de la documentation originale, en anglais}
+
+L'illustration ci-dessous montre l'apparence de la fenêtre de l'interface utilisateur de \codeblocks.
+
+\figures[H][width=\columnwidth]{codeblocks}{Environnement de développement Intégré (IDE) de \codeblocks}
+
+\begin{description}
+\item[Gestion] Cette fenêtre contient l'interface \menu{Projets} qui dans le texte suivant sera référencée comme vue du projet. Cette vue affiche tous les projets ouverts dans \codeblocks à un instant donné. L'onglet \samp{Symboles} de la fenêtre Gestion affiche les symboles, les variables etc.
+\item[Éditeur] Dans l'illustration ci-dessus, un fichier source nommé \file{hello.c} est ouvert avec colorisation de syntaxe dans l'éditeur.
+\item[Liste des fichiers ouverts] affiche une liste de tous les fichiers ouverts dans l'éditeur, dans cet exemple : \file{hello.c}.
+\item[CodeSnippets] peut être affiché via le menu \menu{Vue, CodeSnippets}. Ici vous pouvez gérer des modules de texte, des liens vers des fichiers et des liens vers des urls.
+\item[Journaux \& autres]. Cette fenêtre est utilisée pour sortir des résultats de recherche, des messages envoyés par un compilateur etc..
+\end{description}
+
+La barre d'état donne un aperçu des paramétrages suivants :
+
+\begin{itemize}
+\item Chemin absolu d'un fichier ouvert dans l'éditeur.
+\item L'éditeur utilise l'encodage par défaut de votre système d'exploitation. Cette configuration sera affichée par défaut.
+\item Numéros de ligne et de colonne de la position actuelle du curseur dans l'éditeur.
+\item Le mode de configuration du clavier pour insérer du texte (Insertion ou Remplacement).
+\item État actuel du fichier. Un fichier modifié sera marqué comme \codeline{Modifie} sinon cette case reste vide. 
+\item Autorisation d'un fichier. Un fichier qui est en lecture seule sera affiché \codeline{Lecture seule} dans la barre d'état. Dans la fenêtre \menu{Ouvrir la liste de fichiers} ces fichiers seront identifiés par une icône de verrouillage superposée.
+
+\hint{Dans l'éditeur courant, l'utilisateur peut choisir les propriétés du menu de contexte. Dans le dialogue apparaissant dans l'onglet \menu{Général}, l'option \menu{Le fichier est en lecture seule} peut être sélectionnée. Cette option marquera le fichier correspondant comme étant en lecture seule pour \codeblocks, mais les attributs en lecture et écriture du fichier original ne seront pas modifiés dans le système de fichiers.}
+
+\item Si vous démarrez \codeblocks en ligne de commande avec \opt{--personality=\var{profile}} la barre d'état affichera le profil utilisateur courant, sinon \codeline{default} sera affiché. Les paramètres de \codeblocks sont enregistrés dans le fichier de configuration correspondant \file{\var{personality}.conf}.
+\end{itemize}
+
+\codeblocks offre une gestion des projets très flexible et très compréhensible. Le texte suivant ne montre que quelques aspects de la gestion de projets.
+
+\section{Vue du projet}\label{sec:categories}
+
+Dans \codeblocks, les sources et les paramètres d'un processus de génération sont stockés dans un fichier projet \file{\var{name}.cbp}. Les sources en C/C++ et les fichiers d'en-têtes correspondants (ou headers) sont les composants typiques d'un projet. La façon la plus simple de créer un projet est de passer par la commande \menu{Fichier,Projet} et de choisir un assistant. Vous pouvez alors ajouter des fichiers au projet via le menu de contexte \menu{Ajouter des fichiers} de la fenêtre de gestion. 
+
+\codeblocks gère les fichiers de projets en catégories qui dépendent de l'extension des fichiers. Les catégories suivantes sont prédéfinies :
+
+\begin{description}
+\item[Sources] contient les fichiers sources dont l'extension est \file{*.c;*.cpp;}.
+\item[ASM Sources] contient les fichiers sources dont l'extension est \file{*.s;*.S;*.ss;*.asm}.
+\item[Headers] contient, entre autres, les fichiers dont l'extension est \file{*.h;}.
+\item[Ressources] contient les fichiers pour paramétrer l'aspect des fenêtres des wxWidgets avec les extensions \file{*.res;*.xrc;}. Ces types de fichiers sont affichés dans l'onglet \samp{Ressources} de la fenêtre de Gestion.
+\end{description}
+
+Les paramètres des types et catégories de fichiers peuvent être ajustés via le menu de contexte \menu{Arbre des projets,Éditer les types et catégories de fichiers}. Ici, vous pouvez définir aussi des catégories personnalisées pour les extensions de votre choix. Par exemple, si vous souhaitez lister des scripts d'édition de liens avec l'extension \file{*.ld} dans une catégorie nommée \file{Linkerscript}, vous n'avez qu'à créer une nouvelle catégorie.
+
+\hint{Si vous désactivez \menu{Arbre des projets,Catégoriser par type de fichiers} dans le menu de contexte, l'affichage par catégories sera masqué, et les fichiers seront listés comme ils sont stockés dans le système de fichiers.}
+
+\section{Notes pour les Projets}
+
+Dans \codeblocks, des notes spécifiques peuvent être stockées dans un projet. Ces notes peuvent contenir de brèves descriptions ou des points particuliers pour le projet correspondant. En affichant ces informations à l'ouverture d'un projet, les autres utilisateurs peuvent avoir un rapide aperçu de l'avancement du projet. L'affichage des notes peut être validé ou invalidé via l'onglet Notes des Propriétés d'un projet.
+
+\section{Modèles de Projet}
+
+\codeblocks est fourni avec tout un ensemble de modèles de projets qui sont affichés quand on crée un nouveau projet. Cependant, vous pouvez aussi enregistrer des modèles personnalisés pour y sauvegarder vos propres spécifications d'options de compilation, les optimisations à utiliser, les options spécifiques aux machines etc. Ces modèles seront enregistrés dans \file{Documents and Settings\osp \var{user}\osp Application Data\osp codeblocks\osp UserTemplates} sous Win 7 (ou un chemin équivalent du profil de l'utilisateur, adapté à chaque OS). Si les modèles doivent pouvoir être ouverts par tous les utilisateurs, ils devront être copiés dans un répertoire correspondant de l'installation de \codeblocks. Ces modèles seront alors affichés lors du démarrage suivant de \codeblocks dans \menu{Nouveau,Projet,Modèles utilisateur}.
+
+\hint{Les modèles disponibles dans l'assistant Projet peuvent être édités en les sélectionnant via un clic droit.}
+
+\section{Créer des Projets à partir de Cibles de Génération}
+
+Dans les projets, il est nécessaire d'avoir à disposition différentes variantes de projets. On appelle ces variantes Cibles de Génération. Elles diffèrent par leurs options de compilation, les informations de débogage et/ou le choix des fichiers. Une cible de génération peut aussi être externalisée dans un projet séparé. Pour ce faire, cliquer sur \menu{Projet,Propriétés} puis sélectionner la variante dans l'onglet \samp{Générer les cibles} et cliquer sur le bouton \samp{Créer un projet à partir d'une cible} (voir \pxref{fig:build_targets}).
+
+\screenshot{build_targets}{Cibles de Génération}
+
+\section{Cibles Virtuelles}
+
+Les projets peuvent être également structurés dans \codeblocks en ce qu'on appelle des cibles virtuelles. Une structure fréquemment utilisée de projet consiste en deux cibles de génération, la première cible \samp{Debug} qui contient des informations pour le débogage et la seconde cible \samp{Release} sans ces informations. En ajoutant Cibles Virtuelles via \menu{Projet,Propriétés,Cibles de génération} on peut combiner des cibles de génération individuelles. Par exemple, une Cible Virtuelle \samp{All} peut créer les cibles Debug et Release simultanément. Les cibles virtuelles sont affichées dans la barre de symboles du compilateur dans Générer les cibles.
+
+\section{Étapes Pré- et Post Génération}\label{sec:pre_postbuild}
+
+Dans \codeblocks on peut effectuer des opérations complémentaires avant et après la compilation d'un projet. Ces opérations sont appelées étapes de Pré génération ou Post génération. Des Post générations typiques sont :
+
+\begin{itemize}
+\item Création d'un format Intel Hexformat à partir un objet terminé
+\item Manipulation d'objets par \cmdline{objcopy}
+\item Générer des fichiers de dump par \cmdline{objdump}
+\end{itemize}
+
+\genterm{Exemple}
+
+Créer le désassemblage d'un objet sous Windows. Le transfert vers un fichier nécessite l'appel à \cmdline{cmd} avec l'option \opt{/c}.
+
+\begin{lstlisting}
+cmd /c objdump -D name.elf > name.dis
+\end{lstlisting}
+
+Un autre exemple de Post génération peut être l'archivage d'un projet. Pour cela, créez une cible de génération \samp{Archive} et incluez les instructions suivantes dans l'étape de post génération :
+
+\begin{lstlisting}
+zip -j9 $(PROJECT_NAME)_$(TODAY).zip src h obj $(PROJECT_NAME).cbp
+\end{lstlisting}
+
+Avec cette commande, le projet actif et ses sources, en-têtes et objets seront compressés en tant que fichier zip. En faisant ainsi, les variables intégrées \codeline{$(PROJECT_NAME)} et \codeline{$(TODAY)}, le nom du projet et la date courante seront extraites (voir \pxref{sec:builtin_variables}). Après l'exécution de la cible \samp{Archive}, le fichier compressé sera stocké dans le répertoire du projet.
+
+Dans le répertoire \file{share/codeblocks/scripts} vous trouverez quelques exemples de scripts. Vous pouvez ajouter un script via le menu \menu{Paramètres,Édition de scripts} et l'enregistrer dans un menu. Si vous exécutez par exemple le  script \file{make\_dist} depuis le menu, alors tous les fichiers appartenant à un projet seront compressés dans une archive \file{\var{project}.tar.gz}.
+
+\section{Ajouter des Scripts à des Cibles de Génération}
+
+\codeblocks offre la possibilité d'utiliser des actions de menus dans les scripts. Le script représente un autre degré de liberté pour contrôler la génération de votre projet.
+
+\hint{Un script peut également être inclus dans une Cible de Génération.}
+
+\section{Espace de travail et Dépendances de Projet}
+
+Des projets multiples peuvent être ouverts dans \codeblocks. En enregistrant les projets ouverts via  \menu{Fichier,Enregistrer l'espace de travail} vous pouvez les rassembler dans un seul espace de travail sous \file{\var{name}.workspace}. Si vous ouvrez \file{\var{name}.workspace} au démarrage suivant de \codeblocks, tous les projets seront de nouveau affichés.
+
+Les logiciels complexes sont un assemblage de composants qui sont gérés dans différents projets \codeblocks. De plus, lors de la génération de tels logiciels, il y a souvent des dépendances entre ces projets.
+
+\genterm{Exemple}
+
+Un projet A contient des fonctions de base qui sont rendues disponibles aux autres projets sous forme d'une librairie. Maintenant, si les sources de ce projet sont modifiées, alors la librairie doit être re-générée. Afin de maintenir la consistance entre un projet B qui utilise ces fonctions et le projet A qui les implémente, le projet B doit dépendre du projet A. Les informations nécessaires aux dépendances des projets sont enregistrées dans l'espace de travail adéquat, ainsi chaque projet peut être généré séparément. L'utilisation des dépendances rend également possible le contrôle de l'ordre dans lequel sont générés les projets. Les dépendances de projets peuvent être configurées en sélectionnant le menu \menu{Projet,Propriétés} puis en cliquant sur le bouton \samp{Dépendances du projet}.
+
+\section{Inclure des Fichiers en Assembleur}
+
+Dans la fenêtre Gestion d'une vue de projet, les fichiers en Assembleur sont affichés dans la catégorie \file{ASM Sources}. L'utilisateur peut changer la liste des fichiers dans les catégories (voir \pxref{sec:categories}). Un clic droit sur un des fichiers assembleur listés ouvrira un menu de contexte. Sélectionner \menu{Propriétés} pour ouvrir une nouvelle fenêtre. Sélectionnez maintenant l'onglet \samp{Générer} et activez les deux champs  \samp{Compiler le fichier} et \samp{Édition de liens du fichier}. Sélectionnez ensuite l'onglet \samp{Avancé} et exécutez les étapes suivantes :
+
+\begin{enumerate}
+\item Configurer \samp{Variable de compilation} à CC
+\item Sélectionner le compilateur dans \samp{Pour ce compilateur}
+\item Sélectionner \samp{Utiliser des commandes personnalisées pour générer ce fichier}
+\item Dans la fenêtre, entrez :
+\begin{lstlisting}
+$compiler $options $includes <asopts> -c $file -o $object
+\end{lstlisting}
+\end{enumerate}
+
+Les variables de \codeblocks sont identifiées par un \codeline{$} (voir \pxref{sec:command_macros}). Elles sont automatiquement configurées, ainsi vous n'avez à remplacer que l'option de l'assembleur \var{asopt} par vos propres configurations.
+
+
+\section{Éditeur et Outils}
+\begin{samepage}
+Cette section regroupe des fonctions internes à l'éditeur
+
+\subsection{Code par Défaut}
+\end{samepage}
+
+Les règles de codage dans une compagnie imposent d'avoir un modèle standard. Avec \codeblocks, il est possible d'inclure un contenu prédéfini automatiquement en début de fichier lors de la création d'une nouvelle source C/C++ ou d'en-têtes (headers). Le contenu prédéfini est dénommé code par défaut. Cette configuration peut être sélectionnée dans  \menu{Paramètres,Éditeur} Code par Défaut. Si vous créez un nouveau fichier alors une expansion des variables macro, notamment celles de \menu{Paramètres,Variables Globales}, est effectuée. Un nouveau fichier peut être créé via le menu \menu{Fichier,Nouveau,Fichier}.
+
+\genterm{Exemple}
+
+\begin{lstlisting}
+/***************************************************************
+ *  Project: $(project)
+ *  Function:
+ ***************************************************************
+ *  $Author: mario $
+ *  $Name:  $
+ ***************************************************************
+ *
+ *  Copyright 2007 by company name
+ *
+ ***************************************************************/
+\end{lstlisting}
+
+\subsection{Abréviations}\label{sec:Abbreviations}
+
+Pas mal de frappes au clavier peuvent être économisées dans \codeblocks en définissant des abréviations. Ceci peut s'obtenir en sélectionnant \menu{Paramètres,Éditeur} et en définissant les abréviations par un nom \var{name}, qui peut alors être appelé par un raccourci clavier Ctrl-J (voir \pxref{fig:abbreviation}).
+
+\screenshot{abbreviation}{Définition des abréviations}
+
+On peut également les paramétrer en incluant des variables \codeline{$(NAME}) dans les abréviations.
+
+\begin{lstlisting}
+#ifndef $(Guard token)
+#define $(Guard token)
+#endif // $(Guard token)
+\end{lstlisting}
+
+Quand on utilise l'abréviation \var{name} dans un texte source et qu'on utilise Ctrl-J, le contenu de la variable est récupéré puis inclus.
+%Inherit Class
+%Im Editor kann durch Auswahl von Inherit Class Ã¼ber die rechte Maustaste. ???
+
+\subsection{Personnalités}\label{sec:personalities}
+
+Les configurations de \codeblocks sont enregistrées en tant que données d'application dans un fichier dénommé \file{\var{user}.conf} dans le répertoire de \file{codeblocks}. Ce fichier de configuration contient des informations telles que les derniers projets ouverts, le paramétrage de l'éditeur, l'affichage des barres de symboles etc. Par défaut, la personnalité \samp{default} est utilisée et sa configuration sauvegardée dans un fichier \file{default.conf}. Si \codeblocks est lancé en ligne de commande avec le paramètre \cmdline{--personality=myuser}, le paramétrage sera enregistré dans un fichier \file{myuser.conf}. Si le profil n'existe pas déjà, il sera automatiquement créé. Cette procédure rend possible la création de différents profils pour différentes étapes de travail. Si vous lancez \codeblocks en ligne de commande avec le paramètre additionnel \cmdline{--personality=ask}, une boîte de sélection sera affichée avec tous les profils disponibles.
+
+\hint{Le nom du profil/personnalité courant est affiché dans le coin à droite de la barre d'état.}
+
+\subsection{Fichiers de Configuration}
+
+Les paramètres de \codeblocks sont enregistrés dans le fichier de profil \file{default.conf} dans le répertoire \file{codeblocks} de votre Application Data. Quand vous utilisez des personnalités (ou profils) (voir \pxref{sec:personalities}), les détails de configuration sont enregistrés dans un fichier \file{\var{personality}.conf}.
+
+L'outil \cmdline{cb\_share\_conf}, qu'on trouve dans le répertoire d'installation de \codeblocks, est utilisé pour gérer et enregistrer ces paramétrages.
+
+Si vous souhaitez définir des paramètres standard pour plusieurs utilisateurs de l'ordinateur, le fichier de configuration \file{default.conf} doit être enregistré dans le répertoire \file{\osp Documents and Settings\osp Default User\osp Application Data\osp codeblocks}. Lors du premier démarrage, \codeblocks copiera les valeurs par défaut depuis  \samp{Default User} vers le répertoire "Application data" de l'utilisateur courant.
+
+Pour créer une version portable de \codeblocks sur clé USB, procédez comme suit. Copiez le répertoire d'installation de \codeblocks vers la clé USB et stockez le fichier de configuration \file{default.conf} dans ce répertoire. Cette configuration servira de paramétrage global. Faites attention au fait que ce fichier soit accessible en écriture, sinon les changements de configuration ne pourront y être enregistrés.
+
+\subsection{Navigation et Recherche}
+
+Dans \codeblocks il y a plusieurs façons de naviguer rapidement entre les fichiers et les fonctions. Une procédure typique est la configuration de marques de recherche. Via le raccourci clavier Ctrl-B une marque est posée ou supprimée dans un fichier source. Via Alt-PgUp vous pouvez aller à la marque précédente, et via Alt-PgDn vous pouvez aller à la marque suivante.
+
+Si vous sélectionnez l'espace de travail ou un projet particulier de l'espace de travail dans la vue du projet vous pouvez rechercher un fichier dans le projet. Sélectionnez tout simplement \menu{Rechercher le fichier} depuis le menu de contexte, puis tapez le nom du fichier et le fichier sera sélectionné. Si vous tapez sur la touche Entrée, ce fichier sera ouvert dans l'éditeur (voir \pxref{fig:project_find_file}).
+
+\screenshot[H][width=.45\columnwidth]{project_find_file}{Recherche de fichiers}
+
+Dans \codeblocks vous pouvez facilement naviguer entre les En-têtes/Sources en :
+
+\begin{enumerate}
+\item Positionnant le curseur à l'endroit où le fichier d'en-tête (header) est inclus puis ouvrir ce fichier via le menu de contexte \menu{Ouvrir le fichier inclus} (voir \pxref{fig:open_header})
+\item Basculer du fichier d'en-tête au fichier source via le menu de contexte \menu{Basculer en-tête/source}
+\item Sélectionner par exemple un define dans l'éditeur et choisir \menu{Trouver la déclaration} depuis le menu de contexte pour ouvrir le fichier contenant cette déclaration.
+\end{enumerate}
+
+\screenshot{open_header}{Ouverture d'un fichier d'en-têtes}
+
+\codeblocks offre plusieurs possibilités de recherches dans un fichier ou un répertoire. La boîte de dialogue de recherche s'ouvre par \menu{Chercher,Rechercher} (Ctrl-F) ou \menu{Rechercher dans les fichiers} (Ctrl-Shift-F).
+
+Alt-G et Ctrl-Alt-G sont d'autres fonctions utiles. Le dialogue qui s'ouvrira en utilisant ces raccourcis vous permet de choisir des fichiers/fonctions et aller vous positionner à l'implémentation de la fonction sélectionnée (voir \pxref{fig:select_function}) ou bien ouvrir le fichier sélectionné dans l'éditeur. Vous pouvez utiliser dans le dialogue des jokers comme \codeline{*} ou \codeline{?} etc. pour y obtenir une recherche incrémentale.
+
+\screenshot[!hbt][width=.5\columnwidth]{select_function}{Recherche de fonctions}
+
+\hint{Avec le raccourci Ctrl-PgUp vous pouvez aller à la fonction précédente, et via Ctrl-PgDn vous pouvez aller à la fonction suivante.}
+
+Dans l'éditeur, vous pouvez ouvrir un nouveau dialogue Ouvrir des fichiers Ctrl-Tab et vous pouvez passer de l'un à l'autre via la liste affichée. Si vous appuyez sur la touche Ctrl, alors un fichier peut être sélectionné de différentes façons :
+
+\begin{enumerate}
+\item Si vous sélectionnez une entrée avec le bouton gauche de la souris, le fichier sélectionné sera ouvert.
+\item Si vous appuyez sur la touche Tab vous passez de l'une à l'autre des entrées listées. En relâchant la touche Ctrl le fichier sélectionné sera ouvert.
+\item Si vous déplacez la souris au-dessus des entrées listées, alors la sélection courante sera surlignée. En relâchant la touche Ctrl le fichier sélectionné sera ouvert..
+\item Si le pointeur de souris est en dehors de la sélection surlignée, vous pouvez utiliser la molette de la souris pour basculer entre les entrées. En relâchant la touche Ctrl le fichier sélectionné sera ouvert.
+\end{enumerate}
+
+Une façon commune de développer du logiciel est de jongler avec un ensemble de fonctions implémentées dans différents fichiers. L'extension "Browse Tracker" vous aidera à résoudre cette tâche en vous montrant dans quel ordre ont été sélectionnés les fichiers. Vous pouvez alors naviguer aisément entre les appels de fonctions (voir \pxref{sec:browsetracker}).
+
+L'affichage des numéros de lignes dans \codeblocks peut s'activer via \menu{Paramètres,Éditeur,Paramètres généraux} à l'aide du champ \samp{Afficher les numéros de ligne}. Le raccourci Ctrl-G ou la commande de menu \menu{Rechercher,Aller à la ligne} vous aidera à atteindre la ligne désirée.
+
+\hint{Si vous maintenez la touche Ctrl enfoncée en sélectionnant du texte dans l'éditeur de \codeblocks vous pouvez lancer une recherche Internet, notamment avec Google, via le menu de contexte.}
+
+\subsection{Vue des Symboles}
+
+La fenêtre Gestion de \codeblocks offre une vue arborescente des symboles des sources en C/C++ pour naviguer dans les fonctions et les variables. Dans ce type de vue, vous pouvez travailler sur le fichier courant, le projet courant ou tout l'espace de travail.
+
+\hint{Entrer un terme à chercher ou des noms de symboles dans le masque d'entrée 'Rechercher' du navigateur de Symboles permet d'obtenir une vue filtrée des symboles si concordance il y a.}
+
+Les catégories suivantes existent pour les symboles :
+
+\begin{description}
+\item[Fonctions Globales] Liste l'implémentation des fonctions globales.
+\item[typedefs globales] Liste l'utilisation des définitions \codeline{typedef}.
+\item[Variables globales] Affiche les symboles de variables globales.
+\item[Symboles du pré-processeur] Liste les directives du pré-processeur créées par \codeline{#define}.
+\item[Macros globales] Liste les macros des directives du pré-processeur
+\end{description}
+
+\figures[H][width=.3\columnwidth]{symbols}{Vue des symboles}
+
+Les structures et classes sont affichées par le menu \menu{arbre du bas} et l'ordre de tri peut être modifié via le menu de contexte. Si une catégorie est sélectionnée à la souris, les symboles trouvés seront affichés dans la partie basse de la fenêtre (voir \pxref{fig:symbols}). Double-cliquer sur un symbole ouvrira le fichier où il est défini ou bien la fonction où elle est implémentée, puis on se positionnera sur la ligne correspondante. Un rafraîchissement automatique du navigateur de symboles, sans avoir à sauvegarder de fichier, peut être activé par le menu \menu{Paramètres,Éditeur,Code Complétion} (voir \pxref{fig:cc_realtime_parsing}). Les performances de \codeblocks seront affectées dans les projets comportant de nombreux symboles.
+
+\figures[H][width=.85\columnwidth]{cc_realtime_parsing}{Activation de l'analyse en temps réel}
+
+\hint{Dans l'éditeur, une liste de classes peut être affichée via les menus de contexte \menu{Insérer méthode de classe} ou \menu{Toutes méthodes de classes sans implémentation}.}
+
+\subsection{Inclure des Fichiers d'Aide Externes}
+
+\codeblocks est seulement fourni avec son propre fichier d'aide : normalement, les développeurs ont besoin de bien plus d'aides et de références pour les langages, les librairies, les protocoles, les formats de fichiers et ainsi de suite. Le plugin help rend accessible toute la documentation nécessaire depuis \codeblocks lui-même. Virtuellement, tout document peut être interprété par le système d'aide de \codeblocks, depuis que le "plugin help" a la possibilité, si besoin, de lancer des programmes externes pour visualiser les documents ajoutés.
+
+Une fois qu'a été ajouté un nouveau fichier ou document d'aide, une nouvelle entrée dans le menu "Aide" est disponible afin de pouvoir l'ouvrir.
+
+L'environnement de développement \codeblocks supporte l'inclusion de fichiers d'aide externes via le menu \menu{Paramètres,Environnement}. Insérez le manuel de votre choix (au format chm par ex., voir ci-dessous) dans la sélection \menu{Fichiers d'aide}, sélectionnez \samp{Ceci est le fichier d'Aide par défaut} (voir \pxref{fig:help_files}). L'entrée \codeline{$(keyword)} est un paramètre de substitution pour une sélection particulière dans votre éditeur. Vous pouvez alors sélectionner une fonction dans un fichier ouvert de \codeblocks par un simple clic, et la documentation correspondante s'affichera lorsque vous appuierez sur la touche F1.
+
+Si vous avez inclus plusieurs fichiers d'aide, vous pouvez choisir un terme particulier dans l'éditeur, puis choisir le fichier d'aide adéquat dans le menu de contexte \menu{Chercher dans} pour que \codeblocks y fasse la recherche.
+
+\screenshot{help_files}{Configuration des fichiers d'aide}
+
+Dans \codeblocks vous pouvez également ajouter un support de pages "man". Ajoutez seulement une entrée \menu{man} et spécifiez les chemins comme suit (NdT ici pour Linux!).
+
+\begin{lstlisting}
+man:/usr/share/man
+\end{lstlisting}
+
+Sous Linux, les pages man sont habituellement installées de toute façon. Sous Windows vous pourriez vouloir les télécharger, par ex. depuis ici : \url{http://www.win.tue.nl/~aeb/linux/man}
+
+\textbf{Options d'Aide}
+
+\begin{itemize}
+\item Vous pouvez demander à \codeblocks d'utiliser un fichier particulier comme fichier d'aide par défaut, en cochant la case "Ceci est le fichier d'aide par défaut". Ainsi, ce fichier sera affiché dès lors que vous appuierez sur la touche 'F1'. De plus, si vous écrivez le mot \$(keyword) en tant que mot clé par défaut (voir plus loin), on cherchera ces mots clés dans ce fichier (le mot sélectionné ou le mot sous le curseur du fichier source courant) et les correspondances seront affichées, si elles existent.
+
+\item Vous pouvez demander à \codeblocks d'ouvrir un fichier d'aide sur un sujet de votre choix, en écrivant le mot clé correspondant dans la boîte de texte "Valeur du mot clé par défaut". Si le fichier d'aide est celui par défaut et que vous utilisez \$(keyword) comme mot clé par défaut, l'éditeur utilisera le mot sous le curseur (ou celui sélectionné) dans le fichier d'aide actuellement ouvert comme mot clé, en ouvrant le fichier d'aide par défaut sur le sujet adéquat. Ceci ne sera toutefois vrai que sur le fichier d'aide par défaut : on ne cherchera pas de cette façon dans les autres fichiers d'aide. Par exemple, si vous avez une référence de langage comme fichier d'aide par défaut et que vous ajoutez un fichier d'aide sur une librairie standard, vous obtiendrez l'explication du mot clé du langage en appuyant sur la touche 'F1', mais vous n'aurez pas les fonctions de librairie expliquées de cette façon. Inversement, en configurant le fichier de la librairie par défaut, via la touche F1 vous perdrez cette fonctionnalité pour les mots clés de langage.
+
+\item Si votre fichier d'aide est un fichier HTML, vous pouvez demander à \codeblocks de l'ouvrir avec le visualiseur de fichiers HTML intégré, en cochant l'option correspondante.
+\end{itemize}
+
+\codeblocks fourni un \samp{Visualiseur HTML intégré}, qui peut être utilisé pour afficher un simple fichier html et y rechercher des mots clés. Configurez simplement le chemin du fichier html qui doit être analysé et cochez la case  \menu{Ouvrir ce fichier avec le visualiseur d'aide intégré} via le menu \menu{Paramètres,Environnement,Fichiers d'aide}.
+
+\screenshot{embedded_html_viewer}{Visualiseur HTML intégré}
+
+\hint{Si vous sélectionnez un fichier html par double-clic dans l'explorateur (voir \pxref{sec:file_explorer}) alors le visualiseur html intégré sera démarré, du moins si aucune association vers les fichiers html n'est faite par le gestionnaire d'extensions de fichiers.}
+
+\textbf{Fichiers CHM}
+
+Vous pouvez trouver des fichiers d'aide c++ chm sur le web. Ajoutez-les tout simplement dans la boîte de dialogue.
+
+Sous Linux vous avez à installer un visualiseur de fichiers chm pour pouvoir afficher ces fichiers chm. Il y en a plusieurs comme gnochm, kchmviewer, xchm et ainsi de suite. 
+
+% \section{Scripting}
+%
+% \codeblocks in Console Modus + Scripts
+
+\subsection{Inclure des outils externes}
+
+L'inclusion d'outils externes dans \codeblocks est faisable via \menu{Outils,Configurer les outils,Ajouter}. Les variables internes (voir \pxref{sec:builtin_variables}) peuvent aussi être utilisées comme paramètres des outils. D'autre part, il y a plusieurs sortes d'options de lancement pour démarrer des applications externes. En fonction des options, les applications externes peuvent s'arrêter quand on quitte \codeblocks. Si les applications doivent rester ouvertes après qu'on ait quitté \codeblocks, l'option \menu{Lancer l'outil visible en mode détaché} doit être cochée.
+
+\section{Astuces pour travailler avec \codeblocks}
+
+Dans ce chapitre nous présenterons quelques paramétrages utiles dans \codeblocks.
+
+\subsection{Recherche de Modifications}
+
+\codeblocks fourni une fonctionnalité pour pister les modifications effectuées dans un fichier source et affiche une barre dans la marge là où ont eût lieu les changements. Les modifications sont marquées par une barre de changements jaune alors que celles qui ont déjà été enregistrées sont marquées par une barre de changements verte (voir \pxref{fig:changebar}). Vous pouvez naviguer dans vos changements à l'aide du menu  \menu{Rechercher,Aller à la ligne changée suivante} ou encore \menu{Rechercher,Aller à la ligne changée précédente}. La même fonctionnalité est accessible via les raccourcis clavier Ctrl-F3 et Ctrl-Shift-F3.
+
+\screenshot{changebar}{Recherche de modifications}
+
+Cette fonctionnalité peut être activée ou désactivée via la case à cocher \menu{Utiliser la barre de changements} dans le menu \menu{Paramètres,Éditeur,Marges et tirets}.
+
+\hint{Si un fichier modifié est fermé, alors l'historique des changements tels que défaire/refaire ainsi que la barre de changements sont perdus. À l'aide du menu \menu{Édition,Effacer l'historique des changements} ou le menu de contexte correspondant vous pouvez effacer cet historique même si le fichier reste ouvert.}
+
+\subsection{Échange de données avec d'autres applications}
+
+Les échanges de données entre \codeblocks et d'autres applications sont possibles. Pour cela on utilise, avec Windows, le processus de communication inter processus DDE (Dynamic Data Exchange) et, avec les autres systèmes d'exploitation, une communication basée sur le protocole TCP.
+
+Avec cette interface, différentes commandes peuvent être envoyées vers une instance de \codeblocks en suivant la syntaxe suivante.
+
+\begin{lstlisting}
+[<command>("<parameter>")]
+\end{lstlisting}
+
+Les commandes suivantes sont actuellement disponibles :
+
+\begin{description}
+\item[Open] La commande
+
+\begin{lstlisting}
+[Open("d:\temp\test.txt")]
+\end{lstlisting}
+
+utilise un paramètre, dans notre cas c'est le nom d'un fichier avec son chemin en absolu, et il s'ouvre dans une instance existante de \codeblocks ou bien, si nécessaire, une première instance démarre.
+\item[OpenLine] Cette commande ouvre un fichier dans une instance de \codeblocks et se positionne sur la ligne dont le numéro est entré. Le numéro de ligne est spécifié par \codeline{:ligne}.
+
+\begin{lstlisting}
+[OpenLine("d:\temp\test.txt:10")]
+\end{lstlisting}
+
+\item[Raise] Donne le "focus" à l'instance de \codeblocks. Aucun paramètre ne doit être entré.
+\end{description}
+
+\subsection{Configurer les variables  d'environnement}\label{sec:EnvVars_Cfg}
+
+Voir aussi l'"Extension Variables d'Environnement" dans la \pxref{sec:EnvVar_Plugin}.
+
+La configuration d'un système d'exploitation se fait par ce qu'on appelle les variables d'environnement. Par exemple, la variable d'environnement \codeline{PATH} contient le chemin d'un compilateur installé. Le système d'exploitation analysera cette variable dans l'ordre d'écriture, c'est à dire que les entrées de la fin seront utilisées en dernier dans les recherches. Si plusieurs versions de compilateur ou d'autres applications sont installées, les situations suivantes peuvent se produire :
+
+\begin{itemize}
+\item On appelle une version incorrecte d'un logiciel
+\item Les logiciels installés s'appellent entre eux
+\end{itemize}
+
+Ainsi, on peut tomber sur le cas où différentes versions d'un compilateur ou d'un autre outil sont obligatoires pour différents projets. Lorsque cela arrive, une première solution est de changer les variables d'environnement dans le système d'exploitation pour chaque projet. Toutefois cette procédure est sujette à erreur et manque de flexibilité. Pour ce faire, \codeblocks offre une solution élégante. Différentes configurations de variables peuvent être créées pour un usage uniquement en interne à \codeblocks. De plus, vous pouvez passer de l'une à l'autre de ces configurations. La \pxref{fig:env_variables} montre la boîte de dialogue que vous obtenez via \samp{Variables d'Environnement} dans \menu{Paramètres,Environnement}. On crée une configuration à l'aide du bouton \samp{Créer}.
+
+\screenshot{env_variables}{Variables d'environnement}
+
+L'accès et l'étendue des variables d'environnement ainsi créées sont limités à \codeblocks. Vous pouvez étendre ces variables d'environnement comme toutes les autres variables dans \codeblocks à l'aide de \codeline{$(NAME)}.
+
+\hint{La configuration d'une variable d'environnement pour chaque projet peut être sélectionnée dans le menu de contexte \menu{Propriétés} de l'onglet \samp{Options EnvVars}.}
+
+\genterm{Exemple}
+
+Vous pouvez écrire dans un fichier \file{\var{project}.env} l'environnement utilisé dans une étape de post génération (voir \pxref{sec:pre_postbuild}) puis l'archiver dans votre projet.
+
+\begin{lstlisting}
+cmd /c echo \%PATH\%  > project.env
+\end{lstlisting}
+
+ou sous Linux
+
+\begin{lstlisting}
+echo \$PATH > project.env
+\end{lstlisting}
+
+\subsection{Basculer entre diverses dispositions}
+
+En fonction des tâches à effectuer, il peut être utile d'avoir plusieurs configurations ou dispositions (ou présentations) différentes de  \codeblocks et de les sauvegarder. Par défaut, le paramétrage (notamment afficher/masquer les barres d'outils, aspect, etc.) est enregistré dans le fichier de configuration \file{default.conf}. En utilisant l'option en ligne de commande \opt{--personality=ask} au démarrage de \codeblocks, on peut choisir parmi plusieurs possibilités de paramétrages. En dehors de ces paramétrages globaux, il peut se produire une situation où vous souhaitez basculer entre différentes vues de fenêtres ou de barres de symboles pendant une session. L'édition de fichier et le débogage de projets sont deux exemples typiques de telles situations. \codeblocks offre un mécanisme pour enregistrer et sélectionner différentes dispositions afin d'éviter à l'utilisateur d'avoir à fermer et ouvrir manuellement et fréquemment des fenêtres et des barres de symboles. Pour enregistrer une disposition, sélectionnez le menu \menu{Vue,Disposition,Enregistrer la disposition actuelle} et entrez un nom dans \var{nom}. La commande \menu{Paramètres,Éditeur,Raccourcis clavier,Vue,Dispositions,\var{name}} permet de définir un raccourci clavier pour ce processus. Il est ainsi possible de basculer entre les diverses dispositions simplement en utilisant ces raccourcis clavier.
+
+\hint{Autre exemple : éditer un fichier en mode plein écran sans barre de symboles. Vous pouvez créer une disposition comme \samp{Plein Ecran} et lui assigner un raccourci spécifique.}
+
+\subsection{Basculer entre projets}
+
+Si plusieurs projets ou fichiers sont ouverts en même temps, l'utilisateur a besoin d'un moyen pour passer rapidement de l'un à l'autre. \codeblocks possède plusieurs raccourcis pour ce faire.
+
+\begin{description}
+\item[Alt-F5] Active le projet précédent de la vue des projets.
+\item[Alt-F6] Active le projet suivant de la vue des projets.
+\item[F11] Dans l'éditeur, bascule entre un fichier source \file{\var{name}.cpp} et le fichier d'en-tête (header) correspondant \file{\var{name}.h}
+\end{description}
+
+\subsection{Configurations étendue des compilateurs}
+
+Lors de la génération d'un projet, les messages du compilateur sont affichés dans l'onglet Messages de génération. Si vous souhaitez recevoir des informations détaillées, l'affichage peut être étendu. Pour cela, cliquez sur \menu{Paramètres,Compilateur et débogueur} puis sélectionnez l'onglet \samp{Autres options} dans le menu déroulant.
+
+\screenshot{compiler_debugger}{Configurer des informations détaillées}
+
+Assurez-vous que le compilateur soit correctement sélectionné. L'option \samp{Ligne de commande complète} des Avertissements du compilateur permet de sortir des informations détaillées. De plus, ces sorties peuvent être redirigées vers un fichier HTML. Pour cela, sélectionnez  \samp{Enregistrer le journal de génération dans un fichier HTML en fin de génération}.
+D'autre part, \codeblocks peut afficher une barre d'avancement du processus de génération dans la fenêtre de génération qui peut être activée en cochant \samp{Afficher la barre de progression de génération}.
+
+\subsection{Zoomer dans l'éditeur}
+
+\codeblocks possède un éditeur très puissant. Cet éditeur vous permet de changer la taille des caractères du texte affiché des fichiers ouverts. Si vous avez une souris avec une molette, vous n'avez qu'à appuyer sur la touche Ctrl tout en tournant la molette dans un sens ou l'autre pour agrandir ou réduire la taille du texte.
+
+\hint{Avec le raccourci Ctrl-Numepad-/ ou à l'aide du menu \menu{Édition,Commandes spéciales,Zoom,Remise à 0} vous restaurez la taille originale du texte courant.}
+
+\subsection{Mode de Repliement}
+
+Quand on édite des fichiers de texte, notamment des \file{*.txt}, dans \codeblocks, il peut être utile d'avoir le texte replié, ce qui signifie que les lignes longues seront affichées sur plusieurs lignes à l'écran afin qu'elles puissent être correctement éditées. La fonction \samp{Repliement} peut être activée dans \menu{Paramètres,Éditeur,Autres Options} ou en cochant la case \menu{Activer le repliement}. Les touches "Home" et "Fin" positionnent respectivement le curseur en début et en fin de ligne repliée. Quand on choisit \menu{Paramètres,Éditeur,Autres Options} et \menu{La touche Home déplace toujours le curseur en première colonne}, le curseur sera positionné respectivement en début ou en fin de ligne si on appuie sur la touche "Home" ou "Fin". Si on désire placer le curseur au début de la première ligne du paragraphe en cours, il vous faut utiliser la combinaison de touches \menu{Alt-Home}. La même chose de façon analogue pour \menu{Alt-Fin} pour positionner le curseur en fin de la dernière ligne du paragraphe courant.
+
+\subsection{Sélection de modes dans l'éditeur}
+
+\codeblocks supporte différents modes de sélection pour le couper-coller des chaînes de caractères.
+
+\begin{enumerate}
+\item Un texte de l'éditeur actif peut être sélectionné avec le bouton gauche de la souris, puis on relâche ce bouton. L'utilisateur peut se déplacer de haut en bas avec la molette de la souris. Si on appuie sur le bouton du milieu, le texte précédemment sélectionné sera inséré. Cet effet est disponible au niveau d'un fichier et peut être vu comme un presse-papier de fichier.
+\item Appuyer sur la touche \samp{ALT} active ce qu'on appelle la sélection en mode bloc et un rectangle de sélection s'affiche à l'aide du bouton gauche de la souris. Lorsqu'on relâche la touche Alt cette sélection peut être copiée ou collée. Cette option est utile si vous voulez sélectionner des colonnes, notamment dans un tableau et en copier-coller le contenu.
+\item Dans le menu \menu{Paramètres,Éditeur,Marges et tirets} on peut activer ce qu'on appelle des \menu{Espaces Virtuels}. Ceci active la possibilité d'avoir une sélection en mode bloc qui peut commencer ou se terminer par une ligne vide.
+\item Dans le menu \menu{Paramètres,Éditeur,Marges et tirets} on peut activer le \menu{Sélections Multiples}. En maintenant enfoncée la touche Ctrl l'utilisateur peut sélectionner diverses lignes dans l'éditeur actif avec le bouton gauche de la souris. Les sélections sont ajoutées dans le presse-papier à l'aide des raccourcis Ctrl-C ou Ctrl-X. Ctrl-V en insèrera le contenu à la position courante du curseur. Une option complémentaire dénommée \menu{Active l'entrée clavier (et la suppression)}  peut être activée pour les sélections multiples. Cette option est utile si vous voulez ajouter des directives de pré-processeur comme \codeline{#ifdef} sur plusieurs lignes de code source ou si vous voulez superposer ou remplacer du texte en plusieurs endroits.
+\end{enumerate}
+
+\hint{La plupart des gestionnaires de fenêtres de Linux utilisent ALT-ClicGauche-Déplacer pour déplacer une fenêtre, aussi vous devrez désactiver cette fonctionnalité pour pouvoir sélectionner en mode bloc.}
+
+\subsection{Repliement de code}
+
+\codeblocks supporte ce qu'on appelle le repliement de code. Avec cette fonctionnalité vous pouvez replier notamment les fonctions dans l'éditeur de \codeblocks. Un point de repliement est marqué dans la marge gauche de
+l'éditeur par un signe moins. Dans la marge, le début et la fin d'un point de repliement sont visibles à l'aide d'une ligne verticale. Si vous cliquez sur le signe moins avec le bouton gauche de la souris, la portion de code sera repliée ou dépliée. Via le menu \menu{Édition,Repliement} vous pouvez sélectionner le repliement. Dans l'éditeur, un code replié est vu comme une ligne horizontale continue.
+
+\hint{Le style de repliement et la profondeur limite du repliement peuvent se configurer dans le menu \menu{Paramètres,Éditeur,Repliement}.}
+
+\codeblocks fournit aussi la fonctionnalité de repliement pour les directives du pré-processeur. Pour l'activer, sélectionnez \samp{Replier les commandes du pré-processeur} dans l'entrée Repliement de \menu{Paramètres,Éditeur}.
+
+Une autre façon de faire est de définir des points de repliement utilisateurs. Le point de départ du repliement s'entre comme un commentaire suivi d'une parenthèse ouvrante et la fin comme un commentaire suivi d'une parenthèse fermante.
+
+\begin{verbatim}
+//{
+code avec repliement défini par l'utilisateur
+//}
+\end{verbatim}
+
+\subsection{Auto complétion}
+
+Lorsque vous ouvrez un projet dans \codeblocks les \samp{Répertoires de recherche} de votre compilateur et de votre projet, les fichiers sources et d'en-têtes de votre projet sont analysés. De plus les mots clés de l'analyseur syntaxique correspondant sont analysés également. Les informations issues de l'analyse sont alors utilisées pour la fonctionnalité d'auto complétion dans \codeblocks. Vérifiez s'il vous plait que cette fonctionnalité est bien activée dans l'éditeur. L'auto complétion est accessible au travers du raccourci Ctrl-Espace. Via le menu \menu{Paramètres,Éditeur,Colorisation syntaxique} vous pouvez ajouter des mots clés définis par l'utilisateur à votre analyseur syntaxique.
+
+\subsection{Recherche de fichiers cassés}
+
+Lorsqu'un fichier est supprimé du disque, mais est toujours inclus dans un fichier projet \file{\var{project}.cbp}, alors un \samp{fichier cassé} sera affiché avec un symbole "cassé" dans la vue du projet. Vous devriez utiliser  \menu{Enlever ce fichier du projet} plutôt que de supprimer le fichier.
+
+Dans de gros projets, avec de nombreux sous-répertoires, la recherche de fichiers cassés peut être une grande consommatrice de temps. Avec l'extension ThreadSearch (voir \pxref{sec:thread_search}) \codeblocks apporte une solution simple à ce problème. Si vous entrez une expression de recherche dans ThreadSearch et sélectionnez l'option \menu{Fichiers du projet} ou \menu{Fichiers de l'espace de travail}, alors ThreadSearch analysera tous les fichiers qui sont inclus dans le projet ou l'espace de travail. Si un fichier cassé est trouvé, ThreadSearch génèrera une erreur sur le fichier absent.
+
+\subsection{Inclure des librairies}
+
+Dans les options de génération d'un projet, vous pouvez ajouter les librairies utilisées via le bouton \samp{Ajouter} dans l'entrée \samp{Librairies à lier} des \samp{Options de l'éditeur de liens}. Ce faisant, vous pouvez soit utiliser le chemin absolu de la librairie ou seulement donner son nom sans le préfixe \file{lib} ni l'extension du fichier.
+
+\genterm{Exemple}
+
+Pour une librairie nommée \file{\var{path}\osp libs\osp lib\var{name}.a}, écrire seulement \file{\var{name}}. L'éditeur de liens avec les chemins de recherche correspondants inclura alors correctement les librairies.
+
+\hint{Une autre façon d'inclure des librairies est documentée dans la \pxref{sec:lib_finder}.}
+
+\subsection{Ordre d'édition de liens des fichiers objets}
+
+Lors de la compilation, les fichiers objets \file{name.o} sont créés à partir des sources \file{name.c/cpp}. L'éditeur de liens assemble les fichiers objets individuels pour en faire une application \file{name.exe} ou sur d'autre systèmes \file{name.elf}. Dans certains cas, il peut être préférable de prédéfinir l'ordre dans lequel seront liés les fichiers objets. Vous pouvez obtenir cela dans \codeblocks en assignant des priorités. Dans le menu de contexte \menu{Propriétés}, vous pouvez définir les priorités d'un fichier dans l'onglet Générer. Une priorité faible fera que le fichier sera lié plus tôt.
+
+\subsection{Sauvegarde automatique}
+
+\codeblocks offre la possibilité d'enregistrer automatiquement les projets et les fichiers sources, ou encore de créer des copies de sauvegarde. Cette fonctionnalité peut être activée dans le menu \menu{Paramètres,Environnement,Sauvegarde-auto}. Ce faisant, \samp{Enregistrer dans un fichier .save} doit être spécifié comme méthode de création de copie de sauvegarde.
+
+\subsection{Configuration des extensions de fichiers}\label{sec:file_extension}
+
+Dans \codeblocks, vous pouvez choisir entre plusieurs méthodes de traitement des extensions de fichiers. La boîte de dialogue de configuration s'ouvre par \menu{Paramètres,Gestion des extensions de fichiers}.
+Vous pouvez alors soit utiliser les applications assignées par Windows pour chaque extension de fichier (l'ouvrir avec l'application associée), ou changer la configuration pour chaque extension de telle façon que ce soit un programme défini par l'utilisateur qui soit lancé (lancer un programme externe), ou que ce soit \codeblocks qui ouvre le fichier dans son éditeur (l'ouvrir dans l'éditeur de \codeblocks).
+
+\hint{Si un programme utilisateur est associé à une certaine extension de fichier, la configuration \samp{Désactiver \codeblocks quand un programme externe est lancé} devrait être désactivée, sinon \codeblocks sera fermé dès qu'un fichier qui possède cette extension est ouvert.}
+
+\section{\codeblocks en ligne de commande}
+
+L'Environnement de Développement Intégré (IDE) \codeblocks peut être exécuté depuis une ligne de commande sans interface graphique. Dans ce cas, plusieurs options sont disponibles pour contrôler le processus de génération d'un projet. Comme \codeblocks peut être piloté par des "scripts", la création d'exécutables peut être intégrée dans vos propres processus de travail.
+
+\begin{lstlisting}
+codeblocks.exe /na /nd --no-splash-screen --build <name>.cbp --target='Release'
+\end{lstlisting}
+
+\begin{description}
+\item[\var{filename}] Spécifie le nom du fichier de projet \file{*.cbp} ou le nom de l'espace de travail \file{*.workspace}. Par exemple, \var{filename} peut être \file{project.cbp}. Placez cet argument en fin de ligne de commande, juste avant la redirection de la sortie, s'il y en a une.
+\item[--file=\var{filename}\optional{:ligne}] Ouvrir un fichier dans \codeblocks et, en option, se positionner sur une ligne particulière.
+\item[/h, --help] Affiche un message d'aide concernant les arguments en ligne de commande.
+\item[/na, --no-check-associations] Ne faire aucun contrôle d'association de fichiers (Windows seulement).
+\item[/nd, --no-dde] Ne pas lancer le serveur DDE (Windows seulement).
+\item[/ni, --no-ipc] Ne pas lancer le serveur IPC (Linux et Mac seulement).
+\item[/ns, --no-splash-screen] Ne pas afficher l'écran de démarrage pendant le chargement de l'application.
+\item[/d, --debug-log] Afficher le journal de débogage de l'application.
+\item[--prefix=\var{str}] Configure le préfixe du répertoire de données partagées.
+\item[/p, --personality=\var{str}, --profile=\var{str}] Configure le profil (ou personnalité) à utiliser. Vous pouvez utiliser le paramètre ask pour afficher la liste de tous les profils disponibles.
+\item[--rebuild] Nettoie et génère le projet ou l'espace de travail.
+\item[--build] Génère le projet ou l'espace de travail.
+\item[--target=\var{str}] Configure la cible de génération. Par exemple \cmdline{--target='Release'}.
+\item[--no-batch-window-close] Garde la fenêtre batch de journalisation visible après que la génération par batch soit terminée.
+\item[--batch-build-notify] Affiche un message une fois que la génération batch est terminée.
+\item[--safe-mode] Désactive toutes les extensions (plugins) au démarrage.
+\item[$>$ \var{build log file}] Placé en toute dernière position d'une ligne de commande, ceci permet à l'utilisateur de rediriger la sortie standard vers un fichier log. Ceci n'est pas à proprement parler une option de codeblocks, mais seulement une redirection standard des sorties des shells DOS/*nix.
+\end{description}
+
+\section{Raccourcis Clavier}
+
+Cette section décrit les raccourcis clavier qui sont ou peuvent être utilisés dans \codeblocks.
+
+\subsection{Introduction}
+
+Ce plugin peut être utilisé pour ajouter un ou plusieurs raccourcis clavier aux menus.
+
+Même si une IDE comme \codeblocks est surtout pilotée à la souris, les raccourcis claviers sont néanmoins un moyen très pratique pour accélérer et simplifier le travail. Les tableaux ci-dessous regroupent quelques-uns des raccourcis claviers disponibles.
+
+\subsection{Fonctionnalités}
+\begin{description}
+\item Inclue un panneau de configuration et un système complet pour visualiser/supprimer/ajouter/éditer des commandes en raccourcis clavier.
+\item Supporte plusieurs profils de raccourcis clavier et un système complet de chargement/enregistrement est présent.
+\item Permet à l'utilisateur de personnaliser toutes les commandes de menus désirées, et définir des raccourcis clavier pour chacune des commandes.
+\end{description}
+
+\subsection{Utilisation}
+
+La page de configuration du plugin est accessible via le menu \menu{Paramètres,Éditeur}, en sélectionnant la section Raccourcis Clavier.
+
+\screenshot{KeyBindConfig}{Dialogue de configuration des Raccourcis clavier}
+
+Sélectionner une commande dans l'arborescence des Commandes, vous affiche le raccourci actuel pour la commande sur la droite. Sur la figure c'est Open... qui est sélectionné et le raccourci par défaut Ctrl-O est affiché.
+
+Pour ajouter un nouveau raccourci à la commande sélectionnée, suivre les étapes suivantes :
+
+\begin{enumerate}
+\item Placer le curseur dans la boîte de texte au-dessous du Nouveau raccourci et presser sur les touches, par exemple F3 ou Ctrl-A.
+\item Vérifier l'assignation courante, et si une autre commande a déjà ce raccourci affecté vous verrez son nom ici. Si le texte dit Aucun c'est que c'est bon.
+\item Presser sur Ajouter pour ajouter le raccourci à la liste.
+\item Presser sur OK dans le dialogue pour enregistrer des changements et retourner dans l'éditeur.
+\end{enumerate}
+
+\input{shortcuts_fr}

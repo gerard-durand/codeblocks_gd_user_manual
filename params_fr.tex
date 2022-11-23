@@ -1,0 +1,325 @@
+\chapter{Expansion de Variables}\label{sec:variables_types}
+
+\codeblocks fait la différence entre plusieurs types de variables. Ces types peuvent servir à configurer l'environnement de création d'un programme, mais aussi à accroître la maintenabilité et la portabilité. L'accès aux variables de \codeblocks s'obtient grâce à \codeline{$<name>}.
+
+
+\begin{description}
+\item[Variables d'Environnement] sont configurées au démarrage de \codeblocks. Elles peuvent modifier les variables d'environnement du système telles que \codeline{PATH}. Cela peut être utile dans les cas où une variable d'environnement spécifique est nécessaire à la création de projets. La configuration des variables d'environnement dans \codeblocks se fait à l'aide de \menu{Paramètres,Environnement,Variables d'environnement}.
+\item[Variables internes] sont prédéfinies dans \codeblocks, et peuvent être accédées via leurs noms (voir les détails dans \pxref{sec:builtin_variables}).
+\item[Macros Commandes] Ce type de variables est utilisé pour contrôler le processus de génération. Pour de plus amples informations se référer à \pxref{sec:command_macros}.
+\item[Variables Utilisateur] sont des variables définies par l'utilisateur qui peuvent être spécifiées dans les options de génération d'un projet. Ici vous pouvez, par exemple définir votre type de processeur comme une variable \codeline{MCU} et lui assigner une valeur correspondante. Puis entrer dans les options de compilation \opt{-mcpu=\$(MCU)}, et \codeblocks le remplacera automatiquement par le contenu. Par cette méthode, la configuration d'un projet peut être largement paramétrée.
+\item[Variables Globales] sont surtout utilisées pour créer \codeblocks à partir des sources ou pour le développement d'applications wxWidgets. Ces variables ont une signification bien particulière. Par rapport à toutes les autres, si vous configurez de telles variables et partagez votre fichier projet avec d'autres qui eux n'ont *pas* configuré ces variables globales (ou GV), \codeblocks demandera à l'utilisateur de les configurer. C'est un moyen pratique de d'assurer qu'un \samp{autre développeur} sait facilement ce qu'il doit configurer. \codeblocks posera la question pour tous les chemins usuellement nécessaires.
+\end{description}
+
+\section{Syntaxe}
+
+\codeblocks traite de façon équivalente, en tant que variables, les séquences de caractères suivantes dans les étapes de pré-génération, post-génération ou génération :
+
+\begin{itemize}
+\item \codeline{$VARIABLE}
+\item \codeline{$(VARIABLE)}
+\item \codeline{$\{VARIABLE\}}
+\item \codeline{\%VARIABLE\%}
+\end{itemize}
+
+Les noms de variables doivent être composés de caractères alphanumériques et sont insensibles à la casse (minuscules-majuscules). Les variables commençant par un seul signe dièse \codeline{(#)} sont interprétées comme des variables utilisateur globales (voir les détails dans la \pxref{sec:global_variables}). Les noms listés ci-dessous sont interprétés comme des types de variables internes.
+
+Les variables qui ne sont ni de type utilisateur globales ni de type interne, seront remplacées par une valeur fournie dans le fichier projet, ou par une variable d'environnement si ce dernier échoue.
+
+L'utilisation de ces variables peut être effectuée comme dans l'exemple suivant :
+
+\codeline{#include "include/manager.h"} \newline
+\codeline{wxString strdate = Manager::Get()->GetMacrosManager()->ReplaceMacros(_T("$TODAY"));}
+
+\hint{Les définitions "par cible" sont prioritaires par rapport aux définitions par-projet.}
+
+\section{Liste des variables internes}\label{sec:builtin_variables}
+
+Les variables listées ci-dessous sont des variables internes à \codeblocks. Elles ne peuvent pas être utilisées dans des fichiers sources.
+
+\subsection{Espace de travail \codeblocks}
+
+\begin{description}
+\item[{\scriptsize \$(WORKSPACE\_FILENAME), \$(WORKSPACE\_FILE\_NAME), \$(WORKSPACEFILE), \$(WORKSPACEFILENAME)}] Le nom de fichier de l'espace de travail courant (.workspace).
+\item[{\scriptsize \$(WORKSPACENAME), \$(WORKSPACE\_NAME)}] Le nom de l'espace de travail qui est affiché dans l'onglet Projets du panneau Gestion.
+\item[{\scriptsize \$(WORKSPACE\_DIR), \$(WORKSPACE\_DIRECTORY), \$(WORKSPACEDIR), \$(WORKSPACEDIRECTORY)}] Le répertoire où se trouve l'espace de travail.
+\end{description}
+
+\subsection{Fichiers et répertoires}
+
+\begin{description}
+\item[{\footnotesize \$(PROJECT\_FILENAME), \$(PROJECT\_FILE\_NAME), \$(PROJECT\_FILE), \$(PROJECTFILE)}] Le nom de fichier du projet en cours de compilation.
+\item[{\footnotesize \$(PROJECT\_NAME), \$(PROJECTNAME)}] Le nom du projet en cours de compilation.
+\item[{\footnotesize \$(PROJECT\_DIR), \$(PROJECTDIR), \$(PROJECT\_DIRECTORY)}] Le répertoire commun de plus haut niveau du projet en cours de compilation.
+\item[{\footnotesize \$(ACTIVE\_EDITOR\_FILENAME)}] Le nom du fichier ouvert dans l'éditeur actif courant.
+\item[{\footnotesize \$(ACTIVE\_EDITOR\_LINE)}] Retourne le numéro de ligne courant dans l'éditeur actif.
+\item[{\footnotesize \$(ACTIVE\_EDITOR\_COLUMN}] Retourne le numéro de colonne courant dans l'éditeur actif.
+\item[{\footnotesize \$(ACTIVE\_EDITOR\_DIRNAME)}] le répertoire contenant le fichier actif courant (relatif au chemin de plus haut niveau).
+\item[{\footnotesize \$(ACTIVE\_EDITOR\_STEM)}] Le nom de base (sans extension) du fichier actif courant.
+\item[{\footnotesize \$(ACTIVE\_EDITOR\_EXT)}] L'extension du fichier actif courant.
+\item[{\footnotesize \$(ALL\_PROJECT\_FILES)}] Une chaîne contenant les noms de tous les fichiers du projet courant.
+\item[{\footnotesize \$(MAKEFILE)}] Le nom de fichier du makefile.
+\item[{\footnotesize \$(CODEBLOCKS), \$(APP\_PATH), \$(APPPATH), \$(APP-PATH)}] Le chemin de l'instance courante de \codeblocks en cours d'exécution.
+\item[{\footnotesize \$(DATAPATH), \$(DATA\_PATH), \$(DATA-PATH)}] Le répertoire 'partagé' de l'instance courante de \codeblocks en cours d'exécution.
+\item[{\footnotesize \$(PLUGINS)}] Le répertoire des \file{plugins} (ou extensions) de l'instance courante de \codeblocks en cours d'exécution.
+\item[{\footnotesize \$(TARGET\_COMPILER\_DIR)}] Le répertoire d'installation du compilateur appelé aussi chemin maître.
+\end{description}
+
+\subsection{Cibles de génération}
+
+Remplacer FOOBAR par le nom de la cible 
+
+\begin{description}
+\item[{\footnotesize \$(FOOBAR\_OUTPUT\_FILE)}] Le fichier de sortie d'une cible spécifique.
+\item[{\footnotesize \$(FOOBAR\_OUTPUT\_DIR)}] Le répertoire de sortie d'une cible spécifique.
+\item[{\footnotesize \$(FOOBAR\_OUTPUT\_BASENAME)}] Le nom de base du fichier de sortie (sans chemin, sans extension) d'une cible spécifique.
+\item[{\footnotesize \$(FOOBAR\_PARAMETERS)}] Les paramètres d'exécution d'un cible spécifique
+\item[{\footnotesize \$(TARGET\_OUTPUT\_DIR)}] Le répertoire de sortie de la cible courante.
+\item[{\footnotesize \$(TARGET\_OBJECT\_DIR)}] Le répertoire objet de la cible courante.
+\item[{\footnotesize \$(TARGET\_NAME)}] Le nom de la cible courante.
+\item[{\footnotesize \$(TARGET\_OUTPUT\_FILE)}] Le fichier de sortie de la cible courante.
+\item[{\footnotesize \$(TARGET\_OUTPUT\_BASENAME)}] Le nom de base du fichier de sortie (sans chemin, sans extension) de la cible courante.
+\item[{\footnotesize \$(TARGET\_CC), \$(TARGET\_CPP), \$(TARGET\_LD), \$(TARGET\_LIB)}] L'outil de génération (compilateur, éditeur de liens, etc.) de la cible courante.
+\item[{\footnotesize \$(TARGET\_COMPILER\_DIR)}] Le répertoire courant des outils de génération (compilateur, éditeur de liens, etc.).
+\end{description}
+
+\subsection{Langue et encodage}
+
+\begin{description}
+\item[{\footnotesize \$(LANGUAGE)}] La langue du système en clair.
+\item[{\footnotesize \$(ENCODING)}] L'encodage du système en clair.
+\end{description}
+
+\subsection{Heure et date}
+
+\begin{description}
+\item[{\footnotesize \$(TDAY)}] Date courante sous la forme AAAAMMJJ (par exemple 20051228)
+\item[{\footnotesize \$(TODAY)}] Date courante sous la forme AAAA-MM-JJ (par exemple 2005-12-28)
+\item[{\footnotesize \$(NOW)}] Heure courante sous la forme AAAA-MM-JJ-hh.mm (par exemple 2005-12-28-07.15)
+\item[{\footnotesize \$(NOW\_L)}] Heure courante sous la forme AAAA-MM-JJ-hh.mm.ss (par exemple 2005-12-28-07.15.45)
+\item[{\footnotesize \$(WEEKDAY)}]  Nom du jour de la semaine en clair (par exemple \samp{Mercredi})
+\item[{\footnotesize \$(TDAY\_UTC), \$(TODAY\_UTC), \$(NOW\_UTC), \$(NOW\_L\_UTC), \$(WEEKDAY\_UTC)}] Ces types sont identiques aux précédents mais exprimés en temps universel TU.
+\item[{\footnotesize \$(DAYCOUNT)}] Nombre de jours passés depuis une date arbitraire choisie comme origine (1er Janvier 2009). Utile comme dernier composant d'un numéro de version/génération.
+\end{description}
+
+\subsection{Dépendant de la Plateforme}
+
+\begin{description}
+\item[{\footnotesize \$(PLATFORM)}] remplacé par msw sous windows et unix sous linux et mac (Depuis la révision r11793) 
+\end{description}
+
+\subsection{Commandes du Système d'exploitation}
+La variable est remplacée par la commande effective du Système d'exploitation.
+\begin{description}
+\item[{\footnotesize \$(CMD\_CP)}] Commande de Copie de fichiers.
+\item[{\footnotesize \$(CMD\_RM)}] Commande de Suppression de fichiers.
+\item[{\footnotesize \$(CMD\_MV)}] Commande de Déplacement de fichiers.
+\item[{\footnotesize \$(CMD\_NULL)}] NULL device (pour rediriger un flux)
+\item[{\footnotesize \$(CMD\_MKDIR)}] Commande de Création de répertoire.
+\item[{\footnotesize \$(CMD\_RMDIR)}] Commande de Suppression de répertoire.
+\end{description}
+
+\subsection{Valeurs aléatoires}
+
+\begin{description}
+\item[{\footnotesize \$(COIN)}] Cette variable simule un pile ou face (à chaque invocation) et retourne 0 ou 1.
+\item[{\footnotesize \$(RANDOM)}] Un nombre positif aléatoire sur 16 bits (0-65535)
+\end{description}
+
+\subsection{Chemins Standard}
+
+\begin{description}
+\item[{\footnotesize \$(GET\_DATA\_DIR)}] Unix: prefix/share/appname ; Windows: chemin EXE
+\item[{\footnotesize \$(GET\_LOCAL\_DATA\_DIR)}] Unix: /etc/appname ; Windows: chemin EXE
+\item[{\footnotesize \$(GET\_CONFIG\_DIR)}] Unix: /etc ; Windows: \file{C:\osp Documents and Settings\osp All Users\osp Application Data}
+\item[{\footnotesize \$(GET\_USER\_CONFIG\_DIR)}] Unix: ~ ; Windows: \file{C:\osp Documents and Settings\osp username\osp Application Data\osp appname}
+\item[{\footnotesize \$(GET\_USER\_DATA\_DIR)}] Unix: ~/.appname ; Windows: \file{C:\osp Documents and Settings\osp username\osp Application Data}
+\item[{\footnotesize \$(GET\_USER\_LOCAL\_DATA\_DIR)}] Unix: ~/.appname ; Windows: \file{C:\osp Documents and Settings\osp username\osp Local Settings\osp Application Data\osp appname}
+\item[{\footnotesize \$(GET\_TEMP\_DIR)}] TOUTES plateformes: Un répertoire temporaire accessible en écriture
+\end{description}
+
+\subsection{Fonctions internes pour la conversion de chemins}
+Ce sont des fonctions macro pour simplifier la génération des chemins 
+\begin{description}
+\item[{\footnotesize \$TO\_UNIX\_PATH\{\}}] converti vers un chemin unix (utilise '/' comme séparateur)
+\item[{\footnotesize \$TO\_WINDOWS\_PATH\{\}}] converti vers un chemin windows (utilise '\osp' comme séparateur)
+\item[{\footnotesize \$TO\_NATIVE\_PATH\{\}}] converti vers le chemin natif de la plate-forme où l'instance de \codeblocks s'exécute
+\end{description}
+
+\textbf{Utilisation}
+\begin{description}
+\item[{\footnotesize \$TO\_UNIX\_PATH\{\$(TARGET\_OUTPUT\_FILE)\}}] retourne le fichier de sortie de la cible courante en tant que chemin unix
+\end{description}
+
+\subsection{Évaluation Conditionnelle}
+
+\begin{lstlisting}
+$if(condition){clause si vraie}{clause si fausse}
+\end{lstlisting}
+
+L'évaluation Conditionnelle sera considérée comme vraie dans les cas suivants
+
+\begin{itemize}
+\item la condition est un caractère non vide autre que 0 ou false
+\item la condition est une variable non vide qui ne se résout pas en 0 ou false
+\item la condition est une variable qui est évaluée à true (implicite par une condition précédente)
+\end{itemize}
+
+L'évaluation Conditionnelle sera considérée comme fausse dans les cas suivants
+
+\begin{itemize}
+\item la condition est vide
+\item la condition est 0 ou false
+\item la condition est une variable qui est vide ou évaluée à 0 ou false
+\end{itemize}
+
+\hint{Notez SVP que les variantes de syntaxe de variable \codeline{\%if(...)} ou \codeline{\$(if)(...)} ne sont pas supportées dans ce type de construction.}
+
+\genterm{Exemple}
+
+Par exemple : vous utilisez plusieurs plateformes et vous voulez configurer différents paramètres en fonction du système d'exploitation. Dans le code suivant, la commande de script \codeline{[[ ]]} est évaluée et la \var{commande} sera exécutée. Ce peut être utile dans une étape de post-génération.
+
+\begin{lstlisting}
+[[ if (PLATFORM ==  PLATFORM_MSW) { print (_T("cmd /c")); } else 
+      { print (_T("sh ")); } ]] <commande>
+\end{lstlisting}
+
+\section{Expansion de script}
+
+Pour une flexibilité maximale, vous pouvez imbriquer les scripts en utilisant l'opérateur \codeline{[[ ]]} en tant que cas particulier d'expansion de variable. Les scripts imbriqués ont accès à toutes les fonctionnalités standard disponibles pour les scripts et se comportent comme des "backticks" (ou apostrophes inversées) de bash (à l'exception de l'accès au namespace de \codeblocks ). En tant que tels, les scripts ne sont pas limités à la production de sorties de type texte, mais peuvent aussi manipuler des états de \codeblocks (projets, cibles, etc.).
+
+\hint{La manipulation d'états de \codeblocks devrait être implémentée dans des étapes de pré-générations plutôt que dans un script.}
+
+\genterm{Exemple avec Backticks}
+
+\begin{lstlisting}
+objdump -D `find . -name *.elf` > name.dis
+\end{lstlisting}
+
+L'expression entre "backticks" (ou apostrophes inversées) retourne une liste de tous les exécutables \file{*.elf} des sous-répertoires. Le résultat de cette expression peut être utilisé directement par \cmdline{objdump}. Au final, la sortie est redirigée vers un fichier nommé \file{name.dis}. Ainsi, des processus peuvent être automatisés simplement sans avoir recours à aucune boucle.
+
+\genterm{Exemple utilisant un Script}
+
+Le texte du script est remplacé par toute sortie générée par votre script, ou ignoré en cas d'erreur de syntaxe.
+
+Comme l'évaluation conditionnelle est exécutée avant l'expansion de scripts, l'évaluation conditionnelle peut être utilisée pour les fonctionnalités de type pré-processeur. Les variables internes (et les variables utilisateur) sont étendues en sortie de scripts, aussi on peut référencer des variables dans les sorties d'un script.
+
+\begin{lstlisting}
+[[ print(GetProjectManager().GetActiveProject().GetTitle()); ]]
+\end{lstlisting}
+
+insère le titre du projet actif dans la ligne de commande.
+
+\section{Macros Commandes}\label{sec:command_macros}
+
+\begin{description}
+\item[\$compiler] Accède au nom de l'exécutable du compilateur.
+\item[\$linker] Accède au nom de l'exécutable de l'éditeur de liens.
+\item[\$options] Flags du Compilateur
+\item[\$link\_options] Flags de l'éditeur de liens
+\item[\$includes] Chemins des include du compilateur
+\item[\$c] Chemins des include de l'éditeur de liens
+\item[\$libs] Librairies de l'éditeur de liens
+\item[\$file] Fichier source (nom complet)
+\item[\$file\_dir] Répertoire du fichier source sans le nom de fichier ni son extension.
+\item[\$file\_name] Nom du fichier source sans les informations de chemin ni l'extension.
+\item[\$exe\_dir] Répertoire du fichier exécutable sans le nom de fichier ni son extension.
+\item[\$exe\_name] Nom du fichier exécutable sans les informations de chemin ni l'extension.
+\item[\$exe\_ext] Extension de l'exécutable sans les informations de chemin ni le nom du fichier.
+\item[\$object] Fichier objet
+\item[\$exe\_output] Fichier exécutable de sortie
+\item[\$objects\_output\_dir] Répertoire de sortie des fichiers objets
+\end{description}
+
+\subsection{Exemple 1 : Compilation d'un fichier unique}
+
+\begin{lstlisting}
+$compiler $options $includes -c $file -o $object
+\end{lstlisting}
+
+\subsection{Exemple 2 : Édition de liens de fichiers objets en exécutable}
+
+\begin{lstlisting}
+$linker $libdirs -o $exe_output $link_objects $link_resobjects 
+$link_options $libs
+\end{lstlisting}
+
+\section{Variables globales du compilateur}\label{sec:global_variables}
+
+Cette section décrit comment travailler avec des variables globales.
+
+\subsection{Synopsis}
+
+Travailler en tant que développeur sur un projet reposant sur des librairies tierces impose un certain nombre de tâches répétitives inutiles, comme configurer des variables de génération dépendantes du système de fichier local. Dans le cas de fichiers projets, une attention toute particulière doit être apportée afin d'éviter de diffuser une copie modifiée localement. Si on n'y prend pas garde, cela peut se produire facilement après avoir changé par exemple un flag de génération  pour obtenir une version de type release.
+
+Le concept de variable globale du compilateur est une nouvelle solution unique à \codeblocks qui adresse ce problème. Les variables globales du compilateur vous permettent de configurer un projet une seule fois, avec n'importe quel nombre de développeurs utilisant n'importe quel système de fichiers pour compiler et développer ce projet. Aucune information locale ne nécessite d'être changée plus d'une fois.
+
+\subsection{Noms et Membres}
+
+Les variables globales du compilateur dans \codeblocks se distinguent des variables par-projet par la présence d'un signe dièse en tête. Les variables globales du compilateur sont structurées ; chaque variable consiste en un nom et un membre optionnel. Les noms sont définissables librement, alors que les membres sont construits dans l'Environnement Intégré de Développement (IDE). Bien que vous puissiez choisir n'importe quoi comme nom en principe, il est recommandé de reproduire des identificateurs connus de packages communément utilisés. Ainsi, le nombre d'informations que l'utilisateur doit fournir est minimisé. L'équipe de \codeblocks fourni une liste de variables recommandées pour divers packages connus.
+
+Le membre base correspond à la même valeur que celle de la variable utilisée sans membre (alias).
+
+Les membres \codeline{include} et \codeline{lib} sont par défaut des aliases pour \codeline{base/include} et \codeline{base/lib}, respectivement. Cependant, l'utilisateur peut les redéfinir si une autre configuration est souhaitée.
+
+Il est généralement recommandé d'utiliser la syntaxe \codeline{$(#variable.include)} plutôt que son équivalent \codeline{$(#variable)/include}, car elle fournit une flexibilité accrue tout en étant fonctionnellement identique (voir \pxref{sec:mini_tutorial} et \pxref{fig:gcv_ui} pour plus de détails).
+
+Les membres \codeline{cflags} et \codeline{lflags} sont vides par défaut et peuvent être utilisés pour fournir la possibilité de remplir un ensemble consistant unique de flags compilateur/éditeur de liens pour toutes les générations sur une machine donnée. \codeblocks vous permet de définir des membres de variables utilisateur en complément de ceux prédéfinis.
+
+\figures[H][width=.8\columnwidth]{gcv_ui}{Variables Globales d'Environnement}
+\subsection{Contraintes}
+
+\begin{itemize}
+\item Les noms de variables de configuration ou de compilateur ne peuvent pas être vides, ne peuvent pas contenir de caractères blancs (ou espaces), doivent commencer par une lettre et ne contenir que des caractères alphanumériques. Les lettres Cyrilliques ou Chinoises ne sont pas des caractères alphanumériques. Si \codeblocks rencontre une séquence de caractères non valides dans un nom, il peut la remplacer sans le demander.
+\item Toutes les variables nécessitent que leur base soit définie. Tout le reste est optionnel, mais la base est absolument obligatoire. Si vous ne définissez pas la base d'une variable, elle ne sera pas sauvegardée (et ce même si les autres champs ont été définis).
+\item Vous ne pouvez pas définir un nom de membre utilisateur qui a le même nom qu'un membre prédéfini. Actuellement, le membre utilisateur écrasera le membre prédéfini, mais en général, le comportement est indéfini dans ce cas.
+\item Les valeurs des variables et des membres peuvent contenir un nombre arbitraire de séquences de caractères, mais doivent respecter les contraintes suivantes :
+\begin{itemize}
+\item Vous ne pouvez pas définir une variable par une valeur qui se référence à la même variable ou à n'importe lequel de ses membres
+\item Vous ne pouvez pas définir un membre par une valeur qui se référence à ce même membre
+\item Vous ne pouvez pas définir un membre ou une variable par une valeur qui se référence à la même variable ou membre par une dépendance cyclique.
+\end{itemize}
+\end{itemize}
+
+\codeblocks détectera les cas de définitions récursives les plus évidentes (ce qui peut arriver par accident), mais il ne fera pas d'analyse en profondeur de tous les cas possibles abusifs. Si vous entrez n'importe quoi, alors vous obtiendrez n'importe quoi; vous êtes avertis maintenant.
+
+\genterm{Exemples}
+
+Définir \codeline{wx.include} comme \codeline{$(#wx)/include} est redondant, mais parfaitement légal.
+Définir \codeline{wx.include} comme \codeline{$(#wx.include)} est illégal et sera détecté par \codeblocks .
+Définir \codeline{wx.include} comme \codeline{$(#cb.lib)} qui est lui-même défini comme \codeline{$(#wx.include)} créera une boucle infinie.
+
+\subsection{Utilisation des Variables Globales du Compilateur}
+
+Tout ce que vous avez à faire pour utiliser des variables globales de compilateur c'est de les mettre dans votre projet! Oui, c'est aussi simple que cela.
+
+Quand l'Environnement Intégré de Développement (IDE) détecte la présence d'une variable globale inconnue, il vous demande d'entrer sa valeur. La valeur sera sauvegardée dans vos paramètres, ainsi vous n'aurez jamais besoin d'entrer deux fois l'information.
+
+Si vous avez besoin de modifier ou de supprimer une variable plus tard, vous pourrez le faire depuis le menu des paramètres.
+
+
+\genterm{Exemple}
+
+\screenshot{global_vars_dir}{Variables Globales}
+
+L'image ci-contre montre à la fois les variables par-projet et globales. \codeline{WX_SUFFIX} est défini dans le projet, mais \codeline{WX} est une variable utilisateur globale.
+
+\subsection{Ensembles de Variables}
+
+Parfois, vous voulez utiliser différentes versions d'une même librairie, ou vous développez deux branches d’un même programme. Bien qu'il soit possible de gérer cela avec une variable globale de compilateur, cela peut devenir fastidieux. Dans ce cas, \codeblocks supporte des ensembles de variables. Un ensemble de variables est une collection indépendante de variables, identifiée par un nom (les noms d'ensemble ont les mêmes contraintes que les noms de variables).
+
+Si vous souhaitez basculer vers un autre ensemble de variables, vous sélectionnez tout simplement un ensemble différent depuis le menu. Des ensembles différents n'ont pas obligatoirement les mêmes variables, et des variables identiques dans différents ensembles n'ont pas forcément les mêmes valeurs, ni même des membres utilisateurs identiques.
+
+Un autre point positif à propos des ensembles est que si vous avez une douzaine de variables et que vous voulez obtenir un nouvel ensemble avec une de ces variables pointant vers un endroit différent, vous n'êtes pas obligés de ré-entrer toutes les données à nouveau. Vous pouvez simplement créer un clone de l'ensemble courant, ce qui dupliquera toutes vos variables.
+
+Supprimer un ensemble supprimera également toutes les variables de cet ensemble (mais pas celles d'une autre ensemble). L'ensemble \file{default} est toujours présent et ne peut pas être supprimé.
+
+\subsection{Mini-Tutoriel pour utilisateur curieux}\label{sec:mini_tutorial}
+
+Comme décrit auparavant, écrire \codeline{$(#var.include)} et \codeline{$(#var)/include} revient à la même chose par défaut. Aussi pourquoi donc écrire quelque chose d'aussi non intuitif que \codeline{$(#var.include)}?
+
+Prenons l'exemple d'une installation standard de Boost sous Windows. Généralement, vous vous attendriez à ce qu'un package fictif ACME ait ses fichiers include dans ACME/include et ses librairies dans ACME/lib. Optionnellement, il pourrait mettre ses en-têtes (headers) dans un autre sous répertoire appelé acme. Ainsi après avoir ajouté les chemins corrects dans les options du compilateur et de l'éditeur de liens, vous pouvez vous attendre à \codeline{\#include <acme/acme.h>} et éditer les liens avec \file{libacme.a} (ou quelque chose de ce genre).
+
+Boost, cependant, installe les en-têtes dans \file{C:\osp Boost\osp include\osp boost-1\_33\_1\osp boost} et ses librairies dans \file{C:\osp Boost\osp lib} par défaut. Il semble impossible d'obtenir ceci simplement sans devoir tout ajuster sur chaque nouveau PC, particulièrement si vous devez travailler sous Linux mais aussi avec un autre OS.
+
+C'est là que la véritable puissance des variables globales utilisateur se révèle. Quand vous définissez la valeur de la variable \codeline{#boost}, vous allez juste un cran plus loin que d'habitude. Vous définissez le membre include comme \file{C:\osp Boost\osp include\osp boost-1\_33\_1\osp boost} et le membre lib comme \file{C:\osp Boost\osp lib}, respectivement. Votre projet utilisant \codeline{$(#boost.include)} et \codeline{$(#boost.lib)} travaillera comme par magie correctement sur tout PC sans aucune modifications. Vous n'avez pas besoin de savoir pourquoi, vous ne voulez pas savoir pourquoi.

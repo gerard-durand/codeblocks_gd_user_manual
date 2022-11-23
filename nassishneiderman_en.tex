@@ -1,0 +1,58 @@
+\section{NassiShneiderman plugin}\label{sec:nassishneiderman}
+
+NassiShneiderman plugin allows the creation of Nassi Shneiderman diagrams within \codeblocks (\cite{url:nassi}). 
+
+\subsection{Create a diagram}
+
+There are two possibilities to create a diagram.
+
+\begin{enumerate}
+\item To create an empty diagram select the menu options \menu{File,New,Nassi Shneiderman diagram}.
+\item The second option is to creates a diagram from C/C++ source code. 
+\end{enumerate}
+
+In an editor window highlight some code to create the diagram from. For example the body of a function/method from the opening braces till the closing brace. Then right click the selection and choose \menu{Nassi Shneiderman,Create diagram} (see \pxref{fig:NassiShneidermanCreate1}). 
+
+\screenshot{NassiShneidermanCreate1}{NassiShneiderman Create}
+
+You should get a new diagram (see \pxref{fig:NassiShneidermanCreate2}).
+
+\screenshot{NassiShneidermanCreate2}{NassiShneiderman Diagram Example}
+
+The parser has some limitations:
+
+\begin{itemize}
+\item Comments can not be at the end of a branch.
+\item From a definition of a function it is only able to parse the body, not the declaration.
+\item For sure, you will find a lot more... 
+\end{itemize}
+
+\subsection{Editing structograms}
+\subsubsection{What to do with a diagram?}
+
+You can do a lot of things with a structogram:
+
+\begin{enumerate}
+\item Store for later usage. The diagram can be stored \menu{File,Save file} or \menu{File,Save file as...}.
+\item It is possible to export to different formats \menu{File,Export}
+    \begin{itemize}
+    \item "Export source..." to save as C source file.
+    \item "StrukTeX" to use in your documentation in LaTeX.
+    \item "PNG" or "PS" and eventually "SVG" to have a diagram in an image format known by a lot of other tools.
+    \end{itemize}        
+\item Directly insert the code into the editor: Open or create a diagram. Back in an editor window right click and choose \menu{Nassi Shneiderman,insert from xy} (You get a list with all open diagrams here).
+\item Drag'n'Drop the diagram (or parts of it) to other tools. For example to OpenOffice Writer to get an image in your documentation.
+\end{enumerate}
+
+If the chosen diagram has a selection, the export or code-generation takes only this part of the diagram. 
+
+\subsubsection{Extensions}
+
+The NassiShneiderman plugin supports some extensions of Nassi-Shneiderman diagrams: 
+
+\begin{itemize}
+\item break has a special brick with an "right-arrow"
+\item continue has a special brick with a "left-arrow"
+\item To be able to create diagrams from c/c++ switch statements, the selection does not implicitly break before a case. The different cases are vertically aligned. Supports C and C++.
+\end{itemize}
+

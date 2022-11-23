@@ -1,0 +1,52 @@
+\section{\codeblocks variable types synthesis}\label{sec:cb_variables_types}
+
+You will find here the different variable types available in \codeblocks and when/how to use them. (copied from the Wiki)
+
+\subsection{Environment Variables plugin}
+
+These are system wide and can be set/overridden by the EnvVars plugin.
+It's helpful if your e.g. have another build systems besides \codeblocks that uses environment variables (like Makefiles). This way you can "share" this technology.
+The EnvVars plugin (\pxref{sec:EnvVar_Plugin}) allows to setup different EnvVars sets which you can activate and/or refer to within per-project settings.
+This might be useful for e.g. platform specific settings or library path variables (under Linux). 
+
+\subsection{Custom Variables under Global Compiler}
+
+These are helpful to e.g. quickly change a path for a compiler suite.
+For example: You have gcc 10.2.0 and gcc 8.1 installed. They all have the same path structure so if you setup the main path to the executables as e.g \codeline{"D:\\Devel\\GCC$(GCC_VER)"} 
+and additional include/lib \codeline{"D:\\Devel\\GCC$(GCC_VER)\\include"/"D:\\Devel\\GCC$(GCC_VER)\\lib"} folders as you can easily switch between both compilers by just changing the custom variable. 
+This would (of course) apply to *all* projects that use this very GCC compiler. 
+
+\subsection{Custom Variables under Project Build Options}
+
+These are very helpful if you want to compile your project against two compilers as stated above. 
+You can have two targets with different compiler versions that both refer to one compiler setup but only differ e.g. in the path setup then. 
+In addition you can easily append a "d" to libs for the debug version, e.g. wxmsw32ud, an "u" for a unicode build, e.g. wxmsw32ud and/or a version string for a specific library version, 
+e.g. wxmsw32ud. \newline
+A library entry in the linker setup that incorporates all three examples would look like this:
+\begin{verbatim}
+wxmsw$(WX_VER)$(WX_UNICODE)$(WX_DEBUG)
+\end{verbatim}
+
+Now you could setup the compiler variables as following:
+\begin{verbatim}
+WX_VER=32
+WX_DEBUG=d
+WX_UNICODE=u
+\end{verbatim}
+to active the unicode, debug v3.2 library name of wxWidgets, named
+
+\codeline{wxmsw32ud}
+
+Notice that you can leave custom variables blank, thus if you leave WX\_DEBUG blank you receive the non-debug name
+
+\codeline{wxmsw32u}
+
+(You could also just omit the setup of the custom variable at all.)
+
+The values are being overridden in the order of details - compiler custom variables are overridden by project Custom Variables and project Custom Variables are overridden by target Custom Variables. It only makes sense that way... 
+
+\subsection{Where does Global variables fall in this order of precedence?}
+
+These variables have a very special meaning. In contrast to all others if you setup such a variable and share your project file with others that have *not* setup this Global Variables, \codeblocks 
+will ask the user to setup the variable. This is a very easy way to ensure the "other developer" knows what to setup easily. \codeblocks will ask for all path's usually necessary.\newline
+For a detailed explanation please refer to the Global compiler variables paragraph (\pxref{sec:global_variables}). 

@@ -1,0 +1,127 @@
+\section{The build process of \codeblocks}\label{sec:build_process}
+
+In this pages, the build process is explained in detail. What goes on behind the scenes and "when" is covered. I hope it makes an interesting read :).
+ 
+\subsection{Build order}
+
+As you have probably guessed, \codeblocks does not launch build commands at random but rather as a well thought out and prepared sequence. But first let's see what components are the subject of the build:
+
+\begin{description}
+\item[Workspace:] contains one or more projects
+\item[Project:] contains one or more build targets. It also contains the project's files.
+\item[Build target:] project files are assigned to it, which are built as a group and generate one binary output. This output can either be an executable, a dynamic library or a static library. NOTE: there is one kind of build target that does not produce a binary output directly but rather just runs its pre/post build steps (which may generate a binary output externally).
+\end{description}
+
+Let's break these subjects in sections and explain them in more detail.
+
+\subsection{Workspace}
+
+The workspace is the top-level container item for organizing your projects. Since there can be only one workspace open at a time, there really is no build order issue for them. It's only one, so it's just built ;).
+
+Use the menu \menu{Build,Build workspace} to build a workspace (i.e. all the projects contained in it). 
+
+\subsection{Projects}
+
+Here, things start getting interesting :).
+
+Projects build order is different depending if the user has set project dependencies or not. Please read on.
+
+\genterm{Without project dependencies}
+
+In this case, projects are built in the order of appearence, from top to bottom. Most projects though (at least not the "hello world" ones), would want to setup project dependencies.
+
+\genterm{Using project dependencies}
+
+Project dependencies are a simple way to tell \codeblocks that a given project "depends" on another (in the same workspace, always).
+
+Thus imagine in your workspace you have a library project and an executable project which depends on the library. Then you could (and should) tell \codeblocks about this dependency. To do this, you select \menu{Project,Properties} and click the "Project's dependencies.." button.
+
+\textit{Please notice that the dependency information is saved within the workspace file, not the project file as it is a dependency between two projects within a workspace.}
+
+\figures[H][width=.55\columnwidth]{Project_deps}{Setting up project dependencies}
+
+It is very easy to use this dialog. Select the project you want to add a dependency and then put a checkmark on all projects that this project depends on. This will ensure that all the projects you checked will be built before the project that depends on them, ensuring a synchronized build.
+
+\textbf{Tip:} You don't have to close this dialog and launch the other project's properties again to set their dependencies. You can set all projects dependencies from this same dialog. Just select a different project in the drop-down box :).
+
+Some things to note:
+
+\begin{itemize}
+\item Dependencies are set directly or indirectly. If project A depends directly on project B and project B depends on project C, then project A indirectly depends on project C too.
+\item \codeblocks is smart enough to watch out for circular dependencies and prohibit them. A circular dependency is caused when project A depends directly or indirectly on project B and project B depends directly or indirectly on project A.
+\item Dependencies take effect either if building the whole workspace or a single project. In this case, only the dependencies needed for the project you 're building will be built too.
+\end{itemize}
+
+\subsection{Build targets}
+
+Build targets build order depend on a couple of things.
+
+\begin{enumerate}
+\item If the user has selected a specific build target in the compiler toolbar's drop-down box, then only this build target is built. If project dependencies are setup for the project containing this target, all projects it depends on will also build their target with the same name. If no such target exists, that project is skipped.
+\item If the virtual "All" target is selected, then all targets in the project (and all the projects it depends on) are built in order, top to bottom. There are a couple of exceptions to this:
+    \begin{itemize}
+    \item A target is not built with "All" if the target option (in project properties "Targets" page) "Build this target with All" is not selected.
+    \item If no targets in the project have the above option selected, then no virtual "All" target appears in the list.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Preprocessing phase}
+
+Before the actual build process starts (i.e. the compiler/linker commands start executing), a preprocessing step runs which generates all required command-lines for the entire build process. This step caches much of the information it generates, making subsequent builds faster in effect.
+
+This step also runs any attached build scripts.
+
+
+\subsection{Actual commands execution}
+
+This is the stage that the build process actually starts, from the user's point of view. The files start getting compiled and finally linked to generate the various binary outputs the build targets define.
+
+In this step, the pre-build and post-build steps are also executed.
+
+
+\subsection{Pre-build and post-build steps}
+
+These are commands that can be setup on project and/or target level. They are shell commands that e.g. copy files around or any other operation you can do with a usual OS system shell.
+
+The variables specified in the article Variable expansion (\pxref{sec:variables_types}) can be used in the scripts to get things like target output directory, project directory, target type and others.
+
+Here's a breakdown of the pre/post build steps execution order for an imaginary project with two targets (Debug/Release):
+
+\begin{enumerate}
+\item Project pre-build steps
+    \begin{enumerate}
+    \item Target "Debug" pre-build steps
+    \item Target "Debug" compile files
+    \item Target "Debug" link files and generate binary output
+    \item Target "Debug" post-build steps (see notes below)
+    \item Target "Release" pre-build steps
+    \item Target "Release" compile files
+    \item Target "Release" link files and generate binary output
+    \item Target "Release" post-build steps (see notes below)
+    \end{enumerate}
+\item Project post-build steps
+\end{enumerate}
+
+I hope this is self-explaining :)
+
+\hint{Pre-build steps are always ran. Post-build steps will run only if the project/target they 're attached to is not up-to-date (i.e. is going to be built). You can change this by selecting "Always execute, even if target is up to date" in the build options.}
+
+\genterm{Script Samples}
+
+Post-build script that copies the output file into the folder \file{C:\osp Program\osp bin} in Windows: 
+
+\begin{lstlisting}
+cmd /c copy "$(PROJECT_DIR)$(TARGET_OUTPUT_FILE)" "C:\Program\bin"
+\end{lstlisting}
+
+Execute the bash script "copyresources.sh" in Linux:
+
+\begin{lstlisting}
+/bin/sh copyresources.sh
+\end{lstlisting}
+
+Create a new directory in the output directory:
+
+\begin{lstlisting}
+mkdir $(TARGET_OUTPUT_DIR)/data
+\end{lstlisting}  

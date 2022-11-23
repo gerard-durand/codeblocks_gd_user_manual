@@ -1,0 +1,112 @@
+\section{Thread Search}\label{sec:thread_search}
+
+Via le menu \menu{Rechercher,Thread Search}, cette extension peut être affichée ou masquée en tant qu'onglet dans la console de messages. Dans \codeblocks, une prévisualisation de l'occurrence de la chaîne de caractères peut être affichée pour un fichier, un espace de travail ou un répertoire. Ce faisant, la liste des résultats de la recherche sera affichée sur la partie droite de la console ThreadSearch. En cliquant sur une entrée de la liste, une prévisualisation s'affiche sur la partie gauche. En double-cliquant dans la liste, le fichier sélectionné est ouvert dans l'éditeur de  \codeblocks.
+
+\hint{L'étendue des extensions de fichiers à inclure dans la recherche est préconfiguré et peut avoir besoin d'être ajusté.}
+
+\subsection{Fonctionnalités}
+
+L'extension ThreadSearch offre les fonctionnalités suivantes :
+
+\begin{itemize}
+\item \samp{Recherche dans les fichiers} multi tâches (Multi-threaded).
+\item  Éditeur interne en lecture seule pour voir les résultats
+\item Fichier ouvert dans l'éditeur de type notebook
+\item Menu contextuel \samp{Rechercher les occurrences} pour commencer une recherche dans les fichiers à partir du mot situé sous le curseur
+\end{itemize}
+
+\screenshot[hbt!][width=1.1\columnwidth]{threadsearch_panel}{Panneau de Thread Search}
+
+\subsection{Utilisation}
+
+\begin{enumerate}
+\item Configurez vos préférences de recherche (voir \pxref{fig:threadsearch_options})
+
+Une fois l'extension installée, il y a 4 façons de conduire une recherche :
+
+\begin{enumerate}
+\item Tapez/Sélectionnez un mot dans la boîte de recherche combinée et appuyez sur Entrée ou cliquez sur Rechercher dans le panneau de Thread search de la console de messages.
+\item Tapez/Sélectionnez un mot dans la boîte de recherche combinée de la barre d'outil et appuyez sur Entrée ou cliquez sur le bouton Rechercher.
+\item Clic droit sur n'importe quel \samp{mot} dans l'éditeur actif puis cliquez sur \samp{Rechercher les occurrences}.
+\item Cliquez sur Rechercher/Thread search pour trouver le mot courant dans l'éditeur actif.
+\hint{Les points 1, 2 et 3 peuvent ne pas être disponibles en fonction de la configuration courante.}
+\end{enumerate}
+\item Cliquez de nouveau sur le bouton de recherche pour arrêter la recherche en cours.
+\item Un clic simple sur un élément résultat l'affiche dans la prévisualisation sur la droite.
+\item Un double-clic sur un élément résultat ouvre ou configure un éditeur sur la droite.
+\end{enumerate}
+
+\subsection{Configuration}
+
+Pour accéder au panneau de configuration de l'extension ThreadSearch cliquez sur (voir \pxref{fig:threadsearch_options}) :
+
+\screenshot{threadsearch_options}{Configuration de Thread Search}
+
+\begin{enumerate}
+\item Bouton des Options du panneau de Thread search dans la console des messages.
+\item Bouton des Options dans la barre d'outils de Thread search.
+\item Menu Paramètres/Environnement puis choisir l'élément Thread search dans la colonne de gauche.
+\end{enumerate}
+
+\hint{Les points 1, 2 et 3 peuvent ne pas être disponibles en fonction de la configuration courante.}
+
+La recherche partielle défini l'ensemble de fichiers qui seront analysés.
+
+\begin{itemize}
+\item Les cases à cocher Projet et Espace de travail sont mutuellement exclusives.
+\item Le chemin du répertoire peut être édité ou configuré via le bouton Sélection.
+\item Masque est l'ensemble des spécifications de fichiers séparées par des \samp{;}. Par exemple: \file{*.cpp;*.c;*.h.}
+\end{itemize}
+
+\subsection{Options}
+
+\begin{description}
+\item[Mot entier] si coché, lignes contenant l'expression recherchée si l'expression recherchée est trouvée sans caractères alphanumériques \codeline{+'_'} avant et après.
+\item[Début de mot] si coché, lignes contenant l'expression recherchée si l'expression recherchée est trouvée au début d'un mot sans caractères alphanumériques \codeline{+'_'} avant et après.
+\item[Respecter la casse] si coché, la recherche est sensible à la casse (majuscules-minuscules).
+\item[Expression régulière] l'expression recherchée est une expression régulière.
+\end{description}
+
+\hint{Si vous voulez chercher des expressions régulières comme \file{\osp n} vous devrez choisir l'option \menu{Utiliser des recherches RegEx avancées} via le menu \menu{Paramètres,Éditeur,Paramètres généraux}.}
+
+\subsection{Options de Thread search (ou Tâche de Recherche)}
+
+\begin{description}
+\item[Activer les éléments du menu contextuel \samp{Trouver les occurrences}] Si coché, l'entrée Trouver les occurrences est ajoutée au menu contextuel de l'éditeur.
+\item[Utiliser les options par défaut du menu \samp{Trouver les occurrences}] Si coché, un ensemble d'options par défaut est appliqué aux recherches lancées par \samp{Trouver les occurrences} du menu de contexte correspondant. Par défaut l'option \samp{Mot entier} et \samp{Respecter la casse} est activé.
+\item[Effacer les résultats précédents en début de recherche] Si l'extension ThreadSearch est configurée en \samp{Vue arborescente} alors les résultats de la recherche sont listés dans l'ordre hiérarchique suivant,
+\begin{itemize}
+\item le premier noeud contient le terme cherché
+\item ensuite les fichiers qui contiennent ce terme sont listés
+\item dans cette liste les numéros des lignes et le contenu correspondant sont affichés
+\end{itemize}
+Si vous recherchez plusieurs termes, la liste deviendra confuse, aussi les résultats des recherches précédents peuvent être supprimés en utilisant cette option en début de recherche.
+\hint{Dans la liste des occurrences les termes seuls ou tous les termes peuvent être supprimés via le menu de contexte \menu{Supprimer l'élément} ou \menu{Supprimer tous les éléments}.}
+\end{description}
+
+\subsection{Mise en page}
+
+\begin{description}
+\item[Afficher l'en-tête dans la fenêtre de logs] si coché, l'en-tête est affiché dans la liste des résultats de contrôle.
+\hint{Si non coché, les colonnes ne sont plus redimensionnables mais on économise de la place.}
+\item[Dessiner des lignes entre les colonnes] Dessine des lignes entre les colonnes en mode Liste.
+\item[Afficher la barre d'outils de ThreadSearch] Afficher la barre d'outils de l'extension ThreadSearch.
+\item[Afficher les widgets de recherche dans le panneau de messages de ThreadSearch] Si coché, seuls les résultats de la liste de contrôle et l'éditeur de prévisualisation sont affichés. Les autres widgets de recherches sont masqués (économise de la place).
+\item[Afficher l'éditeur de prévisualisation de code] La prévisualisation du code peut être masquée soit par cette case à cocher soit par un double-clic sur la bordure du séparateur en milieu de fenêtre. C'est ici qu'on peut le faire de nouveau s'afficher.
+\end{description}
+
+\subsection{Panneau de Gestion}
+
+Vous pouvez choisir différents modes de gestion de la fenêtre de ThreadSearch. Avec le choix \samp{Panneau de Messages} la fenêtre ThreadSearch sera intégrée à la console de messages dans un des onglets. Si vous choisissez \samp{Mise en page} vous pourrez le détacher de la console et obtenir une fenêtre flottante que vous pourrez placer ailleurs.
+
+\subsection{Type de journal}
+
+La vue des résultats de recherche peut s'afficher de plusieurs façons. Le choix \samp{Liste} affiche toutes les occurrences sous forme d'une liste. L'autre mode \samp{Arborescence} assemble toutes les occurrences internes d'un fichier dans un noeud.
+
+\subsection{Mode de partage de fenêtre}
+
+L'utilisateur peut configurer la séparation de fenêtre de prévisualisation et de sortie des résultats de recherche horizontalement ou verticalement.
+
+\subsection{Tri des résultats de recherche}
+
+Les résultats de recherche peuvent être triés par le nom de chemin ou le nom de fichier.

@@ -1,0 +1,60 @@
+\section{Extension SpellChecker}\label{sec:spell_checker}
+
+Une extension pour vérifier l'orthographe de chaînes de caractères et de commentaires.
+
+\subsection{Introduction}
+Une extension pour vérifier l'orthographe de chaînes de caractères et de commentaires. L'orthographe est vérifiée au cours de la frappe. De plus un thésaurus est fourni. Les deux peuvent être accédés sur demande en sélectionnant le mot en question, puis choisir entre le correcteur... ou le Thesaurus... depuis le menu d'Édition (l'opération peut être affectée à une touche d'accès rapide via le plugin Raccourcis Clavier). Le menu de contexte (clic droit sur le mot) permet d'accéder aux suggestions d'orthographe. 
+
+\subsection{Configuration}
+
+La configuration est dans le menu \menu{Paramêtres,Éditeur}. L'option "spell check" est à peu près à mi-chemin vers le bas de la liste de gauche.
+
+\screenshot{ConfigureSpellChecker}{Configuration de SpellChecker}
+
+La signification des différents contrôles est la suivante : 
+\begin{description}
+\item[Activer spell checker en-ligne] Active ou désactive spell checker.
+\item[Langue] La langue utilisée pour la vérification orthographique et le thésaurus est sélectionnée en choisissant un dictionnaire. On peut aussi le changer dans la barre d'état.
+\item[Configuration des chemins, Dictionnaires] Le plugin cherche les fichiers dictionnaires via ce chemin.
+\item[Configuration des chemins, Thésaurus] Le plugin cherche les fichiers thésaurus via ce chemin.
+\item[Configuration des chemins, Bitmaps] (Optionnel) Le plugin cherche, via ce chemin, les drapeaux à afficher dans la barre d'état.
+\end{description}
+
+\hint{Vous pouvez utiliser des Macros dans les trois configurations de chemins, comme par ex. \$(CODEBLOCKS)/share/codeblocks/SpellChecker. Voir Expansion de Variables pour plus de détails. Ceci est pratique si vous utilisez une version portable de \codeblocks.}
+
+\subsection{Dictionnaires}
+
+SpellChecker utilise une librairie nommée hunspell. Hunspell est le correcteur orthographique de OpenOffice.org, Mozilla Firefox et d'autres projets. Les dictionnaires disponibles pour ces applications sont compatibles avec ce plugin.
+
+Open Office fourni toute une collection de dictionnaires pour plusieurs langues et dialectes à télécharger. Les extensions de OOo 3.x (*.oxt) sont des archives compressés qui peuvent être ouvertes avec votre logiciel d'archives préféré (par exemple 7-Zip ou File Roller). Copiez le fichier .aff et le fichier .dic dans le répertoire configuré dans 'Configuration des chemins, Dictionnaires' (voir ci-dessus).
+
+Si vous êtes sous Linux vous avez sans doute déjà des dictionnaires compatibles d'installés. Regardez dans /usr/share/hunspell ou plutôt mon choix dans /usr/share/myspell/dicts. La raison pour laquelle j'aime les fichiers myspell est qu'ils incluent d'office les fichiers thésaurus qui sont correctement nommés pour travailler avec l'extension, et tout est placé au même endroit. Ne copiez pas ces fichiers. Pointez seulement spell checker vers l'endroit où ils se trouvent déjà.
+
+Je sais que sous Windows, Firefox et Thunderbird installent aussi des fichiers dictionnaires compatibles. On peut les trouver dans... \file{C:\osp Program Files\osp Mozilla Firefox\osp dictionaries} ou \file{C:\osp Program Files\osp Mozilla Thunderbird\osp dictionaries}. De plus, OpenOffice.org et LibreOffice installent aussi des fichiers dictionnaires dans\newline
+ \file{C:\osp Program Files\osp (Open/Libre)Office\osp share\osp extensions\osp dict-*}.
+
+Le navigateur Google Chrome installe aussi des dictionnaires, mais ils sont au format .bdic et le plugin de correction orthographique de \codeblocks ne peut pas travailler avec ces fichiers.
+
+\subsection{Fichiers Thésaurus}
+
+Les fichiers de thésaurus sont aussi disponibles sur OOo, comme les dictionnaires. Copiez les fichiers de thésaurus (th\_*.dat and th\_*.idx) dans le répertoire configuré dans 'Configuration des chemins, Thésaurus' (voir ci-dessus) puis renommez les pour que leur nom concorde avec celui des dictionnaires mais les faire précéder de "th\_" tout en gardant l'extension telle qu'elle est.
+
+\textbf{Exemple}: Si les fichiers dictionnaires (pour moi, une seule langue) sont "en\_GB.aff" et "en\_GB.dic" les fichiers utilisés pour le thésaurus sont "th\_en\_GB.idx" et "th\_en\_GB.dat".
+
+Sur mon système Linux je trouve les fichiers thésaurus déjà installés dans /usr/share/myspell/dicts et /usr/share/mythes. De même, ne déplacez pas les fichiers. Configurez spell checker pour utiliser directement ces fichiers là où ils sont.
+
+Sous Windows, si soit OpenOffice.org soit LibreOffice est installé, ils incluent souvent les fichiers thésaurus dans \file{C:\osp Program Files\osp (Open/Libre)Office\osp share\osp extensions\osp dict-*}. 
+
+\subsection{Bitmaps (Drapeaux)}
+
+L'image bitmap de la langue sélectionnée est affichée dans la barre d'état. S'il n'y a pas d'image bitmap, c'est le nom de la langue qui s'affiche. L'image bitmap doit être au format PNG Choisissez un drapeau dans famfamfam\_flag\_icons, copiez le dans le répertoire configuré dans 'Configuration des chemins, Bitmaps' (voir ci-dessus) et renommez-le pour que le nom soit conforme à celui du dictionnaire mais gardez l'extension png.
+
+\subsection{Styles à vérifier}
+
+Seul du texte possédant un style spécifique peut être vérifié (par exemple seulement des commentaires et des chaînes de caractères). Les styles sont configurés automatiquement par Scintilla (le composant d'édition de \codeblocks).
+
+Le fichier OnlineSpellChecking.xml contient une liste avec des indices sur les styles à vérifier. Les indices ne sont pas les mêmes en fonction des langages de programmation, et donc, le fichier contient une liste pour chacun des langages de programmation. Pour ajouter des styles, regardez le nom du langage de programmation et les indices dans le fichier correspondant lexer\_*.xml puis ajoutez cette information au fichier OnlineSpellChecking.xml.
+
+Par exemple, pour vérifier l'orthographe dans des scripts de commande bash (fichiers *.sh), ajoutez la ligne : 
+
+\codeline{<Language name="Bash" index="2,5,6" />}

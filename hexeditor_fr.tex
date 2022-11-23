@@ -1,0 +1,61 @@
+\section{Éditeur Hexadécimal}\label{sec:hexeditor}
+
+Comment ouvrir un fichier via HexEditor dans \codeblocks.
+
+\begin{enumerate}
+\item \menu{Fichier, Ouvrir avec HexEditor}
+\item Menu contextuel du navigateur de projet (\menu{Ouvrir avec,Hex editor}
+\item Sélectionnez l'onglet Fichier dans le panneau de gestion. En sélectionnant un fichier dans le Gestionnaire de fichiers et en exécutant le menu contextuel \menu{Ouvrir avec Hex Editor}, le fichier s'ouvre dans HexEditor.
+\end{enumerate}
+
+Répartition des fenêtres :
+
+À gauche la Vue de HexEditor et à droite l'affichage sous forme de chaînes de caractères
+
+\textbf{Ligne du haut :}
+Position actuelle (valeur en décimal/hex) et pourcentage (rapport entre la position actuelle du curseur et le fichier complet).
+
+\textbf{Boutons :}
+
+\textbf{Fonctions de recherche}
+
+\textit{Bouton Aller à :}
+Sauter à une position absolue. Format décimal ou hexadécimal. Saut relatif vers l'avant ou vers l'arrière en spécifiant le signe.
+
+\textit{Chercher :}
+ Recherchez des motifs hexadécimaux dans la vue HexEditor ou des chaînes de caractères dans la vue d'aperçu de fichier.
+
+\textit{Configuration du nombre de colonnes :}
+Exactement, Multiple de, Puissance de
+
+\textit{Mode d'affichage :}
+Hexa, Binaire
+
+\textit{Octets :}
+Sélectionnez le nombre d'octets à afficher par colonne.
+
+\textit{Choix d'Endianess :}
+BE: Big Endian
+LE: Little Endian
+
+\textit{Valeur Prévisualisée :}
+Ajoute une vue supplémentaire dans HexEditor. Pour une valeur sélectionnée dans HexEditor, la valeur est également affichée sous forme de Word, Dword, Float, Double.
+
+\textit{Entrée d'expression :}
+Permet d'effectuer une opération arithmétique sur une valeur dans HexEditor. Le résultat de l'opération est affiché dans la marge de droite.
+
+\textit{Calc :}
+Testeur d'Expression
+
+\textit{Édition d'un fichier dans HexEditor :}
+
+Commandes d'historique Annuler (Undo) et Refaire (Redo).
+
+Autre exemple, Déplacer le curseur dans la vue des chaînes de caractères :
+Insérer des espaces avec la touche Insérer.
+Supprimer des caractères en appuyant sur la touche Suppr.
+
+En saisissant un texte, le contenu existant est écrasé sous la forme d'une chaîne de caractères.
+
+En saisissant des chiffres dans la vue d'HexEditor, les valeurs sont écrasées et l'aperçu est mis à jour.
+

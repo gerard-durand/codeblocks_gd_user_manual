@@ -1,0 +1,55 @@
+\section{Extension Variables d'Environnement}\label{sec:EnvVar_Plugin}
+
+D'après le wiki de \codeblocks. Voir aussi la \pxref{sec:EnvVars_Cfg}.
+
+L'extension \textbf{Éditeur de variables d'environnement} permet de définir des variables d'environnement du système dans le cadre de \codeblocks.\newline
+L'utilisateur peut avoir plusieurs ensembles qui contiennent 1..n variables d'environnement.\newline
+L'utilisateur peut passer d'un ensemble à l'autre via la boîte de dialogue de configuration des variables d'environnement.\newline
+En outre, l'extension EnvVars apporte une option aux projets (dans la configuration du projet) pour appliquer un ensemble EnvVar particulier à activer (et à utiliser pendant la compilation).
+
+La boîte de dialogue permettant de modifier les ensembles se trouve dans \menu{Paramètres,Environnement,Variables d'environnement}.\newline
+La boîte de dialogue permettant de choisir l'ensemble actif pour le projet en cours se trouve dans \menu{Projet,Propriétés,Options EnvVar}.\newline
+
+\textbf{Script binding}
+
+Cette extension apporte sa fonctionnalité via un "squirrel binding" : 
+
+{\footnotesize
+\begin{longtable}{|l|l|l|l|}\hline
+\textbf{Valeur de retour}&\textbf{Nom}      &\textbf{Arguments}     &\textbf{Remarques}                     \\ \hline
+\endhead    % Pour répéter la ligne de titre si besoin
+wxArrayString   &EnvvarGetEnvvarSetNames    &                       &Retourne tous les ensembles            \\
+                &                           &                       &envvar disponibles                     \\ \hline
+wxString        &EnvvarGetActiveSetName     &                       &Retourne le nom de l'ensemble          \\
+                &                           &                       &actif courant                          \\
+                &                           &                       &(depuis config, /active\_set)          \\ \hline
+wxArrayString   &EnvVarGetEnvvarsBySetPath  &const wxString         &Retourne les envvars d'un              \\
+                &                           &set\_name              &chemin d'ensembles envvars             \\
+                &                           &                       &dans la config                         \\ \hline
+bool            &EnvvarSetExists            &const wxString         &Vérifie si un ensemble d'envvars       \\
+                &                           &set\_name              &existe effectivement dans la config    \\ \hline
+bool            &EnvvarSetApply             &const wxString\&       &Applique un ensemble envvar            \\
+                &                           &set\_name,             &spécifique de la config                \\
+                &                           &bool even\_if\_active  &(sans interaction de l'IU)             \\ \hline
+void            &EnvvarSetDiscard           &const wxString         &Ignore un ensemble envvar              \\
+                &                           &                       &spécifique de la config                \\
+                &                           &                       &(sans interaction de l'IU)             \\ \hline
+bool            &EnvvarApply                &const wxString key,    &Applique un envvar spécifique          \\
+                &                           &const wxString value   &                                       \\ \hline
+bool            &EnvvarDiscard              &const wxString key     &Ignore un envvar                       \\ \hline
+\caption{Squirrel binding}
+\end{longtable}
+\par}
+
+\textbf{NOTE} : Les arguments "value" sont automatiquement générés à partir des macros. Vous n'avez pas besoin d'appeler ReplaceMacros() sur ceux-ci.
+
+Beaucoup d'autres fonctions de script sont disponibles. Regardez dans \url{http://wiki.codeblocks.org/index.php/Scripting_commands}
+
+\textbf{Exemple}
+
+Dans les fenêtres des étapes de post ou pré-génération :
+\begin{lstlisting}
+[[EnvvarApply(_("test"),_("testValue"));]]
+echo %test%
+\end{lstlisting}
+

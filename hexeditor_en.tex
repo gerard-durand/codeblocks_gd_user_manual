@@ -1,0 +1,61 @@
+\section{HexEditor}\label{sec:hexeditor}
+
+How a file can be opened in HexEditor within \codeblocks.
+
+\begin{enumerate}
+\item \menu{File, Open with HexEditor}
+\item Project Navigator context menu (\menu{Open with, Hex editor}
+\item Select the Tab Files in the Management Panel. By selecting a file in the FileManager and executing the context menu \menu{Open With Hex editor} this file is opened in HexEditor.
+\end{enumerate}
+
+Division of windows:
+
+left is HexEditor view and right is the display as strings
+
+\textbf{Upper line:}
+Current position (value in decimal/hex) and percentage (ratio of current cursor position to whole file).
+
+\textbf{Buttons:}
+
+\textbf{Search functions}
+
+\textit{Goto Button:}
+Jump to an absolute position. Format in decimal or hex. Relative jump forward or backward by specifying a sign.
+
+\textit{Search:}
+Search for hex patterns in the HexEditor view or for strings in the file preview.
+
+\textit{Configuration of the number of columns:}
+Exactly, Multiple of, Power of
+
+\textit{Display mode:}
+Hex, Binary
+
+\textit{Bytes:}
+Select how many bytes should be displayed per column.
+
+\textit{Choice of Endianess:}
+BE: Big Endian
+LE: Little Endian
+
+\textit{Value Preview:}
+Adds an additional view in HexEditor. For a selected value in HexEditor, the value is also displayed as Word, Dword, Float, Double.
+
+\textit{Expression Input:}
+Allows you to perform an arithmetic operation on a value in HexEditor. Result of the operation is displayed at the right margin.
+
+\textit{Calc:}
+Expression Tester
+
+\textit{Editing a file in the HexEditor:}
+
+Includes Undo and Redo History.
+
+For example, move the cursor to the string view:
+Insert spaces with the Insert key.
+Delete characters by pressing the Del key.
+
+By entering a text, the existing content is overwritten as a string.
+
+By entering numbers in the HexEditor view the values are overwritten and the preview is updated.
+

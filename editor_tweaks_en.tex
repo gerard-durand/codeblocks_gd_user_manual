@@ -1,0 +1,34 @@
+\section{Editor Tweaks plugin}\label{sec:editor_tweaks}
+
+The EditorTweaks plugin contains several different features. On a per-file basis, it controls:
+
+\begin{itemize}[noitemsep]
+\item word-wrap;
+\item line-numbers;
+\item tab key emissions (tab characters or spaces);
+\item number of spaces the tab key emits;
+\item end of line characters (carriage-return + linefeed; carriage-return; linefeed);
+\item visibility of end of line characters;
+\item on-demand striping of trailing white-space;
+\item on-demand synchronization of end of line characters;
+\item insert key suppression.
+\end{itemize}
+
+From the merge with the Aligner plugin, it has the ability to make sections of code more readable by aligning a specific character.\newline
+For example, aligning the "=" in 
+
+\begin{lstlisting}
+int var = 1;
+int longVarName = 2;
+int foobar = 3;
+\end{lstlisting}
+
+will result in:
+
+\begin{lstlisting}
+int var         = 1;
+int longVarName = 2;
+int foobar      = 3;
+\end{lstlisting}
+
+

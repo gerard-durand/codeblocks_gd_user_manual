@@ -1,0 +1,392 @@
+\chapter{Générer CodeBlocks à partir des Sources}\label{sec:build_codeblocks}
+
+Ce chapitre décrit comment générer \codeblocks lui-même.
+
+\hint{Ce chapitre existait dans les fichiers originaux .tex de la version 1 mais n'a pas été publié dans toutes les langues. Il est nécessaire de le revoir et de le compléter, au moins pour les utilisateurs Linux.}
+
+\section{Introduction}
+
+Cette section décrit le processus de création des nightly builds (générations nocturnes !), et peut être utilisé comme un guide si vous voulez générer \codeblocks vous-même. La description suivante est une séquence d'actions.
+
+Afin de procéder à notre tâche de génération, nous aurons besoin de plusieurs outils. Créons d'abord une liste d'ingrédients pour notre recette de cuisine.
+
+\begin{itemize}
+\item un compilateur
+\item un système de génération initial (une version précédente déjà fonctionnelle)
+\item les sources de \codeblocks
+\item un programme zip
+\item svn (système de contrôle de versions)
+\item wxWidgets
+\end{itemize}
+
+\section{Windows ou Linux}
+
+Cette section est écrite avec une syntaxe Windows mais peut facilement être adaptée à Linux.
+D'autres instructions détaillées se trouvent dans le Wiki : \url{http://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Linux}
+
+Comme les développeurs de \codeblocks génèrent \codeblocks en utilisant GCC, nous ferons de même sous Windows. Le portage le plus facile et le plus propre est MinGW. C'est le compilateur distribué avec \codeblocks quand vous téléchargez le package officiel COMPLET. Avec C::B 17.12, c'était la version TDM 5.1.0 qui était distribuée, une version déjà ancienne. Ici, on s'en tiendra à la version 8.1.0, qui fonctionne bien et qui est maintenant distribuée avec \codeblocks 20.03, mais on en trouve de plus récentes (Comme vu dans La chaîne d'outils de compilation MinGW (\pxref{sec:install_toolchains}). Vous pouvez obtenir 2 versions différentes de MinGW : pour générer du code 32 bits, ou pour générer du code 64 bits sur \cite{url:mingw64}. Plusieurs sous-choix sont possibles. Pour du 32 bits, je suggérerais i686-posix-sjlj et pour du 64 bits x86\_64-posix-seh.
+
+\hint{La version MinGW 64 bits peut générer du code 64 bits et du code 32 bits. Ajoutez simplement l'option -m64 ou -m32 à vos options de compilation ET d'édition de liens. En principe, la version 32 bits ne génère que du code 32 bits. Faites juste attention si vous utilisez des librairies, statiques ou dynamiques, à ce qu'elles aient été générées avec le même nombre de bits}
+
+D'abord, une brève explication des composants de MinGW :
+
+\begin{description}
+\item[gcc-core] le coeur de la suite GCC
+\item[gcc-g++] les compilateurs c et c++
+\item[gfortran] le compilateur fortran. IMPORTANT : gfortran 5.1 a un bug : l'instruction open, pour ouvrir un fichier de données en lecture, ne fonctionne pas ! Malheureusement, la dernière distribution TDM utilise ce gfortran et n'a pas été mise à jour.
+\item[mingw Runtime] l'implémentation des librairies "run time"
+\item[mingw utils] plusieurs utilitaires (implémentation de petits programmes que GCC utilise lui-même)
+\item[win32Api] l'API (Interface de Programmation d'Application) pour créer des programmes Windows
+\item[binutils] plusieurs utilitaires utilisés dans l'environnement de génération
+\item[make] le programme make de Gnu, ainsi vous pouvez générer à partir de fichiers make
+\item[GDB] le débogueur Gnu
+\end{description}
+
+Je vous suggère d'extraire (et d'installer pour GDB si nécessaire) le tout dans un répertoire \file{C:\osp MinGW}. Le reste de cet article supposera que c'est là que vous l'avez mis. Si vous avez déjà une installation de \codeblocks qui a été fournie avec MinGW, je vous recommande malgré tout d'installer MinGW comme décrit ici. Un compilateur n'a pas à être dans l'arborescence d'un Environnement de Développement Intégré (IDE); ce sont deux choses bien distinctes. \codeblocks le fournit avec les versions officielles afin que l'utilisateur standard n'ait pas à se préoccuper de ce genre de choses. Néanmoins, certains outils issus du monde Unix ont des problèmes quand ils sont installés dans un chemin contenant des espaces (ou même des caractères accentués) dans le nom de sous-répertoires. Pour une utilisation simple de C::B, vous n'aurez pas de soucis, mais cela peut arriver, aussi n'hésitez pas à déplacer votre \file{C:\osp Program Files\osp Codeblocks\osp MinGW} vers quelque chose comme \file{C:\osp MinGW}.
+
+Vous pouvez avoir besoin d'ajouter le répertoire \file{bin} de votre installation MinGW (et/ou MinGW32/MinGW64) à votre variable path. Un moyen simple de faire cela est d'entrer la commande suivante dans une fenêtre DOS :
+
+\begin{verbatim}
+set path=%PATH%;C:\MinGW32\bin;C:\MinGW32\i686-w64-mingw32\bin;
+\end{verbatim}
+ou (pour une installation en 64 bits) :
+\begin{verbatim}
+set path=%PATH%;C:\MinGW64\bin;C:\MinGW64\x86_64-w64-mingw32\bin;
+\end{verbatim}
+
+C'est nécessaire pour lancer votre exécutable en dehors du contexte de l'IDE \codeblocks.
+
+Vous pouvez aussi modifier la variable d'environnement PATH (globale ou utilisateur).
+
+
+\subsection{Système de génération initial}
+
+Sur \cite{url:cb} un fichier de description de projet \file{CodeBlocks.cbp} est disponible. Si vous chargez ce fichier dans \codeblocks alors vous êtes en mesure de générer \codeblocks à partir des sources. Tout ce dont vous avez besoin c'est d'une version de \codeblocks déjà pré-générée.
+
+Premièrement, téléchargez une version "nightly". Vous pouvez faire votre sélection à partir de là (\cite{url:cbforum} rubrique Nightly Builds). Les versions nightly sont des versions Unicode, contenant le coeur et les plugins contributifs. Lisez avec attention le premier "post" de chaque "nightly" : il contient des instructions pour télécharger et installer des dlls complémentaires, nécessaires avec les versions récentes de MinGW, en particulier la 8.1 utilisée pour compiler les dernières versions "nightly" de C::B.
+
+Ensuite, décompressez le fichier 7-zip dans n'importe quel répertoire de votre choix. Si vous n'avez pas 7-zip, vous pouvez le télécharger gratuitement depuis \cite{url:zip}.
+
+Maintenant, \codeblocks nécessite une \file{dll} supplémentaire pour travailler correctement: la dll wxWidgets. Vous pouvez aussi la télécharger depuis le forum des nightly builds. Dézippez là simplement dans le même répertoire que celui où vous avez décompressé la version nightly de \codeblocks . Il vous faut aussi la dll \file{mingwm10.dll}. Elle est normalement dans le répertoire bin de votre installation de MinGW. C'est pourquoi il est important de s'assurer que le sous répertoire bin de votre installation MinGW est bien dans votre variable path.
+
+Enfin, démarrer cette nouvelle génération d'une "nightly" de \codeblocks. Elle devrait trouver le compilateur MinGW qui vient d'être installé. Si ce n'est pas le cas, allez dans le menu "Paramètres / Compilateur... / Programmes" et ajustez le chemin de MinGW en fonction de votre installation.
+
+\subsection{Système de Contrôle de Versions}
+
+Afin de pouvoir récupérer les dernières sources de \codeblocks, nous avons besoin d'installer un système de contrôle de versions.
+
+Les développeurs de \codeblocks fournissent leurs sources par le biais du système de contrôle de versions \cite{url:subversion}. Aussi, nous avons besoin d'un client pour accéder à leur dépôt svn des sources. \cite{url:tortoisesvn} est un bon client pour Windows, facile d'utilisation, et qui est disponible gratuitement. Téléchargez-le et installez-le, en gardant tous les paramètres suggérés.
+
+Maintenant, créez un répertoire où vous voulez, par exemple \file{D:\osp projets\osp CodeBlocks}. Faites un clic droit dans ce répertoire et choisissez dans le menu popup : svn-checkout (ou SVN Extraire si vous avez installé la francisation de SVN). Dans la boîte de dialogue qui apparaît, entrez l'information suivante dans Url of Repository (URL du référentiel) :
+
+\url{svn://svn.code.sf.net/p/codeblocks/code/trunk}
+
+et laissez les autres paramètres comme ils sont.
+
+Maintenant, soyez patient pendant que TortoiseSVN récupère les sources les plus récentes du dépôt de \codeblocks dans votre répertoire local. Oui ; toutes ces sources de \codeblocks viennent chez vous !
+
+Pour plus d'informations sur le paramétrage de SVN, voir info dans SVN settings (Toutefois, cette extension C::B n'existe plus dans les récentes versions de \codeblocks). Si vous n'aimez pas l'intégration dans l'explorateur ou cherchez une solution inter-plateforme vous pouvez jeter un oeil sur RapidSVN.
+
+\subsection{wxWidgets}
+
+\cite{url:wx} est une librairie disponible sur plusieurs plateformes et qui fournit une API supportant de nombreuses choses comme une Interface Graphique Utilisateur (GUI), des sockets, fichiers, fonctionnalités de registres. En utilisant cette API, vous pouvez créer des programmes indépendants des plateformes.
+
+\codeblocks est une application wxWidgets (aussi dénommées ci-dessous : wx), ce qui signifie que pour exécuter \codeblocks vous avez besoin des fonctionnalités wx. Cela peut se faire de deux façons. Soit par une \file{.dll} soit par une librairie statique. \codeblocks utilise wx en tant que dll et cette dll peut aussi se télécharger depuis la section nightly builds du forum.
+
+Néanmoins, si nous voulons générer une application wx, nous devons inclure les headers (ou en-têtes) des sources wx. Elles donnent au compilateur les informations sur les fonctionnalités de wx. En plus de ces fichiers de headers, notre application a besoin d'être liée aux librairies d'importation wx. Bien, voyons cela pas à pas.
+
+Wx est fourni sous forme de fichiers sources dans un fichier zip, aussi, nous devons le générer par nous-mêmes. Nous avons déjà le compilateur MinGW, donc nous avons tous les outils nécessaires sous la main.
+
+Dézippez maintenant les sources wx dans \file{C:\osp Projets} et ainsi nous aurons au final un répertoire wx de base comme celui-ci : \file{C:\osp Projets\osp wxWidgets-3.2.0}. Ensuite, dézippez les patchs (s'il y en a !) dans le même sous répertoire afin de remplacer les fichiers modifiés. Notez que nous allons référencer le répertoire wx de base à partir de maintenant comme \var{wxDir}
+
+Maintenant, nous allons générer les wxWidgets. Voici comment faire :
+
+Premièrement, assurez-vous que \file{C:\osp MingGW\osp bin} est dans votre variable path, car durant la génération quelques programmes résidant dans le répertoire MinGW\osp bin seront appelés. De plus, Make doit être en version 3.80 ou supérieure.
+
+Il est temps maintenant de compiler les wxWidgets. Ouvrir une fenêtre de commande DOS et se placer dans le répertoire des wxWidgets :
+
+\begin{verbatim}
+cd <wxDir>\build\msw
+\end{verbatim}
+
+Nous sommes maintenant au bon endroit. Nous allons d'abord nettoyer les sources :
+
+\begin{verbatim}
+mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=release UNICODE=1 clean
+\end{verbatim}
+
+Maintenant que tout est propre, nous pouvons compiler les wxWidgets :
+
+\begin{verbatim}
+mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=release UNICODE=1
+\end{verbatim}
+
+Si vous utilisez le compilateur TDM-gcc 5.1.0, ou gcc 8.1.0, vous aurez à ajouter sur la même ligne de commande : 
+\begin{verbatim}
+USE_XRC=1
+CXXFLAGS+="-fpermissive -fno-keep-inline-dllexport -std=gnu++11
+ -Wno-deprecated-declarations"
+LDFLAGS="-Wl,--allow-multiple-definition"
+\end{verbatim}  
+
+Si vous utilisez une version pus récente comme gcc 12.1.0, vous pouvez utiliser cette ligne de commande:
+\begin{verbatim}
+mingw32-make -f makefile.gcc -j 4 SHARED=1 MONOLITHIC=1 BUILD=release
+             CXXFLAGS="-std=gnu++20"
+\end{verbatim}
+car certains paramètres sont maintenant configurés par défaut dans les dernières générations de wxWidgets ou ne sont plus nécessaires.\newline
+Le paramètre -j 4 permet une génération en parallèle sur 4 processeurs et donc accélère fortement la génération. La valeur 4 doit être ajustée en fonction de votre configuration de processeur.
+Le meilleur résultat est obtenu lorsque la valeur est égale au nombre de processeurs (4 dans mon cas).
+
+Depuis la révision SVN 11701, \codeblocks sous Windows est généré en activant/forçant le support de DIRECT2D (pour une plus rapide et meilleure qualité graphique). La génération de wxWidgets nécessite quelques ajustments à effectuer directement dans le(s) fichier(s) setup.h. Normalement le seul fichier à modifier est dans le sous-répertoire lib, celui créé lors de la première génération de wxWidgets, et utilisé par la suite. Pour une génération par gcc, dll, c'est quelque chose comme : \file{C:\osp wxWidgets-3.2.0\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
+Vous pouvez simplement modifier la ligne contenant (ligne 1659 dans wxWidgets 3.2.0):
+\begin{verbatim}
+    #define wxUSE_GRAPHICS_DIRECT2D 0 
+\end{verbatim}
+par
+\begin{verbatim}
+    #define wxUSE_GRAPHICS_DIRECT2D 1  
+\end{verbatim}
+Les autres setup.h peuvent être modifiés, mais ce n'est normalement pas requis.
+
+en option :
+\begin{verbatim}
+USE_OPENGL=1
+DEBUG_FLAG=0
+\end{verbatim}
+
+\hint{USE\_OPENGL=1 crée une dll supplémentaire, utilisée si votre programme wxWidgets requiert une fenêtre OpenGL, notamment lorsque vous utilisez wxGLCanvas}
+
+On peut aussi personnaliser le nom des dlls produites par :
+\begin{verbatim}
+VENDOR=cb
+\end{verbatim}
+ou pour une génération en 64 bits :
+\begin{verbatim}
+VENDOR=cb_64
+\end{verbatim}
+
+\hint{Si VENDOR n'est pas spécifié, cela revient à VENDOR=custom. VENDOR=cb est utilisé par l'équipe de \codeblocks. Aussi, pour éviter toute confusion, il peut être prudent d'utiliser un autre identifiant de "vendor".} 
+
+La génération prend un certain temps.
+
+Pour générer une version debug, suivez les mêmes étapes et options (le seul changement est BUILD=debug) :
+
+\begin{itemize}
+\item Nettoyer les précédentes compilations par
+	\begin{verbatim}
+	mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=debug UNICODE=1 clean
+	\end{verbatim}
+\item Compiler par
+	\begin{verbatim}
+	mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=debug UNICODE=1
+	\end{verbatim}
+\end{itemize}
+
+Ajoutez éventuellement les mêmes options que ci-dessus.
+
+Bien, regardons maintenant dans le répertoire (\file{\var{wxDir}\osp lib\osp gcc\_dll}). Les librairies d'importation et les dll y sont visibles et il doit aussi y avoir un sous répertoire \file{mswu\osp wx} à cet endroit, contenant \file{setup.h}.
+
+Vous pouvez utiliser strip.exe (distribué avec MinGW) pour réduire la taille des dlls.
+par ex:
+\begin{verbatim}
+strip ..\..\lib\gcc_dll\wxmsw32u_gcc_cb_64.dll
+strip ..\..\lib\gcc_dll\wxmsw32u_gl_gcc_cb_64.dll
+\end{verbatim}
+
+Bravo! Vous venez de générer les wxWidgets!
+
+Faisons encore quelques tâches préliminaires complémentaires avant d'attaquer la compilation de \codeblocks.
+
+\subsection{Zip}
+
+Durant la génération de \codeblocks, plusieurs ressources seront compressées dans des fichiers zip. Aussi, le processus de génération doit pouvoir accéder à un zip.exe. Nous devons télécharger ce zip.exe (s'il n'est pas déjà dans votre distribution MinGW) et le mettre quelque part dans notre path. \file{MingW\osp bin} est un bon endroit pour cela.
+
+Vous pouvez depuis ce site (\url{http://www.info-zip.org/pub/infozip/Zip.html}) télécharger zip.exe gratuitement, ou depuis là (\url{ftp://ftp.info-zip.org/pub/infozip/win32/}) qui est un lien direct vers un répertoire contenant les plus récentes versions.
+
+Une fois téléchargé, extraire simplement zip.exe vers l'endroit approprié.
+
+\subsection{Espace de Travail - Workspace}
+Ceci nous amène à la dernière tâche préliminaire. Le code de \codeblocks peut être divisé en 2 parties : le coeur avec les plug-ins (ou greffons, ou extensions) internes, et les plug-ins contributifs. Il est toujours nécessaire de générer le coeur/parties internes avant de générer les parties contributives.
+
+Pour générer les parties internes, vous pouvez utiliser le fichier projet de \codeblocks que vous trouverez dans : \file{<cbDir>\osp src\osp CodeBlocks.cbp}. Notre répertoire principal de \codeblocks est, de fait, maintenant repéré par \file{<cbDir>}. Un Espace de travail (ou workspace) est quelque chose qui regroupe plusieurs projets ensemble. Pour générer les plug-ins contributifs, on utilisera \file{<cbDir>\osp src\osp ContribPlugins.workspace}.
+
+Mais on peut aussi créer un espace de travail contenant l'intégralité. On mettra cet espace de travail dans le répertoire principal \file{<cbDir>}. Pour cela, utilisez un éditeur de texte basique et créez un fichier nommé "CbProjects.workspace". Un tel fichier existe déjà dans les versions récentes de C::B. Vous pouvez lui donner le contenu suivant : 
+
+{\footnotesize
+\begin{verbatim}
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+  <Workspace title="CodeBlocks Workspace wx3.1.x">
+    <Project filename="CodeBlocks_wx31.cbp" active="1" />
+    <Project filename="tools/Addr2LineUI/Addr2LineUI_wx31.cbp" />
+    <Project filename="tools/cb_share_config/cb_share_config_wx31.cbp" />
+    <Project filename="tools/CBLauncher/CbLauncher_wx31.cbp" />
+    <Project filename="tools/cbp2make/cbp2make_wx31.cbp" />
+    <Project filename="plugins/codecompletion/cctest_wx31.cbp" />
+    <Project filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp" />
+    <Project filename="plugins/contrib/wxSmith/wxSmith_wx31.cbp" />
+    <Project filename="plugins/contrib/wxSmithContribItems/wxSmithContribItems_wx31.cbp">
+      <Depends filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp" />
+      <Depends filename="plugins/contrib/wxSmith/wxSmith_wx31.cbp" />
+    </Project>
+    <Project filename="plugins/contrib/wxSmithAui/wxSmithAui_wx31.cbp">
+      <Depends filename="plugins/contrib/wxSmith/wxSmith_wx31.cbp" />
+    </Project>
+    <Project filename="plugins/contrib/AutoVersioning/AutoVersioning_wx31.cbp" />
+    <Project filename="plugins/contrib/BrowseTracker/BrowseTracker_wx31.cbp" />
+    <Project filename="plugins/contrib/byogames/byogames_wx31.cbp" />
+    <Project filename="plugins/contrib/cb_koders/cb_koders_wx31.cbp" />
+    <Project filename="plugins/contrib/Cccc/Cccc_wx31.cbp" />
+    <Project filename="plugins/contrib/codesnippets/codesnippets_wx31.cbp" />
+    <Project filename="plugins/contrib/codestat/codestat_wx31.cbp" />
+    <Project filename="plugins/contrib/copystrings/copystrings_wx31.cbp" />
+    <Project filename="plugins/contrib/CppCheck/CppCheck_wx31.cbp" />
+    <Project filename="plugins/contrib/Cscope/Cscope_wx31.cbp" />
+    <Project filename="plugins/contrib/devpak_plugin/DevPakPlugin_wx31.cbp" />
+    <Project filename="plugins/contrib/DoxyBlocks/DoxyBlocks_wx31.cbp" />
+    <Project filename="plugins/contrib/dragscroll/DragScroll_wx31.cbp" />
+    <Project filename="plugins/contrib/EditorConfig/EditorConfig_wx31.cbp" />
+    <Project filename="plugins/contrib/EditorTweaks/EditorTweaks_wx31.cbp" />
+    <Project filename="plugins/contrib/envvars/envvars_wx31.cbp" />
+    <Project filename="plugins/contrib/FileManager/FileManager_wx31.cbp" />
+    <Project filename="plugins/contrib/FortranProject/FortranProject_cbsvn_wx31.cbp" />
+    <Project filename="plugins/contrib/headerfixup/headerfixup_wx31.cbp" />
+    <Project filename="plugins/contrib/help_plugin/help-plugin_wx31.cbp" />
+    <Project filename="plugins/contrib/HexEditor/HexEditor_wx31.cbp" />
+    <Project filename="plugins/contrib/IncrementalSearch/IncrementalSearch_wx31.cbp" />
+    <Project filename="plugins/contrib/keybinder/keybinder_wx31.cbp" />
+    <Project filename="plugins/contrib/lib_finder/lib_finder_wx31.cbp">
+      <Depends filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp" />
+    </Project>
+    <Project filename="plugins/contrib/MouseSap/MouseSap_wx31.cbp" />
+    <Project filename="plugins/contrib/NassiShneiderman/NassiShneiderman_wx31.cbp" />
+    <Project filename="plugins/contrib/profiler/cbprofiler_wx31.cbp" />
+    <Project filename="plugins/contrib/ProjectOptionsManipulator/ProjectOptionsManipulator_wx31.cbp" />
+    <Project filename="plugins/contrib/regex_testbed/RegExTestbed_wx31.cbp" />
+    <Project filename="plugins/contrib/ReopenEditor/ReopenEditor_wx31.cbp" />
+    <Project filename="plugins/contrib/rndgen/rndgen_wx31.cbp" />
+    <Project filename="plugins/contrib/SmartIndent/SmartIndent_wx31.cbp" />
+    <Project filename="plugins/contrib/source_exporter/Exporter_wx31.cbp" />
+    <Project filename="plugins/contrib/SpellChecker/SpellChecker_wx31.cbp" />
+    <Project filename="plugins/contrib/symtab/symtab_wx31.cbp" />
+    <Project filename="plugins/contrib/ThreadSearch/ThreadSearch_wx31.cbp">
+      <Depends filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp" />
+    </Project>
+    <Project filename="plugins/contrib/ToolsPlus/ToolsPlus_wx31.cbp" />
+  </Workspace>
+</CodeBlocks_workspace_file>
+\end{verbatim}
+}
+
+\hint{Il existe plusieurs variantes de ce fichier, dépendant de l'OS, de la version wxWidgets, d'une génération en 32 ou 64 bits.}
+
+Nous utiliserons cet espace de travail pour générer complètement \codeblocks.
+
+
+\subsection{Générer Codeblocks}
+
+Cette section descrit le processus final de la génération de \codeblocks.
+
+\subsubsection{Windows}
+
+Nous sommes maintenant arrivés à l'étape finale ; notre but ultime. Lancez l'exécutable \codeblocks depuis votre téléchargement de "nightly". Ouvrir le menu Fichier, dans le navigateur cherchez l'espace de travail adéquat et lances-le. Soyez patients pendant que \codeblocks analyse l'ensemble, puis on vous demandera de renseigner 3 ou 4 variables globales. Celles-ci indiqueront à \codeblocks où il trouvera les wxWidgets (pour mémoire : les fichiers d'en-têtes et les librairies d'importation) et où il peut trouver les sources de ... \codeblocks. Ceci est nécessaire pour les plug-ins contributifs (ainsi que pour les plug-ins de l'utilisateur), qui doivent savoir où trouver le sdk (Les fichiers d'en-têtes de \codeblocks). Dans notre cas, cela peut donner :
+\begin{description}
+\item[wx] \var{wxDir} répertoire de base des wxWidgets: le nom de la variable peut être wx31, wx31\_64,...
+\item[cb] \file{\var{cbDir}/src} répertoire contenant les sources de \codeblocks.
+\item[cb\_release\_type] : -O (Pour obtenir une version release, cas habituel.
+         Les développeurs peuvent entrer -g pour débuguer C::B)
+\item[boost] : répertoire de base où boost est installé (par ex : \file{C:\osp boost}).
+·         Utilisé par le plugin NassiShneiderman
+          Remplissez avec la même valeur les sous-sections include et lib.
+\end{description}
+
+Aller maintenant dans le Menu Projet et choisissez (re)générer l'espace de travail, et allez faire un tour. Regardez comment \codeblocks est en train de générer \codeblocks.
+
+Après la création de \codeblocks, les fichiers générés avec les informations de débogage se trouvent dans le sous-répertoire \file{devel}. En appelant, ou lançant depuis une console, le fichier batch \file{update.bat} depuis le répertoire source \file{\var{cbDir}/src} (ou plus spécifiquement la version adaptée à votre génération spécifique, comme par exemple update31\_64.bat), les fichiers sont copiés dans le sous-répertoire \file{output} (ou la version adaptée). De plus, toutes les informations de débogage sont retirées. \textit{Cette étape est très importante - ne jamais l'oublier}.
+
+Vous pouvez maintenant copier la dll wx à la fois dans ce répertoire output et, en option, dans devel.
+
+Vous pouvez alors fermer \codeblocks. Rappelez-vous, nous utilisions la version nightly téléchargée ?
+
+Il est temps de tester la nouvelle version. Dans le répertoire output, lancez CodeBlocks.exe. Si tout s'est bien passé, vous avez généré votre propre version de \codeblocks faite maison.
+
+\subsubsection{Linux}
+
+\textbf{(Note : Cette section devrait être revue et complétée. Elle ne semble pas complètement à jour)}
+
+\begin{description}
+\item[linux] Lancer \file{update\_revision.sh}
+\end{description}
+
+Avec cette fonction la révision SVN de la génération Nightly est mise à jour dans les sources. On peut trouver ce fichier dans le répertoire principal des sources de \codeblocks.
+
+Quand on génère sous Linux, les étapes suivantes sont nécessaires. Dans cet exemple nous supposons que vous êtes dans le répertoire source de \codeblocks.  Sous Linux, la variable d'environnement \codeline{PKG_CONFIG_PATH} doit être configurée. Le répertoire \var{prefix} doit contenir le fichier \file{codeblocks.pc}. 
+
+\begin{verbatim}
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:<prefix>
+\end{verbatim}
+
+
+\begin{verbatim}
+sh update_revsion.sh
+./bootstrap
+./configure --with-contrib=[all | noms des plugins separes par des virgules]
+     --prefix=<install-dir>
+make
+make install (en tant que root)
+\end{verbatim}
+
+Vous pouvez aussi générer sous Linux comme sous Windows, avec un fichier workspace. Toutefois, pkg\_config et wx-config doivent être correctement configurés.
+
+\subsection{Générer seulement les plugins}
+
+Cette section concerne la génération des plugins seulement.
+
+\subsubsection{Windows}
+
+Configurer les variables globales via \menu{Paramètres,Variables Globales}.
+
+\genterm{Variable cb}
+
+Pour la variable \codeline{cb}, entrer dans \codeline{base} le répertoire source de \codeblocks.
+
+\begin{verbatim}
+<cbDir>/codeblocks/src
+\end{verbatim}
+
+\genterm{Variable wx}
+
+Pour la variable \codeline{wx}, entrer dans \codeline{base} le répertoire source de wx : par ex.
+
+\begin{verbatim}
+C:\wxWidgets-2.8.12
+\end{verbatim}
+
+ou pour générer avec une version plus récente, wx31 (ou wx31\_64)
+
+\begin{verbatim}
+C:\wxWidgets-3.2.0
+\end{verbatim}
+
+Dans le projet \codeblocks, la variable projet \codeline{WX_SUFFIX} est configurée à \codeline{u}. Cela signifie que pendant la génération de \codeblocks l'édition de liens se fera avec la librairie \file{*u\_gcc\_custom.dll} (par défaut). Les générations officielles des nightlies de \codeblocks seront liées avec \file{gcc\_cb.dll}. Pour ce faire, il faut faire comme suit.
+
+\begin{verbatim}
+gcc_<VENDOR>.dll
+\end{verbatim}
+
+La variable \var{VENDOR} est donnée dans le fichier de configuration \file{compiler.gcc} ou via la ligne de commande de l'instruction make, comme montré précédemment. Pour s'assurer qu'une distinction soit possible entre une génération officielle de \codeblocks et celles effectuée par vous-mêmes, la configuration par défaut \codeline{VENDOR=custom} ne devrait pas être changée.
+
+Après, créez l'espace de travail \file{ContribPlugins.cbp} via \menu{Projet,Générer l'espace de travail}. Puis exécutez une fois de plus \file{update.bat}.
+
+\subsubsection{Linux}
+
+Configurez la variable \codeline{wx} à l'aide des variables globales.
+
+\begin{description}
+\item[base] /usr
+\item[include] /usr/include/wx-2.8 (ou la version installée sur votre machine)
+\item[lib] /usr/lib
+\end{description}
+
+

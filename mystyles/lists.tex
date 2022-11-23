@@ -1,0 +1,42 @@
+\ProvidesFile{lists.tex}[2003/07/01 HighTec template]
+\ifglossreg
+    \ifthenelse{\equal{\lang}{german}}
+        {\def\glossaryname{Glossar}}
+        {\def\glossaryname{Glossary}
+    }
+    \glosstex{*}
+    \printglosstex(glo)
+    \newpage%
+    {\small \pdfbookmark[0]{\numberline{}\glossaryname}{theglossary}}
+    \clearpage
+    \printglossary
+\fi
+
+\ifbibreg
+    \input{\bibfilename.bbl}
+\fi
+
+\makeatletter
+\@ifundefined{htmlmode}{%
+%    \ifthenelse{\boolean{urlreg}}{\input{\urlfilename.bbl}}{}      % Problem with MikTex 22.10, urlreg is already \boolean and 22.10 says syntax is not correct ??? a standard \if is OK
+    \ifurlreg
+        \input{\urlfilename.bbl}
+    \fi
+%    \ifthenelse{\boolean{changereg}}{%                             % idem for changereg
+    \ifchangereg
+        \makeatletter
+        \printchangelist
+        \makeatother
+    \fi
+
+    \ifindreg
+        \printindex*
+    \fi
+
+%    \ifthenelse{\boolean{nomreg}}{%
+    \ifnomreg
+        {\small \pdfbookmark[0]{\numberline{}\nomname}{thenomenclature}}
+        \clearpage
+    \fi
+}{}
+\makeatother

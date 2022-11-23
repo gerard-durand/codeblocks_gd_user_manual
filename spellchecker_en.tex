@@ -1,0 +1,60 @@
+\section{SpellChecker plugin}\label{sec:spell_checker}
+
+A plugin to check the spelling of strings and comments.
+
+\subsection{Introduction}
+A plugin to check the spelling of strings and comments. The spelling gets checked during typing. Additionally a thesaurus is provided. Both may be accessed on-demand by selecting the word in question, then choosing either Spelling... or Thesaurus... from the Edit menu (the operation can be bound to a hot-key via the Keyboard Shortcuts plugin). The context menu (right click the word) provides spelling suggestions. 
+
+\subsection{Configuration}
+
+Configuration is in the menu \menu{Settings,Editor}. The spell check option are about half way down the list on the left.
+
+\screenshot{ConfigureSpellChecker}{SpellChecker Configuration}
+
+The meaning of the controls are: 
+\begin{description}
+\item[Enable online spell checker] Enable or disable the spell checker.
+\item[Language] The language used for spell checking and the thesaurus is selected by choosing a dictionary. This can also be changed in the status bar.
+\item[Path settings, Dictionaries] The plugin is looking in this path for the dictionary files.
+\item[Path settings, Thesauri] The plugin is looking in this path for the files needed by the thesaurus.
+\item[Path settings, Bitmaps] (Optional) The plugin is looking in this path for the flags to show in the status bar.
+\end{description}
+
+\hint{You can use Macros in the above three path settings, such as \$(CODEBLOCKS)/share/codeblocks/SpellChecker. See Variable expansion for more details. This is quite convenient if you use portable \codeblocks.}
+
+\subsection{Dictionaries}
+
+SpellChecker uses a library called hunspell. Hunspell is the spell checker of OpenOffice.org, Mozilla Firefox and other projects. Dictionaries available for those applications are compatible with this plugin.
+
+Open Office provides a collection of dictionaries for several languages and dialects to download. The OOo 3.x extensions (*.oxt) are compressed archives which can be opened with your favourite archiver (for example 7-Zip or File Roller). Copy the .aff file and the .dic file to the directory configured in 'Path settings, Dictionaries' (see above).
+
+If you're running Linux you've probably already got compatible dictionaries installed. Look in /usr/share/hunspell or my choice is /usr/share/myspell/dicts. The reason I like the myspell files is they already include thesaurus files which are named correctly to work with the thesaurus, and everything is all in one location. Don't copy these files. Just point the spell checker to where the files are already located.
+
+I understand on Windows, Firefox and Thunderbird also install compatible dictionary files. These can be found in... \file{C:\osp Program Files\osp Mozilla Firefox\osp dictionaries} or \file{C:\osp Program Files\osp Mozilla Thunderbird\osp dictionaries}. In addition, both OpenOffice.org and LibreOffice install dictionary files to\newline
+ \file{C:\osp Program Files\osp (Open/Libre)Office\osp share\osp extensions\osp dict-*}.
+
+The Google Chrome browser also installs dictionaries, but they are .bdic format and the \codeblocks spell checker plugin will not work with them.
+
+\subsection{Thesaurus files}
+
+The files for the thesaurus are also available from OOo, like the dictionaries. Copy the thesaurus files (th\_*.dat and th\_*.idx) to the directory configured in 'Path settings, Thesauri' (see above) and rename them to match the name of the dictionary but prepend "th\_" and let the extension as is.
+
+\textbf{Example}: If the dictionary files (for one language) are "en\_GB.aff" and "en\_GB.dic" the files used for the thesaurus are "th\_en\_GB.idx" and "th\_en\_GB.dat".
+
+On my Linux system I found thesaurus files already installed in /usr/share/myspell/dicts and /usr/share/mythes. Again, don't move the files. Set the spell checker to use the files from their current location.
+
+On Windows, if either OpenOffice.org or LibreOffice is installed, they often include thesaurus files in \file{C:\osp Program Files\osp (Open/Libre)Office\osp share\osp extensions\osp dict-*}. 
+
+\subsection{Bitmaps (flags)}
+
+The bitmap of the actually selected language is shown in the status bar. If no bitmap is found, the name of the language is shown. The bitmap must be a PNG image. Choose a flag from the famfamfam\_flag\_icons and copy it to the directory configured in 'Path settings, Bitmaps' (see above) and rename it to match the name of the dictionary but let the extension png.
+
+\subsection{Styles to check}
+
+Only text with specific styles gets checked (for example only comments and strings). Styles are automatically set by Scintilla (CodeBlocks editing component).
+
+The file OnlineSpellChecking.xml contains a list with indices of the styles to check. The indices differ for different programming-languages so the file contains a list for every programming-language. To add styles, look for the name of the programming-language and the indices in the corresponding lexer\_*.xml file and add this information to the file OnlineSpellChecking.xml.
+
+For example, to check the spelling in bash shell scripts (*.sh files), add the line: 
+
+\codeline{<Language name="Bash" index="2,5,6" />}

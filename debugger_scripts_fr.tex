@@ -1,0 +1,138 @@
+\section{Scripts du Débugueur}\label{sec:debugger_scripts}
+Cette section décrit les scripts du débugueur.
+\subsection{Principe de Base des scripts du débugueur}
+
+\figures[H][width=\columnwidth]{Debuggercommand}{Commande de Débugueur}
+
+Regardez l'image ci-dessus. Cela vous donnera un bref aperçu de comment les scripts du débugueur fonctionnent. Par exemple, vous voulez observer la variable "msg". Il y a deux échanges entre l'extension du débugueur et gdb.
+
+Premièrement, l'extension du débugueur envoie une commande à gdb pour l'interroger sur le type de msg
+
+\begin{lstlisting}
+whatis msg
+\end{lstlisting}
+
+alors, gdb lui retournera le type
+
+\begin{lstlisting}
+type = wxString
+\end{lstlisting}
+
+Deuxièmement, le débugger vérifie que wxString est déjà enregistré, puis envoie la commande
+
+\begin{lstlisting}
+output /c msg.m_pchData[0]@((wxStringData*)msg.m_pchData-1)->nDataLength
+\end{lstlisting}
+
+Puis, gdb répond avec la chaîne ci-dessous :
+
+\begin{lstlisting}
+{119 'w', 120 'x', 87 'W', 105 'i', 100 'd', 103 'g', 101 'e', 116 't', 
+115 's', 32 ' ', 50 '2', 46 '.', 56 '8', 46 '.', 49 '1', 48 '0', 45 '-', 
+87 'W', 105 'i', 110 'n', 100 'd', 111 'o', 119 'w', 115 's', 45 '-', 
+85 'U', 110 'n', 105 'i', 99 'c', 111 'o', 100 'd', 101 'e', 32 ' ', 
+98 'b', 117 'u', 105 'i', 108 'l', 100 'd'}
+\end{lstlisting}
+
+Finalement, la valeur est affichée dans la fenêtre des témoins.
+
+\subsection{Fonctions Script}
+
+Les scripts du débugueur sont semblables à ceux du visualiseur du débugueur de Visual Studio. Ils vous permettent d'écrire un petit bout de code qui sera exécuté par le débugueur dès lors que vous essaierez de regarder un type particulier de variables et peut être utilisé pour afficher du texte personnalisé comportant une information importante dont vous avez besoin.
+
+Remarque dans Game\_Ender - March 23, 2006
+
+\textit{Je ne pense pas qu'il soit possible d'ouvrir une autre fenêtre pour y visualiser quelque chose.}
+
+Regardons maintenant comment cela fonctionne. Tout est à l'intérieur d'un seul fichier placé dans le répertoire des scripts/, dénommé gdb\_types.script :). Le support pour plus de scripts (définis par l'utilisateur) est envisagé dans le futur.
+
+
+Ce script est appelé par \codeblocks en deux endroits :
+\begin{enumerate}
+\item quand GDB est lancé. Il appelle la fonction script RegisterTypes() pour enregistrer tous les types définis par l'utilisateur reconnus par le débugueur dans \codeblocks.
+\item dès lors que GDB rencontre votre type de variable, il appelle les fonctions script spécifiques de ce type de données (enregistrées dans RegisterTypes() - davantage ci-dessous).
+\end{enumerate}
+
+Ceci est un premier aperçu. Regardons en détail le contenu du fichier gdb\_types.script fournit et voyons comment il ajoute le support de \codeline{std::string} dans GDB.
+
+\begin{lstlisting}
+// Registers new types with driver
+function RegisterTypes(driver)
+{
+//    signature:
+//    driver.RegisterType(type_name, regex, eval_func, parse_func); 
+
+    // STL String
+    driver.RegisterType(
+        _T("STL String"),
+        _T("[^[:alnum:]_]+string[^[:alnum:]_]*"),
+        _T("Evaluate_StlString"),
+        _T("Parse_StlString")
+    );
+}
+\end{lstlisting}
+
+Le paramètre "driver" est le driver du débugueur mais vous n'avez pas besoin de vous en soucier :) (actuellement, ça ne marche que dans GDB). Cette classe contient une seule méthode : RegisterType. Voici sa déclaration en C++ :
+
+\begin{lstlisting}
+void GDB_driver::RegisterType(const wxString& name, const wxString& regex, 
+                      const wxString& eval_func, const wxString& parse_func)
+\end{lstlisting}
+
+Donc, dans le code du script ci-dessus, le type "STL String" (seulement un nom - qu'importe ce que c'est) est enregistré, fournissant une expression régulière de contrôle sous forme de chaîne de caractères pour l'extension débugueur et, au final, il fournit les noms de deux fonctions indispensables, nécessaires pour chaque type enregistré :
+
+\begin{enumerate}
+\item fonction d'évaluation : doit retourner la commande comprise par le débugueur courant (GDB en l'occurrence). Pour "STL string", la fonction d'évaluation retourne une commande de "sortie" de GDB qui sera exécutée par de débugueur GDB.
+\item fonction d'analyse : une fois que le débugueur a lancé la commande retournée par la fonction d'évaluation, il passe ses résultats à cette fonction pour des traitements complémentaires. Ce que cette fonction retourne, c'est ce qui est affiché par \codeblocks (habituellement dans la fenêtre des témoins ou dans une fenêtre d'astuces (tooltip)).
+\end{enumerate}
+
+
+Regardons la fonction d'évaluation pour \codeline{std::string}:
+
+\begin{lstlisting}
+function Evaluate_StlString(type, a_str, start, count)
+{
+    local oper = _T(".");
+
+    if (type.Find(_T("*")) > 0)
+        oper = _T("->");
+
+    local result = _T("output ") + a_str + oper + _T("c_str()[") 
+                   + start + _T("]@");
+    if (count != 0)
+        result = result + count;
+    else
+        result = result + a_str + oper + _T("size()");
+    return result;
+}
+\end{lstlisting}
+
+Je ne vais pas expliquer ce que cette fonction retourne. Je vais juste vous dire qu'elle retourne une commande GDB qui fera que GDB imprimera le contenu réel de la \codeline{std::string}. \textit{Oui, vous devrez connaitre votre débugueur et ses commandes avant d'essayer d'étendre ses fonctions.}
+
+Ce que je vais vous dire toutefois, c'est ce que sont les arguments de ces fonctions.
+
+\begin{itemize}
+\item type: le type de données, par ex. "char*", "const string", etc.
+\item \codeline{a_str}: le nom de la variable que GDB est en train d'évaluer.
+\item start: l'offset de départ (utilisé pour les tableaux (ou arrays)).
+\item count: le compteur démarrant depuis l'offset de départ (utilisé pour les tableaux).
+\end{itemize}
+
+Voyons maintenant la fonction d'analyse utile :
+
+\begin{lstlisting}
+function Parse_StlString(a_str, start)
+{
+    // nothing needs to be done
+    return a_str;
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item \codeline{a_str}: la chaîne retournée quand GDB a été exécuté et retournée par la fonction d'évaluation. Dans le cas de \codeline{std::string}, c'est le contenu de la chaîne.
+\item start: l'offset de départ (utilisé pour les tableaux).
+\end{itemize}
+
+Bon, dans cet exemple, il n'y a rien besoin de faire. "\codeline{a_str}" contient déjà le contenu de \codeline{std:string} et donc il suffit de retourner la chaîne:)
+
+Je vous suggère d'étudier comment wxString est enregistré dans ce même fichier, en tant qu'exemple plus complexe. 

@@ -1,0 +1,91 @@
+\section{Débogage avec \codeblocks}\label{sec:debugwithcb}
+
+Cette section décrit comment travailler ne mode débogage.
+
+\subsection{Générer une version "Debug" de votre Projet}
+
+Assurez-vous que le projet soit compilé avec l'option de compilation \textit{-g} (symboles de débogage) activée, et que l'option \textit{-s} (supprimer les symboles) soit désactivée. Ainsi, vous vous assurez que les symboles de débogage sont bien inclus dans l'exécutable.
+
+Les commutateurs d'optimisations du compilateur doivent êtres désactivés, en particulier \textbf{(-s) qui doit} être sur "off".
+
+Gardez à l'esprit que vous devrez peut-être \textbf{re}-générer votre projet car les fichiers objets bien qu'à jour peuvent ne pas avoir été re-compilés avec \textit{-g}. SVP, prenez garde au fait que dans les compilateurs autres que GCC, -g et/ou -s peuvent être des commutateurs différents (-s peut ne pas être du tout disponible).
+
+\menu{Menu,Projet,Options de génération} 
+\figures[H][width=0.65\columnwidth]{DbgProjBuildOpt}{Options de Débogage de Génération de Projet}
+
+\subsection{Ajout de Témoins}
+
+\genterm{Dans la version 10.05}
+\hint{C'est une très vieille version. Vous ne devriez plus l'utiliser}
+
+Ouvrez la fenêtre des Témoins du Débugueur.
+
+\figures[H][width=0.9\columnwidth]{DbgWatchWindow}{Ouvrir une fenêtre Témoins du débugueur}
+La liste des témoins peut être enregistrée dans un fichier et rechargée plus tard. Pour ce faire, clic droit dans la liste des témoins et sélectionnez "enregistrer dans un fichier de témoins" (puis "charger un fichier de témoins" pour les recharger). 
+\figures[H][width=0.4\columnwidth]{Save_Watch}{Enregistrer une fenêtre de Témoins}
+
+\genterm{Depuis la version 12.11 et les dernières générations "nightly"}
+
+Dans les dernières générations "nightly" la fenêtre des Témoins a été revue et donc fonctionne différemment de ce qu'il y avait en 10.05.
+
+Actuellement, il y a trois façons d'y ajouter des témoins :
+
+\begin{enumerate}
+\item Cliquez sur la dernière ligne (vide) dans la fenêtre des témoins, tapez le nom de la variable (ou une expression complète) puis tapez sur la touche entrée.
+\item Quand le débugueur est arrêté sur un point d'arrêt, sélectionnez un nom de variable ou une expression complète, clic droit pour ouvrir un menu de contexte puis sélectionnez "Ajouter un témoin 'expression'".
+\item Sélectionnez une expression dans l'éditeur puis glissez-déposez là dans la fenêtre des témoins.
+\end{enumerate}
+
+L'inclusion automatique des variables locales et des arguments de fonction ont été ré-implémentés en version 13.12. 
+
+\subsection{Double-clic dans la fenêtre de pile d'Appels}
+\hint{Quand on débugue, un double-clic dans une frame de la "pile d'appel" d'une fenêtre de débogage ne met pas à jour automatiquement les variables affichées dans la fenêtre de débogage des "témoins".}
+
+Vous devez effectuer un clic droit dans la frame de la fenêtre de débogage de la "pile d'appel" et sélectionner "Basculer vers cette frame". 
+\figures[H][width=1.1\columnwidth]{DWCB_watches_01}{Une Fenêtre de Témoins}
+
+\subsection{Activer des Points d'Arrêt}
+
+Recherchez la ligne contenant la variable que vous voulez observer. Placez un point d'arrêt à un endroit qui vous permettra d'observer la valeur de la variable.
+
+\menu{Menu,Débugueur,Inverser le point d'arrêt}
+\figures[H][width=\columnwidth]{DbgSetWatchVar}{Configuration des Variables Témoins}
+Lancez le débugueur jusqu'à ce qu'il atteigne le point d'arrêt. Clic droit sur la variable pour configurer un témoin dans la fenêtre des témoins.
+
+Les points d'arrêts peuvent aussi être obtenus ou inversés par un clic gauche dans la marge gauche de l'éditeur. 
+
+\subsection{Notes}
+\genterm{Support de Scripts}
+
+\codeblocks utilise en natif le langage de scripts squirrel pour travailler avec gdb, voir: Scripts du Débugueur (\pxref{sec:debugger_scripts}). Depuis la version 7.X, gdb supporte les "pretty printer" de python, et donc, il peut aussi utiliser gdb (avec le support python) pour afficher des valeurs complexes de variables. Voir dans les forum le fil "unofficial MinGW GDB gdb with python released" et "Use GDB python under Codeblocks" pour plus de détails.
+
+\genterm{Débogage d'un fichier seul}
+
+Pour débuguer votre programme vous \textbf{devez absolument} configurer un projet. Les programmes ne consistant qu'en un seul fichier, sans projet associé, ne sont pas supportés.
+
+\genterm{Chemin avec espaces}
+
+Les points d'arrêts ne peuvent pas fonctionner si le chemin et/ou le nom du répertoire où vous avez placé votre projet contient des espaces ou d'autres caractères spéciaux. Pour être sûr du coup, n'utilisez que des lettres anglaises, des chiffres et le caractère '\_'.
+
+\genterm{"Forking"}
+
+Si votre application utilise le système d'appel 'fork' vous aurez des problèmes pour arrêter le programme en cours de débogage ou pour configurer des points d'arrêts à la volée. Voici un lien expliquant les modes forking de GDB : \url{http://sourceware.org/gdb/onlinedocs/gdb/Forks.html}
+
+\genterm{Mise à jour vers une version plus récente de MinGW}
+
+Depuis la version 6.8 de gdb d'Avril 2008, il supporte de nombreuses fonctionnalités qui n'existaient pas dans les versions antérieures. Vous pouvez obtenir une mise à jour en installant les binaires depuis les packages MinGW64 sur SourceForge.
+\hint{Le package TDM-Mingw était un bon choix jusqu'à la version 5.1, mais le développement est aujourd'hui abandonné.}
+
+\genterm{Utilisation de CDB 32bit pour des programmes 32bit et CDB 64bit pour des programmes 64bit}
+
+Il semble que le débogage d'un programme 32bit avec CDB 64bit ne fonctionne pas sous Windows 7 (et plus ?), mais CDB 32bit fonctionne parfaitement.
+
+\hint{Ceci ne devrait plus être le cas depuis \codeblocks \codeline{rev>=10920}. Pour plus de détails voir le ticket : \#429}
+
+\genterm{Limites des versions antérieures de MinGW}
+
+Si vous utilisez encore MinGW et gdb 6.7 fourni avec la version 8.02 de \codeblocks, la mise en place de points d'arrêts dans un constructeur ne fonctionnera pas. Voici quelques astuces.
+
+Les points d'arrêt ne fonctionnent pas dans les constructeurs ou les destructeurs dans GDB 6.7 ou toute version antérieure. Cependant, ils fonctionnent dans des routines appelées depuis là. C'est une restriction des versions anciennes de GDB, pas un bug. Alors, vous pouvez faire quelque chose comme : 
+\figures[H][width=0.5\columnwidth]{DbgWithCBExp}{Débuguer avec un ancien GDB}
+...et placer un point d'arrêt dans "DebugCtorDtor" sur la ligne \codeline{"int i = 0;"}. Le débugueur s'arrêtera sur cette ligne. Si vous avancez alors pas à pas dans le débogage (\menu{Menu Débugueur,Ligne suivante}; ou de façon alternative F7) vous atteindrez le code dans le constructeur/destructeur ("is\_initialized = true/false;"). 

@@ -1,0 +1,63 @@
+\section{LibFinder}\label{sec:lib_finder}
+
+Si vous voulez utilisez des librairies dans votre application, vous devez configurer votre projet pour cela. Un tel processus de configuration peut être difficile et ennuyeux car chaque librairie peut utiliser un schéma d'options particulier. Un autre problème est que cette configuration diffère entre les plates-formes ce qui résulte en des incompatibilités entre des projets Unix et Windows.
+
+LibFinder propose deux fonctionnalités majeures :
+
+\begin{itemize}
+\item Recherche des librairies installées sur votre système
+\item Inclure les librairies dans votre projet en seulement quelques clics en rendant le projet indépendant de la plate-forme
+\end{itemize}
+
+\subsection{Recherche de librairies}
+
+La recherche des librairies est disponible via le menu \menu{Extensions,Library finder}. Son but est de détecter les librairies installées sur votre système et d'enregistrer les résultats dans la base de données de LibFinder (notez que ces résultats ne sont pas écrits dans les fichiers projets de \codeblocks). La recherche commence par un dialogue où vous pouvez fournir un ensemble de répertoires où sont installées les librairies. LibFinder les analysera de façon récursive aussi, si vous ne savez pas trop où elles sont, vous pouvez sélectionner des répertoires génériques. Vous pouvez même entrer le disque complet -- dans ce cas-là, le processus de recherche prendra plus de temps mais il détectera davantage de librairies (voir \pxref{fig:list_of_directories}).
+
+\screenshot{list_of_directories}{Liste de répertoires}
+
+Quand LibFinder est à la recherche de librairies, il utilise des règles spéciales pour détecter leur présence. Chaque ensemble de règle est situé dans un fichier xml. Actuellement LibFinder peut rechercher wxWidgets 2.6/2.8, \codeblocks SDK et GLFW -- la liste sera étendue dans le futur.
+
+\hint{Pour obtenir davantage de détails sur comment ajouter un support de librairie dans LibFinder, lisez dans les sources de \codeblocks \file{src/plugins/contrib/lib\_finder/lib\_finder/readme.txt}.}
+
+Après avoir terminé l'analyse, LibFinder affiche les résultats (voir \pxref{fig:search_results}).
+
+\screenshot{search_results}{Résultats de recherche}
+
+Dans la liste, vous cochez les librairies qui doivent être enregistrées dans la base de données de LibFinder. Notez que chaque librairie peut avoir plus d'une configuration valide et les paramétrages ajoutés en premier sont plutôt destinés à être utilisés lors de la génération de projets.
+
+Au-dessous de la liste, vous pouvez sélectionner ce qu'il faut faire avec les résultats des analyses précédentes :
+
+\begin{description}
+\item[Ne pas effacer les résultats précédents] Cette option travaille comme une mise à jour des résultats existants -- Cela ajoute les nouveaux et met à jour ceux qui existent déjà. Cette option n'est pas recommandée.
+\item[Seconde option (Effacer les résultats précédents des librairies sélectionnées)] effacera tous les résultats des recherches précédentes des librairies sélectionnées avant d'ajouter les nouveaux résultats. C'est l'option recommandée.
+\item[Effacer toutes les configurations précédentes des librairies] quand vous sélectionnez cette option, la base de données de LibFinder sera effacée avant d'y ajouter les nouveaux résultats. C'est utile quand vous voulez nettoyer une base de données LibFinder contenant des résultats invalides.
+\end{description}
+
+Une autre option de ce dialogue est \menu{Configurer les Variables Globales}. Quand vous cochez cette option, LibFinder essaiera de configurer des Variables Globales qui sont aussi utilisées pour aider à  traiter les librairies.
+
+Si vous avez pkg-config d’installé sur votre système (C'est installé automatiquement sur la plupart des versions de systèmes linux) LibFinder proposera des librairies venant de cet outil. Il n'est pas nécessaire de faire une analyse spécifique pour celles-ci -- elles seront automatiquement chargées au démarrage de \codeblocks.
+
+\subsection{Inclure des librairies dans les projets}
+
+LibFinder ajoute un onglet supplémentaire dans les propriétés d'un projet \menu{Librairies} -- Cet onglet montre les librairies utilisées dans le projet ainsi que celles connues de LibFinder. Pour ajouter une librairie dans votre projet, sélectionnez là dans le panneau de droite et cliquez sur le bouton $<$. Pour enlever une librairie d'un projet, sélectionnez la dans le panneau de gauche et cliquez sur le bouton $>$ (voir \pxref{fig:project_configuration}).
+
+\screenshot{project_configuration}{Configuration de projet}
+
+Vous pouvez filtrer les librairies connues de LibFinder en fournissant un filtre de recherche. La case à cocher \menu{Afficher comme un arbre}  permet de basculer antre des vues sans catégories et des vues avec catégories.
+
+Si vous voulez ajouter une librairie qui n'est pas disponible dans la base de données de LibFinder, vous pouvez utiliser le champ \menu{Librairie inconnue}. Notez que vous devriez entrer le "library's shortcode" (nom court, qui habituellement correspond au nom de variable globale) ou le nom de librairie dans pkg-config. Vous trouverez une liste de noms courts suggérés dans le Wiki de \codeblocks dans \href{http://wiki.codeblocks.org/index.php?title=Recommended_global_variables}{Global Variables}. L'usage de cette option n'est recommandé que lorsqu'on prépare un projet qui doit être généré sur d'autres machines où ce type de librairie existe et y est correctement détectée par LibFinder. Vous pouvez accéder à une variable globale dans \codeblocks comme :
+
+\begin{lstlisting}
+$(#GLOBAL_VAR_NAME.include)
+\end{lstlisting}
+
+Cocher l'option \menu{Ne pas configurer automatiquement} indiquera à LibFinder qu'il ne devrait pas ajouter automatiquement les librairies lors de la compilation. Dans ce cas, LibFinder peut s'invoquer depuis un script de génération. Un exemple d'un tel script est généré et ajouté au projet en appuyant sur  \menu{Ajouter un script de génération manuel}.
+
+\subsection{Utilisation de LibFinder dans des projets générés par des assistants}
+
+Les assistants vont créer des projets qui n'utilisent pas LibFinder. Pour les intégrer avec cette extension, vous devrez mettre à jour manuellement les options de génération du projet. Ceci est facilement obtenu en enlevant tous les paramétrages spécifiques aux librairies et en ajoutant les librairies au travers de l'onglet \menu{Librairies} dans les propriétés du projet.
+
+De tels projets deviennent indépendants des plates-formes. Tant que les librairies utilisées sont dans la base de données de LibFinder, les options de génération du projet seront automatiquement mises à jour pour coïncider avec les paramétrages de librairie propres aux plates-formes.
+
+
+

@@ -1,0 +1,106 @@
+\section{Ajout dans le système de génération de \codeblocks d'un support de fichiers non C/C++}\label{sec:cb_AddLanguage}
+
+Cette section descrit comment ajouter dans \codeblocks un support pour d'autres langages que C ou C++. (copie du Wiki: Mandrav Octobre 2007, Mise à jour: MortenMacFly Juin 2012).
+
+\subsection{Introduction}
+Comme vous le savez déjà, \codeblocks est adapté principalement au développement en C/C++. Cela signifie que lorsqu'il "voit"  des fichiers C/C++ dans votre projet, il sait comment les compiler et les lier pour en générer un exécutable binaire. Mais qu'en est-il des autres types de fichiers ? Vous pouvez vouloir compiler des fichiers en java ou en python mais, malheureusement, \codeblocks ne sait rien d'eux...\
+
+Et il existe un autre cas : dans le monde réel des projets, il n'est pas rare que certains fichiers appartenant à un projet soient générés automatiquement. Cela se fait via l'utilisation d'une autre programme/script qui éventuellemnt utilise un fichier d'entrée et génère un (ou plusieurs) fichier(s) basé(s) sur cette entrée. \codeblocks, malheureusement, ne sait pas non plus qu'en faire...\
+
+Ou le peut-il ?\
+
+La réponse est : ....... (roulement de tambour) ........ (ta-da) ......... \textbf{Sûr, il le peut !}\
+
+\codeblocks a été mis à jour pour qu'on puisse le configurer pour reconnaitre les fichiers non C/C++ files et y agir en conséquence pendant le processus de génération. Cet article va décrire ces changements et donner un exemple simple mais du monde réel d'une telle utilisation. 
+
+\subsection{Comment ça marche...}
+
+Au cas où vous n'avez jamais regardé les options avancées du compilateur, vous pouvez les trouver en cliquant dans \menu{Paramêtres,Compilateur,Autres paramêtres}. Regarder dans les "Options avancées" en bas à droite, c'est facile de le louper.\
+
+Dans ce dialogue, vous trouverez les lignes de commandes macros utilisées pour générer des fichiers. Par exemple, chaque fichier appartenant au projet, qui a son flag de compilation activé, sera compilé avec la macro dénommée "Compile single file to object file" ("\codeline{$compiler $options $includes -c $file -o $object}", pour les curieux).\
+
+
+Bien que cela permette de personnaliser la configuration du système de génération, il est clair que cela ne permet pas une personnalisation plus générale.\
+
+Si vous voulez inclure dans votre projet et compiler un fichier java, vous devez définir une commande de génération pour ce fichier particulier, et uniquement pour ce fichier (cliquez avec le bouton droit de la souris sur le fichier dans l'arborescence et choisissez les propriétés). C'est non seulement lourd (imaginez devoir faire cela pour 10 ou 100 fichiers java) mais aussi peu pratique.\
+
+\genterm{...et comment les choses ont évoluées}
+
+La nouvelle fonctionnalité décrite dans cet article vise à supprimer les problèmes décrits ci-dessus et à permettre une plus grande personnalisation du système de génération. Alors, qu'est-ce qui est différent maintenant ? Aller dans \menu{Paramètres, Compilateur, Paramàtres globaux des compilateurs, Autres paramètres} et cliquez sur Options Avancées, vous obtiendrez cette boîte de dialogue : 
+
+\figures[H][width=.55\columnwidth]{AdvancedCompilerOptions}{Options avancées du Compilateur}
+
+Pour commencer, les macros en ligne de commande sont maintenant associées à une liste d'extensions de fichiers sources. Ainsi, chaque macro en ligne de commande (comme le "Compile single file to object file") peut maintenant contenir des macros différentes selon l'extension du fichier source. C'est le cœur de la nouvelle fonctionnalité : en ajoutant une nouvelle paire commande-extension, vous ajoutez effectivement la prise en charge de ces extensions au système de génération !
+
+Une autre chose qui a également été ajoutée est la possibilité de conserver une liste de fichiers que la commande personnalisée va générer (pour chaque paire commande-extension). Ces fichiers générés sont alors automatiquement affichés dans l'arborescence du projet, et font partie du processus de génération, etc. En d'autres termes, ils affectent dynamiquement - et de manière transparente - le projet. Si vous trouvez cela confus, jetez un œil aux exemples ci-dessous et les choses deviendront plus claires :).\
+
+\subsection{Exemples}
+
+\genterm{Voyons déjà un premier exemple}
+
+Voici un exemple concret. J'ai récemment travaillé sur un projet annexe qui m'a demandé d'utiliser SWIG. Ce que fait le programme swig, en termes simples, c'est de prendre en entrée un fichier d'interface spécifique (généralement *.i) et, sur la base de cette entrée, de génèrer un fichier C/C++ à inclure dans votre projet. Cela semble être le scénario idéal à utiliser comme exemple ici :).
+
+Voici ce que j'ai fait : 
+\begin{verbatim}
+Commande:         Compile single file to object file
+Extension:        i
+Macro:            swig -c++ -lua $includes -o $file_dir/$file_name.cpp $file
+Fichiers générés: $file_dir/$file_name.cpp
+\end{verbatim}
+
+Qu'est ce que cela signifie ?
+
+Pour chaque fichier avec l'extension i, utiliser la macro ci-dessus pour le traiter (compiler). Faire aussi savoir à \codeblocks que cette macro va créer un nouveau fichier, dénommé \codeline{$file_dir/$file_name.cpp}.
+
+Avec cette information en main, \codeblocks fera maintenant ce qui suit de manière automatique lorsque vous ajoutez un fichier *.i à un projet :
+\begin{itemize}
+\item Ajoutera aussi le(s) fichier(s) généré(s) au projet (même s'ils n'existent pas déjà).
+\item Affichera le fichier dans une nouvelle arborescence "Auto-generated" (si la catégorisation des fichiers est activée).
+\item Comprendra comment traiter (compiler) les fichiers *.i.
+\item Programmera également le traitement de tous les fichiers générés (compilation) après le traitement du fichier *.i.
+\item Le suivi des dépendances sera maintenu, de sorte que si le fichier *.i est modifié, les fichiers générés seront re-générés également.
+\end{itemize}
+
+\genterm{Autre exemple - Ragel}
+
+Compiler une source Ragel State Machine en un fichier C++.
+\begin{verbatim}
+Commande:         Compile single file to object file
+Extension:        rl
+Macro:            ragel $file -C -L -o $file.cpp
+Fichiers générés: $file.cpp
+\end{verbatim}
+(Vous devrez vous assurer que l'exécutable ragel est dans votre PATH.)\newline
+
+\genterm{Autre exemple - Bison}
+
+Compilation d'un parseur Bison en fichiers C/C++.
+\begin{verbatim}
+Commande:         Compile single file to object file
+Extension:        y
+Macro:            bison -v -d $file -o $file_dir/$file_name.parser.cc
+Fichiers générés: $file_dir/$file_name.parser.cc
+                  $file_dir/$file_name.parser.hh
+\end{verbatim}
+(Vous devrez vous assurer que l'exécutable bison est dans votre PATH.)\newline
+
+\genterm{Autre exemple - Flex}
+
+Compilation d'un analyseur de fichiers Flex en fichiers C/C++.
+\begin{verbatim}
+Commande:         Compile single file to object file
+Extension:        l
+Macro:            flex -o$file_dir/$file_name.scanner.cc $file
+Fichiers générés: $file_dir/$file_name.scanner.cc
+\end{verbatim}
+(Vous devrez vous assurer que l'exécutable flex est dans votre PATH.)
+
+\genterm{Notes}
+    Toutes les commandes par défaut sont associées sans extension. Elles sont utilisées comme solution de repli si une extension correspondante n'est pas définie.
+
+\genterm{Problèmes connus}
+\begin{itemize}
+\item Actuellement, seules les macros \codeline{$file*} sont supportées comme noms de fichiers générés (\codeline{$file, $file_dir, $file_name et $file_ext}).
+\item Si vous changez l'un quelconque des paramètres mentionnés ici dans les options de compilation avancées, vous \textbf{devez} fermer puis ré-ouvrir votre projet pour que les changements soient pris en compte. Pour le moment, aucun message ne le signale.
+\item Si vous utilisez un compilateur autre que celui par défaut (pour une compilation croisée, par exemple), vous devrez peut-être effectuer ces réglages dans le compilateur par défaut, et non dans le compilateur croisé, où ils semblent n'avoir aucun effet.
+\end{itemize}

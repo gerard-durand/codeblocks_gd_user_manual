@@ -1,0 +1,298 @@
+\section{Complétion de Code dans \codeblocks}\label{sec:codecompletion}
+
+Deux extensions qui fournissent une fonctionnalité de complétion de code et navigation de classe. Ils ne sont pas compatibles entre-eux. Un seul des deux peut être activé.
+ 
+\hint {Extrait de Wikipedia : La complétion de code intelligente est une fonction de complétion de code contextuelle dans certains environnements de programmation qui accélère le processus de codage des applications en réduisant les fautes de frappe et autres erreurs courantes. Les tentatives de complétion de code se font généralement par le biais de fenêtres pop-up d'autocomplétion pendant la saisie, l'interrogation des paramètres des fonctions, les conseils d'interrogation liés aux erreurs de syntaxe. La complétion de code intelligente et les outils connexes servent de documentation et à supprimer les ambiguïtés pour les noms de variables, les fonctions et les méthodes.}
+
+\subsection{Extension de Complétion de Code }
+
+\figures[H][width=.20\columnwidth]{Codecompletion_icon}{Icône de Complétion de Code}
+
+\textbf{CodeCompletion} fourni un navigateur de symboles pour vos projets et une complétion de code interne à l'éditeur.
+Lors de la complétion de code, on utilise un ensemble de symboles pour identifier le type associé avec les éléments suggérés ; ces symboles sont définis dans la table ci-dessous.
+
+\figures[H][width=.75\columnwidth]{CodeCompletion}{Table de Complétion de Code}
+
+Note : Ceci est un document utilisateur de l'extension Code Complétion.
+Seuls les langages C/C++ sont supportés par cette extension (en l'état actuel)...
+
+\subsection{Client Clangd pour CB}
+
+Ce greffon fournit une fonctionnalité de complétion de code et navigation de classe par Clangd via LSP (Language Server Protocol).
+
+La page d'accueil de l'extension est : \url{https://sourceforge.net/projects/cb-clangd-client/}
+
+Le développeur principal est Pecan.
+
+Le forum de discussion correspondant est : Code completion using LSP and clangd\newline
+(\url{https://forums.codeblocks.org/index.php/topic,24357.msg166136.html})
+
+Cette documentation est extraite du wiki : \url{https://wiki.codeblocks.org/index.php/CB_Clangd_Client}
+
+\subsubsection{Qu'est-ce que Clangd}
+
+clangd comprend votre code en C++ et ajoute des fonctions évoluées à votre éditeur :
+\begin{itemize}[noitemsep]
+\item complétion de code
+\item erreurs à la compilation
+\item aller à la définition
+\item aller à l'implémentation
+\item recherche de références
+\end{itemize}
+et bien plus.
+
+clangd est un serveur de langage qui peut fonctionner avec votre éditeur via un greffon.\newline
+\codeblocks vous apporte Clangd\_client en tant que greffon utile.
+
+Clangd\_client améliore en outre le serveur clangd en fournissant :
+\begin{itemize}[noitemsep]
+\item appel d'astuces
+\item définitions des fonctions
+\item définitions des paramètres
+\item fonction de positionnement sur précédent ou suivant
+\item navigateur de symboles
+\item aller au fichier
+\item aller à la fonction
+\item renommer des symboles
+\end{itemize}
+
+\subsubsection{Configuration de clangd\_client}\label{sec:cfg_client}
+
+Clangd\_client a besoin d'un exécutable tiers : clangd.
+
+Voir \textbf{Windows : Compilateur Clangd/Installateur de Package LLVM} ci-dessous (\pxref{sec:win_packages}) pour l'installer, ou \textbf{Linux : Processus d'installation de l'exécutable Clangd} (voir \pxref{sec:linux_install})
+
+Après l'installation avec succès de l'exécutable clangd, il faut faire ce qui suit :
+
+\begin{itemize}[noitemsep]
+\item Désactivez le greffon "CodeCompletion".
+\item Allez dans \menu{Extensions, Gestion des extensions} et \textbf{désactivez} CodeCompletion.
+\item Allez dans \menu{Extensions, Gestion des extensions} et \textbf{activez} Clangd\_client.
+\end{itemize}
+\textbf{Redémarrez \codeblocks.}
+
+Configurez (ou vérifiez) dans \codeblocks là où est déclaré l'exécutable clangd :\par
+\begingroup
+\leftskip 6ex
+Allez dans \menu{Paramètres, Éditeur, Clangd\_client, Parseur C/C++ (onglet)} et vérifiez l'emplacement de l'exécutable de clangd dans la boîte labellée "Spécifier l'exécutable clangd à utiliser".
+\par
+\endgroup
+
+\subsubsection{Installation de Clangd\_client à partir des sources ou d'un binaire pré-généré}
+
+\begin{enumerate}[noitemsep]
+\item Installez LLVM ou Clangd.exe comme documenté dans la section ci-dessous de titre : \\
+          \textbf{Installation sous Windows de l'exécutable Clangd} (voir \pxref{sec:win_install})
+
+\item Désactivez le greffon Code completion comme suit :
+    \begin{enumerate}[noitemsep]
+    \item Ouvrez la Gestion des Extensions via le menu de \codeblocks \newline
+          \menu{Menu Principal, Extensions, Gestion des extensions...} 
+    \item Dans le dialogue de Gestion des extensions faire ce qui suit :
+        \begin{enumerate}[noitemsep]
+        \item Recherchez et sélectionnez le greffon "Code completion" à l'aide de son nom 
+        \item Pressez sur le bouton "Désactiver" sur la droite proche du haut
+        \item Si vous obtenez des erreurs ré-essayez.
+        \end{enumerate}
+    \end{enumerate}
+	   
+\item Installez le greffon Clangd-Client en utilisant une des options suivantes, qui sont documentées ci-dessous :
+    \begin{enumerate}[noitemsep]
+    \item Installer via la Gestion des extensions
+    \item Installer à la main les fichiers du greffon
+    \end{enumerate}
+	
+\item Configurez le greffon Clangd-Client en vue de son utilisation comme suit :
+    \begin{enumerate}[noitemsep]
+    \item Sélectionnez l'élément de menu de \codeblocks \menu{Paramètres, Éditeur...}
+    \item Dans la liste sur la gauche cliquez/sélectionnez l'option "clangd\_client".
+    \item Dans l'onglet "Parseur C/C++" modifiez "Spécifier l'exécutable clangd à utiliser" pour référencer le clangd.exe que vous avez installé via l'étape 1) ci-dessus. \\ 
+     Quelques exemples de ce que cela pourrait être :
+    \begin{verbatim}
+    C:\msys64\clang64\bin\clangd.exe
+    C:\msys64\clang32\bin\clangd.exe
+    C:\LLVM\bin\clangd.exe
+    C:\compilers\clang\clangd.exe
+    \end{verbatim}
+    \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Suppression Manuelle du greffon Clangd-Client}
+
+\begin{enumerate}[noitemsep]
+\item Quittez \codeblocks \hspace{0pt} !
+\item Si vous avez installé les fichiers à la main ou utilisé la Gestion des extensions, alors vous pouvez faire ce qui suit :
+    \begin{enumerate}[noitemsep]
+    \item Dans le répertoire \codeblocks \file{...\osp share\osp CodeBlocks}, supprimez le fichier \file{clangd\_client.zip}
+    \item Dans le répertoire \codeblocks \file{...\osp share\osp CodeBlocks\osp plugins}, supprimez le fichier \file{clangd\_client.dll}
+    \end{enumerate}
+\item Si vous avez installé via la Gestion des extensions, alors vous pouvez supprimer les fichiers avec les commandes suivantes :
+    \begin{enumerate}[noitemsep]
+    \item del \file{\%APPDATA\%\osp CodeBlocks\osp share\osp codeblocks\osp plugins\osp clangd\_client.dll}
+    \item del \file{\%APPDATA\%\osp CodeBlocks\osp share\osp codeblocks\osp clangd\_client.zip}
+    \end{enumerate}
+\item Si vous voulez ré-utiliser l'ancien "code completion", pensez à réactiver le greffon
+\end{enumerate}
+
+
+\subsubsection{Windows : Installation sous Windows de l'exécutable Clangd}\label{sec:win_install}
+
+Il y a 3 options principales pour installer clangd.exe:
+\begin{enumerate}[noitemsep]
+\item Installer un compilateur LLVM.
+\item Extraire à la main les fichiers nécessaires du compilateur LLVM.
+\item Installer un package Clangd pour le compilateur Windows que vous utilisez, s'il est disponible.
+\end{enumerate}
+
+Les étapes pour effectuer ces trois options sont détaillées ci-dessous.
+
+\paragraph*{Windows : Installer le compilateur LLVM}\label{sec:llvm_install}
+
+\begin{enumerate}[noitemsep]
+\item Téléchargez le dernier (non RC/Beta) exécutable LLVM Windows pour votre OS (Win32 ou Win64) depuis la page de téléchargement Github de LLVM : \newline
+      \url{https://github.com/llvm/llvm-project/releases} \newline
+
+  Depuis Janvier 2022 les noms des fichiers Windows sont :
+  \begin{verbatim}
+     LLVM-<version>-win64.exe
+     LLVM-<version>-win32.exe
+  \end{verbatim}
+  où \file{<version>} est la version de LLVM, comme 13.0.0 ou 13.0.1.\\
+
+\item Lancez \file{LLVM-<version>-win<xx>.exe} que vous avez téléchargé pour installer le compilateur LLVM.
+\end{enumerate}
+
+\paragraph*{Windows : Extraction Manuelle des fichiers du compilateur LLVM}\label{sec:llvm_extract}
+\begin{enumerate}[noitemsep]
+\item Téléchargez le dernier (non RC/Beta) exécutable LLVM Windows pour votre OS (Win32 ou Win64) depuis la page de téléchargement Github de LLVM : \newline
+      \url{https://github.com/llvm/llvm-project/releases} \newline
+
+  Depuis Janvier 2022 les noms des fichiers Windows sont :
+  \begin{verbatim}
+     LLVM-<version>-win64.exe
+     LLVM-<version>-win32.exe
+  \end{verbatim}
+  où \file{<version>} est la version de LLVM, comme 13.0.0 ou 13.0.1.\\
+
+\item Dézippez le fichier \file{LLVM-<version>-win<xx>.exe} que vous avez téléchargé avec 7ZIP ou votre programme ZIP préféré dans un sous-répertoire
+\item Créez un nouveau répertoire pour y placer clangd.exe et ses dll's
+\item Copiez les fichiers suivants dans ce nouveau répertoire à partir du répertoire où a été dézippé LLVM :
+    \begin{verbatim}
+    bin\clangd.exe
+    bin\msvcp140.dll
+    bin\vcruntime140.dll
+    bin\vcruntime140\_1.dll
+    \end{verbatim}
+\end{enumerate}
+
+\paragraph*{Windows : Compilateur Clangd/Installateur de Package LLVM}\label{sec:win_packages} \hspace{0pt} \\
+   En raison du nombre de compilateurs différents disponibles pour Windows, tous ces compilateurs n'auront pas forcément à la fois 
+   les fichiers requis pour Clang ou LLVM.
+
+   Si vous voulez installer un (ou des) package(s) spécifique(s) pour votre compilateur Windows, celui que vous avez, afin d'y utiliser le fichier clangd.exe, veuillez suivre les instructions ci-dessous pour le compilateur spécifique que vous avez installé :
+
+   \subparagraph*{MSYS2 Compiler - MinGW64} \hspace{0pt} \\
+   Il y a 2 options principales pour installer clangd.exe :
+   \begin{enumerate}[noitemsep]
+   \item La première option afin de minimiser l'espace disque est d'installer les "Clang extra tools" en utilisant l'un des packages suivants :       
+        {\footnotesize
+        \begin{longtable}{|l|l|}\hline
+        \textbf{Package}                            & \textbf{Exécutable Clangd}    \\ \hline
+%        \endhead   % To repeat the title line, if needed
+        mingw-w64-clang-x86\_64-clang-tools-extra   & clang64/bin/clangd.exe        \\
+        mingw-w64-x86\_64-clang-tools-extra         & mingw64/bin/clangd.exe        \\ \hline
+%        \caption{Msys2 - Clang Extra Packages pour MinGW64}
+        \end{longtable}
+        \par}
+ 
+        Pour intaller le package faire ce qui suit :
+        \begin{enumerate}[noitemsep]
+        \item Ouvrir un shell bash via msys2.exe 
+        \item Y lancer la commande suivante : \newline
+              \file{pacman -S <Package name in the table above>} \newline
+        \end{enumerate}
+
+       "OU" \newline
+
+    \item La seconde option est d'installer la version complète des "Clang tool chain" comme suit :
+        \begin{enumerate}[noitemsep]
+        \item Ouvrir un shell bash via msys2.exe 
+        \item Y lancer la commande suivante : \newline
+              \file{pacman -S mingw-w64-clang-x86\_64-toolchain}
+        \end{enumerate}
+    \end{enumerate}
+
+    \subparagraph*{MSYS2 Compiler - MinGW32} \hspace{0pt} \\
+     Il y a 2 options principales pour installer clangd.exe :
+     \begin{enumerate}[noitemsep]
+     \item La première option afin de minimiser l'espace disque est d'installer les "Clang extra tools" en utilisant l'un des packages suivants :\\
+        {\footnotesize
+        \begin{longtable}{|l|l|}\hline
+        \textbf{Package}                            & \textbf{Exécutable Clangd}    \\ \hline
+%        \endhead   % To repeat the title line, if needed
+        mingw-w64-clang-i686-clang-tools-extra      & clang32/bin/clangd.exe        \\
+        mingw-w64-i686-clang-tools-extra            & mingw32/bin/clangd.exe        \\ \hline
+%        \caption{Msys2 - Clang Extra Packages pour MinGW32}
+        \end{longtable}
+        \par}
+
+        Pour installer le package faire ce qui suit :
+        \begin{enumerate}[noitemsep]
+        \item Ouvrir un shell bash via msys2.exe
+        \item Y lancer la commande suivante : \newline
+              \file{pacman -S <Package name in the table above>}\newline
+        \end{enumerate}
+
+        "OU" \newline
+
+     \item La seconde option est d'installer la version complète des "Clang tool chain" comme suit :
+        \begin{enumerate}[noitemsep]
+        \item Ouvrir un shell bash via msys2.exe
+        \item Y lancer la commande suivante : \newline
+              \file{pacman -S mingw-w64-clang-i686-toolchain}
+        \end{enumerate}
+    \end{enumerate}
+
+\rule{\textwidth}{0.4pt} \\    
+    \textbf{Notes vues sur le forum \codeblocks afin d'éviter un mélange d'exécutables gcc/clangd incompatibles.}\\
+\rule{\textwidth}{0.4pt} \\  
+    {\small \url{https://forums.codeblocks.org/index.php/topic,24357.msg169412.html#msg169412}}
+
+    \textbf{Ne mélangez surtout pas mingw64 avec clang64.}
+    
+    Si vous utilisez la version gcc de msys2, (compilateurs dans le répertoire "\file{msys64\osp mingw64\osp bin}"), vous devriez utiliser "\file{mingw-w64-x86\_64-clang-tools-extra}", (le fichier \file{clangd.exe} est dans le répertoire "\file{msys64\osp mingw64\osp bin}") soit le même répertoire que votre \file{gcc.exe}.
+ 
+	Si vous utilisez la version complète de "clang tool chain", (le répertoire "\file{msys64\osp clang64\osp bin}"), vous devriez utiliser "\file{mingw-w64-clang-x86\_64-clang-tools-extra}".
+
+	J'ai trouvé que j'avais fait une grosse erreur : c'est que j'utilisais la chaine d'outils gcc de "\file{msys64\osp mingw64\osp bin}", mais que j'utilisais le \file{clangd.exe} de "\file{msys64\osp clang64\osp bin}".
+    Le résultat, c'est que j'obtenais un grand nombre de messages de diagnostiques et d'erreurs de LSP.\\
+    Par chance, j'en ai trouvé la raison, et corrigé ce problème. En espérant que cela serve à d'autres.
+%}
+
+\subsubsection{Linux : Processus d'installation de l'exécutable Clangd}\label{sec:linux_install}
+
+NOTE : Le greffon Clangd\_client a besoin d'un exécutable clangd en version 13 ou supérieure.
+
+Vérifiez votre version actuelle de clangd en exécutant \file{clangd --version}.\newline
+Si le numéro de version est inférieur à 13 vous devrez installer une version plus récente.
+
+Voir \url{https://clangd.llvm.org/installation.html}
+
+L'installation d'un package clangd vous donnera couramment une version légèrement plus ancienne.\newline
+Testez cela en exécutant \file{apt-get install --dry-run clangd}
+
+Depuis le 16/11/2022, c'est la version 10 de clangd qui sera installée.\newline
+Si le numéro de version de clangd affiché est inférieur à 13, vous devrez installer une version spécifique comme suit :
+
+Installez un package "release" (\textit{doit être en version 13 ou supérieure}):
+
+\file{sudo apt-get install clangd-13} (\textit{Doit être en version 13 ou supérieure}).
+
+Cela installera clangd dans \file{/usr/bin/clangd-13}.
+
+Vous pouvez maintenant configurer le greffon clangd\_client en suivant les instructions précédentes dans \textbf{Configuration de clangd\_client} (voir \pxref{sec:cfg_client}
+
+Si vous préférez installer entièrement le package LLVM/Clang, parce que c'est ce que vous voulez, il existe un script automatique d'installation disponible pour vous installer LLVM.
+
+Pour installer la dernière version stable : voir \url{https://apt.llvm.org/}, "Automatic installation script".
+Notez que dans ce script, vous devrez spécifier le numéro de version voulu.

@@ -1,0 +1,221 @@
+\section{AutoVersioning}\label{sec:autoversioning}
+
+Une application de suivi de versions qui incrémente les numéros de version et de génération de votre application à chaque fois qu'un changement est effectué et l'enregistre dans un fichier \file{version.h} avec des déclarations de variables faciles à utiliser. Possède également une option pour proposer des changements dans un style à la SVN, un éditeur de schémas de versions, un générateur de journal des changements, et bien d'autres choses encore $\ldots$
+
+\subsection{Introduction}
+
+L'idée de développer l'extension AutoVersioning est venue lors du développement d'un logiciel en version pre-alpha qui exigeait des informations de version et d'état. Trop occupé par le codage, sans temps disponible pour maintenir la numérotation des versions, l'auteur a décidé de développer une extension qui puisse faire le travail avec aussi peu d'interventions que possible.
+
+\subsection{Fonctionnalités}
+
+Voici résumée la liste des fonctions couvertes par l'extension :
+
+\begin{itemize}
+\item Supporte C et C++.
+\item Génère et incrémente automatiquement des variables de versions.
+\item Éditeur de l'état du logiciel.
+\item Éditeur de schéma intégré pour changer le comportement de l'auto incrémentation des valeurs de versions.
+\item Déclaration des dates en mois, jour et année.
+\item Style de version Ubuntu.
+\item Contrôle des révisions Svn.
+\item Générateur de journal des changements.
+\item Fonctionne sous Windows et Linux.
+\end{itemize}
+
+\subsection{Utilisation}
+
+Aller simplement dans le menu \menu{Projet,Autoversioning}. Une fenêtre popup comme celle-ci apparaîtra :
+
+\figures[H][width=.45\columnwidth]{autoversion_configure}{Configuration d'un projet pour Autoversioning}
+
+Quand on répond Oui au message de demande de configuration, la fenêtre principale de configuration d'AutoVersioning s'ouvre pour vous permettre de paramétrer les informations de version de votre projet.
+
+Après avoir configuré votre projet pour la mise en version automatique, les paramètres entrés dans la boîte de dialogue de configuration sont enregistrées dans le fichier de projet et un fichier \file{version.h} est créé. Pour le moment, chaque fois que vous entrez dans le menu \menu{Projet,Autoversioning}, le dialogue de configuration qui apparaît vous permet d'éditer votre version de projet et les paramètres qui y sont liés, à moins que vous n'enregistriez pas les nouveaux changements effectués par l'extension dans le fichier de projet.
+
+\subsection{Onglets de la boîte de dialogue}
+\genterm{Valeurs de Version}
+
+Ici vous entrez simplement les valeurs de version adéquates ou laissez l'extension Autoversioning le faire pour vous (voir \pxref{fig:autoversion_editor}).
+
+\begin{description}
+\item[Version Majeure] Incrémenté de 1 quand le numéro mineur atteint son maximum
+\item[Version mineure] Incrémenté de 1 quand le numéro de génération dépasse la barrière de nombre de générations, la valeur étant remise à 0 quand il atteint sa valeur maximale.
+\item[Numéro de génération] (également équivalent à numéro de Release) - Incrémenté de 1 chaque fois que le numéro de révision est incrémenté.
+\item[Révision] Incrémenté aléatoirement quand le projet a été modifié puis compilé.
+\end{description}
+
+\screenshot{autoversion_editor}{Configuration des Valeurs de Version}
+
+\genterm{État}
+
+Quelques champs pour garder une trace de l'état de votre logiciel avec une liste de valeurs prédéfinies usuelles (voir \pxref{fig:autoversion_status}).
+
+\begin{description}
+\item[État du logiciel] Un exemple typique pourrait être v1.0 Alpha
+\item[Abréviation] Idem à l'état du logiciel mais comme ceci : v1.0a
+\end{description}
+
+\screenshot{autoversion_status}{Configuration de l'État dans Autoversioning}
+
+\genterm{Schéma}
+
+Vous permet d'éditer comment l'extension incrémentera les valeurs de version (voir \pxref{fig:autoversion_scheme}).
+
+\screenshot{autoversion_scheme}{Schéma de fonctionnement d'Autoversioning}
+
+\begin{description}
+\item[Valeur max pour numéro mineur] Valeur maximale que peut atteindre la valeur mineure. Une fois cette valeur atteinte, le numéro Majeur est incrémenté de 1 et à la compilation suivante le numéro mineur sera remis à 0.
+\item[Nombre max de générations] Quand cette valeur est atteinte, le compteur sera remis à 0 à la génération suivante. Mettre à 0 pour ne pas limiter.
+\item[Révision maximale] Comme Nombre max de générations. Mettre à 0 pour ne pas limiter.
+\item[Révision aléatoire maximale] Les révisions s'incrémentent par un nombre aléatoire que vous décidez. Si vous mettez 1, les révisions s'incrémenteront évidemment par 1.
+\item[Nombre de générations avant d'incrémenter Mineur] Après des changements de code et des compilations avec succès, l'historique des générations s'incrémente, et quand cette valeur est atteinte alors la valeur Mineure s'incrémente.
+\end{description}
+
+\genterm{Paramètres}
+
+Ici vous pouvez entrer certains paramètres du comportement d'Autoversioning (voir \pxref{fig:autoversion_settings}).
+
+\screenshot{autoversion_settings}{Paramètres d'Autoversioning}
+
+\begin{description}
+\item[Auto-incrémente Majeur et Mineur] Laisse l'extension incrémenter ces valeurs en utilisant le schéma. Si non coché, seuls les numéros de génération et de Révision s'incrémenteront.
+\item[Créer des déclarations de dates] Crée des entrées dans le fichier \file{version.h} avec des dates et un style de version à la façon d'Ubuntu.
+\item[Incrémentation automatique] Indique à l'extension d'incrémenter automatiquement dès qu'une modification est faite. Cette incrémentation interviendra avant la compilation.
+\item[Langage de l'en-tête] Sélectionne le langage de sortie du fichier \file{version.h}
+\item[Interroger pour incrémenter] Si Incrémentation automatique est coché, on vous interroge alors avant la compilation (si des changements ont été effectués) pour incrémenter les valeurs de version.
+\item[Svn activé] Recherche dans le répertoire courant la révision Svn et la date puis génère les entrées correspondantes dans \file{version.h}
+\end{description}
+
+\genterm{Journal des changements}
+
+Ceci vous permet d'entrer chaque changement effectué au projet afin de générer un fichier \file{ChangesLog.txt} (voir \pxref{fig:autoversion_changelog}).
+
+\screenshot{autoversion_changelog}{Journal des changements d'Autoversioning}
+
+\begin{description}
+\item[Afficher les changements quand la version s'incrémente] Affichera une fenêtre popup d'édition de journal quand la version est incrémentée.
+\item[Format du Titre] Un titre formaté avec une liste de valeurs prédéfinies.
+\end{description}
+
+\subsection{Inclusion dans votre code}
+
+Pour utiliser les variables générées par l'extension faire simplement \codeline{\#include <version.h>}. Le code suivant est un exemple de ce qu'on peut faire :
+
+\begin{lstlisting}
+#include <iostream>
+#include "version.h"
+
+void main(){
+    std::cout<<AutoVersion::Major<<endl;
+}
+\end{lstlisting}
+
+\genterm{Sortie de version.h}
+
+Le fichier d'en-tête généré. Voici un exemple sur un fichier en mode c++ :
+
+\begin{lstlisting}
+#ifndef VERSION_H
+#define VERSION_H
+
+namespace AutoVersion{
+
+	//Date Version Types
+	static const char DATE[] = "15";
+	static const char MONTH[] = "09";
+	static const char YEAR[] = "2007";
+	static const double UBUNTU_VERSION_STYLE = 7.09;
+
+	//Software Status
+	static const char STATUS[] = "Pre-alpha";
+	static const char STATUS_SHORT[] = "pa";
+
+	//Standard Version Type
+	static const long MAJOR = 0;
+	static const long MINOR = 10;
+	static const long BUILD = 1086;
+	static const long REVISION = 6349;
+
+	//Miscellaneous Version Types
+	static const long BUILDS_COUNT = 1984;
+	#define RC_FILEVERSION 0,10,1086,6349
+	#define RC_FILEVERSION_STRING "0, 10, 1086, 6349\0"
+	static const char FULLVERSION_STRING[] = "0.10.1086.6349";
+
+}
+#endif //VERSION_h
+\end{lstlisting}
+
+En mode C c'est la même chose qu'en C++ mais sans le namespace:
+
+\begin{lstlisting}
+#ifndef VERSION_H
+#define VERSION_H
+
+	//Date Version Types
+	static const char DATE[] = "15";
+	static const char MONTH[] = "09";
+	static const char YEAR[] = "2007";
+	static const double UBUNTU_VERSION_STYLE = 7.09;
+
+	//Software Status
+	static const char STATUS[] = "Pre-alpha";
+	static const char STATUS_SHORT[] = "pa";
+
+	//Standard Version Type
+	static const long MAJOR = 0;
+	static const long MINOR = 10;
+	static const long BUILD = 1086;
+	static const long REVISION = 6349;
+
+	//Miscellaneous Version Types
+	static const long BUILDS_COUNT = 1984;
+	#define RC_FILEVERSION 0,10,1086,6349
+	#define RC_FILEVERSION_STRING "0, 10, 1086, 6349\0"
+	static const char FULLVERSION_STRING[] = "0.10.1086.6349";
+
+#endif //VERSION_h
+\end{lstlisting}
+
+\subsection{Générateur de journal des changements}
+
+Cette boîte de dialogue est accessible à partir du menu \menu{Projet, Journal des changements}. Également si la case "Afficher l'éditeur des changements quand la version s'incrémente" est cochée, une fenêtre s'ouvrira pour vous permettre d'entrer la liste des changements après une modification des sources du projet ou un évènement d'incrémentation (voir \pxref{fig:autoversion_changes}).
+
+\screenshot{autoversion_changes}{Changements dans un projet}
+
+\genterm{Résumé des Boutons}
+
+\begin{description}
+\item[Ajouter] Ajoute une ligne à la grille de données
+\item[Éditer] Active les modifications de la cellule sélectionnée
+\item[Supprimer] Supprime la ligne courante de la grille de données
+\item[Enregistrer] Enregistre dans un fichier temporaire (\file{changes.tmp}) les données actuelles pour pouvoir effectuer plus tard les entrées dans le journal des changements
+\item[Écrire] Entre la grille de données dans le journal des changements
+\item[Annuler] Ferme simplement la boîte de dialogue sans rien faire d'autre
+\end{description}
+
+Voici un exemple de sortie générée par l'extension dans le fichier \file{ChangesLog.txt} :
+
+\begin{lstlisting}
+03 September 2007
+   released version 0.7.34 of AutoVersioning-Linux
+
+     Change log:
+        -Fixed: pointer declaration
+        -Bug: blah blah
+
+02 September 2007
+   released version 0.7.32 of AutoVersioning-Linux
+
+     Change log:
+        -Documented some areas of the code
+        -Reorganized the code for readability
+
+01 September 2007
+   released version 0.7.30 of AutoVersioning-Linux
+
+     Change log:
+        -Edited the change log window
+        -If the change log windows is leave blank no changes.txt is modified
+\end{lstlisting}
+

@@ -1,0 +1,52 @@
+\section{Synthèse des types de variables dans \codeblocks}\label{sec:cb_variables_types}
+
+Vous trouverez ici les différents types de variables disponibles dans \codeblocks et quand/comment les utiliser. (recopié du Wiki)
+
+\subsection{Extension Variables d'Environnement}
+
+Ces variables sont propres au système et peuvent être définies ou remplacées par l'extension EnvVars.
+C'est utile si vous avez, par exemple, un autre système de génération que \codeblocks qui utilise des variables d'environnement (comme les Makefiles). Ainsi, vous pouvez "partager" cette technologie.
+L'extension EnvVars (\pxref{sec:EnvVar_Plugin}) permet de configurer différents jeux de EnvVars que vous pouvez activer ou vous y référer dans les paramètres par projets.
+Cela peut être utile, par exemple, pour des paramètres spécifiques à une plate-forme ou des variables de chemin de bibliothèques (sous Linux). 
+
+\subsection{Variables personnalisées globales de Compilateur}
+
+Elles sont utiles, par exemple, pour modifier rapidement un chemin d'accès à une suite de compilateurs.
+Par exemple : vous avez installé gcc 10.2.0 et gcc 8.1. Ils ont tous les deux la même structure de chemin d'accès, donc si vous configurez le chemin d'accès principal aux exécutables comme par exemple \codeline{"D:\\Devel\\GCC$(GCC_VER)"} 
+et des dossiers include/lib supplémentaires \codeline{"D:\\Devel\\GCC$(GCC_VER)\\include"/"D:\\Devel\\GCC$(GCC_VER)\\lib"}, vous pouvez facilement passer d'un compilateur à l'autre en modifiant simplement la variable personnalisée. \\
+Cela s'appliquerait (bien sûr) à *tous* les projets qui utilisent ce même compilateur GCC.
+
+\subsection{Variables personnalisées dans les Options de génération de projet}
+
+Elles sont très utiles si vous voulez compiler votre projet avec deux compilateurs, comme indiqué ci-dessus. 
+Vous pouvez avoir deux cibles avec des versions de compilateur différentes qui font toutes deux référence à une configuration de compilateur mais qui ne diffèrent que dans la configuration du chemin. 
+En outre, vous pouvez facilement ajouter un "d" aux noms de bibliothèques pour la version de débogage, par exemple wxmsw32ud, un "u" pour une construction unicode, par exemple wxmsw32ud et/ou une chaîne de version pour une version de bibliothèque spécifique, 
+par exemple, wxmsw32ud. \newline
+Une entrée de bibliothèque dans la configuration du linker qui incorpore les trois exemples ressemblerait à ceci :
+\begin{verbatim}
+wxmsw$(WX_VER)$(WX_UNICODE)$(WX_DEBUG)
+\end{verbatim}
+
+Maintenant vous pouvez configurer les variables du compilateur comme suit :
+\begin{verbatim}
+WX_VER=32
+WX_DEBUG=d
+WX_UNICODE=u
+\end{verbatim}
+pour activer une version unicode, debug v3.2 de la bibliothèque wxWidgets, nommée
+
+\codeline{wxmsw32ud}
+
+Notez que vous pouvez laisser les variables personnalisées vides, donc si vous laissez WX\_DEBUG vide, vous obtiendrez le nom sans débogage
+
+\codeline{wxmsw32u}
+
+(Vous pouvez également omettre la configuration de la variable personnalisée.)
+
+Les valeurs sont remplacées par ordre de détails - les variables personnalisées du compilateur sont remplacées par les variables personnalisées du projet et les variables personnalisées du projet sont remplacées par les variables personnalisées de la cible. Cela n'a de sens que de cette façon... 
+
+\subsection{Où se situent les variables globales dans cet ordre de priorités ?}
+
+Ces variables ont une signification très particulière. Contrairement à toutes les autres, si vous configurez une telle variable et partagez votre fichier de projet avec d'autres personnes qui n'ont *pas* configuré cette variable globale, \codeblocks 
+demandera à l'utilisateur de configurer la variable. C'est un moyen très simple de s'assurer que "l'autre développeur" sait ce qu'il doit configurer facilement. \codeblocks demandera tous les chemins nécessaires.\newline
+Pour une explication détaillée, veuillez vous référer au paragraphe "Variables globales du compilateur" (\pxref{sec:global_variables}). 

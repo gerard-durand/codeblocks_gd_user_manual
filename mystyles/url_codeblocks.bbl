@@ -1,0 +1,124 @@
+\begin{theurlbibliography}{999}\small
+
+\urlbibitem[\hightechook 7Z]{url:zip}
+\ShowURN{7z}
+7z zip homepage.\\ \url{http://www.7-zip.org}
+
+\urlbibitem[\hightechook ZIP]{url:infozip}
+\ShowURN{InfoZip}
+Info-zip Ftp page.\\ \url{ftp://ftp.info-zip.org/pub/infozip/win32/}
+
+
+\urlbibitem[\hightechook SourceForgeCB]{url:cbsourceforge}
+\ShowURN{SourceForgeCB}
+Codeblocks at Sourceforge.\\ \url{https://sourceforge.net/p/codeblocks/code/log/}
+
+\urlbibitem[\hightechook SourceForgeCBSrc]{url:cbsourceforgesrc}
+\ShowURN{SourceForgeCBSrc}
+Trunk SVN C::B Source on Sourceforge. \\ \url{https://sourceforge.net/p/codeblocks/code/HEAD/tree/trunk/}
+
+\urlbibitem[\hightechook FORUM]{url:cbforum}
+\ShowURN{FORUM}
+Codeblocks forum.\\ \url{http://forums.codeblocks.org/}
+
+\urlbibitem[\hightechook WIKI]{url:cbwiki}
+\ShowURN{WIKI}
+Codeblocks wiki.\\ \url{http://wiki.codeblocks.org/index.php/Main_Page}
+
+\urlbibitem[\hightechook CODEBLOCKS]{url:cb}
+\ShowURN{CODEBLOCKS}
+Codeblocks homepage.\\ \url{http://www.codeblocks.org/}
+
+\urlbibitem[\hightechook GCC]{url:gnu}
+\ShowURN{GCC}
+GCC home page.\\ \url{http://gcc.gnu.org/}
+
+\urlbibitem[\hightechook MinGW]{url:mingw}
+\ShowURN{MinGW}
+MinGW original page.\\ \url{http://www.mingw.org/}
+
+\urlbibitem[\hightechook MinGW64]{url:mingw64}
+\ShowURN{MinGW64}
+MinGW64 files page.\\ \url{https://sourceforge.net/projects/mingw-w64/files/}
+
+\urlbibitem[\hightechook MinGW64-Ray-Linn]{url:mingw64raylinn}
+\ShowURN{MinGW64-Ray-Linn}
+MinGW64 Ray Linn Personal page.\\ \url{https://sourceforge.net/projects/mingw-w64/files/Multilib%20Toolchains%28Targetting%20Win32%20and%20Win64%29/ray_linn/gcc-9.x-with-ada/}
+
+\urlbibitem[\hightechook MinGW64-Equation]{url:mingw64equation}
+\ShowURN{MinGW64-Equation}
+MinGW64 Equation files page.\\ \url{http://www.equation.com/servlet/equation.cmd?fa=fortran}
+
+\urlbibitem[\hightechook MinGW64-LHMouse]{url:mingw64lhmouse}
+\ShowURN{MinGW64-LHLouse}
+MinGW64 LHMouse files page.\\ \url{https://gcc-mcf.lhmouse.com/}
+
+\urlbibitem[\hightechook MinGW64-WinLibs]{url:mingw64winlibs}
+\ShowURN{MinGW64-WinLibs}
+MinGW64 WinLibs page.\\ \url{http://winlibs.com/}
+
+\urlbibitem[\hightechook MSys2]{url:msys2}
+\ShowURN{MSys2}
+Msys2 home page.\\ \url{http://www.msys2.org/}
+
+\urlbibitem[\hightechook MSys2-MinGW64-Toolchain]{url:msys2mingw64tools}
+\ShowURN{MSys2-MinGW64-Toolchain}
+Msys2 Toolchain for MinGW64.\\ \url{https://packages.msys2.org/group/mingw-w64-x86_64-toolchain}
+
+\urlbibitem[\hightechook UnxUtils]{url:unxutils}
+\ShowURN{UnxUtils}
+Unix Like Utilities files page.\\ \url{https://sourceforge.net/projects/unxutils/}
+
+\urlbibitem[\hightechook GnuWin32]{url:gnuwin32}
+\ShowURN{GnuWin32}
+An other Unix Like Utilities files page.\\ \url{https://sourceforge.net/projects/gnuwin32/}
+
+\urlbibitem[\hightechook HIGHTEC]{url:hightec}
+\ShowURN{HIGHTEC}
+HighTec homepage.\\ \url{http://www.hightec-rt.com/}
+
+\urlbibitem[\hightechook TortoiseSVN]{url:tortoisesvn}
+\ShowURN{TortoiseSVN}
+TortoiseSVN homepage.\\ \url{http://tortoisesvn.net/}
+
+\urlbibitem[\hightechook Subversion]{url:subversion}
+\ShowURN{Subversion}
+Subversion Apache homepage.\\ \url{http://subversion.apache.org/}
+
+\urlbibitem[\hightechook Wxwidgets]{url:wx}
+\ShowURN{WX}
+WxWidgets homepage.\\ \url{http://www.wxwidgets.org/}
+
+\urlbibitem[\hightechook Wxcode]{url:wxcode}
+\ShowURN{WXCODE}
+WxCode homepage.\\ \url{http://wxcode.sourceforge.net/}
+
+\urlbibitem[\hightechook Scripts]{url:scripts}
+\ShowURN{SCRIPTS}
+Scripting commands.\\ \url{http://wiki.codeblocks.org/index.php?title=Scripting_commands}
+
+\urlbibitem[\hightechook CBDoc]{url:cbdoc}
+\ShowURN{CBDoc}
+C::B documentation on the wiki.\\ \url{http://wiki.codeblocks.org/index.php/Category:Code::Blocks_Documentation}
+
+\urlbibitem[\hightechook UserDoc]{url:userdoc}
+\ShowURN{UserDoc}
+C::B User documentation on the wiki.\\ \url{http://wiki.codeblocks.org/index.php/Category:User_Documentation}
+
+\urlbibitem[\hightechook NassiShneiderman]{url:nassi}
+\ShowURN{NassiShneiderman}
+NassiShneiderman WiKi page.\\ \url{https://www.wikipedia.org/wiki/Nassi-Shneiderman_diagram}
+
+\urlbibitem[\hightechook Launchpad Old]{url:launchpad}
+\ShowURN{Launchpad_Old}
+Old Translation page on Launchpad.\\ \url{https://launchpad.net/codeblocks}
+
+\urlbibitem[\hightechook Launchpad New]{url:launchpad-new}
+\ShowURN{Launchpad_New}
+New Translation page on Launchpad.\\ \url{https://launchpad.net/codeblocks-gd}
+
+\urlbibitem[\hightechook Translation]{url:translation}
+\ShowURN{Translation}
+Translation topic on CB Forum.\\ \url{http://forums.codeblocks.org/index.php/topic,1022.0.html}
+
+\end{theurlbibliography}

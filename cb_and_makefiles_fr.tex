@@ -1,0 +1,180 @@
+\section{\codeblocks et les Makefiles}\label{sec:cb_makefiles}
+Cette section décrit comment utiliser un makefile dans \codeblocks en utilisant un exemple wxWidgets.
+\subsection{Article du Wiki}
+
+Auteur : Gavrillo 22:34, 21 Mai 2010 (UTC)
+
+Par défaut, \codeblocks n'utilise pas de makefile. Il a ses propres fichiers de projets .cbp qui font la même chose automatiquement. Il y a quelques raisons pour lesquelles vous voudriez utiliser un makefile. Vous êtes peut-être en train de migrer dans \codeblocks un projet qui possède un makefile. Une autre possibilité est que vous voulez que votre projet puisse être généré sans \codeblocks.
+
+Le besoin d'utiliser un pré-processeur n'est pas une raison valable pour utiliser un makefile dans la mesure où \codeblocks a des options de pre/post génération. Depuis le menu \menu{Projet,Options de génération} elles apparaissent dans un onglet avec les étapes de pre/post génération, qui peuvent être utilisées à cet effet.
+
+Ce paragraphe traite plus spécifiquement des makefiles qui utilisent mingw32-make 3.81, CB 8.02 et wxWidgets 2.8 sous Windows Vista, bien qu'il soit presque certain que cela s'applique à d'autres configurations.
+
+Si vous décidez d'utiliser votre propre makefile, vous devez aller sur l'écran de  \menu{Projet,Propriétés} et vous verrez la case à cocher 'ceci est un makefile personnalisé'. Cochez cette case, assurez-vous que le nom placé juste au-dessus est celui que vous voulez pour votre makefile.
+
+Vous devriez aussi regarder dans \menu{Projet,Options de génération}. Il y a un onglet dénommé 'Commandes du Make' (vous avez à déplacer horizontalement les onglets pour tomber dessus). Dans le champ 'Génération du projet/cible' vous devriez voir la ligne \codeline{$make -f $makefile $target}. En supposant que vous êtes en mode débogage, \codeline{$target} sera probablement dénommé 'debug' ce qui n'est pas forcément ce que vous voulez. Vous devriez changer \codeline{$target} par le nom de votre fichier de sortie (avec l'extension .exe et sans le caractère \$ du début).
+
+Un autre ajout utile se trouve dans \menu{Projet,Arbre des projets,Éditer les types et catégories de fichiers}. Si vous y ajoutez makefiles avec le masque \codeline{*.mak} (CB semble préférer .mak plutôt que .mk) vous serez capables d'ajouter votre makefile avec l'extension .mak dans votre projet et il apparaitra dans le panneau de Gestion de projets, sur la gauche.
+
+En supposant que vous voulez éditer le makefile depuis CB, vous devez vous assurer que l'éditeur utilise bien des tabulations (plutôt que des espaces). C'est un problème générique de l'utilitaire make car il a besoin de commencer des lignes de commandes par un caractère tab alors que de nombreux éditeurs remplacent les tabulations par des espaces. Pour obtenir cela dans CB, ouvrez la fenêtre \menu{Paramètres,Éditeur} et cocher la case pour utiliser le caractère de tabulation (tab).
+
+Les problèmes réels commencent toutefois maintenant. La génération automatique de CB ajoute toutes les en-têtes des wxWidgets, mais si vous utilisez un makefile, tout cela n'est pas fait et vous aurez à le faire vous-même.
+
+Heureusement CB possède une autre fonctionnalité qui peut venir à votre secours. Si vous allez dans le menu \menu{Paramètres,Compilateur et Débugueur}, déplacez les onglets horizontalement vers la droite, vous trouverez l'onglet ‘autres paramètres’. Là, cliquez sur la case à cocher  'Enregistrer la génération en HTML ...'. Ceci permettra à CB de créer, au moment de la génération, un fichier HTML qui enregistrera toutes les commandes de génération.
+
+\hint{Cette façon de créer un fichier html de génération n'existe plus dans les versions récentes de CB, mais il y a d'autres solutions}
+
+Si vous compilez (sans utiliser un makefile - donc si vous avez déjà tout remis à plat - désolé) le programme minimal par défaut utilisant wxWidgets, vous pouvez voir les commandes de compilation et d'édition de liens qui produisent ce fichier.
+
+En supposant que vous allez prendre cela comme base pour votre projet, vous pouvez utiliser le contenu du fichier HTML produit comme base de votre makefile.
+
+Vous ne pouvez pas simplement le copier depuis le visualiseur HTML de CB (il n'y a pas cette fonction dans CB) mais vous pouvez charger le fichier dans un navigateur ou un éditeur, et le copier depuis là. Vous le trouverez dans votre répertoire de projet avec \codeline{<le_meme_nom_que_votre_projet\>_build_log.HTML}. Malheureusement, cela requiert encore quelques ajustements comme montrés ci-dessous.
+
+Voici une copie d'un fichier de génération pour un programme wxWidgets de base tel que décrit ci-dessus.
+
+\hint{Pour une meilleure lisibilité, les lignes trop longues ont été découpées. Le signe \codeline{^}  est le séparateur de ligne en mode DOS, le signe \osp \ est le séparateur dans le makefile. Mais vous pouvez avoir les commandes sur une seule ligne à condition d'enlever les séparateurs}
+
+
+\begin{verbatim}
+
+mingw32-make.exe -f test.mak test.exe
+
+mingw32-g++.exe -pipe -mthreads -D__GNUWIN32__ -D__WXMSW__ -DWXUSINGDLL         ^
+    -DwxUSE_UNICODE -Wall -g -D__WXDEBUG__ -IC:\PF\wxWidgets2.8\include         ^
+    -IC:\PF\wxWidgets2.8\contrib\include -IC:\PF\wxWidgets2.8\lib\gcc_dll\mswud ^ 
+    -c C:\Development\test\testApp.cpp -o obj\Debug\testApp.o
+
+mingw32-g++.exe -pipe -mthreads -D__GNUWIN32__ -D__WXMSW__ -DWXUSINGDLL         ^
+    -DwxUSE_UNICODE -Wall -g -D__WXDEBUG__ -IC:\PF\wxWidgets2.8\include         ^
+    -IC:\PF\wxWidgets2.8\contrib\include -IC:\PF\wxWidgets2.8\lib\gcc_dll\mswud ^ 
+    -c C:\Development\test\testMain.cpp -o obj\Debug\testMain.o
+
+windres -IC:\PF\wxWidgets2.8\include -IC:\PF\wxWidgets2.8\contrib\include       ^
+    -IC:\PF\wxWidgets2.8\lib\gcc_dll\mswud -iC:\Development\test\resource.rc    ^ 
+    -o obj\Debug\resource.coff
+
+mingw32-g++.exe -LC:\PF\wxWidgets2.8\lib\gcc_dll -o bin\Debug\test.exe          ^
+    obj\Debug\testApp.o obj\Debug\testMain.o obj\Debug\resource.coff            ^
+    -lwxmsw28ud -mwindows
+
+Process terminated with status 0 (0 minutes, 12 seconds)
+0 errors, 0 warnings
+\end{verbatim}
+
+Le code ci-dessus peut être converti en un makefile ci-dessous. Il est resté délibérément assez proche de la sortie du fichier HTML.
+
+\begin{verbatim}
+# test program makefile
+
+Incpath1 = C:\PF\wxWidgets2.8\include
+Incpath2 = C:\PF\wxWidgets2.8\contrib\include
+Incpath3 = C:\PF\wxWidgets2.8\lib\gcc_dll\mswud
+
+Libpath = C:\PF\wxWidgets2.8\lib\gcc_dll
+
+flags = -pipe -mthreads -D__GNUWIN32__ -D__WXMSW__ -DWXUSINGDLL     \
+        -DwxUSE_UNICODE -Wall -g -D__WXDEBUG__
+
+CXX = mingw32-g++.exe
+
+test.exe : obj\Debug\testApp.o obj\Debug\testMain.o obj\Debug\resource.coff
+    $(CXX) -L$(Libpath) -o bin\Debug\test.exe obj\Debug\testApp.o           \
+    obj\Debug\testMain.o obj\Debug\resource.coff -lwxmsw28ud -mwindows
+
+obj\Debug\testMain.o : C:\Development\test\testMain.cpp
+    $(CXX) $(flags) -I$(Incpath1) -I$(Incpath2) -I$(Incpath3)               \ 
+    -c C:\Development\test\testMain.cpp -o obj\Debug\testMain.o
+
+obj\Debug\testApp.o : C:\Development\test\testApp.cpp 
+    $(CXX) $(flags) -I$(Incpath1) -I$(Incpath2) -I$(Incpath3)               \
+    -c C:\Development\test\testApp.cpp -o obj\Debug\testApp.o
+
+obj\Debug\resource.coff : C:\Development\test\resource.rc
+    windres -I$(Incpath1) -I$(Incpath2) -I$(Incpath3)                       \
+    -iC:\Development\test\resource.rc -oobj\Debug\resource.coff
+
+# original output from codeblocks compilation
+# note I've had to add compiling the .res file
+#
+# mingw32-g++.exe -pipe -mthreads -D__GNUWIN32__ -D__WXMSW__ -DWXUSINGDLL       ^
+#   -DwxUSE_UNICODE -Wall -Wall -g -D__WXDEBUG__                                ^
+#   -Wall -g -IC:\PF\wxWidgets2.8\include -IC:\PF\wxWidgets2.8\contrib\include  ^
+#   -IC:\PF\wxWidgets2.8\lib\gcc_dll\mswud                                      ^ 
+#   -c C:\Development\test\testApp.cpp -o obj\Debug\testApp.o
+
+# mingw32-g++.exe -pipe -mthreads -D__GNUWIN32__ -D__WXMSW__ -DWXUSINGDLL       ^
+#   -DwxUSE_UNICODE -Wall -Wall -g -D__WXDEBUG__                                ^
+#   -Wall -g -IC:\PF\wxWidgets2.8\include -IC:\PF\wxWidgets2.8\contrib\include  ^
+#   -IC:\PF\wxWidgets2.8\lib\gcc_dll\mswud                                      ^
+#   -c C:\Development\test\testMain.cpp -o obj\Debug\testMain.o
+
+# mingw32-g++.exe -LC:\PF\wxWidgets2.8\lib\gcc_dll -o bin\Debug\test.exe        ^
+#    obj\Debug\testApp.o obj\Debug\testMain.o                                   ^
+#    obj\Debug\resource.res -lwxmsw28ud -mwindows
+
+\end{verbatim}
+
+J'ai écrit un makefile générique que je n'ai testé que sous Windows Vista mais qui devrait fonctionner sur tout projet commencé comme décrit ci-dessus. Vous devrez changer le nom du projet et ajuster les chemins appropriés (vous n'aurez probablement qu'à changer Ppath et WXpath).
+
+\begin{verbatim}  
+
+# Generic program makefile
+# -- assumes that you name your directory with same name as the project file
+# -- eg project test is in <development path>\test\
+
+# Project name and version
+Proj := test
+Version := Debug
+
+#paths for Project (Ppath) Object files (Opath) and binary path (Bpath)
+Ppath := C:\Development\$(Proj)
+Opath := obj\$(Version)
+Bpath := bin\$(Version)
+
+#Library & header paths
+WXpath := C:\PF\wxWidgets2.8
+IncWX := $(WXpath)\include
+IncCON := $(WXpath)\contrib\include
+IncMSW := $(WXpath)\lib\gcc_dll\mswud
+Libpath := $(WXpath)\lib\gcc_dll
+
+flags = -pipe -mthreads -D__GNUWIN32__ -D__WXMSW__ -DWXUSINGDLL -DwxUSE_UNICODE \ 
+        -Wall -g -D__WXDEBUG__
+
+CXX = mingw32-g++.exe
+
+Obj := $(Opath)\$(Proj)App.o $(Opath)\$(Proj)Main.o $(Opath)\resource.coff
+
+$(Proj).exe : $(Obj)
+    $(CXX) -L$(Libpath) -o $(Bpath)\$(Proj).exe $(Obj) -lwxmsw28ud -mwindows
+
+$(Opath)\$(Proj)Main.o : $(Ppath)\$(Proj)Main.cpp
+    $(CXX) $(flags) -I$(IncWX) -I$(IncCON) -I$(IncMSW) -c $^ -o $@
+
+$(Opath)\$(Proj)App.o : C:\Development\$(Proj)\$(Proj)App.cpp
+    $(CXX) $(flags) -I$(IncWX) -I$(IncCON) -I$(IncMSW) -c $^ -o $@
+
+$(Opath)\resource.coff : C:\Development\$(Proj)\resource.rc
+    windres -I$(IncWX) -I$(IncCON) -I$(IncMSW) -i$^ -o $@
+
+.PHONEY : clean
+
+clean:
+    del $(Bpath)\$(Proj).exe $(Obj) $(Opath)\resource.coff
+\end{verbatim}
+
+\hint{Exporter un makefile depuis un projet \codeblocks est possible indirectement. Vous pouvez l'obtenir à partir de l'utilitaire cbp2make (voir sa description dans \pxref{sec:cbp2make} et/ou un exemple d'utilisation via Tool+ \pxref{sec:tool_cbp2make}.}
+
+
+Une dernière remarque. Une fois que vous avez utilisé un makefile, toute tentative de compiler sans un makefile vous produira de nombreux warnings. La seule façon que j'ai trouvée pour résoudre cela est de réinstaller CB. Si vous avez besoin des deux façons de compiler il est possible d'installer 2 versions de CB.
+
+\hint{C'est une remarque du texte original dans le Wiki. Mais, en tant qu'utilisateur gd\_on, je n'ai jamais observé ce comportement}
+
+En général, il n'est pas recommandé d'utiliser un makefile, mais s'il y a de bonnes raisons de le faire, alors vous avez ici ce qu'il faut. 
+
+\subsection{Compléments}
+
+Par défaut, \codeblocks génère une cible "Release" et une cible "Debug". Dans votre Makefile, ces cibles peuvent ne pas être présentes. Mais vous avez peut-être une cible "All" (ou "all"). Vous pouvez renommer la cible dans \codeblocks (ou en ajouter une) par ce nom qui a été donné dans le Makefile. 
+
+De plus, votre Makefile génère un exécutable avec un nom spécifique et dans un répertoire spécifique. Dans \codeblocks vous devriez ajuster le chemin et le nom de l'exécutable. Ainsi, \codeblocks, comme il ne connait ni n'analyse le Makefile, trouvera l'exécutable, et la flèche verte d'exécution dans le menu fonctionnera (ou Ctrl-F10).
+
