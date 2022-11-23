@@ -1,5 +1,5 @@
-To build the documentation with Miktex :
-You need an Miktex installation (a personnal one is OK, it will be installed in your Appdata directory)
+To build the documentation with MikTex :
+You need a MikTex installation (a personnal one is OK, it will be installed in your User's AppData subdirectory)
 Associate .tex files with Miktex (if not done already)
 
 Use manual_en.tex to build the english pdf version
