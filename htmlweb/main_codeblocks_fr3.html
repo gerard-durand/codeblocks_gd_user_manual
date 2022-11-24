@@ -65,20 +65,11 @@ publiée par la &#8221;Free Software Foundation&#8221;.
                                                                                        
                                                                                        
                                                                                        
-<!--l. 60--><p class="noindent" >
                                                                                        
                                                                                        
                                                                                        
                                                                                        
-                                                                                       
-                                                                                       
-                                                                                       
-                                                                                       
-                                                                                       
-                                                                                       
-                                                                                       
-                                                                                       
-</p><!--l. 1--><p class="noindent" >
+<!--l. 1--><p class="noindent" >
                                                                                        
                                                                                        
 </p>
@@ -13077,13 +13068,13 @@ un &#8221;u&#8221; pour une construction unicode, par exemple wxmsw32ud et/ou un
                                                                                        
 de version pour une version de bibliothèque spécifique, par exemple, wxmsw32ud.
 <br 
-class="newline" />Une entrée de bibliothèque dans la configuration du linker qui incorpore les trois exemples
-ressemblerait à ceci :
+class="newline" />Une entrée de bibliothèque dans la configuration de l&#8217;éditeur de liens qui incorpore les trois
+exemples ressemblerait à ceci :
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-46">
-wxmsw$(WX_VER)$(WX_UNICODE)$(WX_DEBUG)
+wxmsw$(WX_VERSION)$(WX_UNICODE)$(WX_DEBUG)
 </pre>
 <!--l. 28--><p class="nopar" >
 </p><!--l. 30--><p class="noindent" >Maintenant vous pouvez configurer les variables du compilateur comme suit :
@@ -13091,7 +13082,7 @@ wxmsw$(WX_VER)$(WX_UNICODE)$(WX_DEBUG)
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-47">
-WX_VER=32
+WX_VERSION=32
 WX_DEBUG=d
 WX_UNICODE=u
 </pre>
@@ -14580,155 +14571,248 @@ class="cmsy-10x-x-120">\</span><span
 class="cmtt-12">src</span><span 
 class="cmsy-10x-x-120">\</span><span 
 class="cmtt-12">ContribPlugins.workspace</span>.
-</p><!--l. 214--><p class="noindent" >Mais on peut aussi créer un espace de travail contenant l&#8217;intégralité. On mettra cet
-espace de travail dans le répertoire principal <span 
-class="cmtt-12">&#x003C;cbDir&#x003E;</span>. Pour cela, utilisez un éditeur de
-texte basique et créez un fichier nommé &#8221;CbProjects.workspace&#8221;. Un tel fichier existe
-déjà dans les versions récentes de C::B. Vous pouvez lui donner le contenu suivant
-:
+</p><!--l. 214--><p class="noindent" >Mais on peut aussi créer un espace de travail contenant l&#8217;intégralité. On mettra cet espace de
+travail dans le répertoire principal <span 
+class="cmtt-12">&#x003C;cbDir&#x003E;</span>. Pour cela, utilisez un éditeur de texte basique et
+créez un fichier nommé &#8221;CbProjects.workspace&#8221; par exemple. Un tel fichier existe déjà dans les
+versions récentes de C::B. Vous pouvez lui donner le contenu suivant (ici pour générer une
+version en 64 bits avec wxWidgets 3.2) :
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-63">
 &#x003C;?xml&#x00A0;version="1.0"&#x00A0;encoding="UTF-8"&#x00A0;standalone="yes"&#x00A0;?&#x003E;
 &#x003C;CodeBlocks_workspace_file&#x003E;
-&#x00A0;&#x00A0;&#x003C;Workspace&#x00A0;title="CodeBlocks&#x00A0;Workspace&#x00A0;wx3.1.x"&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="CodeBlocks_wx31.cbp"&#x00A0;active="1"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="tools/Addr2LineUI/Addr2LineUI_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="tools/cb_share_config/cb_share_config_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="tools/CBLauncher/CbLauncher_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="tools/cbp2make/cbp2make_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/codecompletion/cctest_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/wxSmith/wxSmith_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/wxSmithContribItems/wxSmithContribItems_wx31.cbp"&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Depends&#x00A0;filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Depends&#x00A0;filename="plugins/contrib/wxSmith/wxSmith_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;/Project&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/wxSmithAui/wxSmithAui_wx31.cbp"&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Depends&#x00A0;filename="plugins/contrib/wxSmith/wxSmith_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;/Project&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/AutoVersioning/AutoVersioning_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/BrowseTracker/BrowseTracker_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/byogames/byogames_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/cb_koders/cb_koders_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/Cccc/Cccc_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/codesnippets/codesnippets_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/codestat/codestat_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/copystrings/copystrings_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/CppCheck/CppCheck_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/Cscope/Cscope_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/devpak_plugin/DevPakPlugin_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/DoxyBlocks/DoxyBlocks_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/dragscroll/DragScroll_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/EditorConfig/EditorConfig_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/EditorTweaks/EditorTweaks_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/envvars/envvars_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/FileManager/FileManager_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/FortranProject/FortranProject_cbsvn_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/headerfixup/headerfixup_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/help_plugin/help-plugin_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/HexEditor/HexEditor_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/IncrementalSearch/IncrementalSearch_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/keybinder/keybinder_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/lib_finder/lib_finder_wx31.cbp"&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Depends&#x00A0;filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;/Project&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/MouseSap/MouseSap_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/NassiShneiderman/NassiShneiderman_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/profiler/cbprofiler_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/ProjectOptionsManipulator/ProjectOptionsManipulator_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/regex_testbed/RegExTestbed_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/ReopenEditor/ReopenEditor_wx31.cbp"&#x00A0;/&#x003E;
+&#x003C;Workspace&#x00A0;title="CodeBlocks&#x00A0;Workspace&#x00A0;wx3.2.x&#x00A0;(64&#x00A0;bit)"&#x003E;
+&#x003C;Project&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;active="1"&#x00A0;/&#x003E;
+&#x003C;Project&#x00A0;filename="tools/Addr2LineUI/Addr2LineUI_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;Project&#x00A0;filename="tools/cb_share_config/cb_share_config_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;Project&#x00A0;filename="tools/CBLauncher/CbLauncher_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;Project&#x00A0;filename="tools/cbp2make/cbp2make_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/codecompletion/cctest_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/wxContribItems/wxContribItems_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/wxSmith/wxSmith_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/wxSmithContribItems/wxSmithContribItems_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="plugins/contrib/wxContribItems/wxContribItems_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;Depends&#x00A0;filename="plugins/contrib/wxSmith/wxSmith_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/wxSmithAui/wxSmithAui_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="plugins/contrib/wxSmith/wxSmith_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/headerguard/headerguard_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/loghacker/loghacker_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/ModPoller/ModPoller_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/tidycmt/tidycmt_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/AutoVersioning/AutoVersioning_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/BrowseTracker/BrowseTracker_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/byogames/byogames_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/cb_koders/cb_koders_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/Cccc/Cccc_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/codesnippets/codesnippets_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
                                                                                        
                                                                                        
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/rndgen/rndgen_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/SmartIndent/SmartIndent_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/source_exporter/Exporter_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/SpellChecker/SpellChecker_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/symtab/symtab_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/ThreadSearch/ThreadSearch_wx31.cbp"&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Depends&#x00A0;filename="plugins/contrib/wxContribItems/wxContribItems_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;/Project&#x003E;
-&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x003C;Project&#x00A0;filename="plugins/contrib/ToolsPlus/ToolsPlus_wx31.cbp"&#x00A0;/&#x003E;
-&#x00A0;&#x00A0;&#x003C;/Workspace&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/codestat/codestat_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/copystrings/copystrings_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/CppCheck/CppCheck_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/Cscope/Cscope_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/devpak_plugin/DevPakPlugin_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/DoxyBlocks/DoxyBlocks_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/dragscroll/DragScroll_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/EditorConfig/EditorConfig_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/EditorTweaks/EditorTweaks_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/envvars/envvars_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/FileManager/FileManager_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x00A0; &#x003C;Project&#x00A0;filename="plugins/contrib/FortranProject/FortranProject_cbsvn_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/headerfixup/headerfixup_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/help_plugin/help-plugin_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/HexEditor/HexEditor_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/IncrementalSearch/IncrementalSearch_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/keybinder/keybinder_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/lib_finder/lib_finder_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;Depends&#x00A0;filename="plugins/contrib/wxContribItems/wxContribItems_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/MouseSap/MouseSap_wx32_64.cbp"&#x003E;
+                                                                                       
+                                                                                       
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/NassiShneiderman/NassiShneiderman_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/profiler/cbprofiler_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/ProjectOptionsManipulator/ProjectOptionsManipulator_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/regex_testbed/RegExTestbed_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/ReopenEditor/ReopenEditor_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/rndgen/rndgen_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/clangd_client/clangd_client_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/SmartIndent/SmartIndent_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/source_exporter/Exporter_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/SpellChecker/SpellChecker_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/symtab/symtab_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/ThreadSearch/ThreadSearch_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;Depends&#x00A0;filename="plugins/contrib/wxContribItems/wxContribItems_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;Project&#x00A0;filename="plugins/contrib/ToolsPlus/ToolsPlus_wx32_64.cbp"&#x003E;
+&#x003C;Depends&#x00A0;filename="CodeBlocks_wx32_64.cbp"&#x00A0;/&#x003E;
+&#x003C;/Project&#x003E;
+&#x003C;/Workspace&#x003E;
 &#x003C;/CodeBlocks_workspace_file&#x003E;
 </pre>
-<!--l. 279--><p class="nopar" >
+<!--l. 368--><p class="nopar" >
 </p>
 <div class="center" 
 >
-<!--l. 282--><p class="noindent" >
+<!--l. 371--><p class="noindent" >
 </p>
+                                                                                       
+                                                                                       
 <div 
 class="colorbox" id="colorbox75"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Il existe plusieurs variantes de ce fichier, dépendant de l&#8217;OS, de la
 version wxWidgets, d&#8217;une génération en 32 ou 64 bits.              </div>
 </div>
-<!--l. 284--><p class="noindent" >Nous utiliserons cet espace de travail pour générer complètement Code::Blocks.
-</p><!--l. 287--><p class="noindent" >
+<!--l. 373--><p class="noindent" >Nous utiliserons cet espace de travail pour générer complètement Code::Blocks.
+</p><!--l. 376--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.6</span>&#x00A0;&#x00A0;<a 
  id="x3-2000006.2.6"></a>Générer Codeblocks</h4>
-<!--l. 289--><p class="noindent" >Cette section descrit le processus final de la génération de Code::Blocks.
-</p><!--l. 291--><p class="noindent" >
+<!--l. 378--><p class="noindent" >Cette section descrit le processus final de la génération de Code::Blocks.
+</p><!--l. 380--><p class="noindent" >
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.6.1  </span> <a 
  id="x3-2010006.2.6.1"></a>Windows</h5>
-<!--l. 293--><p class="noindent" >Nous sommes maintenant arrivés à l&#8217;étape finale ; notre but ultime. Lancez l&#8217;exécutable
+<!--l. 382--><p class="noindent" >Nous sommes maintenant arrivés à l&#8217;étape finale ; notre but ultime. Lancez l&#8217;exécutable
 Code::Blocks depuis votre téléchargement de &#8221;nightly&#8221;. Ouvrir le menu Fichier, dans le
 navigateur cherchez l&#8217;espace de travail adéquat et lances-le. Soyez patients pendant que
 Code::Blocks analyse l&#8217;ensemble, puis on vous demandera de renseigner 3 ou 4 variables
-                                                                                       
-                                                                                       
 globales. Celles-ci indiqueront à Code::Blocks où il trouvera les wxWidgets (pour mémoire : les
 fichiers d&#8217;en-têtes et les librairies d&#8217;importation) et où il peut trouver les sources de ...
 Code::Blocks. Ceci est nécessaire pour les plug-ins contributifs (ainsi que pour les plug-ins de
 l&#8217;utilisateur), qui doivent savoir où trouver le sdk (Les fichiers d&#8217;en-têtes de Code::Blocks). Dans
 notre cas, cela peut donner :
       </p><dl class="description"><dt class="description">
-      <!--l. 295--><p class="noindent" >
+      <!--l. 384--><p class="noindent" >
 <span 
 class="cmssbx-10x-x-120">wx</span> </p></dt><dd 
 class="description">
-      <!--l. 295--><p class="noindent" ><span 
+      <!--l. 384--><p class="noindent" ><span 
 class="cmmi-12">&#x003C;</span>wxDir<span 
 class="cmmi-12">&#x003E; </span>répertoire de base des wxWidgets: le nom de la variable peut être wx31,
       wx31_64,...
       </p></dd><dt class="description">
-      <!--l. 296--><p class="noindent" >
+      <!--l. 385--><p class="noindent" >
 <span 
 class="cmssbx-10x-x-120">cb</span> </p></dt><dd 
 class="description">
-      <!--l. 296--><p class="noindent" ><span 
+      <!--l. 385--><p class="noindent" ><span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">cbDir</span><span 
 class="cmmi-12">&#x003E;</span><span 
 class="cmtt-12">/src </span>répertoire contenant les sources de Code::Blocks.
       </p></dd><dt class="description">
-      <!--l. 297--><p class="noindent" >
+                                                                                       
+                                                                                       
+      <!--l. 386--><p class="noindent" >
 <span 
 class="cmssbx-10x-x-120">cb</span><span 
 class="cmssbx-10x-x-120">_release</span><span 
 class="cmssbx-10x-x-120">_type</span> </p></dt><dd 
 class="description">
-      <!--l. 297--><p class="noindent" >: -O (Pour obtenir une version release, cas habituel. Les développeurs peuvent entrer
+      <!--l. 386--><p class="noindent" >: -O (Pour obtenir une version release, cas habituel. Les développeurs peuvent entrer
       -g pour débuguer C::B)
       </p></dd><dt class="description">
-      <!--l. 299--><p class="noindent" >
+      <!--l. 388--><p class="noindent" >
 <span 
 class="cmssbx-10x-x-120">boost</span> </p></dt><dd 
 class="description">
-      <!--l. 299--><p class="noindent" >: répertoire de base où boost est installé (par ex : <span 
+      <!--l. 388--><p class="noindent" >: répertoire de base où boost est installé (par ex : <span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">\</span><span 
 class="cmtt-12">boost</span>). <span 
 class="tcrm-1200">· </span>Utilisé par le plugin
       NassiShneiderman Remplissez avec la même valeur les sous-sections include et lib.</p></dd></dl>
-<!--l. 304--><p class="noindent" >Aller maintenant dans le Menu Projet et choisissez (re)générer l&#8217;espace de travail, et allez faire
+<!--l. 393--><p class="noindent" >Aller maintenant dans le Menu Projet et choisissez (re)générer l&#8217;espace de travail, et allez faire
 un tour. Regardez comment Code::Blocks est en train de générer Code::Blocks.
-</p><!--l. 306--><p class="noindent" >Après la création de Code::Blocks, les fichiers générés avec les informations de débogage se
+</p><!--l. 395--><p class="noindent" >Après la création de Code::Blocks, les fichiers générés avec les informations de débogage se
 trouvent dans le sous-répertoire <span 
 class="cmtt-12">devel</span>. En appelant, ou lançant depuis une console, le fichier
 batch <span 
@@ -14746,20 +14830,18 @@ class="cmti-12">étape est tr</span><span
 class="cmti-12">ès importante - ne jamais</span>
 <span 
 class="cmti-12">l&#8217;oublier</span>.
-</p><!--l. 308--><p class="noindent" >Vous pouvez maintenant copier la dll wx à la fois dans ce répertoire output et, en option, dans
+</p><!--l. 397--><p class="noindent" >Vous pouvez maintenant copier la dll wx à la fois dans ce répertoire output et, en option, dans
 devel.
-</p><!--l. 310--><p class="noindent" >Vous pouvez alors fermer Code::Blocks. Rappelez-vous, nous utilisions la version nightly
+</p><!--l. 399--><p class="noindent" >Vous pouvez alors fermer Code::Blocks. Rappelez-vous, nous utilisions la version nightly
 téléchargée ?
-                                                                                       
-                                                                                       
-</p><!--l. 312--><p class="noindent" >Il est temps de tester la nouvelle version. Dans le répertoire output, lancez CodeBlocks.exe. Si
+</p><!--l. 401--><p class="noindent" >Il est temps de tester la nouvelle version. Dans le répertoire output, lancez CodeBlocks.exe. Si
 tout s&#8217;est bien passé, vous avez généré votre propre version de Code::Blocks faite
 maison.
-</p><!--l. 314--><p class="noindent" >
+</p><!--l. 403--><p class="noindent" >
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.6.2  </span> <a 
  id="x3-2020006.2.6.2"></a>Linux</h5>
-<!--l. 316--><p class="noindent" ><span 
+<!--l. 405--><p class="noindent" ><span 
 class="cmbx-12">(Note : Cette section devrait </span><span 
 class="cmbx-12">être revue et compl</span><span 
 class="cmbx-12">ét</span><span 
@@ -14769,17 +14851,19 @@ class="cmbx-12">compl</span><span
 class="cmbx-12">ètement </span><span 
 class="cmbx-12">à jour)</span>
       </p><dl class="description"><dt class="description">
-      <!--l. 319--><p class="noindent" >
+      <!--l. 408--><p class="noindent" >
 <span 
 class="cmssbx-10x-x-120">linux</span> </p></dt><dd 
 class="description">
-      <!--l. 319--><p class="noindent" >Lancer <span 
+      <!--l. 408--><p class="noindent" >Lancer <span 
 class="cmtt-12">update</span><span 
 class="cmtt-12">_revision.sh</span></p></dd></dl>
-<!--l. 322--><p class="noindent" >Avec cette fonction la révision SVN de la génération Nightly est mise à jour dans
+                                                                                       
+                                                                                       
+<!--l. 411--><p class="noindent" >Avec cette fonction la révision SVN de la génération Nightly est mise à jour dans
 les sources. On peut trouver ce fichier dans le répertoire principal des sources de
 Code::Blocks.
-</p><!--l. 324--><p class="noindent" >Quand on génère sous Linux, les étapes suivantes sont nécessaires. Dans cet exemple nous
+</p><!--l. 413--><p class="noindent" >Quand on génère sous Linux, les étapes suivantes sont nécessaires. Dans cet exemple nous
 supposons que vous êtes dans le répertoire source de Code::Blocks. Sous Linux, la variable
 d&#8217;environnement <span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">PKG_CONFIG_PATH</span></span></span> doit être configurée. Le répertoire <span 
@@ -14793,7 +14877,7 @@ class="cmtt-12">codeblocks.pc</span>.
 <pre class="verbatim" id="verbatim-64">
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:&#x003C;prefix&#x003E;
 </pre>
-<!--l. 328--><p class="nopar" >
+<!--l. 417--><p class="nopar" >
                                                                                        
                                                                                        
 </p>
@@ -14805,25 +14889,25 @@ sh&#x00A0;update_revsion.sh
 make
 make&#x00A0;install&#x00A0;(en&#x00A0;tant&#x00A0;que&#x00A0;root)
 </pre>
-<!--l. 338--><p class="nopar" >
-</p><!--l. 340--><p class="noindent" >Vous pouvez aussi générer sous Linux comme sous Windows, avec un fichier workspace.
+<!--l. 427--><p class="nopar" >
+</p><!--l. 429--><p class="noindent" >Vous pouvez aussi générer sous Linux comme sous Windows, avec un fichier workspace.
 Toutefois, pkg_config et wx-config doivent être correctement configurés.
-</p><!--l. 342--><p class="noindent" >
+</p><!--l. 431--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.7</span>&#x00A0;&#x00A0;<a 
  id="x3-2030006.2.7"></a>Générer seulement les plugins</h4>
-<!--l. 344--><p class="noindent" >Cette section concerne la génération des plugins seulement.
-</p><!--l. 346--><p class="noindent" >
+<!--l. 433--><p class="noindent" >Cette section concerne la génération des plugins seulement.
+</p><!--l. 435--><p class="noindent" >
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.7.1  </span> <a 
  id="x3-2040006.2.7.1"></a>Windows</h5>
-<!--l. 348--><p class="noindent" >Configurer les variables globales via &#8217;Paramètres&#8217; <span 
+<!--l. 437--><p class="noindent" >Configurer les variables globales via &#8217;Paramètres&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Variables Globales&#8217; .
-</p><!--l. 350--><p class="noindent" ><span 
+</p><!--l. 439--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Variable</span>
 <span 
 class="cmssbx-10x-x-120">cb</span>
-</p><!--l. 352--><p class="noindent" >Pour la variable <span class="lstinline"><span style="color:#000000"><span 
+</p><!--l. 441--><p class="noindent" >Pour la variable <span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">cb</span></span></span>, entrer dans <span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">base</span></span></span> le répertoire source de Code::Blocks.
                                                                                        
@@ -14832,12 +14916,12 @@ class="ectt-1095">base</span></span></span> le répertoire source de Code::Blocks
 <pre class="verbatim" id="verbatim-66">
 &#x003C;cbDir&#x003E;/codeblocks/src
 </pre>
-<!--l. 356--><p class="nopar" >
-</p><!--l. 358--><p class="noindent" ><span 
+<!--l. 445--><p class="nopar" >
+</p><!--l. 447--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Variable</span>
 <span 
 class="cmssbx-10x-x-120">wx</span>
-</p><!--l. 360--><p class="noindent" >Pour la variable <span class="lstinline"><span style="color:#000000"><span 
+</p><!--l. 449--><p class="noindent" >Pour la variable <span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">wx</span></span></span>, entrer dans <span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">base</span></span></span> le répertoire source de wx : par ex.
                                                                                        
@@ -14846,16 +14930,16 @@ class="ectt-1095">base</span></span></span> le répertoire source de wx : par ex.
 <pre class="verbatim" id="verbatim-67">
 C:\wxWidgets-2.8.12
 </pre>
-<!--l. 364--><p class="nopar" >
-</p><!--l. 366--><p class="noindent" >ou pour générer avec une version plus récente, wx31 (ou wx31_64)
+<!--l. 453--><p class="nopar" >
+</p><!--l. 455--><p class="noindent" >ou pour générer avec une version plus récente, wx31 (ou wx31_64)
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-68">
 C:\wxWidgets-3.2.0
 </pre>
-<!--l. 370--><p class="nopar" >
-</p><!--l. 372--><p class="noindent" >Dans le projet Code::Blocks, la variable projet <span class="lstinline"><span style="color:#000000"><span 
+<!--l. 459--><p class="nopar" >
+</p><!--l. 461--><p class="noindent" >Dans le projet Code::Blocks, la variable projet <span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">WX_SUFFIX</span></span></span> est configurée à <span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">u</span></span></span>. Cela
 signifie que pendant la génération de Code::Blocks l&#8217;édition de liens se fera avec la
@@ -14873,8 +14957,8 @@ suit.
 <pre class="verbatim" id="verbatim-69">
 gcc_&#x003C;VENDOR&#x003E;.dll
 </pre>
-<!--l. 376--><p class="nopar" >
-</p><!--l. 378--><p class="noindent" >La variable <span 
+<!--l. 465--><p class="nopar" >
+</p><!--l. 467--><p class="noindent" >La variable <span 
 class="cmmi-12">&#x003C;</span>VENDOR<span 
 class="cmmi-12">&#x003E; </span>est donnée dans le fichier de configuration <span 
 class="cmtt-12">compiler.gcc </span>ou via la
@@ -14885,7 +14969,7 @@ class="ectt-1095">VENDOR</span></span><span style="color:#000000"><span
 class="ectt-1095">=</span></span><span style="color:#000000"><span 
 class="ectt-1095">custom</span></span></span> ne devrait pas être
 changée.
-</p><!--l. 380--><p class="noindent" >Après, créez l&#8217;espace de travail <span 
+</p><!--l. 469--><p class="noindent" >Après, créez l&#8217;espace de travail <span 
 class="cmtt-12">ContribPlugins.cbp </span>via &#8217;Projet&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Générer l&#8217;espace de
 travail&#8217; . Puis exécutez une fois de plus <span 
@@ -14893,26 +14977,26 @@ class="cmtt-12">update.bat</span>.
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.7.2  </span> <a 
  id="x3-2050006.2.7.2"></a>Linux</h5>
-<!--l. 384--><p class="noindent" >Configurez la variable <span class="lstinline"><span style="color:#000000"><span 
+<!--l. 473--><p class="noindent" >Configurez la variable <span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">wx</span></span></span> à l&#8217;aide des variables globales.
       </p><dl class="description"><dt class="description">
-      <!--l. 387--><p class="noindent" >
+      <!--l. 476--><p class="noindent" >
 <span 
 class="cmssbx-10x-x-120">base</span> </p></dt><dd 
 class="description">
-      <!--l. 387--><p class="noindent" >/usr
+      <!--l. 476--><p class="noindent" >/usr
       </p></dd><dt class="description">
-      <!--l. 388--><p class="noindent" >
+      <!--l. 477--><p class="noindent" >
 <span 
 class="cmssbx-10x-x-120">include</span> </p></dt><dd 
 class="description">
-      <!--l. 388--><p class="noindent" >/usr/include/wx-2.8 (ou la version installée sur votre machine)
+      <!--l. 477--><p class="noindent" >/usr/include/wx-2.8 (ou la version installée sur votre machine)
       </p></dd><dt class="description">
-      <!--l. 389--><p class="noindent" >
+      <!--l. 478--><p class="noindent" >
 <span 
 class="cmssbx-10x-x-120">lib</span> </p></dt><dd 
 class="description">
-      <!--l. 389--><p class="noindent" >/usr/lib</p></dd></dl>
+      <!--l. 478--><p class="noindent" >/usr/lib</p></dd></dl>
                                                                                        
                                                                                        
                                                                                        

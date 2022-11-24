@@ -24,12 +24,12 @@ In addition you can easily append a "d" to libs for the debug version, e.g. wxms
 e.g. wxmsw32ud. \newline
 A library entry in the linker setup that incorporates all three examples would look like this:
 \begin{verbatim}
-wxmsw$(WX_VER)$(WX_UNICODE)$(WX_DEBUG)
+wxmsw$(WX_VERSION)$(WX_UNICODE)$(WX_DEBUG)
 \end{verbatim}
 
 Now you could setup the compiler variables as following:
 \begin{verbatim}
-WX_VER=32
+WX_VERSION=32
 WX_DEBUG=d
 WX_UNICODE=u
 \end{verbatim}

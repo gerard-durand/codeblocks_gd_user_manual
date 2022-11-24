@@ -22,14 +22,14 @@ Elles sont très utiles si vous voulez compiler votre projet avec deux compilate
 Vous pouvez avoir deux cibles avec des versions de compilateur différentes qui font toutes deux référence à une configuration de compilateur mais qui ne diffèrent que dans la configuration du chemin. 
 En outre, vous pouvez facilement ajouter un "d" aux noms de bibliothèques pour la version de débogage, par exemple wxmsw32ud, un "u" pour une construction unicode, par exemple wxmsw32ud et/ou une chaîne de version pour une version de bibliothèque spécifique, 
 par exemple, wxmsw32ud. \newline
-Une entrée de bibliothèque dans la configuration du linker qui incorpore les trois exemples ressemblerait à ceci :
+Une entrée de bibliothèque dans la configuration de l'éditeur de liens qui incorpore les trois exemples ressemblerait à ceci :
 \begin{verbatim}
-wxmsw$(WX_VER)$(WX_UNICODE)$(WX_DEBUG)
+wxmsw$(WX_VERSION)$(WX_UNICODE)$(WX_DEBUG)
 \end{verbatim}
 
 Maintenant vous pouvez configurer les variables du compilateur comme suit :
 \begin{verbatim}
-WX_VER=32
+WX_VERSION=32
 WX_DEBUG=d
 WX_UNICODE=u
 \end{verbatim}
