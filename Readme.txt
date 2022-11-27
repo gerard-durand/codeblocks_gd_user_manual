@@ -1,6 +1,6 @@
 Files generated are in the htmlweb directory.
-pdf versions: manual_en.pdf, manual_fr.pdf
-chm versions: manual_en.chm, manual_fr.chm
+pdf versions: manual_codeblocks_en.pdf, manual_codeblocks_fr.pdf
+chm versions: manual_codeblocks_en.chm, manual_codeblocks_fr.chm
 html version : use main_codeblocks_en.html for an english version or main_codeblocks_fr.html for a french version.
 You can copy the content of htmlweb but it's better to keep all files inside htmlweb together.
 pdf or chm versions are stand alone and can be extracted.
@@ -9,16 +9,16 @@ To build the documentation with MikTex :
 You need a MikTex installation (a personnal one is OK, it will be installed in your User's AppData subdirectory)
 Associate .tex files with MikTex (if not done already)
 
-Use manual_en.tex to build the english pdf version
-Use manual_fr.tex to build the french  pdf version
+Use manual_codeblocks_en.tex to build the english pdf version
+Use manual_codeblocks_fr.tex to build the french  pdf version
 
 Use 00_ToHtml_en.cmd to build the english html version
 Use 00_ToHtml_fr.cmd to build the french  html version
 Both results are mixed in a single htmlweb directory. It's possible to separate versions by languages (see 00_ToHtml_en.cmd or 00_ToHtml_fr.cmd and switch the REM in front of output_dir).
 
-Note: manual_en.tex and main_codeblocks_en.tex file have only a small difference (idem for manual_fr.tex and main_codeblocks_fr.tex).
+Note: manual_codeblocks_en.tex and main_codeblocks_en.tex file have only a small difference (idem for manual_codeblocks_fr.tex and main_codeblocks_fr.tex).
 - The first one builds the doc with a Table of contents, useful for the pdf version.
-- The second one does not build the table of contents, usefull for the html version.
+- The second one does not build the table of contents, useful for the html version.
 
 To build html version, you need a slightly modified version of tex4ht.env (replace copy and move by their equivalent unix cp and mv because problems with / and \.
 You need also some unix tools : sed, cp and mv (you have them if you use msys2 under Windows. They must be accessible through your PATH environment variable)
