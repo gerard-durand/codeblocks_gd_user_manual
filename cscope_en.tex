@@ -1,0 +1,44 @@
+\section{CScope}\label{sec:cscope}
+
+This paragraph is extracted from the \href{https://wiki.codeblocks.org/index.php/Cscope_plugin}{cscope plugin} in the wiki.
+
+\subsection{General information}
+
+This plugin integrates the source code searching features of \href{https://cscope.sourceforge.net/}{Cscope} into \codeblocks (a Windows build is available at \href{https://code.google.com/p/cscope-win32/}{Cscope-win32}). Cscope is especially useful on large projects, and can search for:
+
+\begin{itemize}[noitemsep]
+\item all references to a symbol
+\item global definitions
+\item functions called by a function
+\item functions calling a function
+\item text string
+\item regular expression pattern
+\item a file
+\item files including a file
+\end{itemize}
+
+Although the parser within Cscope is targeted at C, it retains enough flexibility to provide functionality with C++ (and Java) code.
+
+\subsection{Installing CScope}
+
+These instructions are for \codeblocks SVN Version \textgreater 11828
+
+\subsubsection{Linux}
+
+Under Linux installing cscope should be as easy as calling your favorite package manager and installing cscope. \codeblocks should find the executable by default. If it can not find the cscope executable please set it in \menu{Settings,Environment,CScope}. You can find the path to the cscope executable by typing \codeline{locate cscope} in your favorite terminal.
+
+\subsubsection{Windows}
+
+It is hard to find a precompiled binary for cscope on windows. The easiest solution is to install \href{https://www.msys2.org/}{msys2}. Follow the instruction on the website \cite{url:msys2} to install msys2. After installing and updating as described open the msys terminal and type \codeline{pacman -S cscope}. This will install cscope from the global package repository.
+
+Now you have to setup \codeblocks:
+
+\begin{itemize}[noitemsep]
+\item Open \codeblocks
+\item \menu{Settings,Environment,CScope}
+\item Press the button with the ... dots
+\item Search the cscope.exe executable. It is probably under \newline
+    \file{INSTALL\_DIRECTORY\_OF\_MSYS2\osp usr\osp bin\osp cscope.exe}
+\item Close the dialog with OK
+\item Now you should be able to use the cscope functions in \codeblocks (for ex. "Find functions calling XXXX").
+\end{itemize}

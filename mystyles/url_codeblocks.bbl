@@ -2,7 +2,7 @@
 
 \urlbibitem[\hightechook 7Z]{url:zip}
 \ShowURN{7z}
-7z zip homepage.\\ \url{http://www.7-zip.org}
+7z zip homepage.\\ \url{https://www.7-zip.org}
 
 \urlbibitem[\hightechook ZIP]{url:infozip}
 \ShowURN{InfoZip}
@@ -19,23 +19,23 @@ Trunk SVN C::B Source on Sourceforge. \\ \url{https://sourceforge.net/p/codebloc
 
 \urlbibitem[\hightechook FORUM]{url:cbforum}
 \ShowURN{FORUM}
-Codeblocks forum.\\ \url{http://forums.codeblocks.org/}
+Codeblocks forum.\\ \url{https://forums.codeblocks.org/}
 
 \urlbibitem[\hightechook WIKI]{url:cbwiki}
 \ShowURN{WIKI}
-Codeblocks wiki.\\ \url{http://wiki.codeblocks.org/index.php/Main_Page}
+Codeblocks wiki.\\ \url{https://wiki.codeblocks.org/index.php/Main_Page}
 
 \urlbibitem[\hightechook CODEBLOCKS]{url:cb}
 \ShowURN{CODEBLOCKS}
-Codeblocks homepage.\\ \url{http://www.codeblocks.org/}
+Codeblocks homepage.\\ \url{https://www.codeblocks.org/}
 
 \urlbibitem[\hightechook GCC]{url:gnu}
 \ShowURN{GCC}
-GCC home page.\\ \url{http://gcc.gnu.org/}
+GCC home page.\\ \url{https://gcc.gnu.org/}
 
 \urlbibitem[\hightechook MinGW]{url:mingw}
 \ShowURN{MinGW}
-MinGW original page.\\ \url{http://www.mingw.org/}
+MinGW original page.\\ \url{https://www.mingw.org/}
 
 \urlbibitem[\hightechook MinGW64]{url:mingw64}
 \ShowURN{MinGW64}
@@ -55,11 +55,11 @@ MinGW64 LHMouse files page.\\ \url{https://gcc-mcf.lhmouse.com/}
 
 \urlbibitem[\hightechook MinGW64-WinLibs]{url:mingw64winlibs}
 \ShowURN{MinGW64-WinLibs}
-MinGW64 WinLibs page.\\ \url{http://winlibs.com/}
+MinGW64 WinLibs page.\\ \url{https://winlibs.com/}
 
 \urlbibitem[\hightechook MSys2]{url:msys2}
 \ShowURN{MSys2}
-Msys2 home page.\\ \url{http://www.msys2.org/}
+Msys2 home page.\\ \url{https://www.msys2.org/}
 
 \urlbibitem[\hightechook MSys2-MinGW64-Toolchain]{url:msys2mingw64tools}
 \ShowURN{MSys2-MinGW64-Toolchain}
@@ -75,35 +75,35 @@ An other Unix Like Utilities files page.\\ \url{https://sourceforge.net/projects
 
 \urlbibitem[\hightechook HIGHTEC]{url:hightec}
 \ShowURN{HIGHTEC}
-HighTec homepage.\\ \url{http://www.hightec-rt.com/}
+HighTec homepage.\\ \url{https://www.hightec-rt.com/}
 
 \urlbibitem[\hightechook TortoiseSVN]{url:tortoisesvn}
 \ShowURN{TortoiseSVN}
-TortoiseSVN homepage.\\ \url{http://tortoisesvn.net/}
+TortoiseSVN homepage.\\ \url{https://tortoisesvn.net/}
 
 \urlbibitem[\hightechook Subversion]{url:subversion}
 \ShowURN{Subversion}
-Subversion Apache homepage.\\ \url{http://subversion.apache.org/}
+Subversion Apache homepage.\\ \url{https://subversion.apache.org/}
 
 \urlbibitem[\hightechook Wxwidgets]{url:wx}
 \ShowURN{WX}
-WxWidgets homepage.\\ \url{http://www.wxwidgets.org/}
+WxWidgets homepage.\\ \url{https://www.wxwidgets.org/}
 
 \urlbibitem[\hightechook Wxcode]{url:wxcode}
 \ShowURN{WXCODE}
-WxCode homepage.\\ \url{http://wxcode.sourceforge.net/}
+WxCode homepage.\\ \url{https://wxcode.sourceforge.net/}
 
 \urlbibitem[\hightechook Scripts]{url:scripts}
 \ShowURN{SCRIPTS}
-Scripting commands.\\ \url{http://wiki.codeblocks.org/index.php?title=Scripting_commands}
+Scripting commands.\\ \url{https://wiki.codeblocks.org/index.php?title=Scripting_commands}
 
 \urlbibitem[\hightechook CBDoc]{url:cbdoc}
 \ShowURN{CBDoc}
-C::B documentation on the wiki.\\ \url{http://wiki.codeblocks.org/index.php/Category:Code::Blocks_Documentation}
+C::B documentation on the wiki.\\ \url{https://wiki.codeblocks.org/index.php/Category:Code::Blocks_Documentation}
 
 \urlbibitem[\hightechook UserDoc]{url:userdoc}
 \ShowURN{UserDoc}
-C::B User documentation on the wiki.\\ \url{http://wiki.codeblocks.org/index.php/Category:User_Documentation}
+C::B User documentation on the wiki.\\ \url{https://wiki.codeblocks.org/index.php/Category:User_Documentation}
 
 \urlbibitem[\hightechook NassiShneiderman]{url:nassi}
 \ShowURN{NassiShneiderman}
@@ -119,6 +119,6 @@ New Translation page on Launchpad.\\ \url{https://launchpad.net/codeblocks-gd}
 
 \urlbibitem[\hightechook Translation]{url:translation}
 \ShowURN{Translation}
-Translation topic on CB Forum.\\ \url{http://forums.codeblocks.org/index.php/topic,1022.0.html}
+Translation topic on CB Forum.\\ \url{https://forums.codeblocks.org/index.php/topic,1022.0.html}
 
 \end{theurlbibliography}

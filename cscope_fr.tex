@@ -1,0 +1,44 @@
+\section{CScope}\label{sec:cscope}
+
+Ce paragraphe est une extraction traduite du contenu de \href{https://wiki.codeblocks.org/index.php/Cscope_plugin}{"cscope plugin"} dans le wiki.
+
+\subsection{Généralités}
+
+Ce greffon intègre les fonctionnalités de recherche dans un code de \href{https://cscope.sourceforge.net/}{Cscope} dans \codeblocks (une version pour Windows est disponible dans \href{https://code.google.com/p/cscope-win32/}{Cscope-win32}). Cscope est particulièrement utile sur de gros projets, et peut rechercher :
+
+\begin{itemize}[noitemsep]
+\item toutes les références à un symbole
+\item les définitions globales
+\item les fonctions appelées par une fonction
+\item les fonctions appelant une autre fonction
+\item des chaînes de texte
+\item un modèle d'expression régulière
+\item un fichier
+\item des fichiers incluant un autre fichier
+\end{itemize}
+
+Bien que l'analyseur syntaxique de Cscope soit ciblé sur du C, il conserve suffisamment de flexibilité pour fournir ses fonctionnalités sur du code en C++ (et Java).
+
+\subsection{Installation de CScope}
+
+Ces instructions sont pour \codeblocks, Version de SVN \textgreater  11828
+
+\subsubsection{Linux}
+
+Sous Linux, installer cscope devrait être aussi simple que d'appeler votre gestionnaire de "packages" préféré pour installer cscope. \codeblocks devrait trouver l'exécutable par défaut. S'il ne peut pas trouver l'exécutable de cscope, veuillez le configurer dans \menu{Paramètres,Environnement,CScope}. Vous pouvez trouver le chemin vers l'exécutable cscope en tapant \codeline{locate cscope} dans votre terminal préféré.
+
+\subsubsection{Windows}
+
+Il est assez difficile de trouver un binaire précompilé de cscope sous Windows. La solution la plus simple est d'installer \href{https://www.msys2.org/}{msys2}. Suivez les instructions sur le site web \cite{url:msys2} pour installer msys2. Après avoir installé et mis à jour comme décrit, ouvrez le terminal de msys et tapez \codeline{pacman -S cscope}. Ceci installera cscope depuis le dépôt global de "packages".
+
+Maintenant vous devez configurer \codeblocks:
+
+\begin{itemize}[noitemsep]
+\item Ouvrir \codeblocks
+\item \menu{Paramètres,Environnement,CScope}
+\item Cliquer sur le bouton ... avec 3 points
+\item Rechercher l'exécutable cscope.exe. Il est probablement situé dans \newline
+    \file{REPERTOIRE\_INSTALLATION\_DE\_MSYS2\osp usr\osp bin\osp cscope.exe}
+\item Fermer le dialogue via OK
+\item Maintenant vous devriez pouvoir utiliser les fonctions de cscope dans \codeblocks (par ex. "Rechercher les fonctions appelant XXXX").
+\end{itemize} 
