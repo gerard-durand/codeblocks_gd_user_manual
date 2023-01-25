@@ -9,7 +9,7 @@ main_codeblocks_\*.tex is a small variation of the previous one, more adapted fo
 manual_codeblocks_fr.pdf and manual_codeblocks_en.pdf are produced by Miktex inside userguide. They can be copied in htmlweb folder.
 
 00_ToHtml_en.cmd is a batch Windows file to build an english version of the documentation in html.
-00_ToHtml_fr.cmd is the same as previous, but for a french version
+00_ToHtml_fr.cmd is the same as previous, but for a french version.
 They both call 00_ToHtml.cmd which really produces the files.
 
 Depending on parameters set in cmd files, html files are stored in a local htmlweb, htmlweb_en or htmlweb_en folder.
