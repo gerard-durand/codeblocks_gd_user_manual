@@ -16,4 +16,4 @@ Depending on parameters set in cmd files, html files are stored in a local htmlw
 Their content can be copied/moved in the root htmlweb folder.
 
 In userguide folder, there is a slighly modified version of text4ht.env, normally used by Miktex to produce html version from tex files, to avoid 
-some problems with move and copy commands. I prefer their equivallent, mv and cp, as may be found in Msys2 distribution.
+some problems with move and copy commands. I prefer their equivallent, mv and cp, as can be found in Msys2 distribution.
