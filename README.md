@@ -1,6 +1,6 @@
 # codeblocks_gd_user_manual
 
-Sources in tex to build CodeBlocks User Manual, in english and in french are in the folder userguide
+Sources in tex to build CodeBlocks User Manual, in english and in french are in the folder userguide.
 manual_codeblocks_\*.tex is the main entry to build a pdf file via Miktex (*=en for english version and fr for a french one)
 main_codeblocks_\*.tex is a small variation of the previous one, more adapted for html and chm versions.
 
