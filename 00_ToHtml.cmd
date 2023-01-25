@@ -37,7 +37,7 @@ REM Suppress the width=* (and height=*) fields in images (they are correct but g
 sed -i "/^width=/c\ \/>"     %name%3.html
 REM replace some utf8 characters by their HTML equivalent (for a better browser compatibility)
 sed -i "s/\xE2\x80\x99/\\\protect \\\OT1\\\textquoteright /g" %name%2.html
-sed -i "s/relax \\\protect/relax/g" %name%2.html
+rem sed -i "s/relax \\\protect/relax/g" %name%2.html
 cd ..
 
 :clean
