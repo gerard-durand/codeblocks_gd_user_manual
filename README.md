@@ -13,7 +13,7 @@ manual_codeblocks_fr.pdf and manual_codeblocks_en.pdf are produced by Miktex ins
 They both call 00_ToHtml.cmd which really produces the files.
 
 Depending on parameters set in cmd files, html files are stored in a local htmlweb, htmlweb_en or htmlweb_en folder.
-These contents can be copied in the root htmlweb folder.
+Their content can be copied/moved in the root htmlweb folder.
 
 In userguide folder, there is a slighly modified version of text4ht.env, normally used by Miktex to produce html version from tex files, to avoid 
 some problems with move and copy commands. I prefer their equivallent, mv and cp, as may be found in Msys2 distribution.
