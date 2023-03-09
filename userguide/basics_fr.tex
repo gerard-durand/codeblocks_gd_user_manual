@@ -4,7 +4,7 @@ Les textes de plusieurs paragraphes (par exemple \pxref{sec:plugins} ou \pxref{s
 Cette documentation est une extension de la version originale 1.1, assemblée et/ou écrite par Mario Cupelli.
 
 \hint{Remarque du traducteur : 
-Les références aux menus sont traduites en français. Cela suppose donc que vous avez installé la francisation de l'interface de \codeblocks que vous pouvez obtenir, notamment via le forum, dans la rubrique CodeBlocks Translation. Ne plus utiliser celle du site original LaunchPad bien trop ancienne et largement dépassée. Utiliser plutôt une nouvelle version, aussi sur Launchpad, via \url{https://launchpad.net/codeblocks-gd}. Les images ci-dessous sont celles de la documentation originale, en anglais}
+Les références aux menus sont traduites en français. Cela suppose donc que vous avez installé la francisation de l'interface de \codeblocks que vous pouvez obtenir, notamment via le forum, dans la rubrique CodeBlocks Translation. Ne plus utiliser celle du site original LaunchPad bien trop ancienne et largement dépassée. Utiliser plutôt une nouvelle version, aussi sur Launchpad, via \url{https://launchpad.net/codeblocks-gd}. Dans cette version en français, et par souci de simplicité, on a gardé dans tout ce document les images de la version en anglais.}
 
 L'illustration ci-dessous montre l'apparence de la fenêtre de l'interface utilisateur de \codeblocks.
 
@@ -14,7 +14,7 @@ L'illustration ci-dessous montre l'apparence de la fenêtre de l'interface utili
 \item[Gestion] Cette fenêtre contient l'interface \menu{Projets} qui dans le texte suivant sera référencée comme vue du projet. Cette vue affiche tous les projets ouverts dans \codeblocks à un instant donné. L'onglet \samp{Symboles} de la fenêtre Gestion affiche les symboles, les variables etc.
 \item[Éditeur] Dans l'illustration ci-dessus, un fichier source nommé \file{hello.c} est ouvert avec colorisation de syntaxe dans l'éditeur.
 \item[Liste des fichiers ouverts] affiche une liste de tous les fichiers ouverts dans l'éditeur, dans cet exemple : \file{hello.c}.
-\item[CodeSnippets] peut être affiché via le menu \menu{Vue, CodeSnippets}. Ici vous pouvez gérer des modules de texte, des liens vers des fichiers et des liens vers des urls.
+\item[CodeSnippets] peut être affiché via le menu \menu{Affichage, CodeSnippets}. Ici vous pouvez gérer des modules de texte, des liens vers des fichiers et des liens vers des urls.
 \item[Journaux \& autres]. Cette fenêtre est utilisée pour sortir des résultats de recherche, des messages envoyés par un compilateur etc..
 \end{description}
 
@@ -385,7 +385,7 @@ echo \$PATH > project.env
 
 \subsection{Basculer entre diverses dispositions}
 
-En fonction des tâches à effectuer, il peut être utile d'avoir plusieurs configurations ou dispositions (ou présentations) différentes de  \codeblocks et de les sauvegarder. Par défaut, le paramétrage (notamment afficher/masquer les barres d'outils, aspect, etc.) est enregistré dans le fichier de configuration \file{default.conf}. En utilisant l'option en ligne de commande \opt{--personality=ask} au démarrage de \codeblocks, on peut choisir parmi plusieurs possibilités de paramétrages. En dehors de ces paramétrages globaux, il peut se produire une situation où vous souhaitez basculer entre différentes vues de fenêtres ou de barres de symboles pendant une session. L'édition de fichier et le débogage de projets sont deux exemples typiques de telles situations. \codeblocks offre un mécanisme pour enregistrer et sélectionner différentes dispositions afin d'éviter à l'utilisateur d'avoir à fermer et ouvrir manuellement et fréquemment des fenêtres et des barres de symboles. Pour enregistrer une disposition, sélectionnez le menu \menu{Vue,Disposition,Enregistrer la disposition actuelle} et entrez un nom dans \var{nom}. La commande \menu{Paramètres,Éditeur,Raccourcis clavier,Vue,Dispositions,\var{name}} permet de définir un raccourci clavier pour ce processus. Il est ainsi possible de basculer entre les diverses dispositions simplement en utilisant ces raccourcis clavier.
+En fonction des tâches à effectuer, il peut être utile d'avoir plusieurs configurations ou dispositions (ou présentations) différentes de  \codeblocks et de les sauvegarder. Par défaut, le paramétrage (notamment afficher/masquer les barres d'outils, aspect, etc.) est enregistré dans le fichier de configuration \file{default.conf}. En utilisant l'option en ligne de commande \opt{--personality=ask} au démarrage de \codeblocks, on peut choisir parmi plusieurs possibilités de paramétrages. En dehors de ces paramétrages globaux, il peut se produire une situation où vous souhaitez basculer entre différentes vues de fenêtres ou de barres de symboles pendant une session. L'édition de fichier et le débogage de projets sont deux exemples typiques de telles situations. \codeblocks offre un mécanisme pour enregistrer et sélectionner différentes dispositions afin d'éviter à l'utilisateur d'avoir à fermer et ouvrir manuellement et fréquemment des fenêtres et des barres de symboles. Pour enregistrer une disposition, sélectionnez le menu \menu{Affichage,Disposition,Enregistrer la disposition actuelle} et entrez un nom dans \var{nom}. La commande \menu{Paramètres,Éditeur,Raccourcis clavier,Affichage,Dispositions,\var{name}} permet de définir un raccourci clavier pour ce processus. Il est ainsi possible de basculer entre les diverses dispositions simplement en utilisant ces raccourcis clavier.
 
 \hint{Autre exemple : éditer un fichier en mode plein écran sans barre de symboles. Vous pouvez créer une disposition comme \samp{Plein Ecran} et lui assigner un raccourci spécifique.}
 
@@ -488,26 +488,48 @@ Vous pouvez alors soit utiliser les applications assignées par Windows pour cha
 L'Environnement de Développement Intégré (IDE) \codeblocks peut être exécuté depuis une ligne de commande sans interface graphique. Dans ce cas, plusieurs options sont disponibles pour contrôler le processus de génération d'un projet. Comme \codeblocks peut être piloté par des "scripts", la création d'exécutables peut être intégrée dans vos propres processus de travail.
 
 \begin{lstlisting}
-codeblocks.exe /na /nd --no-splash-screen --build <name>.cbp --target='Release'
+Utilisation :
+codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
+           [--multiple-instance] [/d] [/nc] [/v] [--prefix <str>]
+           [--user-data-dir <str>] [/p <str>] [--no-log] [--log-to-file]
+           [--debug-log-to-file] [--profile <str>]
+           [--rebuild] [--build] [--clean] [--target <str>]
+           [--no-batch-window-close] [--batch-build-notify]
+           [--script <str>] [--file <str>]
+           [--dbg-config <str>] [--dbg-attach <str>]
+           [filename(s)...]
+
+exemple:
+codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
 \end{lstlisting}
 
 \begin{description}
 \item[\var{filename}] Spécifie le nom du fichier de projet \file{*.cbp} ou le nom de l'espace de travail \file{*.workspace}. Par exemple, \var{filename} peut être \file{project.cbp}. Placez cet argument en fin de ligne de commande, juste avant la redirection de la sortie, s'il y en a une.
 \item[--file=\var{filename}\optional{:ligne}] Ouvrir un fichier dans \codeblocks et, en option, se positionner sur une ligne particulière.
 \item[/h, --help] Affiche un message d'aide concernant les arguments en ligne de commande.
+\item[/?, --?] Affiche un message d'aide : alias pour help.
+\item[--safe-mode] Désactive toutes les extensions (plugins) au démarrage.
 \item[/na, --no-check-associations] Ne faire aucun contrôle d'association de fichiers (Windows seulement).
 \item[/nd, --no-dde] Ne pas lancer le serveur DDE (Windows seulement).
 \item[/ni, --no-ipc] Ne pas lancer le serveur IPC (Linux et Mac seulement).
 \item[/ns, --no-splash-screen] Ne pas afficher l'écran de démarrage pendant le chargement de l'application.
+\item[--multiple-instance] Autorise l'exécution de plusieurs instances.
 \item[/d, --debug-log] Afficher le journal de débogage de l'application.
+\item[/nc, --no-crash-handler] Ne pas utiliser le "crash handler" (utile pour déboguer C::B).
+\item[/v, --verbose] Affiche davantage de messages de debogage.
 \item[--prefix=\var{str}] Configure le préfixe du répertoire de données partagées.
 \item[/p, --personality=\var{str}, --profile=\var{str}] Configure le profil (ou personnalité) à utiliser. Vous pouvez utiliser le paramètre ask pour afficher la liste de tous les profils disponibles.
+\item[--no-log] Désactive le journal d'application.
+\item[--log-to-file] Redirige le journal application vers un fichier.
 \item[--rebuild] Nettoie et génère le projet ou l'espace de travail.
 \item[--build] Génère le projet ou l'espace de travail.
+\item[--clean] Nettoie le project/espace de travail.
 \item[--target=\var{str}] Configure la cible de génération. Par exemple \cmdline{--target='Release'}.
 \item[--no-batch-window-close] Garde la fenêtre batch de journalisation visible après que la génération par batch soit terminée.
 \item[--batch-build-notify] Affiche un message une fois que la génération batch est terminée.
-\item[--safe-mode] Désactive toutes les extensions (plugins) au démarrage.
+\item[--script=\var{str}] Exécute un fichier de script.
+\item[--dbg-config=\var{str}] Sélectionne la configuration de débogage à utiliser (utilise la cible courante si omis).
+\item[--dbg-attach=\var{str}] Chaîne passée au greffon du debugger qui est utilisé lors de l'attachement au processus.
 \item[$>$ \var{build log file}] Placé en toute dernière position d'une ligne de commande, ceci permet à l'utilisateur de rediriger la sortie standard vers un fichier log. Ceci n'est pas à proprement parler une option de codeblocks, mais seulement une redirection standard des sorties des shells DOS/*nix.
 \end{description}
 
@@ -546,3 +568,5 @@ Pour ajouter un nouveau raccourci à la commande sélectionnée, suivre les éta
 \end{enumerate}
 
 \input{shortcuts_fr}
+
+\input{AutomaticSourcePaths_fr}

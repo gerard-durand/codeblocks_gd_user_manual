@@ -483,26 +483,48 @@ You can either use the applications assigned by Windows for each file extension 
 IDE \codeblocks can be executed from the command line without a graphic interface. In such a case, there are several switches available for controlling the build process of a project. Since \codeblocks is thus scriptable, the creation of executables can be integrated into your own work processes.
 
 \begin{lstlisting}
-codeblocks.exe /na /nd --no-splash-screen --build <name>.cbp --target='Release'
+Usage:
+codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
+           [--multiple-instance] [/d] [/nc] [/v] [--prefix <str>]
+           [--user-data-dir <str>] [/p <str>] [--no-log] [--log-to-file]
+           [--debug-log-to-file] [--profile <str>]
+           [--rebuild] [--build] [--clean] [--target <str>]
+           [--no-batch-window-close] [--batch-build-notify]
+           [--script <str>] [--file <str>]
+           [--dbg-config <str>] [--dbg-attach <str>]
+           [filename(s)...]
+
+example:
+codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
 \end{lstlisting}
 
 \begin{description}
 \item[\var{filename}] Specifies the project \file{*.cbp} filename or workspace \file{*.workspace} filename. For instance, \var{filename} may be \file{project.cbp}. Place this argument at the end of the command line, just before the output redirection if there is any.
 \item[--file=\var{filename}\optional{:line}] Open file in \codeblocks and optionally jump to a specific line.
 \item[/h, --help] Shows a help message regarding the command line arguments.
+\item[/?, --?] Shows a help message: alias for help.
+\item[--safe-mode] All plugins are disabled on startup.
 \item[/na, --no-check-associations] Don't perform any file association checks (Windows only).
 \item[/nd, --no-dde] Don't start a DDE server (Windows only).
 \item[/ni, --no-ipc] Don't start an IPC server (Linux and Mac only).
 \item[/ns, --no-splash-screen] Hides the splash screen while the application is loading.
+\item[--multiple-instance] Allow running multiple instances.
 \item[/d, --debug-log] Display the debug log of the application.
+\item[/nc, --no-crash-handler] Don't use the crash handler (useful for debugging C::B).
+\item[/v, --verbose] Show more debugging messages.
 \item[--prefix=\var{str}] Sets the shared data directory prefix.
 \item[/p, --personality=\var{str}, --profile=\var{str}] Sets the personality to use. You can use ask as the parameter to list all available personalities.
-\item[--rebuild] Clean and build the project or workspace.
+\item[--no-log] Turn off the application log.
+\item[--log-to-file] Redirect application log to a file.
+\item[--rebuild] Clean and then build the project or workspace.
 \item[--build] Build the project or workspace.
+\item[--clean] Clean the project/workspace.
 \item[--target=\var{str}] Sets target for batch build. For example \cmdline{--target='Release'}.
 \item[--no-batch-window-close] Keeps the batch log window visible after the batch build is completed.
 \item[--batch-build-notify] Shows a message after the batch build is completed.
-\item[--safe-mode] All plugins are disabled on startup.
+\item[--script=\var{str}] Execute script file.
+\item[--dbg-config=\var{str}] Selects the debugger config used for attaching (uses the current selected target if omitted).
+\item[--dbg-attach=\var{str}] String passed to the debugger plugin which is used for attaching to a process.
 \item[$>$ \var{build log file}] Placed in the very last position of the command line, this may be used to redirect standard output to log file. This is not a codeblock option as such, but just a standard DOS/*nix shell output redirection.
 \end{description}
 
@@ -541,3 +563,5 @@ To add a new shortcut, for the selected command, follow these steps:
 \end{enumerate}
     
 \input{shortcuts_en}
+
+\input{AutomaticSourcePaths_en}

@@ -1,11 +1,14 @@
 @echo off 
+
 if exist .\%output_dir% goto output_exists
 mkdir %output_dir%
 goto process_png_files
 
 :output_exists
 REM if exist %output_dir% del /Q /s %output_dir%\* >nul
-if exist %output_dir% del /Q /s %output_dir%\%name%*.html >nul
+if exist %output_dir% (
+    if exist %output_dir%\%name%*.html del /Q /s %output_dir%\%name%*.html >nul
+)
 
 :process_png_files
 if not exist figures\png\*.png goto error_png

@@ -1,27 +1,28 @@
-\section{Browse Tracker}\label{sec:browsetracker}
+\section{Browse Tracker (Suivi de Navigation)}\label{sec:browsetracker}
 
-Browse Tracker est une extension qui aide à naviguer parmi les fichiers récemment ouverts dans \codeblocks. La liste des fichiers récents est sauvegardée dans un historique. Le menu \menu{Vue,Suivi de Navigation,Tout Effacer} permet d'effacer l'historique.
+Browse Tracker est une extension qui aide à naviguer parmi les fichiers récemment ouverts dans \codeblocks.
 
-Dans les différents \samp{onglets} vous pouvez naviguer entre les divers éléments des fichiers récemment ouverts en utilisant l'entrée de menu \menu{Vue,Suivi de Navigation,Aller en arrière/Aller en avant} ou en utilisant les raccourcis claviers Alt-Gauche/Alt-Droit. Le menu de suivi de navigation est également accessible dans les menus de contexte. Les marqueurs sont enregistrés dans un fichier de mise en page \file{\var{projectName}.bmarks}
+La liste des fichiers récents est sauvegardée dans un historique.
+Le menu \menu{Affichage,Suivi de Navigation,Tout Effacer} permet d'effacer l'historique.
+
+Dans les différents \samp{onglets} vous pouvez naviguer entre les divers éléments des fichiers récemment ouverts en utilisant l'entrée de menu \menu{Affichage,Suivi de Navigation,Aller en arrière/Aller en avant} ou en utilisant les raccourcis claviers \textbf{Alt-Gauche/Alt-Droit}. Le menu de suivi de navigation est également accessible dans les menus de contexte. Les marqueurs sont enregistrés dans un fichier de mise en page \file{\var{projectName}.bmarks}
 
 Quand on développe du logiciel, on passe souvent d'une fonction à une autre implémentée dans différents fichiers. L'extension de suivi de navigation vous aidera dans cette tâche en vous montrant l'ordre dans lequel ont été sélectionnés les fichiers. Vous pouvez alors naviguer confortablement dans les différents appels de fonctions.
 
-L'extension permet même de naviguer entre les marqueurs de chaque fichier de l'éditeur de \codeblocks. La position du curseur est mémorisée pour chacun des fichiers. Vous pouvez poser ces marqueurs en utilisant le menu \menu{Vue, Suivi de Navigation, Activer le marquage de navigation} ou en sélectionnant une ligne avec le bouton gauche de la souris. Une marque $\ldots$ est alors posée dans la marge gauche. Avec les menus \menu{Vue,Suivi de Navigation,Marque précédente/Marque suivante} ou les raccourcis Alt-up/Alt-down vous pouvez naviguer entre les différents marques posées dans un fichier. Si vous voulez naviguer dans un fichier avec des marques triées en fonction du numéro de lignes, choisissez simplement le menu \menu{Vue,Suivi de Navigation,Trier les marques de navigation}.
+L'extension permet même de naviguer entre les marqueurs de chaque fichier de l'éditeur de \codeblocks. La position du curseur est mémorisée pour chacun des fichiers. Vous pouvez poser ces marqueurs en utilisant le menu \menu{Affichage, Suivi de Navigation, Activer le marquage de navigation} ou en sélectionnant une ligne avec le bouton gauche de la souris. Une marque $\ldots$ est alors posée dans la marge gauche. Avec les menus \menu{Vue,Suivi de Navigation,Marque précédente/Marque suivante} ou les raccourcis \textbf{Alt-up/Alt-down} vous pouvez naviguer entre les différents marques posées dans un fichier. Si vous voulez naviguer dans un fichier avec des marques triées en fonction du numéro de lignes, choisissez simplement le menu \menu{Vue,Suivi de Navigation,Trier les marques de navigation}.
 
-En choisissant \menu{Effacer la marque de navigation} le marqueur de la ligne sélectionnée est supprimé. Si un marqueur est posé sur une ligne, le fait d'appuyer pendant 1/4 de seconde sur le bouton gauche de la souris tout en appuyant sur la touche Ctrl effacera le marqueur de cette ligne. Avec le menu \menu{Effacer toutes les marques de navigation} ou avec un Ctrl-clic gauche sur toute ligne non marquée, vous remettez à 0 tous les marqueurs d'un fichier.
+En choisissant \menu{Effacer la marque de navigation} le marqueur de la ligne sélectionnée est supprimé. Si un marqueur est posé sur une ligne, le fait d'appuyer pendant 1/4 de seconde sur le bouton gauche de la souris tout en appuyant sur la touche Ctrl effacera le marqueur de cette ligne. Avec le menu \menu{Effacer toutes les marques de navigation} ou avec un \textbf{Ctrl-clic gauche} sur toute ligne non marquée, vous remettez à 0 tous les marqueurs d'un fichier.
 
 Le paramétrage de l'extension peut être configuré via le menu \menu{Paramètres,Éditeur,Browse Tracker}.
 
-\hint{NdT : certains menus ou affichages ne sont pas traduits car l'auteur de l'extension n'a pas marqué certaines chaînes comme étant traduisibles}
-
 \begin{description}
-\item[Mark Style] (Styles des marques) Les marques de navigation sont affichées par défaut comme des $\ldots$ dans la marge. Avec le choix \menu{Book\_Marks} elles seront affichées en tant que marque par une flèche bleue dans la marge. L'option "hide" supprime l'affichage des marques.
-\item[Toggle Browse Mark key] Les marques peuvent être activées ou supprimées soit par un simple clic avec le bouton gauche de la souris soit avec un clic-gauche tout en maintenant la touche Ctrl enfoncée.
-\item[Toggle Delay] Durée pendant laquelle le bouton gauche de la souris est enfoncé pour entrer dans le mode de marquage de navigation.
-\item[Clear All BrowseMarks] (Effacer toutes les marques) tout en maintenant enfoncée la touche Ctrl soit par simple clic soit par double-clic sur le bouton gauche de la souris.
+\item[Styles des marques] Les marques de navigation sont affichées par défaut comme des $\ldots$ dans la marge. Avec le choix \menu{Book\_Marks} elles seront affichées en tant que marque par une flèche bleue dans la marge. L'option "hide" supprime l'affichage des marques. \textbf{Note} : Ces options ont été supprimées récemment du greffon mais existent encore dans des versions de \codeblocks plus anciennes. Seul l'affichage par flèche bleue est resté.
+\item[Touche de basculement du suivi de navigation] Les marques peuvent être activées ou supprimées soit par un simple clic avec le bouton gauche de la souris soit avec un clic-gauche tout en maintenant la touche Ctrl enfoncée.
+\item[Délai avant d'activer le basculement Souris\_Gauche] Durée pendant laquelle le bouton gauche de la souris doit être est enfoncé avant d'entrer dans le mode de marquage de navigation.
+\item[Supprimer toutes les marques de navigation] tout en maintenant enfoncée la touche Ctrl soit par simple clic soit par double-clic sur le bouton gauche de la souris.
 \end{description}
 
-La configuration de l'extension est enregistrée dans votre répertoire application data dans le fichier \file{default.conf}. Si vous utilisez la fonctionnalité des profils (ou personnalité) de \codeblocks la configuration est alors lue dans votre fichier \file{\var{personality}.conf}.
+La configuration de l'extension est enregistrée dans votre répertoire application data dans le fichier \file{default.conf}. Si vous utilisez la fonctionnalité des profils (ou personnalité) de \codeblocks, la configuration est alors lue dans votre fichier \file{\var{personality}.conf}.
 
 
 

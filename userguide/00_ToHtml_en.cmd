@@ -9,6 +9,7 @@ goto suite
 :nomdef
 rem set name=00_test_fr
 set name=main_codeblocks_%lang%
+
 :suite
 call .\00_ToHtml.cmd
 rem > .\00_ToHtml.log
