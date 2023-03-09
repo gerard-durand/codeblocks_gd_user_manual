@@ -1,0 +1,52 @@
+\section{Automatic source paths}\label{sec:automatic_source_paths}
+A User Interface for project "globs" aka automatic source directories. The intention is to mimic the glob feature of cmake.\\
+This paragraph is copied from the C::B Wiki: \url{https://wiki.codeblocks.org/index.php/Automatic_source_paths}.
+You can also have a look at the discussion on the forum: \url{https://forums.codeblocks.org/index.php/topic,25276.0.html}.
+
+\subsection{Introduction}
+Automatic source paths is a feature of \codeblocks to automatically mirror folders from the source directory to the \codeblocks project file. A use case is for example if a external program creates source files that are used in \codeblocks. With automatic source paths \codeblocks automatically detects changes (addition and removal of source files) in the given directory and mirrors them to the project file.
+\subsection{User Interface}
+The functionality can be accessed over the \menu{Project,Automatic source paths...} menu entry:
+
+\figures[H][width=.70\columnwidth]{Globs_menu}{Automatic source paths menu}
+
+This opens the overview dialog
+
+\figures[H][width=.60\columnwidth]{Globs_ui_1}{User interface 1}
+\begin{description}[noitemsep]
+\item[Path]: The base path in which files are searched for automatic import
+\item[Recursive]: Search also in sub folders
+\item[Wildcard]: Filter files according this wildcard (for example \file{*.cpp}: import only files ending with .cpp
+\item[Add]: Add an new path
+\item[Delete]: Delete current selected path from the list
+\item[Edit]: Edit current selected path from the list
+\end{description}
+
+Adding or Editing a path opens the Edit path dialog
+
+\figures[H][width=.50\columnwidth]{Globs_ui_2_2}{User interface 2}
+
+\begin{enumerate}[noitemsep]
+\item The path to automatically overwatch
+\item Open the system path dialog to select the path to automatically overwatch
+\item Open the global variables dialog to select a global variable that is replaced and overwatched by \codeblocks
+\item If this is checked all sub folder of this path are also overwatched
+\item A list of wildcards separated by ';' for file extension that are imported for this glob (ex. \file{*.h} to import only header files, \file{*.cpp;*.h} to import cpp and h files
+\item Select targets where the files found in Path are added
+\item Checkbox to select all/none targets
+\item When this box is checked files will be added to the project file. 
+    The project file will be modified every time a file is found. This 
+    allows to change properties of the file (like target, or linker flags). 
+    The properties are saved in the project file and reloaded when the 
+    project is reloaded. If this box is left unchecked the files are loaded 
+    when \codeblocks is running, but not saved to project file. With this 
+    unchecked file properties can not be saved and will be lost.
+\end{enumerate}
+
+\subsection{Example}
+In this example we use the following folder structure:
+
+\figures[H][width=.60\columnwidth]{Directory_1}{Directory structure example}
+Lets assume that files in src are added/removed automatically by a third party software. Adding now an automatic source folder in \codeblocks will automatically add/remove files if they are changed on the file system.
+
+\figures[H][width=.60\columnwidth]{Edit_glob_example_2}{Edit example}

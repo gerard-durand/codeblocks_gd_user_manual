@@ -1,0 +1,52 @@
+\section{Chemins sources automatiques}\label{sec:automatic_source_paths}
+Une interface utilisateur pour les "globs" de projet, c'est-à-dire une intégration automatique de répertoires sources. Le but est d'imiter la fonction "glob" de cmake.\\
+Ce paragraphe est recopié (et traduit) du wiki de C::B : \url{https://wiki.codeblocks.org/index.php/Automatic_source_paths}.
+Vous pouvez aussi jeter un oeil à la discussion sur le forum: \url{https://forums.codeblocks.org/index.php/topic,25276.0.html}.
+
+\subsection{Introduction}
+Les chemins sources automatiques sont une fonctionnalité de \codeblocks pour mettre à jour automatiquement dans un fichier projet de \codeblocks des dossiers modifiés dans des répertoires source. Un cas typique d'utilisation est, par exemple, lorsqu'un programme externe crée des fichiers sources qui sont utilisés dans \codeblocks. Avec les chemins sources automatiques, \codeblocks détecte automatiquement les changements (ajout et suppression de fichiers source) dans un répertoire donné et les reflète dans le fichier projet.
+\subsection{Interface Utilisateur}
+La fonctionnalité est accessible via l'entrée de menu \menu{Projet,Chemins sources automatiques...} :
+
+\figures[H][width=.70\columnwidth]{Globs_menu}{Menu des chemins sources automatiques}
+
+Cela ouvre le dialogue de synthèse
+
+\figures[H][width=.60\columnwidth]{Globs_ui_1}{Interface utilisateur 1}
+\begin{description}[noitemsep]
+\item[Chemin]: Le chemin de base dans lequel les fichiers sont recherchés pour l'importation automatique
+\item[Récursif]: Recherche aussi dans les sous-répertoires
+\item[Joker]: Filtrer les fichiers en fonction de ce caractère générique (par exemple : \file{*.cpp} : importe uniquement les fichiers se terminant par .cpp
+\item[Ajouter]: Ajouter un nouveau chemin
+\item[Supprimer]: Supprimer de la liste le chemin actuellement sélectionné
+\item[Édition]: Éditer le chemin actuellement sélectionné de la liste 
+\end{description}
+
+L'ajout ou l'édition d'un chemin ouvre la boîte de dialogue Éditer le chemin
+
+\figures[H][width=.50\columnwidth]{Globs_ui_2_2}{Interface utilisateur 2}
+
+\begin{enumerate}[noitemsep]
+\item Le chemin vers la surveillance automatique
+\item Ouvre la boîte de dialogue du chemin sur le système pour sélectionner le chemin à surveiller automatiquement
+\item Ouvre le dialogue des variables globales pour sélectionner une variable globale qui est remplacée et surveillée par \codeblocks
+\item Si cette case est cochée, tous les sous-répertoires de ce chemin sont également surveillés
+\item Une liste de caractères de remplacement séparés par des ';' pour les extensions de fichiers qui sont importées pour ce "glob" (ex. : \file{*.h} pour n'importer que les fichiers d'en-tête, \file{*.cpp;*.h} pour importer les fichiers cpp et h)
+\item Sélection des cibles où les fichiers trouvés dans le chemin sont ajoutés
+\item Case à cocher pour sélectionner les cibles toutes/aucunes
+\item Si cette case est cochée les fichiers seront ajoutés au fichier projet. 
+    Le fichier projet sera modifié chaque fois qu'un fichier sera trouvé. Ceci
+    permet de modifier les propriétés d'un fichier (comme une cible ou les flags de l'éditeur de liens).
+    Les propriétés sont enregistrées dans le fichier projet et rechargées lorsque le
+    projet est rechargé. Si cette case n'est pas cochée, les fichiers sont bien chargés
+    lors de l'exécution de \codeblocks, mais ne sont pas enregistrés dans le fichier projet, et donc
+    les propriétés du fichier ne peuvent pas être sauvegardées et seront perdues.
+\end{enumerate}
+
+\subsection{Exemple}
+Dans cet exemple nous utilisons la stucture de répertoire suivante :
+
+\figures[H][width=.60\columnwidth]{Directory_1}{Exemple de structure de répertoire}
+Supposons que les fichiers dans src sont ajoutés/supprimés automatiquement par un logiciel tiers. En ajoutant maintenant un dossier source automatique dans \codeblocks, les fichiers seront automatiquement ajoutés/supprimés s'ils sont modifiés dans le système de fichiers.
+
+\figures[H][width=.60\columnwidth]{Edit_glob_example_2}{Exemple d'édition}
