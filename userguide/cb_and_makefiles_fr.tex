@@ -165,13 +165,6 @@ clean:
 
 \hint{Exporter un makefile depuis un projet \codeblocks est possible indirectement. Vous pouvez l'obtenir à partir de l'utilitaire cbp2make (voir sa description dans \pxref{sec:cbp2make} et/ou un exemple d'utilisation via Tool+ \pxref{sec:tool_cbp2make}.}
 
-
-Une dernière remarque. Une fois que vous avez utilisé un makefile, toute tentative de compiler sans un makefile vous produira de nombreux warnings. La seule façon que j'ai trouvée pour résoudre cela est de réinstaller CB. Si vous avez besoin des deux façons de compiler il est possible d'installer 2 versions de CB.
-
-\hint{C'est une remarque du texte original dans le Wiki. Mais, en tant qu'utilisateur gd\_on, je n'ai jamais observé ce comportement}
-
-En général, il n'est pas recommandé d'utiliser un makefile, mais s'il y a de bonnes raisons de le faire, alors vous avez ici ce qu'il faut. 
-
 \subsection{Compléments}
 
 Par défaut, \codeblocks génère une cible "Release" et une cible "Debug". Dans votre Makefile, ces cibles peuvent ne pas être présentes. Mais vous avez peut-être une cible "All" (ou "all"). Vous pouvez renommer la cible dans \codeblocks (ou en ajouter une) par ce nom qui a été donné dans le Makefile. 
