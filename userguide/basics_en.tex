@@ -482,6 +482,11 @@ You can either use the applications assigned by Windows for each file extension 
 
 IDE \codeblocks can be executed from the command line without a graphic interface. In such a case, there are several switches available for controlling the build process of a project. Since \codeblocks is thus scriptable, the creation of executables can be integrated into your own work processes.
 
+\subsection{Using command line arguments}
+
+If your enter in a command line:\\
+\codeline{codeblocks /h}\\
+You will see a new window containing a list of arguments:
 \begin{lstlisting}
 Usage:
 codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
@@ -493,11 +498,35 @@ codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
            [--script <str>] [--file <str>]
            [--dbg-config <str>] [--dbg-attach <str>]
            [filename(s)...]
+\end{lstlisting}
+           
+\genterm{Windows}
+\begin{enumerate}[noitemsep] 
+\item Find the \codeblocks shortcut in the Desktop or Start menu.
+\item Right click on the icon and select Properties.
+\item Select the Shortcut tab.
+\item Append the command line arguments you want to use to the end of the Target text (behind the quote mark).
+\item Run \codeblocks by using the shortcut you edited.
+\end{enumerate}
 
-example:
+Example:
+\begin{lstlisting}
 codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
 \end{lstlisting}
 
+\genterm{*nix}
+\begin{enumerate}[noitemsep]
+\item Launch a terminal client, such as XTerm, Gnome Terminal or Konsole.
+\item Type "codeblocks" and then append the command line arguments you want to use.
+\end{enumerate}
+\textbf{Note:} \codeblocks can not run on a real console, X11 must be running and you must use a graphical terminal emulator.
+
+Example:
+\begin{lstlisting}
+codeblocks --no-splash-screen --debug-log
+\end{lstlisting}
+
+\subsection{Command line arguments}
 \begin{description}
 \item[\var{filename}] Specifies the project \file{*.cbp} filename or workspace \file{*.workspace} filename. For instance, \var{filename} may be \file{project.cbp}. Place this argument at the end of the command line, just before the output redirection if there is any.
 \item[--file=\var{filename}\optional{:line}] Open file in \codeblocks and optionally jump to a specific line.
@@ -511,7 +540,7 @@ codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
 \item[--multiple-instance] Allow running multiple instances.
 \item[/d, --debug-log] Display the debug log of the application.
 \item[/nc, --no-crash-handler] Don't use the crash handler (useful for debugging C::B).
-\item[/v, --verbose] Show more debugging messages.
+\item[/v, --verbose] Enable logging of c::b errors.
 \item[--prefix=\var{str}] Sets the shared data directory prefix.
 \item[/p, --personality=\var{str}, --profile=\var{str}] Sets the personality to use. You can use ask as the parameter to list all available personalities.
 \item[--no-log] Turn off the application log.
@@ -525,7 +554,9 @@ codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
 \item[--script=\var{str}] Execute script file.
 \item[--dbg-config=\var{str}] Selects the debugger config used for attaching (uses the current selected target if omitted).
 \item[--dbg-attach=\var{str}] String passed to the debugger plugin which is used for attaching to a process.
-\item[$>$ \var{build log file}] Placed in the very last position of the command line, this may be used to redirect standard output to log file. This is not a codeblock option as such, but just a standard DOS/*nix shell output redirection.
+\item[-S setName] Set "setName" to current active set for global variables (after [r13245])
+\item[-D $<$set$>$.uservar.mem=val] Set the member mem of user variable uservar in "set" to value val. This overrides the current "set" value (after [r13245])
+\item[$>$ \var{build log file}] Placed in the very last position of the command line, this may be used to redirect standard output to log file. This is not a \codeblocks option as such, but just a standard DOS/*nix shell output redirection.
 \end{description}
 
 \section{Shortcuts}

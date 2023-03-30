@@ -250,9 +250,9 @@ Cette section décrit comment travailler avec des variables globales.
 
 \subsection{Synopsis}
 
-Travailler en tant que développeur sur un projet reposant sur des librairies tierces impose un certain nombre de tâches répétitives inutiles, comme configurer des variables de génération dépendantes du système de fichier local. Dans le cas de fichiers projets, une attention toute particulière doit être apportée afin d'éviter de diffuser une copie modifiée localement. Si on n'y prend pas garde, cela peut se produire facilement après avoir changé par exemple un flag de génération  pour obtenir une version de type release.
+Travailler en tant que développeur sur un projet reposant sur des librairies tierces impose un certain nombre de tâches répétitives inutiles, comme configurer des variables de génération dépendantes du système de fichier local. Dans le cas de fichiers projets, une attention toute particulière doit être apportée afin de ne pas diffuser une copie modifiée localement. Si on n'y prend pas garde, cela peut se produire facilement après avoir changé par exemple un flag de génération  pour obtenir une version de type release.
 
-Le concept de variable globale du compilateur est une nouvelle solution unique à \codeblocks qui adresse ce problème. Les variables globales du compilateur vous permettent de configurer un projet une seule fois, avec n'importe quel nombre de développeurs utilisant n'importe quel système de fichiers pour compiler et développer ce projet. Aucune information locale ne nécessite d'être changée plus d'une fois.
+Le concept de variable globale du compilateur est une nouvelle solution unique à \codeblocks qui adresse ce problème. Les variables globales du compilateur vous permettent de configurer un projet une seule fois, et n'importe quel nombre de développeurs utilisant n'importe quel système de fichiers pour compiler et développer ce projet. Aucune information locale ne nécessite d'être changée plus d'une fois.
 
 \subsection{Noms et Membres}
 
@@ -272,7 +272,7 @@ Les membres \codeline{cflags} et \codeline{lflags} sont vides par défaut et peu
 \begin{itemize}
 \item Les noms de variables de configuration ou de compilateur ne peuvent pas être vides, ne peuvent pas contenir de caractères blancs (ou espaces), doivent commencer par une lettre et ne contenir que des caractères alphanumériques. Les lettres Cyrilliques ou Chinoises ne sont pas des caractères alphanumériques. Si \codeblocks rencontre une séquence de caractères non valides dans un nom, il peut la remplacer sans le demander.
 \item Toutes les variables nécessitent que leur base soit définie. Tout le reste est optionnel, mais la base est absolument obligatoire. Si vous ne définissez pas la base d'une variable, elle ne sera pas sauvegardée (et ce même si les autres champs ont été définis).
-\item Vous ne pouvez pas définir un nom de membre utilisateur qui a le même nom qu'un membre prédéfini. Actuellement, le membre utilisateur écrasera le membre prédéfini, mais en général, le comportement est indéfini dans ce cas.
+\item Vous ne pouvez pas définir un nom de membre défini par l'utilisateur qui a le même nom qu'un membre prédéfini. Actuellement, le membre utilisateur écrasera le membre prédéfini, mais en général, le comportement est indéfini dans ce cas. Si \codeline{'libext'} est un membre défini par l'utilisateur on peut seulement écrire \codeline{$(#variable.libext)} et pas \codeline{$(#variable)/libext}.
 \item Les valeurs des variables et des membres peuvent contenir un nombre arbitraire de séquences de caractères, mais doivent respecter les contraintes suivantes :
 \begin{itemize}
 \item Vous ne pouvez pas définir une variable par une valeur qui se référence à la même variable ou à n'importe lequel de ses membres
@@ -323,3 +323,11 @@ Prenons l'exemple d'une installation standard de Boost sous Windows. Généralem
 Boost, cependant, installe les en-têtes dans \file{C:\osp Boost\osp include\osp boost-1\_33\_1\osp boost} et ses librairies dans \file{C:\osp Boost\osp lib} par défaut. Il semble impossible d'obtenir ceci simplement sans devoir tout ajuster sur chaque nouveau PC, particulièrement si vous devez travailler sous Linux mais aussi avec un autre OS.
 
 C'est là que la véritable puissance des variables globales utilisateur se révèle. Quand vous définissez la valeur de la variable \codeline{#boost}, vous allez juste un cran plus loin que d'habitude. Vous définissez le membre include comme \file{C:\osp Boost\osp include\osp boost-1\_33\_1\osp boost} et le membre lib comme \file{C:\osp Boost\osp lib}, respectivement. Votre projet utilisant \codeline{$(#boost.include)} et \codeline{$(#boost.lib)} travaillera comme par magie correctement sur tout PC sans aucune modifications. Vous n'avez pas besoin de savoir pourquoi, vous ne voulez pas savoir pourquoi.
+
+\subsection{Arguments en Ligne de Commande}\label{sec:cmdline_args}
+Depuis la révision [r13245] on peut utiliser les arguments en ligne de commande pour substituer et définir des variables globales et configurer l'ensemble courant actif.
+\begin{itemize}
+\item '-S' paramêtre pour configurer l'ensemble courant actif via la ligne de commande
+\item '-D' paramêtre pour définir/substituer une variable utilisateur de la forme :\\
+ \codeline{-D set.variable.membre=valeur} or \codeline{-D variable.membre=valeur}
+\end{itemize}

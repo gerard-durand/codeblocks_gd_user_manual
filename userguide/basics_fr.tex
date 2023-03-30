@@ -487,8 +487,13 @@ Vous pouvez alors soit utiliser les applications assignées par Windows pour cha
 
 L'Environnement de Développement Intégré (IDE) \codeblocks peut être exécuté depuis une ligne de commande sans interface graphique. Dans ce cas, plusieurs options sont disponibles pour contrôler le processus de génération d'un projet. Comme \codeblocks peut être piloté par des "scripts", la création d'exécutables peut être intégrée dans vos propres processus de travail.
 
+\subsection{Utilisation des arguments en ligne de commande}
+
+Si vous entrez en ligne de commande :\\
+\codeline{codeblocks /h}\\
+Vous verrez une nouvelle fenêtre contenant une liste d'arguments :
 \begin{lstlisting}
-Utilisation :
+Usage:
 codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
            [--multiple-instance] [/d] [/nc] [/v] [--prefix <str>]
            [--user-data-dir <str>] [/p <str>] [--no-log] [--log-to-file]
@@ -498,11 +503,35 @@ codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
            [--script <str>] [--file <str>]
            [--dbg-config <str>] [--dbg-attach <str>]
            [filename(s)...]
+\end{lstlisting}
 
-exemple:
+\genterm{Windows}
+\begin{enumerate}[noitemsep] 
+\item Rechercher le raccourci vers \codeblocks sur le bureau ou via le menu Démarrer.
+\item Clic droit sur l'icône et sélectionner Propriétés.
+\item Sélectionner l'onglet Raccourci.
+\item Ajouter en fin de ligne de commande les arguments que vous voulez utiliser à la suite du texte de la cible (après les guillemets).
+\item Lancer \codeblocks en utilisant le raccourci que vous avez édité.
+\end{enumerate}
+
+Exemple:
+\begin{lstlisting}
 codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
 \end{lstlisting}
 
+\genterm{*nix}
+\begin{enumerate}[noitemsep] 
+\item Lancer un client de terminal comme XTerm, Gnome Terminal ou Konsole.
+\item Y entrer "codeblocks" puis ajouter les arguments en ligne de commande que vous voulez utiliser.
+\end{enumerate}
+\textbf{Note :} \codeblocks ne peut pas s'exécuter dans une console réelle, X11 doit être en cours d'exécution et vous devez utiliser un émulateur graphique de terminal.
+
+Exemple:
+\begin{lstlisting}
+codeblocks --no-splash-screen --debug-log
+\end{lstlisting}
+
+\subsection{Arguments en ligne de commande}
 \begin{description}
 \item[\var{filename}] Spécifie le nom du fichier de projet \file{*.cbp} ou le nom de l'espace de travail \file{*.workspace}. Par exemple, \var{filename} peut être \file{project.cbp}. Placez cet argument en fin de ligne de commande, juste avant la redirection de la sortie, s'il y en a une.
 \item[--file=\var{filename}\optional{:ligne}] Ouvrir un fichier dans \codeblocks et, en option, se positionner sur une ligne particulière.
@@ -516,7 +545,7 @@ codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
 \item[--multiple-instance] Autorise l'exécution de plusieurs instances.
 \item[/d, --debug-log] Afficher le journal de débogage de l'application.
 \item[/nc, --no-crash-handler] Ne pas utiliser le "crash handler" (utile pour déboguer C::B).
-\item[/v, --verbose] Affiche davantage de messages de debogage.
+\item[/v, --verbose] Active la journalisation des erreurs de c::b.
 \item[--prefix=\var{str}] Configure le préfixe du répertoire de données partagées.
 \item[/p, --personality=\var{str}, --profile=\var{str}] Configure le profil (ou personnalité) à utiliser. Vous pouvez utiliser le paramètre ask pour afficher la liste de tous les profils disponibles.
 \item[--no-log] Désactive le journal d'application.
@@ -530,7 +559,9 @@ codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
 \item[--script=\var{str}] Exécute un fichier de script.
 \item[--dbg-config=\var{str}] Sélectionne la configuration de débogage à utiliser (utilise la cible courante si omis).
 \item[--dbg-attach=\var{str}] Chaîne passée au greffon du debugger qui est utilisé lors de l'attachement au processus.
-\item[$>$ \var{build log file}] Placé en toute dernière position d'une ligne de commande, ceci permet à l'utilisateur de rediriger la sortie standard vers un fichier log. Ceci n'est pas à proprement parler une option de codeblocks, mais seulement une redirection standard des sorties des shells DOS/*nix.
+\item[-S setName] Configure "setName" en tant qu'ensemble courant de variables globales (après [r13245])
+\item[-D $<$set$>$.uservar.mem=val] Configure le membre mem de la variable utilisateur uservar de l'ensemble "set" à la valeur val. Cela se substitue à la valeur courante dans "set" (après [r13245])
+\item[$>$ \var{build log file}] Placé en toute dernière position d'une ligne de commande, ceci permet à l'utilisateur de rediriger la sortie standard vers un fichier log. Ceci n'est pas à proprement parler une option de \codeblocks, mais seulement une redirection standard des sorties des shells DOS/*nix.
 \end{description}
 
 \section{Raccourcis Clavier}

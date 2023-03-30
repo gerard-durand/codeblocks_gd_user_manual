@@ -250,9 +250,9 @@ This section describes how to work with global variables.
 
 \subsection{Synopsis}
 
-Working as a developer on a project which relies on 3rd party libraries involves a lot of unnecessary repetitive tasks, such as setting up build variables according to the local file system layout. In the case of project files, care must be taken to avoid accidentially committing a locally modified copy. If one does not pay attention, this can happen easily for example after changing a build flag to make a release build.
+Working as a developer on a project which relies on 3rd party libraries involves a lot of unnecessary repetitive tasks, such as setting up build variables according to the local file system layout. In the case of project files, care must be taken to not accidentially commit a locally modified copy. If one does not pay attention, this can happen easily for example after changing a build flag to make a release build.
 
-The concept of global compiler variables is a unique new solution for \codeblocks which addresses this problem. Global compiler variables allow you to set up a project once, with any number of developers using any number of different file system layouts being able to compile and develop this project. No local layout information ever needs to be changed more than once.
+The concept of global compiler variables is a unique new solution for \codeblocks which addresses this problem. Global compiler variables allow you to set up a project once, and any number of developers using any number of different file system layouts being able to compile and develop this project. No local layout information ever needs to be changed more than once.
 
 \subsection{Names and Members}
 
@@ -272,7 +272,7 @@ The members \codeline{cflags} and \codeline{lflags} are empty by default and can
 \begin{itemize}
 \item Both set and global compiler variable names may not be empty, they must not contain white space, must start with a letter and must consist of alphanumeric characters. Cyrillic or Chinese letters are not alphanumeric characters. If \codeblocks is given invalid character sequences as names, it might replace them without asking.
 \item Every variable requires its base to be defined. Everything else is optional, but the base is absolutely mandatory. If you don't define a the base of a variable, it will not be saved (no matter what other fields you have defined).
-\item You may not define a custom member that has the same name as a built-in member. Currently, the custom member will overwrite the built-in member, but in general, the behaviour for this case is undefined.
+\item You may not define a custom member that has the same name as a built-in member. Currently, the custom member will overwrite the built-in member, but in general, the behaviour for this case is undefined. If \codeline{'libext'} is a custom member we can only write \codeline{$(#variable.libext)} and not \codeline{$(#variable)/libext}.
 \item Variable and member values may contain arbitrary character sequences, subject to the following three constraints:
 \begin{itemize}
 \item You may not define a variable by a value that references the same variable or any of its members
@@ -323,3 +323,11 @@ Let's take a standard Boost installation under Windows for an example. Generally
 Boost, however, installs headers into \file{C:\osp Boost\osp include\osp boost-1\_33\_1\osp boost} and its libraries under \file{C:\osp Boost\osp lib} by default. It seems impossible to get this under one hood without having to adjust everything on every new PC, especially if you have to work under Linux or some other OS, too.
 
 This is where the true power of global user variables is unveiled. When defining the value of the \codeline{#boost} variable, you go one step further than usual. You define the member include as \file{C:\osp Boost\osp include\osp boost-1\_33\_1\osp boost} and the member lib as \file{C:\osp Boost\osp lib}, respectively. Your projects using \codeline{$(#boost.include)} and \codeline{$(#boost.lib)} will magically work on every PC without any modifications. You don't need to know why, you don't want to know why.
+
+\subsection{Command line arguments}\label{sec:cmdline_args}
+After revision [r13245] it is possible to use command line arguments to override and define global variables and set the current active set.
+\begin{itemize}
+\item '-S' parameter for setting current active set via command line
+\item '-D' parameter for defining/overriding user variable in form:\\
+ \codeline{-D set.variable.member=value} or \codeline{-D variable.member=value}
+\end{itemize}
