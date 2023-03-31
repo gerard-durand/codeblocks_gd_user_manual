@@ -9404,11 +9404,17 @@ duplicate all of your variables.
 </p><!--l. 315--><p class="noindent" >Deleting a set also deletes all variables in that set (but not in another set). The <span 
 class="cmtt-12">default </span>set is
 always present and cannot be deleted.
-</p><!--l. 317--><p class="noindent" >
+</p><!--l. 317--><p class="noindent" >You can also export or import sets: files, with extension .set, are text files containing a
+particular set. Those files are easily transferable between users/computers.
+</p><!--l. 319--><p class="noindent" >All these options on sets are available with buttons &#8221;Add&#8221;, &#8221;Delete&#8221;, &#8221;Clone&#8221;, &#8221;Export&#8221;
+and &#8221;Import&#8221;, located at the top of the Global Variable Environment window (see
+<a 
+href="#x3-149001r1">Figure&#x00A0;3.1</a>).
+</p><!--l. 321--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.6</span>&#x00A0;&#x00A0;<a 
  id="x3-1530003.5.6"></a>Custom Members Mini-Tutorial</h4>
-<!--l. 319--><p class="noindent" >As stated above, writing <span class="lstinline"><span style="color:#000000"><span 
+<!--l. 323--><p class="noindent" >As stated above, writing <span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">$</span></span><span style="color:#000000"><span 
 class="ectt-1095">(#</span></span><span style="color:#000000"><span 
 class="ectt-1095">var</span></span><span style="color:#000000"><span 
@@ -9427,7 +9433,7 @@ class="ectt-1095">var</span></span><span style="color:#000000"><span
 class="ectt-1095">.</span></span><span style="color:#000000"><span 
 class="ectt-1095">include</span></span><span style="color:#000000"><span 
 class="ectt-1095">)</span></span></span>?
-</p><!--l. 321--><p class="noindent" >Let&#8217;s take a standard Boost installation under Windows for an example. Generally, you would
+</p><!--l. 325--><p class="noindent" >Let&#8217;s take a standard Boost installation under Windows for an example. Generally, you would
 expect a fictional package ACME to have its include files under ACME/include and its libraries
 under ACME/lib. Optionally, it might place its headers into yet another subfolder called
 acme. So after adding the correct paths to the compiler and linker options, you would
@@ -9442,8 +9448,10 @@ class="ectt-1095">.</span></span><span style="color:#000000"><span
 class="ectt-1095">h</span></span><span style="color:#000000"><span 
 class="ectt-1095">&#x003E;</span></span></span> and link to <span 
 class="cmtt-12">libacme.a </span>(or whatever it happens to
+                                                                                       
+                                                                                       
 be).
-</p><!--l. 323--><p class="noindent" >Boost, however, installs headers into <span 
+</p><!--l. 327--><p class="noindent" >Boost, however, installs headers into <span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">\</span><span 
 class="cmtt-12">Boost</span><span 
@@ -9463,9 +9471,7 @@ class="cmsy-10x-x-120">\</span><span
 class="cmtt-12">lib </span>by default. It seems impossible to get this under one hood without having
 to adjust everything on every new PC, especially if you have to work under Linux or some other
 OS, too.
-                                                                                       
-                                                                                       
-</p><!--l. 325--><p class="noindent" >This is where the true power of global user variables is unveiled. When defining the value of the
+</p><!--l. 329--><p class="noindent" >This is where the true power of global user variables is unveiled. When defining the value of the
 <span class="lstinline"><span style="color:#0000FF"><span 
 class="ectt-1095">#</span></span><span style="color:#000000"><span 
 class="ectt-1095">boost</span></span></span> variable, you go one step further than usual. You define the member include as
@@ -9501,18 +9507,18 @@ class="ectt-1095">lib</span></span><span style="color:#000000"><span
 class="ectt-1095">)</span></span></span> will magically work on every PC
 without any modifications. You don&#8217;t need to know why, you don&#8217;t want to know
 why.
-</p><!--l. 327--><p class="noindent" >
+</p><!--l. 331--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.7</span>&#x00A0;&#x00A0;<a 
  id="x3-1540003.5.7"></a>Command line arguments</h4>
-<!--l. 328--><p class="noindent" >After revision [r13245] it is possible to use command line arguments to override and define
+<!--l. 332--><p class="noindent" >After revision [r13245] it is possible to use command line arguments to override and define
 global variables and set the current active set. </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 330--><p class="noindent" >&#8217;-S&#8217; parameter for setting current active set via command line
+      <!--l. 334--><p class="noindent" >&#8217;-S&#8217; parameter for setting current active set via command line
       </p></li>
       <li class="itemize">
-      <!--l. 331--><p class="noindent" >&#8217;-D&#8217; parameter for defining/overriding user variable in form:<br 
+      <!--l. 335--><p class="noindent" >&#8217;-D&#8217; parameter for defining/overriding user variable in form:<br 
 class="newline" /><span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">-</span></span><span style="color:#000000"><span 
 class="ectt-1095">D</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 

@@ -9723,11 +9723,18 @@ variables.
 celles d&#8217;une autre ensemble). L&#8217;ensemble <span 
 class="cmtt-12">default </span>est toujours présent et ne peut pas être
 supprimé.
-</p><!--l. 317--><p class="noindent" >
+</p><!--l. 317--><p class="noindent" >Vous pouvez aussi exporter ou importer des ensembles de variables : les fichiers, avec l&#8217;extension
+.set, sont des fichiers de texte contenant un ensemble particulier de variables. Ces fichiers sont
+facilement transférables entres utilisateurs/ordinateurs.
+</p><!--l. 319--><p class="noindent" >Toutes ces options sont disponibles via les boutons &#8221;Ajouter&#8221;, &#8221;Supprimer&#8221;, &#8221;Cloner&#8221;,
+&#8221;Exporter&#8221; et &#8221;Importer&#8221;, situés en haut de la fenêtre des Variables Globales d&#8217;Environnement
+(voir <a 
+href="#x3-149001r1">figure&#x00A0;3.1</a>).
+</p><!--l. 321--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.6</span>&#x00A0;&#x00A0;<a 
  id="x3-1530003.5.6"></a>Mini-Tutoriel pour utilisateur curieux</h4>
-<!--l. 319--><p class="noindent" >Comme décrit auparavant, écrire <span class="lstinline"><span style="color:#000000"><span 
+<!--l. 323--><p class="noindent" >Comme décrit auparavant, écrire <span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">$</span></span><span style="color:#000000"><span 
 class="ectt-1095">(#</span></span><span style="color:#000000"><span 
 class="ectt-1095">var</span></span><span style="color:#000000"><span 
@@ -9747,7 +9754,9 @@ class="ectt-1095">var</span></span><span style="color:#000000"><span
 class="ectt-1095">.</span></span><span style="color:#000000"><span 
 class="ectt-1095">include</span></span><span style="color:#000000"><span 
 class="ectt-1095">)</span></span></span>?
-</p><!--l. 321--><p class="noindent" >Prenons l&#8217;exemple d&#8217;une installation standard de Boost sous Windows. Généralement, vous
+                                                                                       
+                                                                                       
+</p><!--l. 325--><p class="noindent" >Prenons l&#8217;exemple d&#8217;une installation standard de Boost sous Windows. Généralement, vous
 vous attendriez à ce qu&#8217;un package fictif ACME ait ses fichiers include dans ACME/include et
 ses librairies dans ACME/lib. Optionnellement, il pourrait mettre ses en-têtes (headers) dans
 un autre sous répertoire appelé acme. Ainsi après avoir ajouté les chemins corrects
@@ -9763,10 +9772,8 @@ class="ectt-1095">.</span></span><span style="color:#000000"><span
 class="ectt-1095">h</span></span><span style="color:#000000"><span 
 class="ectt-1095">&#x003E;</span></span></span> et éditer les liens avec <span 
 class="cmtt-12">libacme.a </span>(ou quelque chose de ce
-                                                                                       
-                                                                                       
 genre).
-</p><!--l. 323--><p class="noindent" >Boost, cependant, installe les en-têtes dans <span 
+</p><!--l. 327--><p class="noindent" >Boost, cependant, installe les en-têtes dans <span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">\</span><span 
 class="cmtt-12">Boost</span><span 
@@ -9786,7 +9793,7 @@ class="cmsy-10x-x-120">\</span><span
 class="cmtt-12">lib </span>par défaut. Il semble impossible d&#8217;obtenir ceci simplement sans
 devoir tout ajuster sur chaque nouveau PC, particulièrement si vous devez travailler sous Linux
 mais aussi avec un autre OS.
-</p><!--l. 325--><p class="noindent" >C&#8217;est là que la véritable puissance des variables globales utilisateur se révèle. Quand vous
+</p><!--l. 329--><p class="noindent" >C&#8217;est là que la véritable puissance des variables globales utilisateur se révèle. Quand vous
 définissez la valeur de la variable <span class="lstinline"><span style="color:#0000FF"><span 
 class="ectt-1095">#</span></span><span style="color:#000000"><span 
 class="ectt-1095">boost</span></span></span>, vous allez juste un cran plus loin que d&#8217;habitude. Vous
@@ -9823,19 +9830,19 @@ class="ectt-1095">lib</span></span><span style="color:#000000"><span
 class="ectt-1095">)</span></span></span> travaillera comme par magie correctement sur tout PC sans aucune
 modifications. Vous n&#8217;avez pas besoin de savoir pourquoi, vous ne voulez pas savoir
 pourquoi.
-</p><!--l. 327--><p class="noindent" >
+</p><!--l. 331--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.7</span>&#x00A0;&#x00A0;<a 
  id="x3-1540003.5.7"></a>Arguments en Ligne de Commande</h4>
-<!--l. 328--><p class="noindent" >Depuis la révision [r13245] on peut utiliser les arguments en ligne de commande pour
+<!--l. 332--><p class="noindent" >Depuis la révision [r13245] on peut utiliser les arguments en ligne de commande pour
 substituer et définir des variables globales et configurer l&#8217;ensemble courant actif.
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 330--><p class="noindent" >&#8217;-S&#8217; paramêtre pour configurer l&#8217;ensemble courant actif via la ligne de commande
+      <!--l. 334--><p class="noindent" >&#8217;-S&#8217; paramêtre pour configurer l&#8217;ensemble courant actif via la ligne de commande
       </p></li>
       <li class="itemize">
-      <!--l. 331--><p class="noindent" >&#8217;-D&#8217; paramêtre pour définir/substituer une variable utilisateur de la forme :<br 
+      <!--l. 335--><p class="noindent" >&#8217;-D&#8217; paramêtre pour définir/substituer une variable utilisateur de la forme :<br 
 class="newline" /><span class="lstinline"><span style="color:#000000"><span 
 class="ectt-1095">-</span></span><span style="color:#000000"><span 
 class="ectt-1095">D</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
