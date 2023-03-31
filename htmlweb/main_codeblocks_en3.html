@@ -9404,8 +9404,9 @@ duplicate all of your variables.
 </p><!--l. 315--><p class="noindent" >Deleting a set also deletes all variables in that set (but not in another set). The <span 
 class="cmtt-12">default </span>set is
 always present and cannot be deleted.
-</p><!--l. 317--><p class="noindent" >You can also export or import sets: files, with extension .set, are text files containing a
-particular set. Those files are easily transferable between users/computers.
+</p><!--l. 317--><p class="noindent" >You can also export or import sets (since r13224 SVN version): files, with extension .set,
+are text files containing a particular set. Those files are easily transferable between
+users/computers.
 </p><!--l. 319--><p class="noindent" >All these options on sets are available with buttons &#8221;Add&#8221;, &#8221;Delete&#8221;, &#8221;Clone&#8221;, &#8221;Export&#8221;
 and &#8221;Import&#8221;, located at the top of the Global Variable Environment window (see
 <a 
@@ -9437,6 +9438,8 @@ class="ectt-1095">)</span></span></span>?
 expect a fictional package ACME to have its include files under ACME/include and its libraries
 under ACME/lib. Optionally, it might place its headers into yet another subfolder called
 acme. So after adding the correct paths to the compiler and linker options, you would
+                                                                                       
+                                                                                       
 expect to <span class="lstinline"><span style="color:#0000FF"><span 
 class="ectt-1095">#</span></span><span style="color:#0000FF"><span 
 class="ectt-1095">include</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
@@ -9448,8 +9451,6 @@ class="ectt-1095">.</span></span><span style="color:#000000"><span
 class="ectt-1095">h</span></span><span style="color:#000000"><span 
 class="ectt-1095">&#x003E;</span></span></span> and link to <span 
 class="cmtt-12">libacme.a </span>(or whatever it happens to
-                                                                                       
-                                                                                       
 be).
 </p><!--l. 327--><p class="noindent" >Boost, however, installs headers into <span 
 class="cmtt-12">C:</span><span 
