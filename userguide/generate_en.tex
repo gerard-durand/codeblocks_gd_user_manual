@@ -24,7 +24,7 @@ In order to perform our build tasks, we will need several tools. Let's create an
 This section is written for a Windows syntax, but can be easily adapted to Linux. 
 Other detailed instructions may be found in the Wiki: \url{ https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Linux}
 
-Since the \codeblocks developers build \codeblocks using GCC, we might as well use that one under windows. The easiest and cleanest port is MinGW. This is the compiler distributed with \codeblocks when you download the FULL official package. With C::B 17.12 it was a version TDM 5.1.0 which was distributed, a rather old one. We will stick to version 8.1.0, which works nicely and which is now distributed with \codeblocks 20.03, but you can find more recent ones (as shown in MinGW Compiler Toolchains (\pxref{sec:install_toolchains}). You can obtain two MinGW versions : for generating 32 bits code, or for 64 bits code on \href{https://sourceforge.net/projects/mingw-w64/files/}{mingw64}. Many sub-choices are available. For 32 bits, I would suggest i686-posix-sjlj and for 64 bits x86\_64-posix-seh \cite{url:mingw64}.
+Since the \codeblocks developers build \codeblocks using GCC, we might as well use that one under windows. The easiest and cleanest port is MinGW. This is the compiler distributed with \codeblocks when you download the FULL official package. With C::B 17.12 it was a version TDM 5.1.0 which was distributed, a rather old one. With C::B 20.03 we still used version 8.1.0, which works nicely and which was distributed with this \codeblocks release, but you can find more recent ones (as shown in MinGW Compiler Toolchains (\pxref{sec:install_toolchains}). You can obtain two MinGW versions : for generating 32 bits code, or for 64 bits code on \href{https://sourceforge.net/projects/mingw-w64/files/}{mingw64}. Many sub-choices are available. For 32 bits, I would suggest i686-posix-sjlj and for 64 bits x86\_64-posix-seh \cite{url:mingw64}. New C::B 2023 versions are now bundled with gcc 13.1.
 
 \hint{The 64 bits version can produce 64 bits code and 32 bits code. Simply add option -m64 or -m32 to your compilation AND link options. Normally, 32 bits version produces only 32 bits code. Just take care that if you use libraries, static or dynamic, they must have been generated with the same bits number}
 
@@ -63,7 +63,7 @@ You can also modify the global (or user) PATH enviroment variable.
 
 For \href{https://www.codeblocks.org/}{\codeblocks} a project description \file{CodeBlocks.cbp} is available. If you load this project file in \codeblocks then you are able to build \codeblocks from sources \cite{url:cb}. All we need to do is get hold of a pre-built version \codeblocks.
 
-First, download a nightly build. You can make your selection from \href{https://forums.codeblocks.org/}{here} (\cite{url:cbforum} in Nightly Builds). The nightly builds are unicode versions, containing the core and contributed plug-ins. Read carefully the first post of each nightly : it contains instructions to download and install additionnal dlls, necessary with recent MinGW versions, particularly version 8.1 used to build recent C::B nightly.
+First, download a nightly build. You can make your selection from \href{https://forums.codeblocks.org/}{here} (\cite{url:cbforum} in Nightly Builds). The nightly builds are unicode versions, containing the core and contributed plug-ins. Read carefully the first post of each nightly : it contains instructions to download and install additionnal dlls, necessary with recent MinGW/gcc versions, particularly version 13.1 used to build recent C::B nightly.
 
 Next, unpack the 7-zip file \cite{url:zip} to any directory you like. If you don't have 7-zip, you can download it for free from \href{https://www.7-zip.org}{here}.
 
@@ -98,7 +98,7 @@ However, if we want to build a wx application, we need to include the headers of
 Wx is provided as a zip file of it's sources, so we need to build that ourselves. We already shopped for the MinGW compiler, so we have all the tools we need at hand.
 
 Next, let's unzip the wx sources into \file{C:\osp Projects} so we will end up with a wx root directory like this:\\
-\file{C:\osp Projects\osp wxWidgets-3.2.1}. Next unzip the patch into the same directory letting it overwrite files. Note that we are going to refer to the wx root directory from now on as \var{wxDir}
+\file{C:\osp Projects\osp wxWidgets-3.2.2}. Next unzip the patch into the same directory letting it overwrite files. Note that we are going to refer to the wx root directory from now on as \var{wxDir}
 
 Now, we are going to build the wxWidgets. This is how we do it:
 
@@ -130,7 +130,7 @@ CXXFLAGS+="-fpermissive	-fno-keep-inline-dllexport -std=gnu++11
 LDFLAGS="-Wl,--allow-multiple-definition"
 \end{verbatim}  
 
-If you are using more recent compilers as gcc 12.1.0, you can use this build command:
+If you are using more recent compilers as gcc 12.1.0 or gcc 13.1, you can use this build command:
 \begin{verbatim}
 mingw32-make -f makefile.gcc -j 4 SHARED=1 MONOLITHIC=1 BUILD=release
              CXXFLAGS="-std=gnu++20"
@@ -140,8 +140,8 @@ The parameter -j 4 allows a parallel build on 4 processors and thus strongly acc
 The best result is when the value is equal to the number of processors (4 in my case).
 
 \codeblocks for Windows, since SVN rev 11701, is generated to support DIRECT2D activated/forced (for faster and better quality graphics). wxWidgets generation needs some adjustments to be done directly in setup.h file(s). Normally the only file which needs to be modified is in the lib subdirectory, the one created the first time wxWidgets is generated, and used in following generations. For a gcc, dll build, it's something like:\newline
-\file{C:\osp wxWidgets-3.2.1\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
-You can simply modify the line containing (line 1659 in wxWidgets 3.2.1):
+\file{C:\osp wxWidgets-3.2.2\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
+You can simply modify the line containing (line 1652 in wxWidgets 3.2.2):
 \begin{verbatim}
     #define wxUSE_GRAPHICS_DIRECT2D 0 
 \end{verbatim}
@@ -383,7 +383,7 @@ This section describes the final process of building \codeblocks.
 
 Finally we have arrived at the final step; our final goal. Run the \codeblocks executable from your nightly build download. Choose Open from the File menu and browse for our above created workspace, and open it up. Be a little patient while \codeblocks is parsing everything, and \codeblocks will ask us for 3 or 4 global variables, these global variables will tell the nightly \codeblocks where it can find wxWidgets (remember : header files and import libraries) and where it can find ... \codeblocks sources, this is needed for the contrib plug-ins, they need to know (as for any user created plug-in) where the sdk (\codeblocks header files) are. These are the values in our case : 
 \begin{description}
-\item[wx] \var{wxDir} base directory of wxWidgets.: the variable name may be wx31, wx31\_64, ...
+\item[wx] \var{wxDir} base directory of wxWidgets.: the variable name may be wx32, wx32\_64, ...
 \item[cb] \file{\var{cbDir}/src} \codeblocks directory contaning the sources.
 \item[cb\_release\_type] : -O (for a release version, usual case.
          For developpers you can put -g to debug C::B)
@@ -394,7 +394,7 @@ Finally we have arrived at the final step; our final goal. Run the \codeblocks e
 
 Now go to the Project Menu and choose (re)build workspace, and off you go. Watch how \codeblocks is building \codeblocks.
 
-After the creation of \codeblocks, the generated files with the debug information can be found in the \file{devel} subdirectory. By calling, or executing in a console, the batch file \file{update.bat} from the source directory \file{\var{cbDir}/src} (or more specifically the version adapted to your specific generation, as for example update31\_64.bat), the files are copied to the \file{\var{cbDir}/src/output} subdirectory (or the adapted version). In addition, it will strip out all debugging symbols. \textit{This step is very important - never ever forget it}.
+After the creation of \codeblocks, the generated files with the debug information can be found in the \file{devel} subdirectory. By calling, or executing in a console, the batch file \file{update.bat} from the source directory \file{\var{cbDir}/src} (or more specifically the version adapted to your specific generation, as for example update32\_64.bat), the files are copied to the \file{\var{cbDir}/src/output} subdirectory (or the adapted version). In addition, it will strip out all debugging symbols. \textit{This step is very important - never ever forget it}.
 
 Now you can copy the wx dll in both that output and, optionally, the devel directory.
 
@@ -454,10 +454,10 @@ For the \codeline{wx} variable, set the \codeline{base} entry to the source dire
 C:\wxWidgets-2.8.12
 \end{verbatim}
 
-or to build with a more recent version, wx31 (or wx31\_64)
+or to build with a more recent version, wx32 (or wx32\_64)
 
 \begin{verbatim}
-C:\wxWidgets-3.1.4
+C:\wxWidgets-3.2.2
 \end{verbatim}
 
 In the \codeblocks project, the project variable \codeline{WX_SUFFIX} is set to \codeline{u}. This means that, when generating \codeblocks linking will be carried out against the \file{*u\_gcc\_custom.dll} library (by default). The official nightly Builts of \codeblocks will be linked against \file{gcc\_cb.dll}. In doing so, the layout is as follows.

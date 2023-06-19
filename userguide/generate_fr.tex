@@ -24,7 +24,7 @@ Afin de procéder à notre tâche de génération, nous aurons besoin de plusieu
 Cette section est écrite avec une syntaxe Windows mais peut facilement être adaptée à Linux.
 D'autres instructions détaillées se trouvent dans le Wiki : \url{https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Linux}
 
-Comme les développeurs de \codeblocks génèrent \codeblocks en utilisant GCC, nous ferons de même sous Windows. Le portage le plus facile et le plus propre est MinGW. C'est le compilateur distribué avec \codeblocks quand vous téléchargez le package officiel COMPLET. Avec C::B 17.12, c'était la version TDM 5.1.0 qui était distribuée, une version déjà ancienne. Ici, on s'en tiendra à la version 8.1.0, qui fonctionne bien et qui est maintenant distribuée avec \codeblocks 20.03, mais on en trouve de plus récentes (Comme vu dans La chaîne d'outils de compilation MinGW (\pxref{sec:install_toolchains}). Vous pouvez obtenir 2 versions différentes de MinGW : pour générer du code 32 bits, ou pour générer du code 64 bits sur \href{https://sourceforge.net/projects/mingw-w64/files/}{mingw64} \cite{url:mingw64}. Plusieurs sous-choix sont possibles. Pour du 32 bits, je suggérerais i686-posix-sjlj et pour du 64 bits x86\_64-posix-seh.
+Comme les développeurs de \codeblocks génèrent \codeblocks en utilisant GCC, nous ferons de même sous Windows. Le portage le plus facile et le plus propre est MinGW. C'est le compilateur distribué avec \codeblocks quand vous téléchargez le package officiel COMPLET. Avec C::B 17.12, c'était la version TDM 5.1.0 qui était distribuée, une version déjà ancienne. C::B 20.03 était fourni avec la version 8.1.0, qui fonctionne bien et qui est distribuée avec cette "release" de \codeblocks 20.03, mais on en trouve de plus récentes (Comme vu dans La chaîne d'outils de compilation MinGW (\pxref{sec:install_toolchains}). Vous pouvez obtenir 2 versions différentes de MinGW : pour générer du code 32 bits, ou pour générer du code 64 bits sur \href{https://sourceforge.net/projects/mingw-w64/files/}{mingw64} \cite{url:mingw64}. Plusieurs sous-choix sont possibles. Pour du 32 bits, je suggérerais i686-posix-sjlj et pour du 64 bits x86\_64-posix-seh. Les nouvelles versions 2023 de C::B sont maintenant fournies avec gcc 13.1.
 
 \hint{La version MinGW 64 bits peut générer du code 64 bits et du code 32 bits. Ajoutez simplement l'option -m64 ou -m32 à vos options de compilation ET d'édition de liens. En principe, la version 32 bits ne génère que du code 32 bits. Faites juste attention si vous utilisez des librairies, statiques ou dynamiques, à ce qu'elles aient été générées avec le même nombre de bits}
 
@@ -63,7 +63,7 @@ Vous pouvez aussi modifier la variable d'environnement PATH (globale ou utilisat
 
 Sur \href{https://www.codeblocks.org/}{\codeblocks} un fichier de description de projet \file{CodeBlocks.cbp} est disponible. Si vous chargez ce fichier dans \codeblocks alors vous êtes en mesure de générer \codeblocks à partir des sources \cite{url:cb}. Tout ce dont vous avez besoin c'est d'une version de \codeblocks déjà pré-générée.
 
-Premièrement, téléchargez une version "nightly". Vous pouvez faire votre sélection \href{https://forums.codeblocks.org/}{à partir de là} (\cite{url:cbforum} rubrique Nightly Builds). Les versions nightly sont des versions Unicode, contenant le coeur et les plugins contributifs. Lisez avec attention le premier "post" de chaque "nightly" : il contient des instructions pour télécharger et installer des dlls complémentaires, nécessaires avec les versions récentes de MinGW, en particulier la 8.1 utilisée pour compiler les dernières versions "nightly" de C::B.
+Premièrement, téléchargez une version "nightly". Vous pouvez faire votre sélection \href{https://forums.codeblocks.org/}{à partir de là} (\cite{url:cbforum} rubrique Nightly Builds). Les versions nightly sont des versions Unicode, contenant le coeur et les plugins contributifs. Lisez avec attention le premier "post" de chaque "nightly" : il contient des instructions pour télécharger et installer des dlls complémentaires, nécessaires avec les versions récentes de MinGW/gcc, en particulier la 13.1 utilisée pour compiler les dernières versions "nightly" de C::B.
 
 Ensuite, décompressez le fichier 7-zip \cite{url:zip} dans n'importe quel répertoire de votre choix. Si vous n'avez pas 7-zip, vous pouvez le télécharger gratuitement depuis \href{https://www.7-zip.org}{le site 7-Zip}.
 
@@ -98,7 +98,7 @@ Néanmoins, si nous voulons générer une application wx, nous devons inclure le
 Wx est fourni sous forme de fichiers sources dans un fichier zip, aussi, nous devons le générer par nous-mêmes. Nous avons déjà le compilateur MinGW, donc nous avons tous les outils nécessaires sous la main.
 
 Dézippez maintenant les sources wx dans \file{C:\osp Projets} et ainsi nous aurons au final un répertoire wx de base comme celui-ci :\\
-\file{C:\osp Projets\osp wxWidgets-3.2.1}. Ensuite, dézippez les patchs (s'il y en a !) dans le même sous répertoire afin de remplacer les fichiers modifiés. Notez que nous allons référencer le répertoire wx de base à partir de maintenant comme \var{wxDir}
+\file{C:\osp Projets\osp wxWidgets-3.2.2}. Ensuite, dézippez les patchs (s'il y en a !) dans le même sous répertoire afin de remplacer les fichiers modifiés. Notez que nous allons référencer le répertoire wx de base à partir de maintenant comme \var{wxDir}
 
 Maintenant, nous allons générer les wxWidgets. Voici comment faire :
 
@@ -130,7 +130,7 @@ CXXFLAGS+="-fpermissive -fno-keep-inline-dllexport -std=gnu++11
 LDFLAGS="-Wl,--allow-multiple-definition"
 \end{verbatim}  
 
-Si vous utilisez une version pus récente comme gcc 12.1.0, vous pouvez utiliser cette ligne de commande:
+Si vous utilisez une version pus récente comme gcc 12.1.0 ou gcc 13.1, vous pouvez utiliser cette ligne de commande:
 \begin{verbatim}
 mingw32-make -f makefile.gcc -j 4 SHARED=1 MONOLITHIC=1 BUILD=release
              CXXFLAGS="-std=gnu++20"
@@ -140,8 +140,8 @@ Le paramètre -j 4 permet une génération en parallèle sur 4 processeurs et do
 Le meilleur résultat est obtenu lorsque la valeur est égale au nombre de processeurs (4 dans mon cas).
 
 Depuis la révision SVN 11701, \codeblocks sous Windows est généré en activant/forçant le support de DIRECT2D (pour une plus rapide et meilleure qualité graphique). La génération de wxWidgets nécessite quelques ajustments à effectuer directement dans le(s) fichier(s) setup.h. Normalement le seul fichier à modifier est dans le sous-répertoire lib, celui créé lors de la première génération de wxWidgets, et utilisé par la suite. Pour une génération par gcc, dll, c'est quelque chose comme :\newline
-\file{C:\osp wxWidgets-3.2.1\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
-Vous pouvez simplement modifier la ligne contenant (ligne 1659 dans wxWidgets 3.2.1):
+\file{C:\osp wxWidgets-3.2.2\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
+Vous pouvez simplement modifier la ligne contenant (ligne 1652 dans wxWidgets 3.2.2):
 \begin{verbatim}
     #define wxUSE_GRAPHICS_DIRECT2D 0 
 \end{verbatim}
@@ -383,7 +383,7 @@ Cette section descrit le processus final de la génération de \codeblocks.
 
 Nous sommes maintenant arrivés à l'étape finale ; notre but ultime. Lancez l'exécutable \codeblocks depuis votre téléchargement de "nightly". Ouvrir le menu Fichier, dans le navigateur cherchez l'espace de travail adéquat et lances-le. Soyez patients pendant que \codeblocks analyse l'ensemble, puis on vous demandera de renseigner 3 ou 4 variables globales. Celles-ci indiqueront à \codeblocks où il trouvera les wxWidgets (pour mémoire : les fichiers d'en-têtes et les librairies d'importation) et où il peut trouver les sources de ... \codeblocks. Ceci est nécessaire pour les plug-ins contributifs (ainsi que pour les plug-ins de l'utilisateur), qui doivent savoir où trouver le sdk (Les fichiers d'en-têtes de \codeblocks). Dans notre cas, cela peut donner :
 \begin{description}
-\item[wx] \var{wxDir} répertoire de base des wxWidgets: le nom de la variable peut être wx31, wx31\_64,...
+\item[wx] \var{wxDir} répertoire de base des wxWidgets: le nom de la variable peut être wx32, wx32\_64,...
 \item[cb] \file{\var{cbDir}/src} répertoire contenant les sources de \codeblocks.
 \item[cb\_release\_type] : -O (Pour obtenir une version release, cas habituel.
          Les développeurs peuvent entrer -g pour débuguer C::B)
@@ -394,7 +394,7 @@ Nous sommes maintenant arrivés à l'étape finale ; notre but ultime. Lancez l'
 
 Aller maintenant dans le Menu Projet et choisissez (re)générer l'espace de travail, et allez faire un tour. Regardez comment \codeblocks est en train de générer \codeblocks.
 
-Après la création de \codeblocks, les fichiers générés avec les informations de débogage se trouvent dans le sous-répertoire \file{devel}. En appelant, ou lançant depuis une console, le fichier batch \file{update.bat} depuis le répertoire source \file{\var{cbDir}/src} (ou plus spécifiquement la version adaptée à votre génération spécifique, comme par exemple update31\_64.bat), les fichiers sont copiés dans le sous-répertoire \file{output} (ou la version adaptée). De plus, toutes les informations de débogage sont retirées. \textit{Cette étape est très importante - ne jamais l'oublier}.
+Après la création de \codeblocks, les fichiers générés avec les informations de débogage se trouvent dans le sous-répertoire \file{devel}. En appelant, ou lançant depuis une console, le fichier batch \file{update.bat} depuis le répertoire source \file{\var{cbDir}/src} (ou plus spécifiquement la version adaptée à votre génération spécifique, comme par exemple update32\_64.bat), les fichiers sont copiés dans le sous-répertoire \file{output} (ou la version adaptée). De plus, toutes les informations de débogage sont retirées. \textit{Cette étape est très importante - ne jamais l'oublier}.
 
 Vous pouvez maintenant copier la dll wx à la fois dans ce répertoire output et, en option, dans devel.
 
@@ -454,10 +454,10 @@ Pour la variable \codeline{wx}, entrer dans \codeline{base} le répertoire sourc
 C:\wxWidgets-2.8.12
 \end{verbatim}
 
-ou pour générer avec une version plus récente, wx31 (ou wx31\_64)
+ou pour générer avec une version plus récente, wx32 (ou wx32\_64)
 
 \begin{verbatim}
-C:\wxWidgets-3.2.1
+C:\wxWidgets-3.2.2
 \end{verbatim}
 
 Dans le projet \codeblocks, la variable projet \codeline{WX_SUFFIX} est configurée à \codeline{u}. Cela signifie que pendant la génération de \codeblocks l'édition de liens se fera avec la librairie \file{*u\_gcc\_custom.dll} (par défaut). Les générations officielles des nightlies de \codeblocks seront liées avec \file{gcc\_cb.dll}. Pour ce faire, il faut faire comme suit.
