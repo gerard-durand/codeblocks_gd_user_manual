@@ -8,7 +8,6 @@
 \ShowURN{InfoZip}
 Info-zip Ftp page.\\ \url{ftp://ftp.info-zip.org/pub/infozip/win32/}
 
-
 \urlbibitem[\hightechook SourceForgeCB]{url:cbsourceforge}
 \ShowURN{SourceForgeCB}
 Codeblocks at Sourceforge.\\ \url{https://sourceforge.net/p/codeblocks/code/log/}
@@ -36,6 +35,8 @@ GCC home page.\\ \url{https://gcc.gnu.org/}
 \urlbibitem[\hightechook MinGW]{url:mingw}
 \ShowURN{MinGW}
 MinGW original page.\\ \url{https://www.mingw.org/}
+or \\
+\url{https://sourceforge.net/projects/mingw/} or \url{https://mingw.osdn.io/}
 
 \urlbibitem[\hightechook MinGW64]{url:mingw64}
 \ShowURN{MinGW64}
@@ -64,6 +65,10 @@ Msys2 home page.\\ \url{https://www.msys2.org/}
 \urlbibitem[\hightechook MSys2-MinGW64-Toolchain]{url:msys2mingw64tools}
 \ShowURN{MSys2-MinGW64-Toolchain}
 Msys2 Toolchain for MinGW64.\\ \url{https://packages.msys2.org/group/mingw-w64-x86_64-toolchain}
+
+\urlbibitem[\hightechook niXman releases distribution]{url:niXman}
+\ShowURN{niXman}
+niXman releases page.\\ \url{https://github.com/niXman/mingw-builds-binaries/releases/}
 
 \urlbibitem[\hightechook UnxUtils]{url:unxutils}
 \ShowURN{UnxUtils}

@@ -40,7 +40,7 @@ For most MinGW-based compiler toolchains, having your toolchain in your PATH is 
 You can find on the web several MinGW distributions. Here is a list of distributions, which is not exhaustive.
 
 \begin{description}
-\item[MinGW - The original project] \url{https://www.mingw.org/}: 32 bit only compilers;
+\item[MinGW - The original project] \url{https://www.mingw.org/}: 32 bit only compilers. Now moved to \url{https://sourceforge.net/projects/mingw/} or \url{https://mingw.osdn.io/};
 \item[TDM distribution]\url{http://tdm-gcc.tdragon.net/}: 32 and 64 bit, but old 5.1 distribution, now obsolete. Was used and distributed with \codeblocks 17.12;
 \item[New TDM distribution]\url{https://jmeubank.github.io/tdm-gcc/}: based on 10.3 distribution, 32 and 64 bit multilib. Seems to have sometime problems, at least to compile \codeblocks itself.
 \item[MinGW 64] \url{https://sourceforge.net/projects/mingw-w64/files/}: 32 and 64 bit, 8.1 distribution in Toolchains targetting. The parent project of MinGW-Builds, includes much more than is necessary - MinGW-Builds will usually suffice instead of the full works. Several choices are available: for a 32 bit compiler, you can choose the posix, sjlj version (i686-posix-sjlj) and for a 64 bits compiler you can choose the posix, seh version (x86\_64-posix-seh) (choices compatibles with the old TDM version). This is this last 64 bits-posix-seh version which was used in nightlies compiled versions of \codeblocks and was distributed with 20.03 version. Other choices also work: depends on your needs. gcc, g++, gfortran, gdb, lto, omp, mingw32-make are in the distribution. New \codeblocks 2023 versions use a "winlibs" ditribution based on gcc 13.1.;
