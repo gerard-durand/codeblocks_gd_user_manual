@@ -34,7 +34,7 @@ class="cmbx-12x-x-207">Code::Blocks</span><br /><br />
 <span 
 class="cmr-17x-x-143">Manuel Utilisateur</span><br /><br />
 <span 
-class="cmr-12x-x-120">Version 2.1.8</span><br /><br />
+class="cmr-12x-x-120">Version 2.1.9</span><br /><br />
 </p><!--l. 60--><p class="noindent" >Merci à l&#8217;équipe Code::Blocks:<br />
 Anders F. Björklund (afb), Biplab Kumar Modak (biplab), Bartomiej wiecki (byo), Paul
 A. Jimenez (ceniza), Koa Chong Gee (cyberkoa), Daniel Orb (daniel2000), Lieven de
@@ -14183,13 +14183,26 @@ ici décrit pour Windows, mais peut être adapté aux autres OS.
 </p>
 <h3 class="sectionHead"><span class="titlemark">5.1</span>&#x00A0;&#x00A0;<a 
  id="x3-1980005.1"></a>Installation de la dernière version officielle de Code::Blocks sous Windows</h3>
+<div class="center" 
+>
+<!--l. 6--><p class="noindent" >
+</p>
+<div 
+class="colorbox" id="colorbox66"><span 
+class="cmbx-12">Note :</span><br 
+class="newline" />La version 23.06 n&#8217;existe pas, désolé. Lire 20.03 à la place, mais une
+nouvelle version devrait être publiée en 2023, donc une 23.xx, xx
+étant le numéro du mois de publication. Le texte ci-dessous sera mis
+à jour dès que possible.                                            </div>
+</div>
+
 <!--l. 7--><p class="noindent" >Étapes d&#8217;installation : </p>
       <ul class="itemize1">
       <li class="itemize">
       <!--l. 9--><p class="noindent" >Télécharger                                                                            l&#8217;installateur
       de  Code::Blocks  (      <a 
 href="https://codeblocks.org/downloads/26" class="url" ><span 
-class="cmtt-12">https://codeblocks.org/downloads/26</span></a>).  <span id="textcolor66">Si  vous  n&#8217;avez
+class="cmtt-12">https://codeblocks.org/downloads/26</span></a>).  <span id="textcolor67">Si  vous  n&#8217;avez
       pas  MinGW  d&#8217;installé,  ou  si  vous  ne  savez  pas  lequel  choisir,  <span 
 class="cmbx-12">t</span><span 
 class="cmbx-12">él</span><span 
@@ -14207,6 +14220,8 @@ class="cmbx-12">ègre MinGW</span></span>. Pour une version 23.06, le nom de l&#8
       <li class="itemize">
       <!--l. 11--><p class="noindent" >Si vous prévoyez d&#8217;installer un compilateur après avoir installé Code::Blocks, lisez
       les informations données dans l&#8217;installateur.
+                                                                                       
+                                                                                       
       </p></li>
       <li class="itemize">
       <!--l. 12--><p class="noindent" >Si  vous  avez  téléchargé  un  installateur  qui  n&#8217;intègre  pas  MinGW,  vous  devrez
@@ -14219,8 +14234,6 @@ class="cmbx-12">Notes:</span>
       <ul class="itemize1">
       <li class="itemize">
       <!--l. 20--><p class="noindent" >Le fichier codeblocks-23.06-setup.exe inclut Code::Blocks avec toutes les extensions.
-                                                                                       
-                                                                                       
       Le  fichier  codeblocks-23.06-setup-nonadmin.exe  est  fourni  par  commodité  aux
       utilisateurs qui n&#8217;ont pas les droits d&#8217;administrateur sur leur(s) machine(s).
       </p></li>
@@ -14250,6 +14263,8 @@ class="cmtt-12">https://forums.codeblocks.org/index.php/topic,3232.0.html</span>
       puis d&#8217;installer par-dessus cette version officielle une &#8221;nightly&#8221;. Il vous faudra suivre
       la procédure avec attention car car il pourrait y avoir des incompatibilités. Le
       mélange de versions apporte des problèmes.
+                                                                                       
+                                                                                       
       </p></li>
       <li class="itemize">
       <!--l. 25--><p class="noindent" >La version complète de Code::Blocks est distribuée avec une version de MinGW en
@@ -14261,8 +14276,6 @@ class="cmsy-10x-x-120">\</span>MinGW64.  La  détection  automatique  du  compila
       devrait l&#8217;y trouver.</p></li></ul>
 <!--l. 28--><p class="noindent" >
 </p>
-                                                                                       
-                                                                                       
 <h3 class="sectionHead"><span class="titlemark">5.2</span>&#x00A0;&#x00A0;<a 
  id="x3-1990005.2"></a>Configurer MinGW</h3>
 <!--l. 30--><p class="noindent" >Cette section décrit comment installer et configurer MinGW.
@@ -14293,6 +14306,8 @@ machine elles sont dans votre PATH et donc vous les avez toujours à portée, mais
 sur les ordinateurs des autres utilisateurs, ils n&#8217;auront peut-être pas cette chaîne
 d&#8217;outils de compilation, c&#8217;est pourquoi vous devrez fournir vos fichier dll avec votre
 programme.
+                                                                                       
+                                                                                       
 </p><!--l. 38--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">5.2.2</span>&#x00A0;&#x00A0;<a 
@@ -14304,8 +14319,6 @@ exhaustive de distributions.
 <span 
 class="cmssbx-10x-x-120">MinGW - Le projet original</span> </p></dt><dd 
 class="description">
-                                                                                       
-                                                                                       
       <!--l. 43--><p class="noindent" >   <a 
 href="https://www.mingw.org/" class="url" ><span 
 class="cmtt-12">https://www.mingw.org/</span></a>: Compilateurs 32 bits seulement. Maintenant déplacé
@@ -14350,6 +14363,8 @@ class="cmtt-12">https://sourceforge.net/projects/mingw-w64/files/</span></a>: 32
       (x86_64-posix-seh) (choix compatibles avec ceux de l&#8217;ancienne version TDM). C&#8217;est
       cette dernière version 64 bits-posix-seh qui était utilisée dans les versions nightlies
       compilées de Code::Blocks et distribuée avec la version 20.03. Les autres choix
+                                                                                       
+                                                                                       
       fonctionnent également : Cela dépend de vos besoins. gcc, g++, gfortran, gdb, lto,
       omp, mingw32-make sont dans la distribution. Les versions 2023 de Code::Blocks
       utilisent maintenant une distribution &#8221;Winlibs&#8221; basée sur gcc 13.1;
@@ -14369,8 +14384,6 @@ class="cmbx-12">librairies statiques</span>, et dons pas besoin de distribuer
       gfortran, lto, objc, obj-c++, omp sont dans la distribution. Problème : gdb et make
       n&#8217;y sont pas inclus.
       </p></dd><dt class="description">
-                                                                                       
-                                                                                       
       <!--l. 48--><p class="noindent" >
 <span 
 class="cmssbx-10x-x-120">MinGW Equation</span> </p></dt><dd 
@@ -14414,6 +14427,8 @@ class="description">
       <!--l. 51--><p class="noindent" >                                                                  <a 
 href="https://www.msys2.org/" class="url" ><span 
 class="cmtt-12">https://www.msys2.org/</span></a>
+                                                                                       
+                                                                                       
       et     <a 
 href="https://packages.msys2.org/group/mingw-w64-x86_64-toolchain" class="url" ><span 
 class="cmtt-12">https://packages.msys2.org/group/mingw-w64-x86_64-toolchain</span></a> et/ou
@@ -14446,8 +14461,6 @@ class="description">
 href="https://github.com/niXman/mingw-builds-binaries/releases/" class="url" ><span 
 class="cmtt-12">https://github.com/niXman/mingw-builds-binaries/releases/</span></a>: versions
       récentes, 64 (ou 32 bit), compilateurs gcc, g++, gfortran ainsi que gdb. Fournit
-                                                                                       
-                                                                                       
       des versions traditionnelles msvcrt mais aussi des versions ucrt. Threads posix ou
       win32;</p></dd></dl>
 <div class="center" 
@@ -14455,7 +14468,7 @@ class="cmtt-12">https://github.com/niXman/mingw-builds-binaries/releases/</span>
 <!--l. 55--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox67"><span 
+class="colorbox" id="colorbox68"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Les  versions  multilib  peuvent  produire  du  code  en  64  ou  en  32
 bits,  utile  si  vous  devez  produire  des  exécutables  pour  les  2
@@ -14612,7 +14625,7 @@ pour g++.
 <!--l. 96--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox68"><span 
+class="colorbox" id="colorbox69"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Pour configurer un nouveau compilateur, gfortran par exemple, entrez
 gfortran.exe dans les 3 premiers champs de texte de l&#8217;onglet &#8221;Fichiers
@@ -14798,7 +14811,7 @@ besoin de dlls complémentaires.
 <!--l. 141--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox69"><span 
+class="colorbox" id="colorbox70"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Les  dlls  de  wxWidgets  et  celles  pré-requises  ne  changent  pas
 très souvent. Donc, si vous installez une &#8221;nightly&#8221; par-dessus une
@@ -14827,7 +14840,7 @@ Lisez avec attention le sujet du forum concernant spécifiquement cette
 <!--l. 5--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox70"><span 
+class="colorbox" id="colorbox71"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Ce chapitre existait dans les fichiers originaux .tex de la version 1
 mais n&#8217;a pas été publié dans toutes les langues. Il est nécessaire de
@@ -14891,7 +14904,7 @@ x86_64-posix-seh. Les nouvelles versions 2023 de C::B sont maintenant fournies a
 <!--l. 29--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox71"><span 
+class="colorbox" id="colorbox72"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />La version MinGW 64 bits peut générer du code 64 bits et du code
 32 bits. Ajoutez simplement l&#8217;option -m64 ou -m32 à vos options de
@@ -15236,7 +15249,7 @@ DEBUG_FLAG=0
 <!--l. 160--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox72"><span 
+class="colorbox" id="colorbox73"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />USE_OPENGL=1  crée  une  dll  supplémentaire,  utilisée  si  votre
 programme  wxWidgets  requiert  une  fenêtre  OpenGL,  notamment
@@ -15263,7 +15276,7 @@ VENDOR=cb_64
 <!--l. 171--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox73"><span 
+class="colorbox" id="colorbox74"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Si VENDOR n&#8217;est pas spécifié, cela revient à VENDOR=custom.
 VENDOR=cb est utilisé par l&#8217;équipe de Code::Blocks. Aussi, pour
@@ -15540,7 +15553,7 @@ version en 64 bits avec wxWidgets 3.2) :
                                                                                        
                                                                                        
 <div 
-class="colorbox" id="colorbox74"><span 
+class="colorbox" id="colorbox75"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Il existe plusieurs variantes de ce fichier, dépendant de l&#8217;OS, de la
 version wxWidgets, d&#8217;une génération en 32 ou 64 bits.              </div>

@@ -324,9 +324,9 @@ BODY#menu {color: rgb(255,255,255); }
 #colorbox63{background-color: rgb(238,255,204);}
 #colorbox64{border: solid 1px #000000;}
 #colorbox64{background-color: rgb(238,255,204);}
-span#textcolor65{color:#FF0000}
-#colorbox66{border: solid 1px #000000;}
-#colorbox66{background-color: rgb(238,255,204);}
+#colorbox65{border: solid 1px #000000;}
+#colorbox65{background-color: rgb(238,255,204);}
+span#textcolor66{color:#FF0000}
 #colorbox67{border: solid 1px #000000;}
 #colorbox67{background-color: rgb(238,255,204);}
 #colorbox68{border: solid 1px #000000;}
@@ -341,5 +341,7 @@ span#textcolor65{color:#FF0000}
 #colorbox72{background-color: rgb(238,255,204);}
 #colorbox73{border: solid 1px #000000;}
 #colorbox73{background-color: rgb(238,255,204);}
+#colorbox74{border: solid 1px #000000;}
+#colorbox74{background-color: rgb(238,255,204);}
 /* end css.sty */
 
