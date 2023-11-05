@@ -237,7 +237,7 @@ cmd /c ""path_to_7z\7z" a -ttar -mx0 -sccUTF-8 "-w$(PROJECTDIR).."
 \item tar.gz ou tar.bz2 - Menu Outils Tools+ (sur 1 seule ligne)
 \begin{verbatim}
 tar -cf "$(PROJECTDIR)../$(PROJECT_NAME).tar.$if(gz == $inputstr{gz 
-     ou bz2?}){gz" -I 'gzip}{bz2" -I 'bzip2} -9' "$(PROJECTDIR)*"
+     or bz2?}){gz" -I 'gzip}{bz2" -I 'bzip2} -9' "$(PROJECTDIR)*"
 \end{verbatim}
 \end{itemize}
 \end{itemize}

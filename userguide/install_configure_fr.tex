@@ -3,10 +3,10 @@
 Ce chapitre décrit comment installer et configurer \codeblocks. Le processus d'installation est ici décrit pour Windows, mais peut être adapté aux autres OS.
 
 \section{Installation de la dernière version officielle de \codeblocks sous Windows}
-\hint{La version 23.06 n'existe pas, désolé. Lire 20.03 à la place, mais une nouvelle version devrait être publiée en 2023, donc une 23.xx, xx étant le numéro du mois de publication. Le texte ci-dessous sera mis à jour dès que possible.}
+\hint{La version 23.11 n'existe pas encore, désolé. Lire 20.03 à la place, mais une nouvelle version devrait être publiée en 2023, donc une 23.xx, xx étant le numéro du mois de publication. Le texte ci-dessous sera mis à jour dès que possible.}
 Étapes d'installation :
 \begin{itemize}
-\item Télécharger l'installateur de \codeblocks (\url{https://codeblocks.org/downloads/26}). \textcolor{red}{Si vous n'avez pas MinGW d'installé, ou si vous ne savez pas lequel choisir, \textbf{télécharger la version qui intègre MinGW}}. Pour une version 23.06, le nom de l'installateur est : codeblocks-23.06mingw-setup.exe. La version précédente était identifiée par 17.12.
+\item Télécharger l'installateur de \codeblocks (\url{https://codeblocks.org/downloads/26}). \textcolor{red}{Si vous n'avez pas MinGW d'installé, ou si vous ne savez pas lequel choisir, \textbf{télécharger la version qui intègre MinGW}}. Pour une version 23.11, le nom de l'installateur est : codeblocks-23.11mingw-setup.exe. La version précédente était identifiée par 17.12.
 \item Lancez l'installateur. C'est un installateur standard pour Windows ; pressez seulement sur Next (ou Suivant) après avoir lu chaque écran.
 \item Si vous prévoyez d'installer un compilateur après avoir installé \codeblocks, lisez les informations données dans l'installateur.
 \item Si vous avez téléchargé un installateur qui n'intègre pas MinGW, vous devrez certainement configurer manuellement le compilateur (souvent \codeblocks détecte tout seul le compilateur).
@@ -17,9 +17,9 @@ Nous verrons dans la section suivante comment installer et configurer un autre c
 \textbf{Notes:}
 
 \begin{itemize}
-\item Le fichier codeblocks-23.06-setup.exe inclut \codeblocks avec toutes les extensions. Le fichier codeblocks-23.06-setup-nonadmin.exe est fourni par commodité aux utilisateurs qui n'ont pas les droits d'administrateur sur leur(s) machine(s).
-\item Le fichier codeblocks-23.06mingw-setup.exe inclut en plus un compilateur GCC/G++ et un débugueur GDB provenant la version MinGW64 13.1.0, 64 bits. Le fichier codeblocks-23.06mingw\_fortran-setup.exe inclut de plus un compilateur Gfortran.
-\item Le fichier codeblocks-23.06(mingw)-nosetup.zip est fourni par commodité aux utilisateurs qui sont allergiques aux installateurs. Toutefois, vous ne pourrez pas choisir les extensions / fonctionnalités à installer (tout est inclus) ni même créer les raccourcis de menu. Pour l'"installation" vous êtes seuls.
+\item Le fichier codeblocks-23.11-setup.exe inclut \codeblocks avec toutes les extensions. Le fichier codeblocks-23.11-setup-nonadmin.exe est fourni par commodité aux utilisateurs qui n'ont pas les droits d'administrateur sur leur(s) machine(s).
+\item Le fichier codeblocks-23.11mingw-setup.exe inclut en plus un compilateur GCC/G++ et un débugueur GDB provenant la version MinGW64 13.1.0, 64 bits. Le fichier codeblocks-23.11mingw\_fortran-setup.exe inclut de plus un compilateur Gfortran.
+\item Le fichier codeblocks-23.11(mingw)-nosetup.zip est fourni par commodité aux utilisateurs qui sont allergiques aux installateurs. Toutefois, vous ne pourrez pas choisir les extensions / fonctionnalités à installer (tout est inclus) ni même créer les raccourcis de menu. Pour l'"installation" vous êtes seuls.
 \item Il est possible d'utiliser une version "nightly" disponible via le Forum. Ces générations n'ont pas de compilateurs intégrés !! Vous aurez donc besoin d'installer un compilateur vous-même (si vous n'en avez pas déjà un). Avant l'installation, SVP jetez un oeuil sur \url{https://forums.codeblocks.org/index.php/topic,3232.0.html} 
 \item Une bonne solution, est d'installer une distribution officielle comportant MinGW puis d'installer par-dessus cette version officielle une "nightly". Il vous faudra suivre la procédure avec attention car car il pourrait y avoir des incompatibilités. Le mélange de versions apporte des problèmes. 
 \item La version complète de \codeblocks est distribuée avec une version de MinGW en 64 bits incluse dans un sous-répertoire. Parfois, cela peut amener des soucis car le nom de chemin complet contient un espace (dans Program Files). Une bonne solution consiste à déplacer le répertoire MinGW à la racine de votre disque. Vous pouvez aussi le renommer en C:\osp MinGW64. La détection automatique du compilateur devrait l'y trouver.
@@ -95,6 +95,8 @@ Puis dans l'onglet "Programmes" (ou "Toolchain executables") (flèche en rouge),
 
 \hint{Pour configurer un nouveau compilateur, gfortran par exemple, entrez gfortran.exe dans les 3 premiers champs de texte de l'onglet "Fichiers Programmes", ou le nom exact qui est dans votre distribution}
 
+\figures[H][width=.85\columnwidth]{CB_Toolchain_gfortran}{Configuration de la chaine d'outils pour gfortran dans \codeblocks}
+
 Maintenant, allez dans les paramètres du Débugueur :
 
 \figures[H][width=.4\columnwidth]{Settings_Debugger}{Paramètres du Débugueur}
@@ -129,9 +131,9 @@ Quand, sous Windows, vous installez une version officielle incluant MinGW (la ve
 
 Comme dit précédemment, une bonne solution pour installer une version "nightly" est de commencer par installer une version officielle, puis de la \textbf{configurer et l'essayer}. Ainsi, vos fichiers de configuration, associations, raccourcis clavier, seront correctement paramétrés et ils seront conservés lors de l'installation de la "nightly". Le lien pour trouver les dernières “nightlies“ est \url{https://forums.codeblocks.org/index.php/board,20.0.html}.
 
-Si vous installez votre "nightly" par-dessus une version 20.03 ou 23.06, vous devez suivre avec attention la procédure car un certain nombre de choses ont changé, notamment, elles sont compilées en 64 bits avec un compilateur récent, une version différente de wxWidgets et ont besoin de dlls complémentaires.
+Si vous installez votre "nightly" par-dessus une version 20.03 ou 23.11, vous devez suivre avec attention la procédure car un certain nombre de choses ont changé, notamment, elles sont compilées en 64 bits avec un compilateur récent, une version différente de wxWidgets et ont besoin de dlls complémentaires.
 
-Normallement, vous ne devriez pas avoir ce type de problèmes avec une version 23.06.
+Normallement, vous ne devriez pas avoir ce type de problèmes avec une version 23.11.
 \begin{itemize}
 \item Dézippez la version "nightly" téléchargée et copiez tous les fichiers dans votre sous-répertoire codeblocks. Si vous avez déplacé votre sous-répertoire MinGW ailleurs, vous pouvez même d'abord effacer tout le contenu de ce sous-répertoire codeblocks pour être certain de ne pas mélanger les versions. Une exception : si vous avez installé dans ce sous-répertoire des choses particulières, comme par exemple des fichiers de localisation, ne les effacez pas.
 \item Dézippez les dlls wxWidgets trouvées avec votre nightly. Vous pouvez les installer directement dans votre sous-répertoire codeblocks ou pour une utilisation plus étendue, dans le sous-répertoire bin de MinGW. Vérifiez que ce sous-répertoire bin est bien dans votre PATH. Il devrait l'être si vous avez installé une version officielle de CB via l'installateur.

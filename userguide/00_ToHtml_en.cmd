@@ -11,8 +11,13 @@ rem set name=00_test_fr
 set name=main_codeblocks_%lang%
 
 :suite
-call .\00_ToHtml.cmd
-rem > .\00_ToHtml.log
+REM Version with a call to htlatex
+rem call .\00_ToHtml.cmd
+rem > .\00_ToHtml.log 2>&1
+
+REM Version with a call to make4ht
+call .\00_MkToHtml.cmd
+rem > .\00_MkToHtml.log 2>&1
 
 cd .\%output_dir%
 rem to avoid references to subsection and subsubsection, replace simply by section

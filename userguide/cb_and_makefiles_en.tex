@@ -22,7 +22,7 @@ The real problems start now however. CB's automatic makefile adds all the header
 
 Fortunately CB has another feature that can come to your rescue. If you go to menu \menu{Settings,Compiler and Debugger}, scroll the tabs horizontally to the right end and you will find the tab 'other settings'. In there click on the tick box for 'Save build to HTML ...'. This will cause CB to create, at build time, an HTML file that records all the build commands.
 
-\hint{this way to create an html buid file does not exist in recent CB version, but thera are other solutions}
+\hint{this way to create an html buid file does not exist in recent CB version, but there are other solutions}
 
 If you compile (without using a makefile - so if you've already reset everything - sorry) the default wxWwidgets minimum program, you can see the compiler and linker commands that produce this file.
 
@@ -32,7 +32,7 @@ You can't just copy it from the HTML viewer in CB (there's no such facility in C
 
 Here's a copy of a build file for the basic Wxwidgets program as described above.
 
-\hint{for a better lisibility, long lines have been split. The \codeline{^} sign indicates a continuation line in DOS mode, and \osp \ sign indicates a continuation line in a makefile. But you should have commands on only one line as long as you remove continuation line signs}
+\hint{for a better lisibility, long lines have been split. The {\color{blue}\codeline{\^}} sign indicates a continuation line in DOS mode, and {\color{blue}\osp } sign indicates a continuation line in a makefile. But you should have commands on only one line as long as you remove continuation line signs}
 
 
 \begin{verbatim}
