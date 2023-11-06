@@ -310,13 +310,31 @@ class="cmsy-10x-x-120">∖</span><span
 class="cmtt-12">codeblocks</span><span 
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">UserTemplates </span>sous
-Win 7 (ou un chemin équivalent du profil de l’utilisateur, adapté à chaque OS). Si les modèles
-doivent pouvoir être ouverts par tous les utilisateurs, ils devront être copiés dans un répertoire
-correspondant de l’installation de Code::Blocks. Ces modèles seront alors affichés lors du
-démarrage suivant de Code::Blocks dans ’Nouveau’ <span 
+Windows 7, <span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Utilisateurs</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmmi-12">&#x003C;</span><span 
+class="cmtt-12">user</span><span 
+class="cmmi-12">&#x003E;</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">AppData</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Roaming</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">CodeBlocks</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">UserTemplates </span>sous
+Windows 10 ou 11 (ou un chemin équivalent du profil de l’utilisateur, adapté à chaque OS) :
+<span 
+class="cmmi-12">&#x003C;</span><span 
+class="cmtt-12">user</span><span 
+class="cmmi-12">&#x003E; </span>est votre nom d’utilisateur. Si les modèles doivent pouvoir être ouverts par tous les
+utilisateurs, ils devront être copiés dans un répertoire correspondant de l’installation de
+Code::Blocks. Ces modèles seront alors affichés lors du démarrage suivant de Code::Blocks dans
+’Nouveau’ <span 
 class="cmsy-10x-x-120">→</span>’Projet’ <span 
-class="cmsy-10x-x-120">→</span>’Modèles utilisateur’
-.
+class="cmsy-10x-x-120">→</span>’Modèles utilisateur’ .
 </p>
 <div class="center" 
 >
@@ -802,8 +820,19 @@ class="cmtt-12">Default User</span><span
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">Application Data</span><span 
 class="cmsy-10x-x-120">∖</span><span 
-class="cmtt-12">codeblocks </span>dans Win 7 (ou un chemin
-équivalent de votre profil pour d’autres OS). Lors du premier démarrage, Code::Blocks copiera
+class="cmtt-12">codeblocks </span>dans Windows 7, ou dans Windows
+10 ou 11 <span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Utilisateurs</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Default</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">AppData</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Roaming</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">CodeBlocks</span>, ou encore un chemin
+équivalent de votre profil pour d’autres OS. Lors du premier démarrage, Code::Blocks copiera
 les valeurs par défaut depuis ’Default User’ vers le répertoire ”Application data” de l’utilisateur
 courant.
 </p><!--l. 193--><p class="noindent" >Pour créer une version portable de Code::Blocks sur clé USB, procédez comme suit. Copiez le
@@ -4327,7 +4356,7 @@ typique.
 </p>
 <div class="center" 
 >
-<!--l. 32--><p class="noindent" >
+<!--l. 30--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox23"><span 
@@ -8495,11 +8524,20 @@ class="cmssbx-10">_TEMP</span><span
 class="cmssbx-10">_DIR)</span> </dt><dd 
 class="description">
       <!--l. 138--><p class="noindent" >TOUTES plateformes: Un répertoire temporaire accessible en écriture</p></dd></dl>
-<!--l. 141--><p class="noindent" >
+<!--l. 140--><p class="noindent" >Sous Windows 10 ou 11, les chemins sont plutôt de la forme <span 
+class="cmtt-12">C:</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Utilisateurs</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmmi-12">&#x003C;</span><span 
+class="cmtt-12">user</span><span 
+class="cmmi-12">&#x003E;</span><span 
+class="cmtt-12">...</span>
+</p><!--l. 142--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.2.10</span>  <a 
  id="x3-1410003.2.10"></a>Fonctions internes pour la conversion de chemins</h4>
-<!--l. 142--><p class="noindent" >Ce sont des fonctions macro pour simplifier la génération des chemins
+<!--l. 143--><p class="noindent" >Ce sont des fonctions macro pour simplifier la génération des chemins
       </p><dl class="description"><dt class="description">
 <span 
 class="tcsx-1000">$</span><span 
@@ -8508,7 +8546,7 @@ class="cmssbx-10">_UNIX</span><span
 class="cmssbx-10">_PATH</span><span 
 class="cmsy-10">{}</span> </dt><dd 
 class="description">
-      <!--l. 144--><p class="noindent" >converti vers un chemin unix (utilise ’/’ comme séparateur)
+      <!--l. 145--><p class="noindent" >converti vers un chemin unix (utilise ’/’ comme séparateur)
       </p></dd><dt class="description">
 <span 
 class="tcsx-1000">$</span><span 
@@ -8517,7 +8555,7 @@ class="cmssbx-10">_WINDOWS</span><span
 class="cmssbx-10">_PATH</span><span 
 class="cmsy-10">{}</span> </dt><dd 
 class="description">
-      <!--l. 145--><p class="noindent" >converti vers un chemin windows (utilise ’<span 
+      <!--l. 146--><p class="noindent" >converti vers un chemin windows (utilise ’<span 
 class="cmsy-10x-x-120">∖</span>’ comme séparateur)
       </p></dd><dt class="description">
 <span 
@@ -8527,9 +8565,9 @@ class="cmssbx-10">_NATIVE</span><span
 class="cmssbx-10">_PATH</span><span 
 class="cmsy-10">{}</span> </dt><dd 
 class="description">
-      <!--l. 146--><p class="noindent" >converti  vers  le  chemin  natif  de  la  plate-forme  où  l’instance  de  Code::Blocks
+      <!--l. 147--><p class="noindent" >converti  vers  le  chemin  natif  de  la  plate-forme  où  l’instance  de  Code::Blocks
       s’exécute</p></dd></dl>
-<!--l. 149--><p class="noindent" ><span 
+<!--l. 150--><p class="noindent" ><span 
 class="cmbx-12">Utilisation</span>
       </p><dl class="description"><dt class="description">
 <span 
@@ -8544,12 +8582,12 @@ class="cmssbx-10">_OUTPUT</span><span
 class="cmssbx-10">_FILE)</span><span 
 class="cmsy-10">}</span> </dt><dd 
 class="description">
-      <!--l. 151--><p class="noindent" >retourne le fichier de sortie de la cible courante en tant que chemin unix</p></dd></dl>
-<!--l. 154--><p class="noindent" >
+      <!--l. 152--><p class="noindent" >retourne le fichier de sortie de la cible courante en tant que chemin unix</p></dd></dl>
+<!--l. 155--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.2.11</span>  <a 
  id="x3-1420003.2.11"></a>Évaluation Conditionnelle</h4>
-<!--l. 156-->
+<!--l. 157-->
 <pre class="lstlisting" id="listing-96"><span class="label"><a 
  id="x3-142001r1"></a></span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
@@ -8565,34 +8603,34 @@ class="cmtt-10x-x-109">clause</span></span><span style="color:#000000"> </span><
 class="cmtt-10x-x-109">si</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">fausse</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">}</span></span></pre>
-<!--l. 160--><p class="noindent" >L’évaluation Conditionnelle sera considérée comme vraie dans les cas suivants
+                                                                                       
+                                                                                       
+<!--l. 161--><p class="noindent" >L’évaluation Conditionnelle sera considérée comme vraie dans les cas suivants
 </p>
-                                                                                       
-                                                                                       
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 163--><p class="noindent" >la condition est un caractère non vide autre que 0 ou false
+      <!--l. 164--><p class="noindent" >la condition est un caractère non vide autre que 0 ou false
       </p></li>
       <li class="itemize">
-      <!--l. 164--><p class="noindent" >la condition est une variable non vide qui ne se résout pas en 0 ou false
+      <!--l. 165--><p class="noindent" >la condition est une variable non vide qui ne se résout pas en 0 ou false
       </p></li>
       <li class="itemize">
-      <!--l. 165--><p class="noindent" >la condition est une variable qui est évaluée à true (implicite par une condition
+      <!--l. 166--><p class="noindent" >la condition est une variable qui est évaluée à true (implicite par une condition
       précédente)</p></li></ul>
-<!--l. 168--><p class="noindent" >L’évaluation Conditionnelle sera considérée comme fausse dans les cas suivants
+<!--l. 169--><p class="noindent" >L’évaluation Conditionnelle sera considérée comme fausse dans les cas suivants
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 171--><p class="noindent" >la condition est vide
+      <!--l. 172--><p class="noindent" >la condition est vide
       </p></li>
       <li class="itemize">
-      <!--l. 172--><p class="noindent" >la condition est 0 ou false
+      <!--l. 173--><p class="noindent" >la condition est 0 ou false
       </p></li>
       <li class="itemize">
-      <!--l. 173--><p class="noindent" >la condition est une variable qui est vide ou évaluée à 0 ou false</p></li></ul>
+      <!--l. 174--><p class="noindent" >la condition est une variable qui est vide ou évaluée à 0 ou false</p></li></ul>
 <div class="center" 
 >
-<!--l. 176--><p class="noindent" >
+<!--l. 177--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox50"><span 
@@ -8601,18 +8639,18 @@ class="newline" />Notez SVP que les variantes de syntaxe de variable <span id="t
 class="tcrm-1200">$</span>(if)(...)</span>
 ne sont pas supportées dans ce type de construction.               </div>
 </div>
-<!--l. 178--><p class="noindent" ><span 
+                                                                                       
+                                                                                       
+<!--l. 179--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Exemple</span>
-</p><!--l. 180--><p class="noindent" >Par exemple : vous utilisez plusieurs plateformes et vous voulez configurer différents paramètres
+</p><!--l. 181--><p class="noindent" >Par exemple : vous utilisez plusieurs plateformes et vous voulez configurer différents paramètres
 en fonction du système d’exploitation. Dans le code suivant, la commande de script <code class="lstinline"><span style="color:#000000">[[</span><span style="color:#000000"> </span><span style="color:#000000">]]</span></code> est
 évaluée et la <span 
 class="cmmi-12">&#x003C;</span>commande<span 
 class="cmmi-12">&#x003E; </span>sera exécutée. Ce peut être utile dans une étape de
 post-génération.
-                                                                                       
-                                                                                       
 </p>
-<!--l. 182-->
+<!--l. 183-->
 <pre class="lstlisting" id="listing-98"><span class="label"><a 
  id="x3-142002r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">[[</span></span><span style="color:#000000"> </span><span style="color:#0000FF"><span 
@@ -8657,11 +8695,11 @@ class="cmtt-10x-x-109">]]</span></span><span style="color:#000000"> </span><span
 class="cmtt-10x-x-109">&#x003C;</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">commande</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">&#x003E;</span></span></pre>
-<!--l. 187--><p class="noindent" >
+<!--l. 188--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">3.3</span>  <a 
  id="x3-1430003.3"></a>Expansion de script</h3>
-<!--l. 189--><p class="noindent" >Pour une flexibilité maximale, vous pouvez imbriquer les scripts en utilisant l’opérateur <code class="lstinline"><span style="color:#000000">[[</span><span style="color:#000000"> </span><span style="color:#000000">]]</span></code> en
+<!--l. 190--><p class="noindent" >Pour une flexibilité maximale, vous pouvez imbriquer les scripts en utilisant l’opérateur <code class="lstinline"><span style="color:#000000">[[</span><span style="color:#000000"> </span><span style="color:#000000">]]</span></code> en
 tant que cas particulier d’expansion de variable. Les scripts imbriqués ont accès à toutes les
 fonctionnalités standard disponibles pour les scripts et se comportent comme des
 ”backticks” (ou apostrophes inversées) de bash (à l’exception de l’accès au namespace de
@@ -8671,7 +8709,7 @@ etc.).
 </p>
 <div class="center" 
 >
-<!--l. 191--><p class="noindent" >
+<!--l. 192--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox53"><span 
@@ -8679,14 +8717,16 @@ class="cmbx-12">Note :</span><br
 class="newline" />La manipulation d’états de Code::Blocks devrait être implémentée
 dans des étapes de pré-générations plutôt que dans un script.      </div>
 </div>
-<!--l. 193--><p class="noindent" ><span 
+<!--l. 194--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Exemple</span>
 <span 
 class="cmssbx-10x-x-120">avec</span>
 <span 
 class="cmssbx-10x-x-120">Backticks</span>
 </p>
-<!--l. 195-->
+<!--l. 196-->
+                                                                                       
+                                                                                       
 <pre class="lstlisting" id="listing-100"><span class="label"><a 
  id="x3-143001r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">objdump</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
@@ -8704,17 +8744,15 @@ class="cmtt-10x-x-109">&#x003E;</span></span><span style="color:#000000"> </span
 class="cmtt-10x-x-109">name</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">.</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">dis</span></span></pre>
-<!--l. 199--><p class="noindent" >L’expression entre ”backticks” (ou apostrophes inversées) retourne une liste de tous les
+<!--l. 200--><p class="noindent" >L’expression entre ”backticks” (ou apostrophes inversées) retourne une liste de tous les
 exécutables <span 
 class="cmtt-12">*.elf </span>des sous-répertoires. Le résultat de cette expression peut être utilisé
 directement par <span 
 class="cmtt-12">objdump</span>. Au final, la sortie est redirigée vers un fichier nommé <span 
 class="cmtt-12">name.dis</span>.
-                                                                                       
-                                                                                       
 Ainsi, des processus peuvent être automatisés simplement sans avoir recours à aucune
 boucle.
-</p><!--l. 201--><p class="noindent" ><span 
+</p><!--l. 202--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Exemple</span>
 <span 
 class="cmssbx-10x-x-120">utilisant</span>
@@ -8722,14 +8760,14 @@ class="cmssbx-10x-x-120">utilisant</span>
 class="cmssbx-10x-x-120">un</span>
 <span 
 class="cmssbx-10x-x-120">Script</span>
-</p><!--l. 203--><p class="noindent" >Le texte du script est remplacé par toute sortie générée par votre script, ou ignoré en cas
+</p><!--l. 204--><p class="noindent" >Le texte du script est remplacé par toute sortie générée par votre script, ou ignoré en cas
 d’erreur de syntaxe.
-</p><!--l. 205--><p class="noindent" >Comme l’évaluation conditionnelle est exécutée avant l’expansion de scripts, l’évaluation
+</p><!--l. 206--><p class="noindent" >Comme l’évaluation conditionnelle est exécutée avant l’expansion de scripts, l’évaluation
 conditionnelle peut être utilisée pour les fonctionnalités de type pré-processeur. Les variables
 internes (et les variables utilisateur) sont étendues en sortie de scripts, aussi on peut référencer
 des variables dans les sorties d’un script.
 </p>
-<!--l. 207-->
+<!--l. 208-->
 <pre class="lstlisting" id="listing-101"><span class="label"><a 
  id="x3-143002r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">[[</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
@@ -8742,8 +8780,8 @@ class="cmtt-10x-x-109">().</span></span><span style="color:#000000"><span
 class="cmtt-10x-x-109">GetTitle</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">());</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">]]</span></span></pre>
-<!--l. 211--><p class="noindent" >insère le titre du projet actif dans la ligne de commande.
-</p><!--l. 213--><p class="noindent" >
+<!--l. 212--><p class="noindent" >insère le titre du projet actif dans la ligne de commande.
+</p><!--l. 214--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">3.4</span>  <a 
  id="x3-1440003.4"></a>Macros Commandes</h3>
@@ -8752,102 +8790,102 @@ class="cmtt-10x-x-109">]]</span></span></pre>
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">compiler</span> </dt><dd 
 class="description">
-      <!--l. 216--><p class="noindent" >Accède au nom de l’exécutable du compilateur.
+      <!--l. 217--><p class="noindent" >Accède au nom de l’exécutable du compilateur.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">linker</span> </dt><dd 
 class="description">
-      <!--l. 217--><p class="noindent" >Accède au nom de l’exécutable de l’éditeur de liens.
+      <!--l. 218--><p class="noindent" >Accède au nom de l’exécutable de l’éditeur de liens.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">options</span> </dt><dd 
 class="description">
-      <!--l. 218--><p class="noindent" >Flags du Compilateur
+                                                                                       
+                                                                                       
+      <!--l. 219--><p class="noindent" >Flags du Compilateur
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">link</span><span 
 class="cmssbx-10x-x-120">_options</span> </dt><dd 
 class="description">
-      <!--l. 219--><p class="noindent" >Flags de l’éditeur de liens
-                                                                                       
-                                                                                       
+      <!--l. 220--><p class="noindent" >Flags de l’éditeur de liens
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">includes</span> </dt><dd 
 class="description">
-      <!--l. 220--><p class="noindent" >Chemins des include du compilateur
+      <!--l. 221--><p class="noindent" >Chemins des include du compilateur
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">c</span> </dt><dd 
 class="description">
-      <!--l. 221--><p class="noindent" >Chemins des include de l’éditeur de liens
+      <!--l. 222--><p class="noindent" >Chemins des include de l’éditeur de liens
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">libs</span> </dt><dd 
 class="description">
-      <!--l. 222--><p class="noindent" >Librairies de l’éditeur de liens
+      <!--l. 223--><p class="noindent" >Librairies de l’éditeur de liens
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">file</span> </dt><dd 
 class="description">
-      <!--l. 223--><p class="noindent" >Fichier source (nom complet)
+      <!--l. 224--><p class="noindent" >Fichier source (nom complet)
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">file</span><span 
 class="cmssbx-10x-x-120">_dir</span> </dt><dd 
 class="description">
-      <!--l. 224--><p class="noindent" >Répertoire du fichier source sans le nom de fichier ni son extension.
+      <!--l. 225--><p class="noindent" >Répertoire du fichier source sans le nom de fichier ni son extension.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">file</span><span 
 class="cmssbx-10x-x-120">_name</span> </dt><dd 
 class="description">
-      <!--l. 225--><p class="noindent" >Nom du fichier source sans les informations de chemin ni l’extension.
+      <!--l. 226--><p class="noindent" >Nom du fichier source sans les informations de chemin ni l’extension.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">exe</span><span 
 class="cmssbx-10x-x-120">_dir</span> </dt><dd 
 class="description">
-      <!--l. 226--><p class="noindent" >Répertoire du fichier exécutable sans le nom de fichier ni son extension.
+      <!--l. 227--><p class="noindent" >Répertoire du fichier exécutable sans le nom de fichier ni son extension.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">exe</span><span 
 class="cmssbx-10x-x-120">_name</span> </dt><dd 
 class="description">
-      <!--l. 227--><p class="noindent" >Nom du fichier exécutable sans les informations de chemin ni l’extension.
+      <!--l. 228--><p class="noindent" >Nom du fichier exécutable sans les informations de chemin ni l’extension.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">exe</span><span 
 class="cmssbx-10x-x-120">_ext</span> </dt><dd 
 class="description">
-      <!--l. 228--><p class="noindent" >Extension de l’exécutable sans les informations de chemin ni le nom du fichier.
+      <!--l. 229--><p class="noindent" >Extension de l’exécutable sans les informations de chemin ni le nom du fichier.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">object</span> </dt><dd 
 class="description">
-      <!--l. 229--><p class="noindent" >Fichier objet
+      <!--l. 230--><p class="noindent" >Fichier objet
+                                                                                       
+                                                                                       
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">exe</span><span 
 class="cmssbx-10x-x-120">_output</span> </dt><dd 
 class="description">
-      <!--l. 230--><p class="noindent" >Fichier exécutable de sortie
-                                                                                       
-                                                                                       
+      <!--l. 231--><p class="noindent" >Fichier exécutable de sortie
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
@@ -8855,12 +8893,12 @@ class="cmssbx-10x-x-120">objects</span><span
 class="cmssbx-10x-x-120">_output</span><span 
 class="cmssbx-10x-x-120">_dir</span> </dt><dd 
 class="description">
-      <!--l. 231--><p class="noindent" >Répertoire de sortie des fichiers objets</p></dd></dl>
-<!--l. 234--><p class="noindent" >
+      <!--l. 232--><p class="noindent" >Répertoire de sortie des fichiers objets</p></dd></dl>
+<!--l. 235--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.4.1</span>  <a 
  id="x3-1450003.4.1"></a>Exemple 1 : Compilation d’un fichier unique</h4>
-<!--l. 236-->
+<!--l. 237-->
 <pre class="lstlisting" id="listing-102"><span class="label"><a 
  id="x3-145001r1"></a></span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
@@ -8877,11 +8915,11 @@ class="cmtt-10x-x-109">-</span></span><span style="color:#000000"><span
 class="cmtt-10x-x-109">o</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
 class="cmtt-10x-x-109">object</span></span></pre>
-<!--l. 240--><p class="noindent" >
+<!--l. 241--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.4.2</span>  <a 
  id="x3-1460003.4.2"></a>Exemple 2 : Édition de liens de fichiers objets en exécutable</h4>
-<!--l. 242-->
+<!--l. 243-->
 <pre class="lstlisting" id="listing-103"><span class="label"><a 
  id="x3-146001r1"></a></span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
@@ -8902,34 +8940,34 @@ class="tctt-1095">$</span><span
 class="cmtt-10x-x-109">link_options</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
 class="cmtt-10x-x-109">libs</span></span></pre>
-<!--l. 247--><p class="noindent" >
+<!--l. 248--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">3.5</span>  <a 
  id="x3-1470003.5"></a>Variables globales du compilateur</h3>
-<!--l. 249--><p class="noindent" >Cette section décrit comment travailler avec des variables globales.
-</p><!--l. 251--><p class="noindent" >
+<!--l. 250--><p class="noindent" >Cette section décrit comment travailler avec des variables globales.
+                                                                                       
+                                                                                       
+</p><!--l. 252--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.1</span>  <a 
  id="x3-1480003.5.1"></a>Synopsis</h4>
-                                                                                       
-                                                                                       
-<!--l. 253--><p class="noindent" >Travailler en tant que développeur sur un projet reposant sur des librairies tierces impose
+<!--l. 254--><p class="noindent" >Travailler en tant que développeur sur un projet reposant sur des librairies tierces impose
 un certain nombre de tâches répétitives inutiles, comme configurer des variables de
 génération dépendantes du système de fichier local. Dans le cas de fichiers projets,
 une attention toute particulière doit être apportée afin de ne pas diffuser une copie
 modifiée localement. Si on n’y prend pas garde, cela peut se produire facilement après
 avoir changé par exemple un flag de génération pour obtenir une version de type
 release.
-</p><!--l. 255--><p class="noindent" >Le concept de variable globale du compilateur est une nouvelle solution unique à Code::Blocks
+</p><!--l. 256--><p class="noindent" >Le concept de variable globale du compilateur est une nouvelle solution unique à Code::Blocks
 qui adresse ce problème. Les variables globales du compilateur vous permettent de configurer un
 projet une seule fois, et n’importe quel nombre de développeurs utilisant n’importe quel
 système de fichiers pour compiler et développer ce projet. Aucune information locale ne
 nécessite d’être changée plus d’une fois.
-</p><!--l. 257--><p class="noindent" >
+</p><!--l. 258--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.2</span>  <a 
  id="x3-1490003.5.2"></a>Noms et Membres</h4>
-<!--l. 259--><p class="noindent" >Les variables globales du compilateur dans Code::Blocks se distinguent des variables par-projet
+<!--l. 260--><p class="noindent" >Les variables globales du compilateur dans Code::Blocks se distinguent des variables par-projet
 par la présence d’un signe dièse en tête. Les variables globales du compilateur sont structurées ;
 chaque variable consiste en un nom et un membre optionnel. Les noms sont définissables
 librement, alors que les membres sont construits dans l’Environnement Intégré de
@@ -8938,18 +8976,20 @@ est recommandé de reproduire des identificateurs connus de packages communémen
 Ainsi, le nombre d’informations que l’utilisateur doit fournir est minimisé. L’équipe
 de Code::Blocks fourni une liste de variables recommandées pour divers packages
 connus.
-</p><!--l. 261--><p class="noindent" >Le membre base correspond à la même valeur que celle de la variable utilisée sans membre
+</p><!--l. 262--><p class="noindent" >Le membre base correspond à la même valeur que celle de la variable utilisée sans membre
 (alias).
-</p><!--l. 263--><p class="noindent" >Les membres <code class="lstinline"><span style="color:#000000">include</span></code> et <code class="lstinline"><span style="color:#000000">lib</span></code> sont par défaut des aliases pour <code class="lstinline"><span style="color:#000000">base</span><span style="color:#000000">/</span><span style="color:#000000">include</span></code> et <code class="lstinline"><span style="color:#000000">base</span><span style="color:#000000">/</span><span style="color:#000000">lib</span></code>,
+</p><!--l. 264--><p class="noindent" >Les membres <code class="lstinline"><span style="color:#000000">include</span></code> et <code class="lstinline"><span style="color:#000000">lib</span></code> sont par défaut des aliases pour <code class="lstinline"><span style="color:#000000">base</span><span style="color:#000000">/</span><span style="color:#000000">include</span></code> et <code class="lstinline"><span style="color:#000000">base</span><span style="color:#000000">/</span><span style="color:#000000">lib</span></code>,
 respectivement. Cependant, l’utilisateur peut les redéfinir si une autre configuration est
 souhaitée.
-</p><!--l. 265--><p class="noindent" >Il est généralement recommandé d’utiliser la syntaxe <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">variable</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> plutôt que
+</p><!--l. 266--><p class="noindent" >Il est généralement recommandé d’utiliser la syntaxe <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">variable</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> plutôt que
 son équivalent <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">variable</span><span style="color:#000000">)/</span><span style="color:#000000">include</span></code>, car elle fournit une flexibilité accrue tout en
 étant fonctionnellement identique (voir <a 
 href="#x3-1530003.5.6">section 3.5.6</a> et <a 
 href="#x3-149001r1">figure 3.1</a> pour plus de
 détails).
-</p><!--l. 267--><p class="noindent" >Les membres <code class="lstinline"><span style="color:#000000">cflags</span></code> et <code class="lstinline"><span style="color:#000000">lflags</span></code> sont vides par défaut et peuvent être utilisés pour fournir la
+</p><!--l. 268--><p class="noindent" >Les membres <code class="lstinline"><span style="color:#000000">cflags</span></code> et <code class="lstinline"><span style="color:#000000">lflags</span></code> sont vides par défaut et peuvent être utilisés pour fournir la
+                                                                                       
+                                                                                       
 possibilité de remplir un ensemble consistant unique de flags compilateur/éditeur de liens pour
 toutes les générations sur une machine donnée. Code::Blocks vous permet de définir des
 membres de variables utilisateur en complément de ceux prédéfinis.
@@ -8962,7 +9002,7 @@ membres de variables utilisateur en complément de ceux prédéfinis.
  id="x3-149001r1"></a>
                                                                                        
                                                                                        
-<!--l. 269--><p class="noindent" ><img 
+<!--l. 270--><p class="noindent" ><img 
 src="gcv_ui.png" alt="PIC"  
  />
 </p>
@@ -8975,7 +9015,7 @@ class="content">Variables Globales d’Environnement</span></figcaption><!--tex4
  id="x3-1500003.5.3"></a>Contraintes</h4>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 273--><p class="noindent" >Les noms de variables de configuration ou de compilateur ne peuvent pas être vides,
+      <!--l. 274--><p class="noindent" >Les noms de variables de configuration ou de compilateur ne peuvent pas être vides,
       ne peuvent pas contenir de caractères blancs (ou espaces), doivent commencer par
       une lettre et ne contenir que des caractères alphanumériques. Les lettres Cyrilliques
       ou Chinoises ne sont pas des caractères alphanumériques. Si Code::Blocks rencontre
@@ -8983,58 +9023,58 @@ class="content">Variables Globales d’Environnement</span></figcaption><!--tex4
       demander.
       </p></li>
       <li class="itemize">
-      <!--l. 274--><p class="noindent" >Toutes les variables nécessitent que leur base soit définie. Tout le reste est optionnel,
+      <!--l. 275--><p class="noindent" >Toutes les variables nécessitent que leur base soit définie. Tout le reste est optionnel,
       mais la base est absolument obligatoire. Si vous ne définissez pas la base d’une
       variable, elle ne sera pas sauvegardée (et ce même si les autres champs ont été
       définis).
       </p></li>
       <li class="itemize">
-      <!--l. 275--><p class="noindent" >Vous ne pouvez pas définir un nom de membre défini par l’utilisateur qui a le
+      <!--l. 276--><p class="noindent" >Vous ne pouvez pas définir un nom de membre défini par l’utilisateur qui a le
       même nom qu’un membre prédéfini. Actuellement, le membre utilisateur écrasera
       le  membre  prédéfini,  mais  en  général,  le  comportement  est  indéfini  dans  ce
       cas. Si <code class="lstinline"><span style="color:#FF0000">’</span><span style="color:#FF0000">libext</span><span style="color:#FF0000">’</span></code> est un membre défini par l’utilisateur on peut seulement écrire
       <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">variable</span><span style="color:#000000">.</span><span style="color:#000000">libext</span><span style="color:#000000">)</span></code> et pas <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">variable</span><span style="color:#000000">)/</span><span style="color:#000000">libext</span></code>.
       </p></li>
       <li class="itemize">
-      <!--l. 276--><p class="noindent" >Les valeurs des variables et des membres peuvent contenir un nombre arbitraire
+      <!--l. 277--><p class="noindent" >Les valeurs des variables et des membres peuvent contenir un nombre arbitraire
       de séquences de caractères, mais doivent respecter les contraintes suivantes :
       </p>
            <ul class="itemize2">
            <li class="itemize">
-           <!--l. 278--><p class="noindent" >Vous ne pouvez pas définir une variable par une valeur qui se référence à la
+           <!--l. 279--><p class="noindent" >Vous ne pouvez pas définir une variable par une valeur qui se référence à la
            même variable ou à n’importe lequel de ses membres
            </p></li>
            <li class="itemize">
-           <!--l. 279--><p class="noindent" >Vous ne pouvez pas définir un membre par une valeur qui se référence à ce
+           <!--l. 280--><p class="noindent" >Vous ne pouvez pas définir un membre par une valeur qui se référence à ce
            même membre
                                                                                        
                                                                                        
            </p></li>
            <li class="itemize">
-           <!--l. 280--><p class="noindent" >Vous ne pouvez pas définir un membre ou une variable par une valeur qui se
+           <!--l. 281--><p class="noindent" >Vous ne pouvez pas définir un membre ou une variable par une valeur qui se
            référence à la même variable ou membre par une dépendance cyclique.</p></li></ul>
       </li></ul>
-<!--l. 284--><p class="noindent" >Code::Blocks détectera les cas de définitions récursives les plus évidentes (ce qui peut arriver
+<!--l. 285--><p class="noindent" >Code::Blocks détectera les cas de définitions récursives les plus évidentes (ce qui peut arriver
 par accident), mais il ne fera pas d’analyse en profondeur de tous les cas possibles abusifs. Si
 vous entrez n’importe quoi, alors vous obtiendrez n’importe quoi; vous êtes avertis
 maintenant.
-</p><!--l. 286--><p class="noindent" ><span 
+</p><!--l. 287--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Exemples</span>
-</p><!--l. 288--><p class="noindent" >Définir <code class="lstinline"><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span></code> comme <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">wx</span><span style="color:#000000">)/</span><span style="color:#000000">include</span></code> est redondant, mais parfaitement légal. Définir
+</p><!--l. 289--><p class="noindent" >Définir <code class="lstinline"><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span></code> comme <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">wx</span><span style="color:#000000">)/</span><span style="color:#000000">include</span></code> est redondant, mais parfaitement légal. Définir
 <code class="lstinline"><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span></code> comme <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> est illégal et sera détecté par Code::Blocks. Définir
 <code class="lstinline"><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span></code> comme <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">cb</span><span style="color:#000000">.</span><span style="color:#000000">lib</span><span style="color:#000000">)</span></code> qui est lui-même défini comme <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> créera une
 boucle infinie.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.4</span>  <a 
  id="x3-1510003.5.4"></a>Utilisation des Variables Globales du Compilateur</h4>
-<!--l. 294--><p class="noindent" >Tout ce que vous avez à faire pour utiliser des variables globales de compilateur c’est de les
+<!--l. 295--><p class="noindent" >Tout ce que vous avez à faire pour utiliser des variables globales de compilateur c’est de les
 mettre dans votre projet! Oui, c’est aussi simple que cela.
-</p><!--l. 296--><p class="noindent" >Quand l’Environnement Intégré de Développement (IDE) détecte la présence d’une variable
+</p><!--l. 297--><p class="noindent" >Quand l’Environnement Intégré de Développement (IDE) détecte la présence d’une variable
 globale inconnue, il vous demande d’entrer sa valeur. La valeur sera sauvegardée dans vos
 paramètres, ainsi vous n’aurez jamais besoin d’entrer deux fois l’information.
-</p><!--l. 298--><p class="noindent" >Si vous avez besoin de modifier ou de supprimer une variable plus tard, vous pourrez le faire
+</p><!--l. 299--><p class="noindent" >Si vous avez besoin de modifier ou de supprimer une variable plus tard, vous pourrez le faire
 depuis le menu des paramètres.
-</p><!--l. 301--><p class="noindent" ><span 
+</p><!--l. 302--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Exemple</span>
 </p>
 <figure class="figure"> 
@@ -9045,7 +9085,7 @@ class="cmssbx-10x-x-120">Exemple</span>
  id="x3-151001r2"></a>
                                                                                        
                                                                                        
-<!--l. 303--><p class="noindent" ><img 
+<!--l. 304--><p class="noindent" ><img 
 src="global_vars_dir.png" alt="PIC"  
  />
 </p>
@@ -9054,49 +9094,49 @@ class="content">Variables Globales</span></figcaption><!--tex4ht:label?: x3-1510
                                                                                        
                                                                                        
 </figure>
-<!--l. 305--><p class="noindent" >L’image ci-contre montre à la fois les variables par-projet et globales. <code class="lstinline"><span style="color:#000000">WX_SUFFIX</span></code> est défini dans
+<!--l. 306--><p class="noindent" >L’image ci-contre montre à la fois les variables par-projet et globales. <code class="lstinline"><span style="color:#000000">WX_SUFFIX</span></code> est défini dans
 le projet, mais <code class="lstinline"><span style="color:#000000">WX</span></code> est une variable utilisateur globale.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.5</span>  <a 
  id="x3-1520003.5.5"></a>Ensembles de Variables</h4>
-<!--l. 309--><p class="noindent" >Parfois, vous voulez utiliser différentes versions d’une même librairie, ou vous développez deux
+<!--l. 310--><p class="noindent" >Parfois, vous voulez utiliser différentes versions d’une même librairie, ou vous développez deux
 branches d’un même programme. Bien qu’il soit possible de gérer cela avec une variable globale
 de compilateur, cela peut devenir fastidieux. Dans ce cas, Code::Blocks supporte des ensembles
 de variables. Un ensemble de variables est une collection indépendante de variables,
 identifiée par un nom (les noms d’ensemble ont les mêmes contraintes que les noms de
 variables).
-</p><!--l. 311--><p class="noindent" >Si vous souhaitez basculer vers un autre ensemble de variables, vous sélectionnez tout
+</p><!--l. 312--><p class="noindent" >Si vous souhaitez basculer vers un autre ensemble de variables, vous sélectionnez tout
 simplement un ensemble différent depuis le menu. Des ensembles différents n’ont
 pas obligatoirement les mêmes variables, et des variables identiques dans différents
 ensembles n’ont pas forcément les mêmes valeurs, ni même des membres utilisateurs
 identiques.
-</p><!--l. 313--><p class="noindent" >Un autre point positif à propos des ensembles est que si vous avez une douzaine de variables et
+</p><!--l. 314--><p class="noindent" >Un autre point positif à propos des ensembles est que si vous avez une douzaine de variables et
 que vous voulez obtenir un nouvel ensemble avec une de ces variables pointant vers un endroit
 différent, vous n’êtes pas obligés de ré-entrer toutes les données à nouveau. Vous
 pouvez simplement créer un clone de l’ensemble courant, ce qui dupliquera toutes vos
 variables.
-</p><!--l. 315--><p class="noindent" >Supprimer un ensemble supprimera également toutes les variables de cet ensemble (mais pas
+</p><!--l. 316--><p class="noindent" >Supprimer un ensemble supprimera également toutes les variables de cet ensemble (mais pas
 celles d’une autre ensemble). L’ensemble <span 
 class="cmtt-12">default </span>est toujours présent et ne peut pas être
 supprimé.
-</p><!--l. 317--><p class="noindent" >Vous pouvez aussi exporter ou importer des ensembles de variables (depuis la version SVN
+</p><!--l. 318--><p class="noindent" >Vous pouvez aussi exporter ou importer des ensembles de variables (depuis la version SVN
 r13224) : les fichiers, avec l’extension .set, sont des fichiers de texte contenant un
 ensemble particulier de variables. Ces fichiers sont facilement transférables entres
 utilisateurs/ordinateurs.
-</p><!--l. 319--><p class="noindent" >Toutes ces options sont disponibles via les boutons ”Ajouter”, ”Supprimer”, ”Cloner”,
+</p><!--l. 320--><p class="noindent" >Toutes ces options sont disponibles via les boutons ”Ajouter”, ”Supprimer”, ”Cloner”,
 ”Exporter” et ”Importer”, situés en haut de la fenêtre des Variables Globales d’Environnement
 (voir <a 
 href="#x3-149001r1">figure 3.1</a>).
-</p><!--l. 321--><p class="noindent" >
+</p><!--l. 322--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.6</span>  <a 
  id="x3-1530003.5.6"></a>Mini-Tutoriel pour utilisateur curieux</h4>
-<!--l. 323--><p class="noindent" >Comme décrit auparavant, écrire <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">var</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> et <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">var</span><span style="color:#000000">)/</span><span style="color:#000000">include</span></code> revient à la même
+<!--l. 324--><p class="noindent" >Comme décrit auparavant, écrire <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">var</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> et <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">var</span><span style="color:#000000">)/</span><span style="color:#000000">include</span></code> revient à la même
                                                                                        
                                                                                        
 chose par défaut. Aussi pourquoi donc écrire quelque chose d’aussi non intuitif que
 <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">var</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code>?
-</p><!--l. 325--><p class="noindent" >Prenons l’exemple d’une installation standard de Boost sous Windows. Généralement, vous
+</p><!--l. 326--><p class="noindent" >Prenons l’exemple d’une installation standard de Boost sous Windows. Généralement, vous
 vous attendriez à ce qu’un package fictif ACME ait ses fichiers include dans ACME/include et
 ses librairies dans ACME/lib. Optionnellement, il pourrait mettre ses en-têtes (headers) dans
 un autre sous répertoire appelé acme. Ainsi après avoir ajouté les chemins corrects
@@ -9104,7 +9144,7 @@ dans les options du compilateur et de l’éditeur de liens, vous pouvez vous at
 <code class="lstinline"><span style="color:#0000FF">#</span><span style="color:#0000FF">include</span><span style="color:#000000"> </span><span style="color:#000000">&#x003C;</span><span style="color:#000000">acme</span><span style="color:#000000">/</span><span style="color:#000000">acme</span><span style="color:#000000">.</span><span style="color:#000000">h</span><span style="color:#000000">&#x003E;</span></code> et éditer les liens avec <span 
 class="cmtt-12">libacme.a </span>(ou quelque chose de ce
 genre).
-</p><!--l. 327--><p class="noindent" >Boost, cependant, installe les en-têtes dans <span 
+</p><!--l. 328--><p class="noindent" >Boost, cependant, installe les en-têtes dans <span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">Boost</span><span 
@@ -9124,7 +9164,7 @@ class="cmsy-10x-x-120">∖</span><span
 class="cmtt-12">lib </span>par défaut. Il semble impossible d’obtenir ceci simplement sans
 devoir tout ajuster sur chaque nouveau PC, particulièrement si vous devez travailler sous Linux
 mais aussi avec un autre OS.
-</p><!--l. 329--><p class="noindent" >C’est là que la véritable puissance des variables globales utilisateur se révèle. Quand vous
+</p><!--l. 330--><p class="noindent" >C’est là que la véritable puissance des variables globales utilisateur se révèle. Quand vous
 définissez la valeur de la variable <code class="lstinline"><span style="color:#0000FF">#</span><span style="color:#000000">boost</span></code>, vous allez juste un cran plus loin que d’habitude. Vous
 définissez le membre include comme <span 
 class="cmtt-12">C:</span><span 
@@ -9147,19 +9187,19 @@ class="cmtt-12">lib</span>, respectivement. Votre projet utilisant <code class="
 <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">boost</span><span style="color:#000000">.</span><span style="color:#000000">lib</span><span style="color:#000000">)</span></code> travaillera comme par magie correctement sur tout PC sans aucune
 modifications. Vous n’avez pas besoin de savoir pourquoi, vous ne voulez pas savoir
 pourquoi.
-</p><!--l. 331--><p class="noindent" >
+</p><!--l. 332--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.7</span>  <a 
  id="x3-1540003.5.7"></a>Arguments en Ligne de Commande</h4>
-<!--l. 332--><p class="noindent" >Depuis la révision [r13245] on peut utiliser les arguments en ligne de commande pour
+<!--l. 333--><p class="noindent" >Depuis la révision [r13245] on peut utiliser les arguments en ligne de commande pour
 substituer et définir des variables globales et configurer l’ensemble courant actif.
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 334--><p class="noindent" >’-S’ paramêtre pour configurer l’ensemble courant actif via la ligne de commande
+      <!--l. 335--><p class="noindent" >’-S’ paramêtre pour configurer l’ensemble courant actif via la ligne de commande
       </p></li>
       <li class="itemize">
-      <!--l. 335--><p class="noindent" >’-D’ paramêtre pour définir/substituer une variable utilisateur de la forme :<br 
+      <!--l. 336--><p class="noindent" >’-D’ paramêtre pour définir/substituer une variable utilisateur de la forme :<br 
 class="newline" /><code class="lstinline"><span style="color:#000000">-</span><span style="color:#000000">D</span><span style="color:#000000"> </span><span style="color:#000000">set</span><span style="color:#000000">.</span><span style="color:#000000">variable</span><span style="color:#000000">.</span><span style="color:#000000">membre</span><span style="color:#000000">=</span><span style="color:#000000">valeur</span></code> ou <code class="lstinline"><span style="color:#000000">-</span><span style="color:#000000">D</span><span style="color:#000000"> </span><span style="color:#000000">variable</span><span style="color:#000000">.</span><span style="color:#000000">membre</span><span style="color:#000000">=</span><span style="color:#000000">valeur</span></code></p></li></ul>
                                                                                        
                                                                                        
@@ -9171,6 +9211,10 @@ class="newline" /><code class="lstinline"><span style="color:#000000">-</span><s
                                                                                        
                                                                                        
                                                                                        
+<!--l. 1--><p class="noindent" >
+                                                                                       
+                                                                                       
+</p>
 <h2 class="chapterHead"><span class="titlemark">4</span>  <a 
  id="x3-1550004"></a>Travailler avec Code::Blocks</h2>
 <!--l. 3--><p class="noindent" >Ce chapitre traite de quelques connaissances de base pour pouvoir travailler avec Code::Blocks.
@@ -9213,9 +9257,9 @@ class="cmbx-12">Note : </span>Il existe un type de cible de génération
       qui  ne  produit  pas  directement  une  sortie  binaire  mais  se  contente  plutôt  de
       seulement réaliser des étapes de pre/post génération (qui peuvent générer de façon
       externe une sortie binaire).</p></dd></dl>
+                                                                                       
+                                                                                       
 <!--l. 15--><p class="noindent" >Décomposons ces sujets en sections et expliquons-les en détail.
-                                                                                       
-                                                                                       
 </p><!--l. 17--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">4.1.2</span>  <a 
@@ -9262,6 +9306,8 @@ d’exécutable qui dépend de cette librairie. Vous pouvez alors (et devez) inf
 de cette dépendance. Pour faire cela, vous sélectionnez ’Projet’ <span 
 class="cmsy-10x-x-120">→</span>’Propriétés’  et cliquez sur le
 bouton des ”Dépendances de Projet...”.
+                                                                                       
+                                                                                       
 </p><!--l. 39--><p class="noindent" ><span 
 class="cmti-12">Veuillez noter que les informations de d</span><span 
 class="cmti-12">épendances sont enregistr</span><span 
@@ -9274,8 +9320,6 @@ class="cmti-12">à</span>
 class="cmti-12">l’int</span><span 
 class="cmti-12">érieur d’un m</span><span 
 class="cmti-12">ême espace de travail.</span>
-                                                                                       
-                                                                                       
 </p>
 <figure class="figure"> 
 
@@ -15446,5 +15490,5 @@ class="cmtt-10x-x-109">https://forums.codeblocks.org/index.php/topic,1022.0.html
                                                                                        
                                                                                        
 </body>
-<!--l. 59--><p class="noindent" > 
+<!--l. 60--><p class="noindent" > 
 </html>

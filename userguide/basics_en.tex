@@ -55,7 +55,7 @@ In \codeblocks, so-called notes can be stored for a project. These notes should 
 
 \section{Project Templates}
 
-\codeblocks is supplied with a variety of project templates which are displayed when creating a new project. However, it is also possible to store custom templates for collecting your own specifications for compiler switches, the optimisation to be used, machine-specific switches etc. in templates. These templates will be stored in the \file{Documents and Settings\osp \var{user}\osp Application Data\osp codeblocks\osp UserTemplates} directory in Win 7 (or an equivalent path in the user profile, adapted to each OS). If the templates are to be open to all users, they have to be copied to a corresponding directory of the \codeblocks installation. These templates will then be displayed at the next startup of \codeblocks under \menu{New, Project,User templates}.
+\codeblocks is supplied with a variety of project templates which are displayed when creating a new project. However, it is also possible to store custom templates for collecting your own specifications for compiler switches, the optimisation to be used, machine-specific switches etc. in templates. These templates will be stored in the \file{Documents and Settings\osp \var{user}\osp Application Data\osp codeblocks\osp UserTemplates} directory in Windows 7, \file{\osp Users\osp \var{user}\osp AppData\osp Roaming\osp CodeBlocks\osp UserTemplates} in Windows 10 or 11 (or an equivalent path to the user profile, adapted to each OS): \file{\var{user}} is your user name. If the templates are to be open to all users, they have to be copied to a corresponding directory of the \codeblocks installation. These templates will then be displayed at the next startup of \codeblocks under \menu{New, Project,User templates}.
 
 \hint{The available templates in the Project Wizard can be edited by selection via right-click.}
 
@@ -183,7 +183,7 @@ The \codeblocks settings are stored in the \file{default.conf} profile in the \f
 
 The tool \cmdline{cb\_share\_conf}, which can be found in the \codeblocks installation directory, is used for managing and storing these settings.
 
-If you wish to define standard settings for several users of a computer, the configuration file \file{default.conf} has to be stored in the directory \file{\osp Documents and Settings\osp Default User\osp Application Data\osp codeblocks} (in Win 7, or an equivallent profile path for other OS). During the first startup, \codeblocks will copy the presettings from \samp{Default User} to the application data of the current users.
+If you wish to define standard settings for several users of a computer, the configuration file \file{default.conf} has to be stored in the directory \file{\osp Documents and Settings\osp Default User\osp Application Data\osp codeblocks} in Win 7, \file{\osp Users\osp Default\osp AppData\osp Roaming\osp CodeBlocks} in Windows 10 or 11, or an equivallent profile path for other OS. During the first startup, \codeblocks will copy the presettings from \samp{Default User} to the application data of the current users.
 
 To create a portable version of \codeblocks on a USB stick, proceed as follows. Copy the \codeblocks installation to a USB stick and store the configuration file \file{default.conf} in this directory. The configuration will be used as a global setting. Please take care that the file is writeable, otherwise changes of the configuration cannot be stored.
 

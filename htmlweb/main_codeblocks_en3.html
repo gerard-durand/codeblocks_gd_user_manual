@@ -281,13 +281,32 @@ class="cmtt-12">Application Data</span><span
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">codeblocks</span><span 
 class="cmsy-10x-x-120">∖</span><span 
-class="cmtt-12">UserTemplates </span>directory in Win 7 (or an
-equivalent path in the user profile, adapted to each OS). If the templates are to be open to all
-users, they have to be copied to a corresponding directory of the Code::Blocks installation.
-These templates will then be displayed at the next startup of Code::Blocks under ’New’ <span 
-class="cmsy-10x-x-120">→</span>’
-Project’ <span 
-class="cmsy-10x-x-120">→</span>’User templates’ .
+class="cmtt-12">UserTemplates </span>directory in Windows 7,
+<span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Users</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmmi-12">&#x003C;</span><span 
+class="cmtt-12">user</span><span 
+class="cmmi-12">&#x003E;</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">AppData</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Roaming</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">CodeBlocks</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">UserTemplates </span>in Windows 10 or 11
+(or an equivalent path to the user profile, adapted to each OS): <span 
+class="cmmi-12">&#x003C;</span><span 
+class="cmtt-12">user</span><span 
+class="cmmi-12">&#x003E; </span>is your
+user name. If the templates are to be open to all users, they have to be copied to a
+corresponding directory of the Code::Blocks installation. These templates will then be
+displayed at the next startup of Code::Blocks under ’New’ <span 
+class="cmsy-10x-x-120">→</span>’ Project’ <span 
+class="cmsy-10x-x-120">→</span>’User templates’
+.
 </p>
 <div class="center" 
 >
@@ -301,10 +320,10 @@ selection via right-click.                                            </div>
 </div>
 <!--l. 62--><p class="noindent" >
 </p>
+                                                                                       
+                                                                                       
 <h3 class="sectionHead"><span class="titlemark">1.4</span>  <a 
  id="x3-60001.4"></a>Create Projects from Build Targets</h3>
-                                                                                       
-                                                                                       
 <!--l. 64--><p class="noindent" >In projects it is necessary to have different variants of the project available. Variants are called
 Build Targets. They differ with respect to their compiler options, debug information and/or
 choice of files. A Build Target can also be outsourced to a separate project. To do so, click
@@ -760,9 +779,20 @@ class="cmtt-12">User</span><span
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">Application Data</span><span 
 class="cmsy-10x-x-120">∖</span><span 
-class="cmtt-12">codeblocks </span>(in Win 7, or an equivallent profile path for other OS).
-During the first startup, Code::Blocks will copy the presettings from ’Default User’ to the
-application data of the current users.
+class="cmtt-12">codeblocks </span>in Win 7, <span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Users</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Default</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">AppData</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Roaming</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">CodeBlocks</span>
+in Windows 10 or 11, or an equivallent profile path for other OS. During the first startup,
+Code::Blocks will copy the presettings from ’Default User’ to the application data of the current
+users.
 </p><!--l. 188--><p class="noindent" >To create a portable version of Code::Blocks on a USB stick, proceed as follows.
 Copy the Code::Blocks installation to a USB stick and store the configuration file
 <span 
@@ -8185,13 +8215,22 @@ class="cmssbx-10">_TEMP</span><span
 class="cmssbx-10">_DIR)</span> </dt><dd 
 class="description">
       <!--l. 138--><p class="noindent" >ALL platforms: A writable, temporary directory</p></dd></dl>
-<!--l. 141--><p class="noindent" >
+<!--l. 140--><p class="noindent" >For Windows 10 or 11, paths are more like <span 
+class="cmtt-12">C:</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmtt-12">Users</span><span 
+class="cmsy-10x-x-120">∖</span><span 
+class="cmmi-12">&#x003C;</span><span 
+class="cmtt-12">user</span><span 
+class="cmmi-12">&#x003E;</span><span 
+class="cmtt-12">...</span>
+</p><!--l. 143--><p class="noindent" >
 </p>
+                                                                                       
+                                                                                       
 <h4 class="subsectionHead"><span class="titlemark">3.2.10</span>  <a 
  id="x3-1410003.2.10"></a>Build in functions for path conversion</h4>
-                                                                                       
-                                                                                       
-<!--l. 142--><p class="noindent" >There are build in macro functions to simplify path generation
+<!--l. 144--><p class="noindent" >There are build in macro functions to simplify path generation
       </p><dl class="description"><dt class="description">
 <span 
 class="tcsx-1000">$</span><span 
@@ -8200,7 +8239,7 @@ class="cmssbx-10">_UNIX</span><span
 class="cmssbx-10">_PATH</span><span 
 class="cmsy-10">{}</span> </dt><dd 
 class="description">
-      <!--l. 144--><p class="noindent" >convert path to unix path (use ’/’ as separator)
+      <!--l. 146--><p class="noindent" >convert path to unix path (use ’/’ as separator)
       </p></dd><dt class="description">
 <span 
 class="tcsx-1000">$</span><span 
@@ -8209,7 +8248,7 @@ class="cmssbx-10">_WINDOWS</span><span
 class="cmssbx-10">_PATH</span><span 
 class="cmsy-10">{}</span> </dt><dd 
 class="description">
-      <!--l. 145--><p class="noindent" >convert path to windows (use ’<span 
+      <!--l. 147--><p class="noindent" >convert path to windows (use ’<span 
 class="cmsy-10x-x-120">∖</span>’ as separator)
       </p></dd><dt class="description">
 <span 
@@ -8219,8 +8258,8 @@ class="cmssbx-10">_NATIVE</span><span
 class="cmssbx-10">_PATH</span><span 
 class="cmsy-10">{}</span> </dt><dd 
 class="description">
-      <!--l. 146--><p class="noindent" >convert to native path form the codeblocks instance is running on</p></dd></dl>
-<!--l. 149--><p class="noindent" ><span 
+      <!--l. 148--><p class="noindent" >convert to native path form the codeblocks instance is running on</p></dd></dl>
+<!--l. 151--><p class="noindent" ><span 
 class="cmbx-12">Usage</span>
       </p><dl class="description"><dt class="description">
 <span 
@@ -8235,12 +8274,12 @@ class="cmssbx-10">_OUTPUT</span><span
 class="cmssbx-10">_FILE)</span><span 
 class="cmsy-10">}</span> </dt><dd 
 class="description">
-      <!--l. 151--><p class="noindent" >returns the current target output file as unix path</p></dd></dl>
-<!--l. 154--><p class="noindent" >
+      <!--l. 153--><p class="noindent" >returns the current target output file as unix path</p></dd></dl>
+<!--l. 156--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.2.11</span>  <a 
  id="x3-1420003.2.11"></a>Conditional Evaluation</h4>
-<!--l. 156-->
+<!--l. 158-->
 <pre class="lstlisting" id="listing-101"><span class="label"><a 
  id="x3-142001r1"></a></span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
@@ -8254,33 +8293,33 @@ class="cmtt-10x-x-109">}{</span></span><span style="color:#000000"><span
 class="cmtt-10x-x-109">false</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">clause</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">}</span></span></pre>
-<!--l. 160--><p class="noindent" >Conditional evaluation will resolve to its true clause if
+<!--l. 162--><p class="noindent" >Conditional evaluation will resolve to its true clause if
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 163--><p class="noindent" >condition is a non-empty character sequence other than 0 or false
+      <!--l. 165--><p class="noindent" >condition is a non-empty character sequence other than 0 or false
       </p></li>
       <li class="itemize">
-      <!--l. 164--><p class="noindent" >condition is a non-empty variable that does not resolve to 0 or false
+      <!--l. 166--><p class="noindent" >condition is a non-empty variable that does not resolve to 0 or false
+                                                                                       
+                                                                                       
       </p></li>
       <li class="itemize">
-      <!--l. 165--><p class="noindent" >condition is a variable that evaluates to true (implicit by previous condition)</p></li></ul>
-                                                                                       
-                                                                                       
-<!--l. 168--><p class="noindent" >Conditional evaluation will resolve to its false clause if
+      <!--l. 167--><p class="noindent" >condition is a variable that evaluates to true (implicit by previous condition)</p></li></ul>
+<!--l. 170--><p class="noindent" >Conditional evaluation will resolve to its false clause if
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 171--><p class="noindent" >condition is empty
+      <!--l. 173--><p class="noindent" >condition is empty
       </p></li>
       <li class="itemize">
-      <!--l. 172--><p class="noindent" >condition is 0 or false
+      <!--l. 174--><p class="noindent" >condition is 0 or false
       </p></li>
       <li class="itemize">
-      <!--l. 173--><p class="noindent" >condition is a variable that is empty or evaluates to 0 or false</p></li></ul>
+      <!--l. 175--><p class="noindent" >condition is a variable that is empty or evaluates to 0 or false</p></li></ul>
 <div class="center" 
 >
-<!--l. 176--><p class="noindent" >
+<!--l. 178--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox49"><span 
@@ -8289,16 +8328,16 @@ class="newline" />Please do note that neither the variable syntax variants <span
 <span id="textcolor51"><span 
 class="tcrm-1200">$</span>(if)(...)</span> are supported for this construct.                           </div>
 </div>
-<!--l. 178--><p class="noindent" ><span 
+<!--l. 180--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Example</span>
-</p><!--l. 180--><p class="noindent" >For example if you are using several platforms and you want to set different parameters
+</p><!--l. 182--><p class="noindent" >For example if you are using several platforms and you want to set different parameters
 depending on the operating system. In the following code the script commands of <code class="lstinline"><span style="color:#000000">[[</span><span style="color:#000000"> </span><span style="color:#000000">]]</span></code> are
 evaluated and the <span 
 class="cmmi-12">&#x003C;</span>command<span 
 class="cmmi-12">&#x003E; </span>will be executed. This could be useful in a post-built step (on a
 single line).
 </p>
-<!--l. 182-->
+<!--l. 184-->
 <pre class="lstlisting" id="listing-103"><span class="label"><a 
  id="x3-142002r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">[[</span></span><span style="color:#000000"> </span><span style="color:#0000FF"><span 
@@ -8343,13 +8382,13 @@ class="cmtt-10x-x-109">]]</span></span><span style="color:#000000"> </span><span
 class="cmtt-10x-x-109">&#x003C;</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">command</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">&#x003E;</span></span></pre>
-<!--l. 187--><p class="noindent" >
+                                                                                       
+                                                                                       
+<!--l. 189--><p class="noindent" >
 </p>
-                                                                                       
-                                                                                       
 <h3 class="sectionHead"><span class="titlemark">3.3</span>  <a 
  id="x3-1430003.3"></a>Script expansion</h3>
-<!--l. 189--><p class="noindent" >For maximum flexibility, you can embed scripts using the <code class="lstinline"><span style="color:#000000">[[</span><span style="color:#000000"> </span><span style="color:#000000">]]</span></code> operator as a special case of
+<!--l. 191--><p class="noindent" >For maximum flexibility, you can embed scripts using the <code class="lstinline"><span style="color:#000000">[[</span><span style="color:#000000"> </span><span style="color:#000000">]]</span></code> operator as a special case of
 variable expansion. Embedded scripts have access to all standard functionalities available to
 scripts and work pretty much like bash backticks (except for having access to Code::Blocks
 namespace). As such, scripts are not limited to producing text output, but can also manipulate
@@ -8357,7 +8396,7 @@ Code::Blocks state (projects, targets, etc.).
 </p>
 <div class="center" 
 >
-<!--l. 191--><p class="noindent" >
+<!--l. 193--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox52"><span 
@@ -8365,14 +8404,14 @@ class="cmbx-12">Note:</span><br
 class="newline" />Manipulating Code::Blocks state should be implemented rather with
 a pre-build script than with a script.                               </div>
 </div>
-<!--l. 193--><p class="noindent" ><span 
+<!--l. 195--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Example</span>
 <span 
 class="cmssbx-10x-x-120">with</span>
 <span 
 class="cmssbx-10x-x-120">Backticks</span>
 </p>
-<!--l. 195-->
+<!--l. 197-->
 <pre class="lstlisting" id="listing-105"><span class="label"><a 
  id="x3-143001r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">objdump</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
@@ -8390,29 +8429,29 @@ class="cmtt-10x-x-109">&#x003E;</span></span><span style="color:#000000"> </span
 class="cmtt-10x-x-109">name</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">.</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">dis</span></span></pre>
-<!--l. 199--><p class="noindent" >The expression in backticks returns a list of all executables <span 
+<!--l. 201--><p class="noindent" >The expression in backticks returns a list of all executables <span 
 class="cmtt-12">*.elf </span>in any subdirectories. The
 result of this expression can be used directly by <span 
 class="cmtt-12">objdump</span>. Finally the output is piped to a file
 named <span 
 class="cmtt-12">name.dis</span>. Thus, processes can be automatted in a simple way without having to
 program any loops.
-</p><!--l. 201--><p class="noindent" ><span 
+</p><!--l. 203--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Example</span>
 <span 
 class="cmssbx-10x-x-120">using</span>
 <span 
 class="cmssbx-10x-x-120">Script</span>
-</p><!--l. 203--><p class="noindent" >The script text is replaced by any output generated by your script, or discarded in case of a
+</p><!--l. 205--><p class="noindent" >The script text is replaced by any output generated by your script, or discarded in case of a
 syntax error.
-</p><!--l. 205--><p class="noindent" >Since conditional evaluation runs prior to expanding scripts, conditional evaluation
+</p><!--l. 207--><p class="noindent" >Since conditional evaluation runs prior to expanding scripts, conditional evaluation
 can be used for preprocessor functionalities. Built-in variables (and user variables)
 are expanded after scripts, so it is possible to reference variables in the output of a
 script.
+                                                                                       
+                                                                                       
 </p>
-<!--l. 207-->
-                                                                                       
-                                                                                       
+<!--l. 209-->
 <pre class="lstlisting" id="listing-106"><span class="label"><a 
  id="x3-143002r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">[[</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
@@ -8425,8 +8464,8 @@ class="cmtt-10x-x-109">().</span></span><span style="color:#000000"><span
 class="cmtt-10x-x-109">GetTitle</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">());</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">]]</span></span></pre>
-<!--l. 211--><p class="noindent" >inserts the title of the active project into the command line.
-</p><!--l. 213--><p class="noindent" >
+<!--l. 213--><p class="noindent" >inserts the title of the active project into the command line.
+</p><!--l. 215--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">3.4</span>  <a 
  id="x3-1440003.4"></a>Command Macros</h3>
@@ -8435,100 +8474,100 @@ class="cmtt-10x-x-109">]]</span></span></pre>
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">compiler</span> </dt><dd 
 class="description">
-      <!--l. 216--><p class="noindent" >Access to name of the compiler executable.
+      <!--l. 218--><p class="noindent" >Access to name of the compiler executable.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">linker</span> </dt><dd 
 class="description">
-      <!--l. 217--><p class="noindent" >Access to name of the linker executable.
+      <!--l. 219--><p class="noindent" >Access to name of the linker executable.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">options</span> </dt><dd 
 class="description">
-      <!--l. 218--><p class="noindent" >Compiler flags
+      <!--l. 220--><p class="noindent" >Compiler flags
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">link</span><span 
 class="cmssbx-10x-x-120">_options</span> </dt><dd 
 class="description">
-      <!--l. 219--><p class="noindent" >Linker flags
+      <!--l. 221--><p class="noindent" >Linker flags
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">includes</span> </dt><dd 
 class="description">
-      <!--l. 220--><p class="noindent" >Compiler include paths
+      <!--l. 222--><p class="noindent" >Compiler include paths
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">c</span> </dt><dd 
 class="description">
-      <!--l. 221--><p class="noindent" >Linker include paths
+      <!--l. 223--><p class="noindent" >Linker include paths
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">libs</span> </dt><dd 
 class="description">
-      <!--l. 222--><p class="noindent" >Linker libraries
+      <!--l. 224--><p class="noindent" >Linker libraries
+                                                                                       
+                                                                                       
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">file</span> </dt><dd 
 class="description">
-      <!--l. 223--><p class="noindent" >Source file (full name)
-                                                                                       
-                                                                                       
+      <!--l. 225--><p class="noindent" >Source file (full name)
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">file</span><span 
 class="cmssbx-10x-x-120">_dir</span> </dt><dd 
 class="description">
-      <!--l. 224--><p class="noindent" >Source file directory without file name and file name extension.
+      <!--l. 226--><p class="noindent" >Source file directory without file name and file name extension.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">file</span><span 
 class="cmssbx-10x-x-120">_name</span> </dt><dd 
 class="description">
-      <!--l. 225--><p class="noindent" >Source file name without path info and file name extension.
+      <!--l. 227--><p class="noindent" >Source file name without path info and file name extension.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">exe</span><span 
 class="cmssbx-10x-x-120">_dir</span> </dt><dd 
 class="description">
-      <!--l. 226--><p class="noindent" >Directory of executable without file name and file name extension.
+      <!--l. 228--><p class="noindent" >Directory of executable without file name and file name extension.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">exe</span><span 
 class="cmssbx-10x-x-120">_name</span> </dt><dd 
 class="description">
-      <!--l. 227--><p class="noindent" >File name of executable without path and file name extension.
+      <!--l. 229--><p class="noindent" >File name of executable without path and file name extension.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">exe</span><span 
 class="cmssbx-10x-x-120">_ext</span> </dt><dd 
 class="description">
-      <!--l. 228--><p class="noindent" >File name extension of executable without path and file name.
+      <!--l. 230--><p class="noindent" >File name extension of executable without path and file name.
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">object</span> </dt><dd 
 class="description">
-      <!--l. 229--><p class="noindent" >Object file
+      <!--l. 231--><p class="noindent" >Object file
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
 class="cmssbx-10x-x-120">exe</span><span 
 class="cmssbx-10x-x-120">_output</span> </dt><dd 
 class="description">
-      <!--l. 230--><p class="noindent" >Executable output file
+      <!--l. 232--><p class="noindent" >Executable output file
       </p></dd><dt class="description">
 <span 
 class="tcsx-1200">$</span><span 
@@ -8536,12 +8575,14 @@ class="cmssbx-10x-x-120">objects</span><span
 class="cmssbx-10x-x-120">_output</span><span 
 class="cmssbx-10x-x-120">_dir</span> </dt><dd 
 class="description">
-      <!--l. 231--><p class="noindent" >Object Output Directory</p></dd></dl>
-<!--l. 234--><p class="noindent" >
+      <!--l. 233--><p class="noindent" >Object Output Directory</p></dd></dl>
+<!--l. 236--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.4.1</span>  <a 
  id="x3-1450003.4.1"></a>Example 1: Compile single file</h4>
-<!--l. 236-->
+<!--l. 238-->
+                                                                                       
+                                                                                       
 <pre class="lstlisting" id="listing-107"><span class="label"><a 
  id="x3-145001r1"></a></span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
@@ -8558,13 +8599,11 @@ class="cmtt-10x-x-109">-</span></span><span style="color:#000000"><span
 class="cmtt-10x-x-109">o</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
 class="cmtt-10x-x-109">object</span></span></pre>
-                                                                                       
-                                                                                       
-<!--l. 240--><p class="noindent" >
+<!--l. 242--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.4.2</span>  <a 
  id="x3-1460003.4.2"></a>Example 2: Link object files to executable</h4>
-<!--l. 242-->
+<!--l. 244-->
 <pre class="lstlisting" id="listing-108"><span class="label"><a 
  id="x3-146001r1"></a></span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
@@ -8585,48 +8624,48 @@ class="tctt-1095">$</span><span
 class="cmtt-10x-x-109">link_options</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
 class="cmtt-10x-x-109">libs</span></span></pre>
-<!--l. 247--><p class="noindent" >
+<!--l. 249--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">3.5</span>  <a 
  id="x3-1470003.5"></a>Global compiler variables</h3>
-<!--l. 249--><p class="noindent" >This section describes how to work with global variables.
-</p><!--l. 251--><p class="noindent" >
+<!--l. 251--><p class="noindent" >This section describes how to work with global variables.
+</p><!--l. 253--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.1</span>  <a 
  id="x3-1480003.5.1"></a>Synopsis</h4>
-<!--l. 253--><p class="noindent" >Working as a developer on a project which relies on 3rd party libraries involves a lot of
+<!--l. 255--><p class="noindent" >Working as a developer on a project which relies on 3rd party libraries involves a lot of
 unnecessary repetitive tasks, such as setting up build variables according to the local file system
 layout. In the case of project files, care must be taken to not accidentially commit a locally
 modified copy. If one does not pay attention, this can happen easily for example after changing
 a build flag to make a release build.
-</p><!--l. 255--><p class="noindent" >The concept of global compiler variables is a unique new solution for Code::Blocks which
+</p><!--l. 257--><p class="noindent" >The concept of global compiler variables is a unique new solution for Code::Blocks which
 addresses this problem. Global compiler variables allow you to set up a project once, and any
 number of developers using any number of different file system layouts being able to compile
 and develop this project. No local layout information ever needs to be changed more than
 once.
-</p><!--l. 257--><p class="noindent" >
+                                                                                       
+                                                                                       
+</p><!--l. 259--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.2</span>  <a 
  id="x3-1490003.5.2"></a>Names and Members</h4>
-                                                                                       
-                                                                                       
-<!--l. 259--><p class="noindent" >Global compiler variables in Code::Blocks are discriminated from per-project variables by a
+<!--l. 261--><p class="noindent" >Global compiler variables in Code::Blocks are discriminated from per-project variables by a
 leading hash sign. Global compiler variables are structured; every variable consists of a name
 and an optional member. Names are freely definable, while some of the members are built into
 the IDE. Although you can choose anything for a variable name in principle, it is advisable to
 pick a known identifier for common packages. Thus the amount of information that the user
 needs to provide is minimised. The Code::Blocks team provides a list of recommended variables
 for known packages.
-</p><!--l. 261--><p class="noindent" >The member base resolves to the same value as the variable name uses without a member
+</p><!--l. 263--><p class="noindent" >The member base resolves to the same value as the variable name uses without a member
 (alias).
-</p><!--l. 263--><p class="noindent" >The members <code class="lstinline"><span style="color:#000000">include</span></code> and <code class="lstinline"><span style="color:#000000">lib</span></code> are by default aliases for <code class="lstinline"><span style="color:#000000">base</span><span style="color:#000000">/</span><span style="color:#000000">include</span></code> and <code class="lstinline"><span style="color:#000000">base</span><span style="color:#000000">/</span><span style="color:#000000">lib</span></code>,
+</p><!--l. 265--><p class="noindent" >The members <code class="lstinline"><span style="color:#000000">include</span></code> and <code class="lstinline"><span style="color:#000000">lib</span></code> are by default aliases for <code class="lstinline"><span style="color:#000000">base</span><span style="color:#000000">/</span><span style="color:#000000">include</span></code> and <code class="lstinline"><span style="color:#000000">base</span><span style="color:#000000">/</span><span style="color:#000000">lib</span></code>,
 respectively. However, a user can redefine them if another setup is desired.
-</p><!--l. 265--><p class="noindent" >It is generally recommended to use the syntax <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">variable</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> instead of
+</p><!--l. 267--><p class="noindent" >It is generally recommended to use the syntax <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">variable</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> instead of
 <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">variable</span><span style="color:#000000">)/</span><span style="color:#000000">include</span></code>, as it provides additional flexibility and is otherwise exactly identical in
 functionality (see <a 
 href="#x3-1530003.5.6">section 3.5.6</a> and <a 
 href="#x3-149001r1">Figure 3.1</a> for details).
-</p><!--l. 267--><p class="noindent" >The members <code class="lstinline"><span style="color:#000000">cflags</span></code> and <code class="lstinline"><span style="color:#000000">lflags</span></code> are empty by default and can be used to provide the ability to
+</p><!--l. 269--><p class="noindent" >The members <code class="lstinline"><span style="color:#000000">cflags</span></code> and <code class="lstinline"><span style="color:#000000">lflags</span></code> are empty by default and can be used to provide the ability to
 feed the same consistent set of compiler/linker flags to all builds on one machine.
 Code::Blocks allows you to define custom variable members in addition to the built-in
 ones.
@@ -8639,7 +8678,7 @@ ones.
  id="x3-149001r1"></a>
                                                                                        
                                                                                        
-<!--l. 269--><p class="noindent" ><img 
+<!--l. 271--><p class="noindent" ><img 
 src="gcv_ui.png" alt="PIC"  
  />
 </p>
@@ -8652,60 +8691,60 @@ class="content">Global Variable Environment</span></figcaption><!--tex4ht:label?
  id="x3-1500003.5.3"></a>Constraints</h4>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 273--><p class="noindent" >Both set and global compiler variable names may not be empty, they must not
+      <!--l. 275--><p class="noindent" >Both set and global compiler variable names may not be empty, they must not
       contain white space, must start with a letter and must consist of alphanumeric
       characters.  Cyrillic  or  Chinese  letters  are  not  alphanumeric  characters.  If
       Code::Blocks is given invalid character sequences as names, it might replace them
       without asking.
       </p></li>
       <li class="itemize">
-      <!--l. 274--><p class="noindent" >Every variable requires its base to be defined. Everything else is optional, but the
+      <!--l. 276--><p class="noindent" >Every variable requires its base to be defined. Everything else is optional, but the
       base is absolutely mandatory. If you don’t define a the base of a variable, it will not
       be saved (no matter what other fields you have defined).
       </p></li>
       <li class="itemize">
-      <!--l. 275--><p class="noindent" >You may not define a custom member that has the same name as a built-in member.
+      <!--l. 277--><p class="noindent" >You may not define a custom member that has the same name as a built-in member.
       Currently, the custom member will overwrite the built-in member, but in general,
       the behaviour for this case is undefined. If <code class="lstinline"><span style="color:#FF0000">’</span><span style="color:#FF0000">libext</span><span style="color:#FF0000">’</span></code> is a custom member we can
       only write <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">variable</span><span style="color:#000000">.</span><span style="color:#000000">libext</span><span style="color:#000000">)</span></code> and not <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">variable</span><span style="color:#000000">)/</span><span style="color:#000000">libext</span></code>.
       </p></li>
       <li class="itemize">
-      <!--l. 276--><p class="noindent" >Variable and member values may contain arbitrary character sequences, subject to the
+      <!--l. 278--><p class="noindent" >Variable and member values may contain arbitrary character sequences, subject to the
       following three constraints: </p>
            <ul class="itemize2">
            <li class="itemize">
-           <!--l. 278--><p class="noindent" >You may not define a variable by a value that references the same variable or
+           <!--l. 280--><p class="noindent" >You may not define a variable by a value that references the same variable or
            any of its members
            </p></li>
            <li class="itemize">
-           <!--l. 279--><p class="noindent" >You may not define a member by a value that references the same member
+           <!--l. 281--><p class="noindent" >You may not define a member by a value that references the same member
            </p></li>
            <li class="itemize">
-           <!--l. 280--><p class="noindent" >You may not define a member or variable by a value that references the same
+           <!--l. 282--><p class="noindent" >You may not define a member or variable by a value that references the same
            variable or member through a cyclic dependency.</p></li></ul>
                                                                                        
                                                                                        
       </li></ul>
-<!--l. 284--><p class="noindent" >Code::Blocks will detect the most obvious cases of recursive definitions (which may happen by
+<!--l. 286--><p class="noindent" >Code::Blocks will detect the most obvious cases of recursive definitions (which may happen by
 accident), but it will not perform an in-depth analysis of every possible abuse. If you enter crap,
 then crap is what you will get; you are warned now.
-</p><!--l. 286--><p class="noindent" ><span 
+</p><!--l. 288--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Examples</span>
-</p><!--l. 288--><p class="noindent" >Defining <code class="lstinline"><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span></code> as <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">wx</span><span style="color:#000000">)/</span><span style="color:#000000">include</span></code> is redundant, but perfectly legal Defining
+</p><!--l. 290--><p class="noindent" >Defining <code class="lstinline"><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span></code> as <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">wx</span><span style="color:#000000">)/</span><span style="color:#000000">include</span></code> is redundant, but perfectly legal Defining
 <code class="lstinline"><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span></code> as <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> is illegal and will be detected by Code::Blocks Defining
 <code class="lstinline"><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span></code> as <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">cb</span><span style="color:#000000">.</span><span style="color:#000000">lib</span><span style="color:#000000">)</span></code> which again is defined as <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">wx</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> will create an infinite
 loop
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.4</span>  <a 
  id="x3-1510003.5.4"></a>Using Global Compiler Variables</h4>
-<!--l. 294--><p class="noindent" >All you need to do for using global compiler variables is to put them in your project! Yes, it’s
+<!--l. 296--><p class="noindent" >All you need to do for using global compiler variables is to put them in your project! Yes, it’s
 that easy.
-</p><!--l. 296--><p class="noindent" >When the IDE detects the presence of an unknown global variable, it will prompt you to enter
+</p><!--l. 298--><p class="noindent" >When the IDE detects the presence of an unknown global variable, it will prompt you to enter
 its value. The value will be saved in your settings, so you never need to enter the information
 twice.
-</p><!--l. 298--><p class="noindent" >If you need to modify or delete a variable at a later time, you can do so from the settings
+</p><!--l. 300--><p class="noindent" >If you need to modify or delete a variable at a later time, you can do so from the settings
 menu.
-</p><!--l. 301--><p class="noindent" ><span 
+</p><!--l. 303--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Example</span>
 </p>
 <figure class="figure"> 
@@ -8716,7 +8755,7 @@ class="cmssbx-10x-x-120">Example</span>
  id="x3-151001r2"></a>
                                                                                        
                                                                                        
-<!--l. 303--><p class="noindent" ><img 
+<!--l. 305--><p class="noindent" ><img 
 src="global_vars_dir.png" alt="PIC"  
  />
 </p>
@@ -8725,41 +8764,41 @@ class="content">Global Variables</span></figcaption><!--tex4ht:label?: x3-151001
                                                                                        
                                                                                        
 </figure>
-<!--l. 305--><p class="noindent" >The above image shows both per-project and global variables. <code class="lstinline"><span style="color:#000000">WX_SUFFIX</span></code> is defined in the
+<!--l. 307--><p class="noindent" >The above image shows both per-project and global variables. <code class="lstinline"><span style="color:#000000">WX_SUFFIX</span></code> is defined in the
 project, but <code class="lstinline"><span style="color:#000000">WX</span></code> is a global user variable.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.5</span>  <a 
  id="x3-1520003.5.5"></a>Variable Sets</h4>
-<!--l. 309--><p class="noindent" >Sometimes, you want to use different versions of the same library, or you develop two branches
+<!--l. 311--><p class="noindent" >Sometimes, you want to use different versions of the same library, or you develop two branches
 of the same program. Although it is possible to get along with a global compiler variable, this
 can become tedious. For such a purpose, Code::Blocks supports variable sets. A variable set is
 an independent collection of variables identified by a name (set names have the same
 constraints as variable names).
-</p><!--l. 311--><p class="noindent" >If you wish to switch to a different set of variables, you simply select a different set from the
+</p><!--l. 313--><p class="noindent" >If you wish to switch to a different set of variables, you simply select a different set from the
 menu. Different sets are not required to have the same variables, and identical variables in
 different sets are not required to have the same values, or even the same custom
 members.
-</p><!--l. 313--><p class="noindent" >Another positive thing about sets is that if you have a dozen variables and you want to have a
+</p><!--l. 315--><p class="noindent" >Another positive thing about sets is that if you have a dozen variables and you want to have a
 new set with one of these variables pointing to a different location, you are not required to
 re-enter all the data again. You can simply create a clone of your current set, which will then
 duplicate all of your variables.
-</p><!--l. 315--><p class="noindent" >Deleting a set also deletes all variables in that set (but not in another set). The <span 
+</p><!--l. 317--><p class="noindent" >Deleting a set also deletes all variables in that set (but not in another set). The <span 
 class="cmtt-12">default </span>set is
 always present and cannot be deleted.
-</p><!--l. 317--><p class="noindent" >You can also export or import sets (since r13224 SVN version): files, with extension .set,
+</p><!--l. 319--><p class="noindent" >You can also export or import sets (since r13224 SVN version): files, with extension .set,
 are text files containing a particular set. Those files are easily transferable between
 users/computers.
-</p><!--l. 319--><p class="noindent" >All these options on sets are available with buttons ”Add”, ”Delete”, ”Clone”, ”Export”
+</p><!--l. 321--><p class="noindent" >All these options on sets are available with buttons ”Add”, ”Delete”, ”Clone”, ”Export”
 and ”Import”, located at the top of the Global Variable Environment window (see
 <a 
 href="#x3-149001r1">Figure 3.1</a>).
-</p><!--l. 321--><p class="noindent" >
+</p><!--l. 323--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.6</span>  <a 
  id="x3-1530003.5.6"></a>Custom Members Mini-Tutorial</h4>
-<!--l. 323--><p class="noindent" >As stated above, writing <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">var</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> and <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">var</span><span style="color:#000000">)/</span><span style="color:#000000">include</span></code> is exactly the same thing by
+<!--l. 325--><p class="noindent" >As stated above, writing <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">var</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> and <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">var</span><span style="color:#000000">)/</span><span style="color:#000000">include</span></code> is exactly the same thing by
 default. So why would you want to write something as unintuitive as <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">var</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code>?
-</p><!--l. 325--><p class="noindent" >Let’s take a standard Boost installation under Windows for an example. Generally, you would
+</p><!--l. 327--><p class="noindent" >Let’s take a standard Boost installation under Windows for an example. Generally, you would
 expect a fictional package ACME to have its include files under ACME/include and its libraries
 under ACME/lib. Optionally, it might place its headers into yet another subfolder called
 acme. So after adding the correct paths to the compiler and linker options, you would
@@ -8768,7 +8807,7 @@ acme. So after adding the correct paths to the compiler and linker options, you 
 expect to <code class="lstinline"><span style="color:#0000FF">#</span><span style="color:#0000FF">include</span><span style="color:#000000"> </span><span style="color:#000000">&#x003C;</span><span style="color:#000000">acme</span><span style="color:#000000">/</span><span style="color:#000000">acme</span><span style="color:#000000">.</span><span style="color:#000000">h</span><span style="color:#000000">&#x003E;</span></code> and link to <span 
 class="cmtt-12">libacme.a </span>(or whatever it happens to
 be).
-</p><!--l. 327--><p class="noindent" >Boost, however, installs headers into <span 
+</p><!--l. 329--><p class="noindent" >Boost, however, installs headers into <span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">Boost</span><span 
@@ -8788,7 +8827,7 @@ class="cmsy-10x-x-120">∖</span><span
 class="cmtt-12">lib </span>by default. It seems impossible to get this under one hood without having
 to adjust everything on every new PC, especially if you have to work under Linux or some other
 OS, too.
-</p><!--l. 329--><p class="noindent" >This is where the true power of global user variables is unveiled. When defining the value of the
+</p><!--l. 331--><p class="noindent" >This is where the true power of global user variables is unveiled. When defining the value of the
 <code class="lstinline"><span style="color:#0000FF">#</span><span style="color:#000000">boost</span></code> variable, you go one step further than usual. You define the member include as
 <span 
 class="cmtt-12">C:</span><span 
@@ -8810,18 +8849,18 @@ class="cmtt-12">lib</span>, respectively.
 Your projects using <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">boost</span><span style="color:#000000">.</span><span style="color:#000000">include</span><span style="color:#000000">)</span></code> and <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">boost</span><span style="color:#000000">.</span><span style="color:#000000">lib</span><span style="color:#000000">)</span></code> will magically work on every PC
 without any modifications. You don’t need to know why, you don’t want to know
 why.
-</p><!--l. 331--><p class="noindent" >
+</p><!--l. 333--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">3.5.7</span>  <a 
  id="x3-1540003.5.7"></a>Command line arguments</h4>
-<!--l. 332--><p class="noindent" >After revision [r13245] it is possible to use command line arguments to override and define
+<!--l. 334--><p class="noindent" >After revision [r13245] it is possible to use command line arguments to override and define
 global variables and set the current active set. </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 334--><p class="noindent" >’-S’ parameter for setting current active set via command line
+      <!--l. 336--><p class="noindent" >’-S’ parameter for setting current active set via command line
       </p></li>
       <li class="itemize">
-      <!--l. 335--><p class="noindent" >’-D’ parameter for defining/overriding user variable in form:<br 
+      <!--l. 337--><p class="noindent" >’-D’ parameter for defining/overriding user variable in form:<br 
 class="newline" /><code class="lstinline"><span style="color:#000000">-</span><span style="color:#000000">D</span><span style="color:#000000"> </span><span style="color:#000000">set</span><span style="color:#000000">.</span><span style="color:#000000">variable</span><span style="color:#000000">.</span><span style="color:#000000">member</span><span style="color:#000000">=</span><span style="color:#000000">value</span></code> or <code class="lstinline"><span style="color:#000000">-</span><span style="color:#000000">D</span><span style="color:#000000"> </span><span style="color:#000000">variable</span><span style="color:#000000">.</span><span style="color:#000000">member</span><span style="color:#000000">=</span><span style="color:#000000">value</span></code></p></li></ul>
                                                                                        
                                                                                        
@@ -14758,5 +14797,5 @@ class="cmtt-10x-x-109">https://forums.codeblocks.org/index.php/topic,1022.0.html
                                                                                        
                                                                                        
 </body>
-<!--l. 57--><p class="noindent" > 
+<!--l. 58--><p class="noindent" > 
 </html>
