@@ -13831,23 +13831,35 @@ class="cmtt-12">https://sourceforge.net/projects/gnuwin32/</span></a>
 href="ftp://ftp.info-zip.org/pub/infozip/win32/" class="url" ><span 
 class="cmtt-12">ftp://ftp.info-zip.org/pub/infozip/win32/</span></a> :
       choisissez plutôt une version zip300xn.</p></li></ul>
+<div class="center" 
+>
+<!--l. 119--><p class="noindent" >
+</p>
+<div 
+class="colorbox" id="colorbox72"><span 
+class="cmbx-12">Note :</span><br 
+class="newline" />N’utilisez pas la version de zip.exe disponible sous Msys2 (installée
+via pacman -S zip) pour générer Code::Blocks. Elle a apparemment
+des soucis avec les backslashs standards utilisés dans les chemins de
+Windows.                                                          </div>
+</div>
 <h3 class="sectionHead"><span class="titlemark">5.3</span>  <a 
  id="x3-2030005.3"></a>Version Nightly de Code::Blocks sous Windows</h3>
-<!--l. 122--><p class="noindent" >Les générations de ”Nightly” sont distribuées ”telles que”. Ce sont des distributions ”binaires”,
+                                                                                       
+                                                                                       
+<!--l. 123--><p class="noindent" >Les générations de ”Nightly” sont distribuées ”telles que”. Ce sont des distributions ”binaires”,
 normalement fournies au jour le jour, représentant les dernières avancées de l’état de l’art
 des sources de Code::Blocks. En principe, elles sont relativement stables, cependant
 elles peuvent aussi introduire de nouveaux bugs, des régressions, mais d’un autre
 côté elles peuvent apporter de nouvelles fonctionnalités, des corrections de bugs,
 ...
-</p><!--l. 124--><p class="noindent" >Avant de décrire ce que ces générations contiennent, il est important de commencer par revoir
+</p><!--l. 125--><p class="noindent" >Avant de décrire ce que ces générations contiennent, il est important de commencer par revoir
 ce que NE SONT PAS les générations ”nightly”. Pour débuter demandez-vous : qu’est-ce que
 Code::Blocks?<br 
 class="newline" />Bon, c’est un IDE (Integrated Development Environment) soit en français un Environnement de
 Développement Intégré : cela signifie qu’il intègre différents outils et les fait travailler ensemble.
 Donc Code::Blocks <span 
 class="cmbx-12">n’est PAS un compilateur </span>(ni même MS, ni Borland), ce n’est pas un
-                                                                                       
-                                                                                       
 débugueur, ce n’est pas non plus un système de génération de makefile ! Donc, ces composants
 ne font <span 
 class="cmbx-12">PAS </span>partie de Code::Blocks, et par conséquent ne font pas partie de la distribution
@@ -13878,7 +13890,7 @@ class="cmti-12">_gcc</span><span
 class="cmti-12">_cb.dll”</span>). Une fois de plus, sur
 chaque annonce de génération ”nightly” vous trouverez un lien vers cette dll ainsi que d’autres
 prérequis.
-</p><!--l. 130--><p class="noindent" >Quand, sous Windows, vous installez une version officielle incluant MinGW (la version
+</p><!--l. 131--><p class="noindent" >Quand, sous Windows, vous installez une version officielle incluant MinGW (la version
 recommandée), vous trouverez un répertoire MinGW dans <span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">∖</span><span 
@@ -13891,7 +13903,9 @@ peut troubler certains des composants de MinGW. Alors, sous Windows, déplacez d
 répertoire MinGW vers C:, par exemple. Vous pouvez même le renommer MinGW32 pour
 une chaîne d’outils de compilation en 32 bits, ou MinGW64 pour une chaîne en 64
 bits.
-</p><!--l. 132--><p class="noindent" >Comme dit précédemment, une bonne solution pour installer une version ”nightly” est de
+</p><!--l. 133--><p class="noindent" >Comme dit précédemment, une bonne solution pour installer une version ”nightly” est de
+                                                                                       
+                                                                                       
 commencer par installer une version officielle, puis de la <span 
 class="cmbx-12">configurer et l’essayer</span>. Ainsi, vos
 fichiers de configuration, associations, raccourcis clavier, seront correctement paramétrés et ils
@@ -13899,17 +13913,15 @@ seront conservés lors de l’installation de la ”nightly”. Le lien pour tro
 “nightlies“ est <a 
 href="https://forums.codeblocks.org/index.php/board,20.0.html" class="url" ><span 
 class="cmtt-12">https://forums.codeblocks.org/index.php/board,20.0.html</span></a>.
-</p><!--l. 134--><p class="noindent" >Si vous installez votre ”nightly” par-dessus une version 20.03 ou 23.11, vous devez suivre avec
+</p><!--l. 135--><p class="noindent" >Si vous installez votre ”nightly” par-dessus une version 20.03 ou 23.11, vous devez suivre avec
 attention la procédure car un certain nombre de choses ont changé, notamment, elles sont
 compilées en 64 bits avec un compilateur récent, une version différente de wxWidgets et ont
 besoin de dlls complémentaires.
-</p><!--l. 136--><p class="noindent" >Normallement, vous ne devriez pas avoir ce type de problèmes avec une version 23.11.
+</p><!--l. 137--><p class="noindent" >Normallement, vous ne devriez pas avoir ce type de problèmes avec une version 23.11.
 </p>
       <ul class="itemize1">
-                                                                                       
-                                                                                       
       <li class="itemize">
-      <!--l. 138--><p class="noindent" >Dézippez  la  version  ”nightly”  téléchargée  et  copiez  tous  les  fichiers  dans  votre
+      <!--l. 139--><p class="noindent" >Dézippez  la  version  ”nightly”  téléchargée  et  copiez  tous  les  fichiers  dans  votre
       sous-répertoire  codeblocks.  Si  vous  avez  déplacé  votre  sous-répertoire  MinGW
       ailleurs, vous pouvez même d’abord effacer tout le contenu de ce sous-répertoire
       codeblocks pour être certain de ne pas mélanger les versions. Une exception : si vous
@@ -13917,14 +13929,14 @@ besoin de dlls complémentaires.
       des fichiers de localisation, ne les effacez pas.
       </p></li>
       <li class="itemize">
-      <!--l. 139--><p class="noindent" >Dézippez les dlls wxWidgets trouvées avec votre nightly. Vous pouvez les installer
+      <!--l. 140--><p class="noindent" >Dézippez les dlls wxWidgets trouvées avec votre nightly. Vous pouvez les installer
       directement  dans  votre  sous-répertoire  codeblocks  ou  pour  une  utilisation  plus
       étendue, dans le sous-répertoire bin de MinGW. Vérifiez que ce sous-répertoire bin
       est bien dans votre PATH. Il devrait l’être si vous avez installé une version officielle
       de CB via l’installateur.
       </p></li>
       <li class="itemize">
-      <!--l. 140--><p class="noindent" >Dézippez les dlls pré-requises. Vous pouvez les installer directement dans votre
+      <!--l. 141--><p class="noindent" >Dézippez les dlls pré-requises. Vous pouvez les installer directement dans votre
       sous-répertoire codeblocks. Ici également, pour une utilisation plus étendue, vous
       pouvez les installer dans le sous-répertoire bin de MinGW ou tout autre chemin
       accessible via votre variable PATH. Mais faites attention, car elles peuvent déjà y
@@ -13933,10 +13945,12 @@ besoin de dlls complémentaires.
       pour un usage privé et pour éviter des soucis liés au mélange de versions de MinGW.</p></li></ul>
 <div class="center" 
 >
-<!--l. 143--><p class="noindent" >
+<!--l. 144--><p class="noindent" >
 </p>
+                                                                                       
+                                                                                       
 <div 
-class="colorbox" id="colorbox72"><span 
+class="colorbox" id="colorbox73"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Les  dlls  de  wxWidgets  et  celles  pré-requises  ne  changent  pas
 très souvent. Donc, si vous installez une ”nightly” par-dessus une
@@ -13944,7 +13958,7 @@ précédente, il n’est pas forcément nécessaire de les mettre à jour.
 Lisez avec attention le sujet du forum concernant spécifiquement cette
 ”nightly”.                                                          </div>
 </div>
-<!--l. 145--><p class="noindent" >Normalement, c’est tout. Votre ”nightly” est prête à l’emploi ...
+<!--l. 146--><p class="noindent" >Normalement, c’est tout. Votre ”nightly” est prête à l’emploi ...
                                                                                        
                                                                                        
                                                                                        
@@ -13953,9 +13967,6 @@ Lisez avec attention le sujet du forum concernant spécifiquement cette
                                                                                        
                                                                                        
                                                                                        
-                                                                                       
-                                                                                       
-</p><!--l. 1--><p class="noindent" >
                                                                                        
                                                                                        
 </p>
@@ -13968,7 +13979,7 @@ Lisez avec attention le sujet du forum concernant spécifiquement cette
 <!--l. 5--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox73"><span 
+class="colorbox" id="colorbox74"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Ce chapitre existait dans les fichiers originaux .tex de la version 1
 mais n’a pas été publié dans toutes les langues. Il est nécessaire de
@@ -14032,7 +14043,7 @@ x86_64-posix-seh. Les nouvelles versions 2023 de C::B sont maintenant fournies a
 <!--l. 29--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox74"><span 
+class="colorbox" id="colorbox75"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />La version MinGW 64 bits peut générer du code 64 bits et du code
 32 bits. Ajoutez simplement l’option -m64 ou -m32 à vos options de
@@ -14368,7 +14379,7 @@ DEBUG_FLAG=0
 <!--l. 160--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox75"><span 
+class="colorbox" id="colorbox76"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />USE_OPENGL=1  crée  une  dll  supplémentaire,  utilisée  si  votre
 programme  wxWidgets  requiert  une  fenêtre  OpenGL,  notamment
@@ -14395,7 +14406,7 @@ VENDOR=cb_64
 <!--l. 171--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox76"><span 
+class="colorbox" id="colorbox77"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Si VENDOR n’est pas spécifié, cela revient à VENDOR=custom.
 VENDOR=cb est utilisé par l’équipe de Code::Blocks. Aussi, pour
@@ -14674,7 +14685,7 @@ version en 64 bits avec wxWidgets 3.2) :
                                                                                        
                                                                                        
 <div 
-class="colorbox" id="colorbox77"><span 
+class="colorbox" id="colorbox78"><span 
 class="cmbx-12">Note :</span><br 
 class="newline" />Il existe plusieurs variantes de ce fichier, dépendant de l’OS, de la
 version wxWidgets, d’une génération en 32 ou 64 bits.              </div>
