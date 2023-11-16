@@ -497,7 +497,7 @@ Usage:
 codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
            [--multiple-instance] [/d] [/nc] [/v] [--prefix <str>]
            [--user-data-dir <str>] [/p <str>] [--no-log] [--log-to-file]
-           [--debug-log-to-file] [--profile <str>]
+           [--debug-log-to-file] [--profile <str>] [/S] [/D]
            [--rebuild] [--build] [--clean] [--target <str>]
            [--no-batch-window-close] [--batch-build-notify]
            [--script <str>] [--file <str>]
@@ -514,10 +514,8 @@ codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
 \item Lancer \codeblocks en utilisant le raccourci que vous avez édité.
 \end{enumerate}
 
-Exemple:
-\begin{lstlisting}
-codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
-\end{lstlisting}
+Exemple:\\
+\opt{codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'}
 
 \genterm{*nix}
 \begin{enumerate}[noitemsep] 
@@ -526,39 +524,106 @@ codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
 \end{enumerate}
 \textbf{Note :} \codeblocks ne peut pas s'exécuter dans une console réelle, X11 doit être en cours d'exécution et vous devez utiliser un émulateur graphique de terminal.
 
-Exemple:
-\begin{lstlisting}
-codeblocks --no-splash-screen --debug-log
-\end{lstlisting}
+Exemple:\\
+\opt{codeblocks --no-splash-screen --debug-log}
 
 \subsection{Arguments en ligne de commande}
+% Ci-dessous en forme de tableau, comme dans le Wiki. OK en pdf, moins bien en html et chm, car transformé en image (un peu trop grande !)
+% De plus, pas facile de gérer la largeur des colonnes : à faire ligne par ligne pour placer au mieux les \\ à l'intérieur de \makecell[l]{...}, 
+% sinon les lignes débordent de la page !
+%{\begin{longtable}{|l|l|l|}\hline
+%                & \textbf{Argument}		                        & \textbf{Fonction} \\ \hline
+%\small{Windows} & \makecell[l]{\small{Windows(Msys2,Wsl)}\\
+%                                \small{Linux, Unix, MacOS}}     &                   \\ \hline
+%\endhead
+%                & \footnotesize{\opt{\var{filename}}}           & \makecell[l]{Spécifie le nom du fichier de projet \file{*.cbp} ou le nom de\\
+%                                                                                l'espace de travail \file{*.workspace}. Par exemple,         \\
+%                                                                                \var{filename} peut être \file{project.cbp}. Placez cet      \\
+%                                                                                argument en fin de ligne de commande, juste avant            \\
+%                                                                                la redirection de la sortie, s'il y en a une.}  \\ \hline
+%                &  \footnotesize{\opt{--file=\var{filename}\optional{:ligne}}} & \makecell[l]{Ouvrir un fichier dans \codeblocks et, en option, se\\
+%                                                                                        positionner sur une ligne particulière.}\\ \hline
+%\textbf{/h, /?} & \footnotesize{\opt{--help, --?}} & \makecell[l]{Affiche un message d'aide concernant les arguments en\\
+%                                                                  ligne de commande.}                                           \\ \hline
+%                & \footnotesize{\opt{--safe-mode}}              & Désactive toutes les extensions (plugins) au démarrage.       \\ \hline
+%\textbf{/na}    & \footnotesize{\opt{--no-check-associations}}  & \makecell[l]{Ne faire aucun contrôle d'association de fichiers\\
+%                                                                                (Windows seulement).}                           \\ \hline
+%\textbf{/nd}    & \footnotesize{\opt{--no-dde}}                 & Ne pas lancer le serveur DDE (Windows seulement).             \\ \hline
+%\textbf{/ni}    & \footnotesize{\opt{--no-ipc}}                 & Ne pas lancer le serveur IPC (Linux et Mac seulement).        \\ \hline
+%\textbf{/ns}    & \footnotesize{\opt{--no-splash-screen}}       & \makecell[l]{Ne pas afficher l'écran de démarrage pendant le\\
+%                                                                          chargement de l'application.}                         \\ \hline
+%                & \footnotesize{\opt{--multiple-instance}}      & Autorise l'exécution de plusieurs instances.                  \\ \hline
+%\textbf{/d}     & \footnotesize{\opt{--debug-log}}              & Afficher le journal de débogage de l'application.             \\ \hline
+%\textbf{/nc}    & \footnotesize{\opt{--no-crash-handler}}       & \makecell[l]{Ne pas utiliser le "crash handler" \\
+%                                                                                (utile pour déboguer C::B).}                    \\ \hline
+%                & \footnotesize{\opt{--prefix=\var{str}}}       & Configure le préfixe du répertoire de données partagées.      \\ \hline
+%                & \footnotesize{\opt{--user-data-dir=\var{str}}}& \makecell[l]{Configure un répertoire alternatif pour la configuration\\
+%                                                                               utilisateur et les greffons installés par l'utilisateur.}\\ \hline
+%\textbf{/p}     & \makecell[l]{
+%                  \footnotesize{\opt{--personality=\var{str},}} \\
+%                  \footnotesize{\opt{--profile=\var{str}}} }    & \makecell[l]{ Configure le profil (ou personnalité) à utiliser. Vous \\
+%                                                                                pouvez utiliser le paramètre ask pour afficher la liste\\
+%                                                                                de tous les profils disponibles.}               \\ \hline
+%                & \footnotesize{\opt{--no-log}}                 & Désactive le journal d'application.                           \\ \hline
+%                & \footnotesize{\opt{--log-to-file}}            & Redirige le journal application vers un fichier.              \\ \hline
+%                & \footnotesize{\opt{--clean}}                  & Nettoie le project/espace de travail.                         \\ \hline
+%                & \footnotesize{\opt{--rebuild}}                & Nettoie et génère le projet ou l'espace de travail.           \\ \hline
+%                & \footnotesize{\opt{--build}}                  & Génère le projet ou l'espace de travail.                      \\ \hline
+%                & \footnotesize{\opt{--target=\var{str}}}       & \makecell[l]{Configure la cible de génération. Par exemple \\
+%                                                                            \cmdline{\opt{--}target='Release'}.}                \\ \hline
+%                & \footnotesize{\opt{--no-batch-window-close}}  & \makecell[l]{Garde la fenêtre batch de journalisation visible après \\
+%                                                                            que la génération par batch soit terminée.}         \\ \hline
+%                & \footnotesize{\opt{--batch-build-notify}}     & \makecell[l]{Affiche un message une fois que la génération batch\\
+%                                                                            est terminée.}                                      \\ \hline
+%                & \footnotesize{\opt{--script=\var{str}}}       & Exécute un fichier de script.                                 \\ \hline
+%                & \footnotesize{\opt{--dbg-config=\var{str}}}   & \makecell[l]{Sélectionne la configuration de débogage à utiliser\\
+%                                                                            (utilise la cible courante si omis).}               \\ \hline
+%                & \footnotesize{\opt{--dbg-attach=\var{str}}}   & \makecell[l]{Chaîne passée au greffon du debugger qui est utilisé\\
+%                                                                            lors de l'attachement au processus. }               \\ \hline
+%\textbf{/v}     & \footnotesize{\opt{--verbose}}                & Active la journalisation des erreurs de c::b.                 \\ \hline
+%                & \footnotesize{\opt{-S setName}}               & \makecell[l]{Configure "setName" en tant qu'ensemble courant de\\
+%                                                                            variables globales (après [r13245])}                \\ \hline
+%                & \footnotesize{\opt{-D $<$set$>$.uservar.mem=val}} & \makecell[l]{Configure le membre mem de la variable utilisateur \\
+%                                                                            uservar de l'ensemble "set" à la valeur val. Cela se      \\
+%                                                                            substitue à la valeur courante dans "set"                 \\
+%                                                                            (après [r13245])}                                   \\ \hline
+%                & \footnotesize{\opt{$>$ \var{build log file}}}     & \makecell[l]{Placé en toute dernière position d'une ligne de    \\
+%                                                                                commande, ceci permet à l'utilisateur de rediriger la \\
+%                                                                                sortie standard vers un fichier log. Ceci n'est pas à \\
+%                                                                                proprement parler une option de \codeblocks, mais     \\
+%                                                                                seulement une redirection standard des sorties des    \\
+%                                                                                shells DOS/*nix.}                               \\ \hline
+%\caption{Liste des arguments en ligne de commande}
+%\end{longtable}
+%}
 \begin{description}
 \item[\var{filename}] Spécifie le nom du fichier de projet \file{*.cbp} ou le nom de l'espace de travail \file{*.workspace}. Par exemple, \var{filename} peut être \file{project.cbp}. Placez cet argument en fin de ligne de commande, juste avant la redirection de la sortie, s'il y en a une.
-\item[--file=\var{filename}\optional{:ligne}] Ouvrir un fichier dans \codeblocks et, en option, se positionner sur une ligne particulière.
-\item[/h, --help] Affiche un message d'aide concernant les arguments en ligne de commande.
-\item[/?, --?] Affiche un message d'aide : alias pour help.
-\item[--safe-mode] Désactive toutes les extensions (plugins) au démarrage.
-\item[/na, --no-check-associations] Ne faire aucun contrôle d'association de fichiers (Windows seulement).
-\item[/nd, --no-dde] Ne pas lancer le serveur DDE (Windows seulement).
-\item[/ni, --no-ipc] Ne pas lancer le serveur IPC (Linux et Mac seulement).
-\item[/ns, --no-splash-screen] Ne pas afficher l'écran de démarrage pendant le chargement de l'application.
-\item[--multiple-instance] Autorise l'exécution de plusieurs instances.
-\item[/d, --debug-log] Afficher le journal de débogage de l'application.
-\item[/nc, --no-crash-handler] Ne pas utiliser le "crash handler" (utile pour déboguer C::B).
-\item[/v, --verbose] Active la journalisation des erreurs de c::b.
-\item[--prefix=\var{str}] Configure le préfixe du répertoire de données partagées.
-\item[/p, --personality=\var{str}, --profile=\var{str}] Configure le profil (ou personnalité) à utiliser. Vous pouvez utiliser le paramètre ask pour afficher la liste de tous les profils disponibles.
-\item[--no-log] Désactive le journal d'application.
-\item[--log-to-file] Redirige le journal application vers un fichier.
-\item[--rebuild] Nettoie et génère le projet ou l'espace de travail.
-\item[--build] Génère le projet ou l'espace de travail.
-\item[--clean] Nettoie le project/espace de travail.
-\item[--target=\var{str}] Configure la cible de génération. Par exemple \cmdline{--target='Release'}.
-\item[--no-batch-window-close] Garde la fenêtre batch de journalisation visible après que la génération par batch soit terminée.
-\item[--batch-build-notify] Affiche un message une fois que la génération batch est terminée.
-\item[--script=\var{str}] Exécute un fichier de script.
-\item[--dbg-config=\var{str}] Sélectionne la configuration de débogage à utiliser (utilise la cible courante si omis).
-\item[--dbg-attach=\var{str}] Chaîne passée au greffon du debugger qui est utilisé lors de l'attachement au processus.
+\item[\opt{--}file=\var{filename}\optional{:ligne}] Ouvrir un fichier dans \codeblocks et, en option, se positionner sur une ligne particulière.
+\item[/h, \opt{--}help] Affiche un message d'aide concernant les arguments en ligne de commande.
+\item[/?, \opt{--}?] Affiche un message d'aide : alias pour help.
+\item[\opt{--}safe-mode] Désactive toutes les extensions (plugins) au démarrage.
+\item[/na, \opt{--}no-check-associations] Ne faire aucun contrôle d'association de fichiers (Windows seulement).
+\item[/nd, \opt{--}no-dde] Ne pas lancer le serveur DDE (Windows seulement).
+\item[/ni, \opt{--}no-ipc] Ne pas lancer le serveur IPC (Linux et Mac seulement).
+\item[/ns, \opt{--}no-splash-screen] Ne pas afficher l'écran de démarrage pendant le chargement de l'application.
+\item[\opt{--}multiple-instance] Autorise l'exécution de plusieurs instances.
+\item[/d, \opt{--}debug-log] Afficher le journal de débogage de l'application.
+\item[/nc, \opt{--}no-crash-handler] Ne pas utiliser le "crash handler" (utile pour déboguer C::B).
+\item[\opt{--}prefix=\var{str}] Configure le préfixe du répertoire de données partagées.
+\item[\opt{--}user-data-dir=\var{str}] Configure un répertoire alternatif pour la configuration utilisateur et les greffons installés par l'utilisateur.
+\item[/p, \opt{--}personality=\var{str}, \opt{--}profile=\var{str}] Configure le profil (ou personnalité) à utiliser. Vous pouvez utiliser le paramètre ask pour afficher la liste de tous les profils disponibles.
+\item[\opt{--}no-log] Désactive le journal d'application.
+\item[\opt{--}log-to-file] Redirige le journal application vers un fichier.
+\item[\opt{--}clean] Nettoie le project/espace de travail.
+\item[\opt{--}rebuild] Nettoie et génère le projet ou l'espace de travail.
+\item[\opt{--}build] Génère le projet ou l'espace de travail.
+\item[\opt{--}target=\var{str}] Configure la cible de génération. Par exemple \cmdline{\opt{--}target='Release'}.
+\item[\opt{--}no-batch-window-close] Garde la fenêtre batch de journalisation visible après que la génération par batch soit terminée.
+\item[\opt{--}batch-build-notify] Affiche un message une fois que la génération batch est terminée.
+\item[\opt{--}script=\var{str}] Exécute un fichier de script.
+\item[\opt{--}dbg-config=\var{str}] Sélectionne la configuration de débogage à utiliser (utilise la cible courante si omis).
+\item[\opt{--}dbg-attach=\var{str}] Chaîne passée au greffon du debugger qui est utilisé lors de l'attachement au processus.
+\item[/v, \opt{--}verbose] Active la journalisation des erreurs de c::b.
 \item[-S setName] Configure "setName" en tant qu'ensemble courant de variables globales (après [r13245])
 \item[-D $<$set$>$.uservar.mem=val] Configure le membre mem de la variable utilisateur uservar de l'ensemble "set" à la valeur val. Cela se substitue à la valeur courante dans "set" (après [r13245])
 \item[$>$ \var{build log file}] Placé en toute dernière position d'une ligne de commande, ceci permet à l'utilisateur de rediriger la sortie standard vers un fichier log. Ceci n'est pas à proprement parler une option de \codeblocks, mais seulement une redirection standard des sorties des shells DOS/*nix.

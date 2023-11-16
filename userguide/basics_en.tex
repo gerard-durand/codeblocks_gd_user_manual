@@ -492,14 +492,14 @@ Usage:
 codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
            [--multiple-instance] [/d] [/nc] [/v] [--prefix <str>]
            [--user-data-dir <str>] [/p <str>] [--no-log] [--log-to-file]
-           [--debug-log-to-file] [--profile <str>]
+           [--debug-log-to-file] [--profile <str>] [/S] [/D]
            [--rebuild] [--build] [--clean] [--target <str>]
            [--no-batch-window-close] [--batch-build-notify]
            [--script <str>] [--file <str>]
            [--dbg-config <str>] [--dbg-attach <str>]
            [filename(s)...]
 \end{lstlisting}
-           
+
 \genterm{Windows}
 \begin{enumerate}[noitemsep] 
 \item Find the \codeblocks shortcut in the Desktop or Start menu.
@@ -509,10 +509,10 @@ codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
 \item Run \codeblocks by using the shortcut you edited.
 \end{enumerate}
 
-Example:
-\begin{lstlisting}
-codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
-\end{lstlisting}
+Example:\\
+%\begin{lstlisting}
+\opt{codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'}
+%\end{lstlisting}
 
 \genterm{*nix}
 \begin{enumerate}[noitemsep]
@@ -521,39 +521,40 @@ codeblocks /na /nd --no-splash-screen --build <name>.cbp --target='Release'
 \end{enumerate}
 \textbf{Note:} \codeblocks can not run on a real console, X11 must be running and you must use a graphical terminal emulator.
 
-Example:
-\begin{lstlisting}
-codeblocks --no-splash-screen --debug-log
-\end{lstlisting}
+Example:\\
+%\begin{lstlisting}
+\opt{codeblocks --no-splash-screen --debug-log}
+%\end{lstlisting}
 
 \subsection{Command line arguments}
 \begin{description}
 \item[\var{filename}] Specifies the project \file{*.cbp} filename or workspace \file{*.workspace} filename. For instance, \var{filename} may be \file{project.cbp}. Place this argument at the end of the command line, just before the output redirection if there is any.
-\item[--file=\var{filename}\optional{:line}] Open file in \codeblocks and optionally jump to a specific line.
-\item[/h, --help] Shows a help message regarding the command line arguments.
-\item[/?, --?] Shows a help message: alias for help.
-\item[--safe-mode] All plugins are disabled on startup.
-\item[/na, --no-check-associations] Don't perform any file association checks (Windows only).
-\item[/nd, --no-dde] Don't start a DDE server (Windows only).
-\item[/ni, --no-ipc] Don't start an IPC server (Linux and Mac only).
-\item[/ns, --no-splash-screen] Hides the splash screen while the application is loading.
-\item[--multiple-instance] Allow running multiple instances.
-\item[/d, --debug-log] Display the debug log of the application.
-\item[/nc, --no-crash-handler] Don't use the crash handler (useful for debugging C::B).
-\item[/v, --verbose] Enable logging of c::b errors.
-\item[--prefix=\var{str}] Sets the shared data directory prefix.
-\item[/p, --personality=\var{str}, --profile=\var{str}] Sets the personality to use. You can use ask as the parameter to list all available personalities.
-\item[--no-log] Turn off the application log.
-\item[--log-to-file] Redirect application log to a file.
-\item[--rebuild] Clean and then build the project or workspace.
-\item[--build] Build the project or workspace.
-\item[--clean] Clean the project/workspace.
-\item[--target=\var{str}] Sets target for batch build. For example \cmdline{--target='Release'}.
-\item[--no-batch-window-close] Keeps the batch log window visible after the batch build is completed.
-\item[--batch-build-notify] Shows a message after the batch build is completed.
-\item[--script=\var{str}] Execute script file.
-\item[--dbg-config=\var{str}] Selects the debugger config used for attaching (uses the current selected target if omitted).
-\item[--dbg-attach=\var{str}] String passed to the debugger plugin which is used for attaching to a process.
+\item[\opt{--}file=\var{filename}\optional{:line}] Open file in \codeblocks and optionally jump to a specific line.
+\item[/h, \opt{--}help] Shows a help message regarding the command line arguments.
+\item[/?, \opt{--}?] Shows a help message: alias for help.
+\item[\opt{--}safe-mode] All plugins are disabled on startup.
+\item[/na, \opt{--}no-check-associations] Don't perform any file association checks (Windows only).
+\item[/nd, \opt{--}no-dde] Don't start a DDE server (Windows only).
+\item[/ni, \opt{--}no-ipc] Don't start an IPC server (Linux and Mac only).
+\item[/ns, \opt{--}no-splash-screen] Hides the splash screen while the application is loading.
+\item[\opt{--}multiple-instance] Allow running multiple instances.
+\item[/d, \opt{--}debug-log] Display the debug log of the application.
+\item[/nc, \opt{--}no-crash-handler] Don't use the crash handler (useful for debugging C::B).
+\item[\opt{--}prefix=\var{str}] Sets the shared data directory prefix.
+\item[\opt{--}user-data-dir=\var{str}] Specify an alternative directory for user settings and user installed plugins 
+\item[/p, \opt{--}personality=\var{str}, \opt{--}profile=\var{str}] Sets the personality to use. You can use ask as the parameter to list all available personalities.
+\item[\opt{--}no-log] Turn off the application log.
+\item[\opt{--}log-to-file] Redirect application log to a file.
+\item[\opt{--}rebuild] Clean and then build the project or workspace.
+\item[\opt{--}build] Build the project or workspace.
+\item[\opt{--}clean] Clean the project/workspace.
+\item[\opt{--}target=\var{str}] Sets target for batch build. For example \cmdline{\opt{--}target='Release'}.
+\item[\opt{--}no-batch-window-close] Keeps the batch log window visible after the batch build is completed.
+\item[\opt{--}batch-build-notify] Shows a message after the batch build is completed.
+\item[\opt{--}script=\var{str}] Execute script file.
+\item[\opt{--}dbg-config=\var{str}] Selects the debugger config used for attaching (uses the current selected target if omitted).
+\item[\opt{--}dbg-attach=\var{str}] String passed to the debugger plugin which is used for attaching to a process.
+\item[/v, \opt{--}verbose] Enable logging of c::b errors.
 \item[-S setName] Set "setName" to current active set for global variables (after [r13245])
 \item[-D $<$set$>$.uservar.mem=val] Set the member mem of user variable uservar in "set" to value val. This overrides the current "set" value (after [r13245])
 \item[$>$ \var{build log file}] Placed in the very last position of the command line, this may be used to redirect standard output to log file. This is not a \codeblocks option as such, but just a standard DOS/*nix shell output redirection.
