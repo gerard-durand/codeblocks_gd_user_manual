@@ -1,6 +1,7 @@
  
 /* start css.sty */
 .cmr-10{font-size:83%;}
+.cmmi-10{font-size:83%;font-style: italic;}
 .cmsy-10{font-size:83%;}
 .cmssbx-10x-x-120{ font-family: sans-serif; font-weight: bold;}
 .cmssbx-10x-x-120{ font-family: sans-serif; font-weight: bold;}
@@ -30,6 +31,9 @@
 .cmbx-10x-x-109{ font-weight: bold;}
 .cmbx-10x-x-109{ font-weight: bold;}
 .cmbx-10x-x-109{ font-weight: bold;}
+.cmtt-10{font-size:83%;font-family: monospace,monospace;}
+.cmtt-10{font-family: monospace,monospace;}
+.cmtt-10{font-family: monospace,monospace;}
 .cmsy-10x-x-109{font-size:90%;}
 .cmbx-10{font-size:83%; font-weight: bold;}
 .cmbx-10{ font-weight: bold;}
@@ -47,9 +51,6 @@
 .cmssbx-10{ font-family: sans-serif; font-weight: bold;}
 .tcsx-1000{font-size:83%;}
 .cmbxti-10x-x-120{ font-weight: bold; font-style: italic;}
-.cmtt-10{font-size:83%;font-family: monospace,monospace;}
-.cmtt-10{font-family: monospace,monospace;}
-.cmtt-10{font-family: monospace,monospace;}
 body#tex4ht-menu {white-space: nowrap; }
 p{margin-top:0;margin-bottom:0}
 p.indent{text-indent:0;}
@@ -73,7 +74,7 @@ h1,h2,h3,h4,h5 { line-height:1.2; }
 .sectionHead, .likesectionHead { font-size: 1.5157em; }
 .subsectionHead, .likesubsectionHead { font-size: 1.3195em; }
 .subsubsectionHead, .likesubsubsectionHead { font-size: 1.1487em; }
- @media (prefers-color-scheme: dark) { img[src^="main_codeblocks_en"]{filter: invert(1); } }  */
+ @media (prefers-color-scheme: dark) { img[src^="main_codeblocks_en"]{filter: invert(1); } } */ 
 li p.indent { text-indent: 0em }
 li p:first-child{ margin-top:0em; }
 li p:last-child, li div:last-child { margin-bottom:0.5em; }

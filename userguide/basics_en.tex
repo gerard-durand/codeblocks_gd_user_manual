@@ -526,9 +526,66 @@ Example:\\
 \opt{codeblocks --no-splash-screen --debug-log}
 %\end{lstlisting}
 
+
+\iftrue    % with iftrue displays as an array, with iffalse displays as a description
+\newpage
+\subsection{Command line arguments}
+{\begin{longtable}{|l|l|p{9.5cm}|}\hline
+                & \textbf{Argument}		                        & \textbf{Function} \\ \hline
+\textbf{\small{Windows}} & \makecell[l]{\textbf{\small{Windows(Msys2,Wsl)}}\\
+                                        \textbf{\small{Linux, Unix, MacOS}}} &      \\ \hline
+\endhead
+                & \footnotesize{\opt{\var{filename}}}           & Specifies the project \file{*.cbp} filename or workspace \file{*.workspace} 
+                                                                  filename. For instance, \var{filename} may be \file{project.cbp}. Place this 
+                                                                  argument at the end of the command line, just before the output redirection 
+                                                                  if there is any.                                                                  \\ \hline
+                &  \footnotesize{\opt{--file=\var{filename}\optional{:ligne}}} & Open file in \codeblocks and optionally jump to a specific line.   \\ \hline
+\textbf{/h, /?} & \footnotesize{\opt{--help, --?}}              & Shows a help message regarding the command line arguments.                        \\ \hline
+                & \footnotesize{\opt{--safe-mode}}              & All plugins are disabled on startup.                                              \\ \hline
+\textbf{/na}    & \footnotesize{\opt{--no-check-associations}}  & Don't perform any file association checks (Windows only).                         \\ \hline
+\textbf{/nd}    & \footnotesize{\opt{--no-dde}}                 & Don't start a DDE server (Windows only).                                          \\ \hline
+\textbf{/ni}    & \footnotesize{\opt{--no-ipc}}                 & Don't start an IPC server (Linux and Mac only).                                   \\ \hline
+\textbf{/ns}    & \footnotesize{\opt{--no-splash-screen}}       & Hides the splash screen while the application is loading.                         \\ \hline
+                & \footnotesize{\opt{--multiple-instance}}      & Allow running multiple instances.                                                 \\ \hline
+\textbf{/d}     & \footnotesize{\opt{--debug-log}}              & Display the debug log of the application.                                         \\ \hline
+\textbf{/nc}    & \footnotesize{\opt{--no-crash-handler}}       & Don't use the crash handler (useful for debugging C::B).                          \\ \hline
+                & \footnotesize{\opt{--prefix=\var{str}}}       & Sets the shared data directory prefix.                                            \\ \hline
+                & \footnotesize{\opt{--user-data-dir=\var{str}}}& Specify an alternative directory for user settings and user installed plugins.    \\ \hline
+\textbf{/p}     & \makecell[l]{
+                  \footnotesize{\opt{--personality=\var{str},}}\\
+                  \footnotesize{\opt{--profile=\var{str}}} }    & Sets the personality to use. You can use ask as the parameter to list all
+                                                                  available personalities.                                                          \\ \hline
+                & \footnotesize{\opt{--no-log}}                 & Turn off the application log.                                                     \\ \hline
+                & \footnotesize{\opt{--log-to-file}}            & Redirect application log to a file.                                               \\ \hline
+                & \footnotesize{\opt{--debug-log-to-file}}      & Redirect application debug log to a file.                                         \\ \hline
+                & \footnotesize{\opt{--clean}}                  & Clean the project or workspace.                                                   \\ \hline
+                & \footnotesize{\opt{--rebuild}}                & Clean and then build the project or workspace.                                    \\ \hline
+                & \footnotesize{\opt{--build}}                  & Build the project or workspace.                                                   \\ \hline
+                & \footnotesize{\opt{--target=\var{str}}}       & Sets target for batch build. For example \cmdline{\opt{--}target='Release'}.      \\ \hline
+                & \footnotesize{\opt{--no-batch-window-close}}  & Keeps the batch log window visible after the batch build is completed.            \\ \hline
+                & \footnotesize{\opt{--batch-build-notify}}     & Shows a message after the batch build is completed.                               \\ \hline
+                & \footnotesize{\opt{--script=\var{str}}}       & Execute script file.                                                              \\ \hline
+                & \footnotesize{\opt{--dbg-config=\var{str}}}   & Selects the debugger config used for attaching (uses the current selected 
+                                                                  target if omitted).                                                               \\ \hline
+                & \footnotesize{\opt{--dbg-attach=\var{str}}}   & String passed to the debugger plugin which is used for attaching to a process.    \\ \hline
+\textbf{/v}     & \footnotesize{\opt{--verbose}}                & Enable logging of c::b errors.                                                    \\ \hline
+                & \footnotesize{\opt{-S setName}}               & Set "setName" to current active set for global variables (after [r13245])         \\ \hline
+                & \footnotesize{\opt{-D $<$set$>$.uservar.mem=val}} & Set the member mem of user variable uservar in "set" to value val. This
+                                                                      overrides the current "set" value (after [r13245])                            \\ \hline
+                & \footnotesize{\opt{$>$ \var{build log file}}} & Placed in the very last position of the command line, this may be used to
+                                                                  redirect standard output to log file. This is not a \codeblocks option as
+                                                                  such, but just a standard DOS/*nix shell output redirection.                      \\ \hline
+\caption{List of command line arguments}
+\end{longtable}
+}
+\else
+\begin{samepage}
 \subsection{Command line arguments}
 \begin{description}
 \item[\var{filename}] Specifies the project \file{*.cbp} filename or workspace \file{*.workspace} filename. For instance, \var{filename} may be \file{project.cbp}. Place this argument at the end of the command line, just before the output redirection if there is any.
+\end{description}
+\end{samepage}
+\begin{description}
 \item[\opt{--}file=\var{filename}\optional{:line}] Open file in \codeblocks and optionally jump to a specific line.
 \item[/h, \opt{--}help] Shows a help message regarding the command line arguments.
 \item[/?, \opt{--}?] Shows a help message: alias for help.
@@ -541,13 +598,14 @@ Example:\\
 \item[/d, \opt{--}debug-log] Display the debug log of the application.
 \item[/nc, \opt{--}no-crash-handler] Don't use the crash handler (useful for debugging C::B).
 \item[\opt{--}prefix=\var{str}] Sets the shared data directory prefix.
-\item[\opt{--}user-data-dir=\var{str}] Specify an alternative directory for user settings and user installed plugins 
+\item[\opt{--}user-data-dir=\var{str}] Specify an alternative directory for user settings and user installed plugins. 
 \item[/p, \opt{--}personality=\var{str}, \opt{--}profile=\var{str}] Sets the personality to use. You can use ask as the parameter to list all available personalities.
 \item[\opt{--}no-log] Turn off the application log.
 \item[\opt{--}log-to-file] Redirect application log to a file.
+\item[\opt{--}debug-log-to-file] Redirect application debug log to a file.
+\item[\opt{--}clean] Clean the project/workspace.
 \item[\opt{--}rebuild] Clean and then build the project or workspace.
 \item[\opt{--}build] Build the project or workspace.
-\item[\opt{--}clean] Clean the project/workspace.
 \item[\opt{--}target=\var{str}] Sets target for batch build. For example \cmdline{\opt{--}target='Release'}.
 \item[\opt{--}no-batch-window-close] Keeps the batch log window visible after the batch build is completed.
 \item[\opt{--}batch-build-notify] Shows a message after the batch build is completed.
@@ -559,6 +617,7 @@ Example:\\
 \item[-D $<$set$>$.uservar.mem=val] Set the member mem of user variable uservar in "set" to value val. This overrides the current "set" value (after [r13245])
 \item[$>$ \var{build log file}] Placed in the very last position of the command line, this may be used to redirect standard output to log file. This is not a \codeblocks option as such, but just a standard DOS/*nix shell output redirection.
 \end{description}
+\fi
 
 \section{Shortcuts}
 

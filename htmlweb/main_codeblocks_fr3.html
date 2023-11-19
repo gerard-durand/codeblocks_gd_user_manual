@@ -2186,299 +2186,57 @@ d’exécution et vous devez utiliser un émulateur graphique de terminal.
 </p><!--l. 527--><p class="noindent" >Exemple:<br 
 class="newline" /><span 
 class="cmtt-12">codeblocks --no-splash-screen --debug-log</span>
+</p><!--l. 530--><p class="noindent" >
+                                                                                       
+                                                                                       
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.12.2</span>  <a 
  id="x3-400001.12.2"></a>Arguments en ligne de commande</h4>
-      <dl class="description"><dt class="description">
-<span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">filename</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 600--><p class="noindent" >Spécifie  le  nom  du  fichier  de  projet  <span 
-class="cmtt-12">*.cbp </span>ou  le  nom  de  l’espace  de  travail
-      <span 
-class="cmtt-12">*.workspace</span>.  Par  exemple,  <span 
-class="cmmi-12">&#x003C;</span>filename<span 
-class="cmmi-12">&#x003E;  </span>peut  être  <span 
-class="cmtt-12">project.cbp</span>.  Placez  cet
-      argument en fin de ligne de commande, juste avant la redirection de la sortie, s’il y
-      en a une.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">file=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">filename</span><span 
-class="cmmi-12">&#x003E;</span><span 
-class="cmssbx-10x-x-120">[:ligne]</span> </dt><dd 
-class="description">
-      <!--l. 601--><p class="noindent" >Ouvrir  un  fichier  dans  Code::Blocks  et,  en  option,  se  positionner  sur  une  ligne
-      particulière.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/h,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">help</span> </dt><dd 
-class="description">
-      <!--l. 602--><p class="noindent" >Affiche un message d’aide concernant les arguments en ligne de commande.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/?,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">?</span> </dt><dd 
-class="description">
-      <!--l. 603--><p class="noindent" >Affiche un message d’aide : alias pour help.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">safe-mode</span> </dt><dd 
-class="description">
-      <!--l. 604--><p class="noindent" >Désactive toutes les extensions (plugins) au démarrage.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/na,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-check-associations</span> </dt><dd 
-class="description">
-      <!--l. 605--><p class="noindent" >Ne faire aucun contrôle d’association de fichiers (Windows seulement).
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/nd,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-dde</span> </dt><dd 
-class="description">
-      <!--l. 606--><p class="noindent" >Ne pas lancer le serveur DDE (Windows seulement).
+<div class="pic-longtable">
                                                                                        
                                                                                        
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/ni,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-ipc</span> </dt><dd 
-class="description">
-      <!--l. 607--><p class="noindent" >Ne pas lancer le serveur IPC (Linux et Mac seulement).
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/ns,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-splash-screen</span> </dt><dd 
-class="description">
-      <!--l. 608--><p class="noindent" >Ne pas afficher l’écran de démarrage pendant le chargement de l’application.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">multiple-instance</span> </dt><dd 
-class="description">
-      <!--l. 609--><p class="noindent" >Autorise l’exécution de plusieurs instances.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/d,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">debug-log</span> </dt><dd 
-class="description">
-      <!--l. 610--><p class="noindent" >Afficher le journal de débogage de l’application.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/nc,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-crash-handler</span> </dt><dd 
-class="description">
-      <!--l. 611--><p class="noindent" >Ne pas utiliser le ”crash handler” (utile pour déboguer C::B).
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">prefix=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 612--><p class="noindent" >Configure le préfixe du répertoire de données partagées.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">user-data-dir=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 613--><p class="noindent" >Configure un répertoire alternatif pour la configuration utilisateur et les greffons
-      installés par l’utilisateur.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/p,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">personality=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span><span 
-class="cmssbx-10x-x-120">,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">profile=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 614--><p class="noindent" >Configure le profil (ou personnalité) à utiliser. Vous pouvez utiliser le paramètre
-      ask pour afficher la liste de tous les profils disponibles.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-log</span> </dt><dd 
-class="description">
-      <!--l. 615--><p class="noindent" >Désactive le journal d’application.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">log-to-file</span> </dt><dd 
-class="description">
-      <!--l. 616--><p class="noindent" >Redirige le journal application vers un fichier.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">clean</span> </dt><dd 
-class="description">
-      <!--l. 617--><p class="noindent" >Nettoie le project/espace de travail.
-                                                                                       
-                                                                                       
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">rebuild</span> </dt><dd 
-class="description">
-      <!--l. 618--><p class="noindent" >Nettoie et génère le projet ou l’espace de travail.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">build</span> </dt><dd 
-class="description">
-      <!--l. 619--><p class="noindent" >Génère le projet ou l’espace de travail.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">target=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 620--><p class="noindent" >Configure la cible de génération. Par exemple <span 
-class="cmtt-12">--</span><span 
-class="cmtt-12">target=’Release’</span>.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-batch-window-close</span> </dt><dd 
-class="description">
-      <!--l. 621--><p class="noindent" >Garde la fenêtre batch de journalisation visible après que la génération par batch
-      soit terminée.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">batch-build-notify</span> </dt><dd 
-class="description">
-      <!--l. 622--><p class="noindent" >Affiche un message une fois que la génération batch est terminée.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">script=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 623--><p class="noindent" >Exécute un fichier de script.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">dbg-config=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 624--><p class="noindent" >Sélectionne la configuration de débogage à utiliser (utilise la cible courante si omis).
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">dbg-attach=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 625--><p class="noindent" >Chaîne  passée  au  greffon  du  debugger  qui  est  utilisé  lors  de  l’attachement  au
-      processus.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/v,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">verbose</span> </dt><dd 
-class="description">
-      <!--l. 626--><p class="noindent" >Active la journalisation des erreurs de c::b.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">-S setName</span> </dt><dd 
-class="description">
-      <!--l. 627--><p class="noindent" >Configure  ”setName”  en  tant  qu’ensemble  courant  de  variables  globales  (après
-      [r13245])
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">-D </span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">set</span><span 
-class="cmmi-12">&#x003E;</span><span 
-class="cmssbx-10x-x-120">.uservar.mem=val</span> </dt><dd 
-class="description">
-                                                                                       
-                                                                                       
-      <!--l. 628--><p class="noindent" >Configure le membre mem de la variable utilisateur uservar de l’ensemble ”set” à la
-      valeur val. Cela se substitue à la valeur courante dans ”set” (après [r13245])
-      </p></dd><dt class="description">
-<span 
-class="cmmi-12">&#x003E; &#x003C;</span><span 
-class="cmssbx-10x-x-120">build log file</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 629--><p class="noindent" >Placé en toute dernière position d’une ligne de commande, ceci permet à l’utilisateur
-      de rediriger la sortie standard vers un fichier log. Ceci n’est pas à proprement parler
-      une option de Code::Blocks, mais seulement une redirection standard des sorties des
-      shells DOS/*nix.</p></dd></dl>
-<!--l. 632--><p class="noindent" >
+<img 
+src="main_codeblocks_fr0x.png" alt=""  /><a 
+ id="x3-40001r1"></a></div>
+<!--l. 636--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.13</span>  <a 
  id="x3-410001.13"></a>Raccourcis Clavier</h3>
-<!--l. 634--><p class="noindent" >Cette section décrit les raccourcis clavier qui sont ou peuvent être utilisés dans Code::Blocks.
-</p><!--l. 636--><p class="noindent" >
+<!--l. 638--><p class="noindent" >Cette section décrit les raccourcis clavier qui sont ou peuvent être utilisés dans Code::Blocks.
+</p><!--l. 640--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.1</span>  <a 
  id="x3-420001.13.1"></a>Introduction</h4>
-<!--l. 638--><p class="noindent" >Ce plugin peut être utilisé pour ajouter un ou plusieurs raccourcis clavier aux menus.
-</p><!--l. 640--><p class="noindent" >Même si une IDE comme Code::Blocks est surtout pilotée à la souris, les raccourcis claviers
+<!--l. 642--><p class="noindent" >Ce plugin peut être utilisé pour ajouter un ou plusieurs raccourcis clavier aux menus.
+</p><!--l. 644--><p class="noindent" >Même si une IDE comme Code::Blocks est surtout pilotée à la souris, les raccourcis claviers
 sont néanmoins un moyen très pratique pour accélérer et simplifier le travail. Les tableaux
 ci-dessous regroupent quelques-uns des raccourcis claviers disponibles.
-</p><!--l. 642--><p class="noindent" >
+</p><!--l. 646--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.2</span>  <a 
  id="x3-430001.13.2"></a>Fonctionnalités</h4>
       <dl class="description"><dt class="description">
  </dt><dd 
 class="description">
-      <!--l. 644--><p class="noindent" >Inclue    un    panneau    de    configuration    et    un    système    complet    pour
+      <!--l. 648--><p class="noindent" >Inclue    un    panneau    de    configuration    et    un    système    complet    pour
       visualiser/supprimer/ajouter/éditer des commandes en raccourcis clavier.
-                                                                                       
-                                                                                       
       </p></dd><dt class="description">
  </dt><dd 
 class="description">
-      <!--l. 645--><p class="noindent" >Supporte  plusieurs  profils  de  raccourcis  clavier  et  un  système  complet  de
+      <!--l. 649--><p class="noindent" >Supporte  plusieurs  profils  de  raccourcis  clavier  et  un  système  complet  de
       chargement/enregistrement est présent.
       </p></dd><dt class="description">
  </dt><dd 
 class="description">
-      <!--l. 646--><p class="noindent" >Permet à l’utilisateur de personnaliser toutes les commandes de menus désirées, et
+      <!--l. 650--><p class="noindent" >Permet à l’utilisateur de personnaliser toutes les commandes de menus désirées, et
       définir des raccourcis clavier pour chacune des commandes.</p></dd></dl>
-<!--l. 649--><p class="noindent" >
+                                                                                       
+                                                                                       
+<!--l. 653--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.3</span>  <a 
  id="x3-440001.13.3"></a>Utilisation</h4>
-<!--l. 651--><p class="noindent" >La page de configuration du plugin est accessible via le menu ’Paramètres’ <span 
+<!--l. 655--><p class="noindent" >La page de configuration du plugin est accessible via le menu ’Paramètres’ <span 
 class="cmsy-10x-x-120">→</span>’Éditeur’ , en
 sélectionnant la section Raccourcis Clavier.
 </p>
@@ -2490,7 +2248,7 @@ sélectionnant la section Raccourcis Clavier.
  id="x3-44001r14"></a>
                                                                                        
                                                                                        
-<!--l. 653--><p class="noindent" ><img 
+<!--l. 657--><p class="noindent" ><img 
 src="KeyBindConfig.png" alt="PIC"  
  />
 </p>
@@ -2499,10 +2257,10 @@ class="content">Dialogue de configuration des Raccourcis clavier</span></figcapt
                                                                                        
                                                                                        
 </figure>
-<!--l. 655--><p class="noindent" >Sélectionner une commande dans l’arborescence des Commandes, vous affiche le raccourci
+<!--l. 659--><p class="noindent" >Sélectionner une commande dans l’arborescence des Commandes, vous affiche le raccourci
 actuel pour la commande sur la droite. Sur la figure c’est Open... qui est sélectionné et le
 raccourci par défaut Ctrl-O est affiché.
-</p><!--l. 657--><p class="noindent" >Pour ajouter un nouveau raccourci à la commande sélectionnée, suivre les étapes suivantes
+</p><!--l. 661--><p class="noindent" >Pour ajouter un nouveau raccourci à la commande sélectionnée, suivre les étapes suivantes
 :
       </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    1. </dt><dd 
@@ -2525,8 +2283,8 @@ class="enumerate-enumitem">Presser sur OK dans le dialogue pour enregistrer des 
                                                                                        
                                                                                        
 <img 
-src="main_codeblocks_fr0x.png" alt=""  /><a 
- id="x3-45001r1"></a></div>
+src="main_codeblocks_fr1x.png" alt=""  /><a 
+ id="x3-45001r2"></a></div>
 <!--l. 29--><p class="noindent" >Ceci est une liste des raccourcis fournis par le composant éditeur de Code::Blocks. Ces
 raccourcis ne peuvent pas être substitués.
 </p>
@@ -2534,23 +2292,23 @@ raccourcis ne peuvent pas être substitués.
                                                                                        
                                                                                        
 <img 
-src="main_codeblocks_fr1x.png" alt=""  /><a 
- id="x3-45003r2"></a></div>
+src="main_codeblocks_fr2x.png" alt=""  /><a 
+ id="x3-45003r3"></a></div>
 <!--l. 84--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.5</span>  <a 
  id="x3-460001.13.5"></a>Fichiers</h4>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_fr2x.png" alt=""  /><a 
- id="x3-46001r3"></a></div>
+src="main_codeblocks_fr3x.png" alt=""  /><a 
+ id="x3-46001r4"></a></div>
 <!--l. 100--><p class="noindent" >Ceci est une liste des raccourcis fournis par le composant éditeur de Code::Blocks. Ces
 raccourcis ne peuvent pas être substitués.
 </p>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_fr3x.png" alt=""  /><a 
- id="x3-46003r4"></a></div>
+src="main_codeblocks_fr4x.png" alt=""  /><a 
+ id="x3-46003r5"></a></div>
 <!--l. 112--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.6</span>  <a 
@@ -2559,16 +2317,16 @@ src="main_codeblocks_fr3x.png" alt=""  /><a
                                                                                        
                                                                                        
 <img 
-src="main_codeblocks_fr4x.png" alt=""  /><a 
- id="x3-47001r5"></a></div>
+src="main_codeblocks_fr5x.png" alt=""  /><a 
+ id="x3-47001r6"></a></div>
 <!--l. 130--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.7</span>  <a 
  id="x3-480001.13.7"></a>Recherche</h4>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_fr5x.png" alt=""  /><a 
- id="x3-48001r6"></a></div>
+src="main_codeblocks_fr6x.png" alt=""  /><a 
+ id="x3-48001r7"></a></div>
                                                                                        
                                                                                        
 <!--l. 156--><p class="noindent" >
@@ -2577,16 +2335,16 @@ src="main_codeblocks_fr5x.png" alt=""  /><a
  id="x3-490001.13.8"></a>Générer</h4>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_fr6x.png" alt=""  /><a 
- id="x3-49001r7"></a></div>
+src="main_codeblocks_fr7x.png" alt=""  /><a 
+ id="x3-49001r8"></a></div>
 <!--l. 171--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.9</span>  <a 
  id="x3-500001.13.9"></a>Debug</h4>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_fr7x.png" alt=""  /><a 
- id="x3-50001r8"></a></div>
+src="main_codeblocks_fr8x.png" alt=""  /><a 
+ id="x3-50001r9"></a></div>
 <!--l. 1--><p class="noindent" >
 </p>
                                                                                        
@@ -4844,7 +4602,7 @@ class="newline" />Il y a 2 options principales pour installer clangd.exe :
 class="enumerate-enumitem">La première option afin de minimiser l’espace disque est d’installer
       les ”Clang extra tools” en utilisant l’un des packages suivants :
       <div class="pic-longtable"><img 
-src="main_codeblocks_fr8x.png" alt=""  /><a 
+src="main_codeblocks_fr9x.png" alt=""  /><a 
  id="x3-78002r1"></a></div>
       <!--l. 212--><p class="noindent" >Pour intaller le package faire ce qui suit :
            </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
@@ -4882,7 +4640,7 @@ class="newline" />Il y a 2 options principales pour installer clangd.exe :
 class="enumerate-enumitem">La première option afin de minimiser l’espace disque est d’installer les ”Clang extra tools”
       en utilisant l’un des packages suivants :<br 
 class="newline" /><div class="pic-longtable"><img 
-src="main_codeblocks_fr9x.png" alt=""  /><a 
+src="main_codeblocks_fr10x.png" alt=""  /><a 
  id="x3-79002r2"></a></div>
       <!--l. 243--><p class="noindent" >Pour installer le package faire ce qui suit :
            </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
@@ -5466,7 +5224,7 @@ class="cmbx-12">Script binding</span>
 </p>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_fr10x.png" alt=""  /><a 
+src="main_codeblocks_fr11x.png" alt=""  /><a 
  id="x3-88001r3"></a></div>
 <!--l. 44--><p class="noindent" ><span 
 class="cmbx-12">NOTE </span>: Les arguments ”value” sont automatiquement générés à partir des macros. Vous

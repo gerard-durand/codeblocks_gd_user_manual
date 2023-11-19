@@ -2085,292 +2085,56 @@ graphical terminal emulator.
 </p><!--l. 524--><p class="noindent" >Example:<br 
 class="newline" /><span 
 class="cmtt-12">codeblocks --no-splash-screen --debug-log</span>
+</p><!--l. 531--><p class="noindent" >
+                                                                                       
+                                                                                       
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.12.2</span>  <a 
  id="x3-400001.12.2"></a>Command line arguments</h4>
+<div class="pic-longtable">
                                                                                        
                                                                                        
-      <dl class="description"><dt class="description">
-<span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">filename</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 531--><p class="noindent" >Specifies  the  project  <span 
-class="cmtt-12">*.cbp </span>filename  or  workspace  <span 
-class="cmtt-12">*.workspace </span>filename.  For
-      instance, <span 
-class="cmmi-12">&#x003C;</span>filename<span 
-class="cmmi-12">&#x003E; </span>may be <span 
-class="cmtt-12">project.cbp</span>. Place this argument at the end of the
-      command line, just before the output redirection if there is any.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">file=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">filename</span><span 
-class="cmmi-12">&#x003E;</span><span 
-class="cmssbx-10x-x-120">[:line]</span> </dt><dd 
-class="description">
-      <!--l. 532--><p class="noindent" >Open file in Code::Blocks and optionally jump to a specific line.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/h,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">help</span> </dt><dd 
-class="description">
-      <!--l. 533--><p class="noindent" >Shows a help message regarding the command line arguments.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/?,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">?</span> </dt><dd 
-class="description">
-      <!--l. 534--><p class="noindent" >Shows a help message: alias for help.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">safe-mode</span> </dt><dd 
-class="description">
-      <!--l. 535--><p class="noindent" >All plugins are disabled on startup.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/na,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-check-associations</span> </dt><dd 
-class="description">
-      <!--l. 536--><p class="noindent" >Don’t perform any file association checks (Windows only).
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/nd,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-dde</span> </dt><dd 
-class="description">
-      <!--l. 537--><p class="noindent" >Don’t start a DDE server (Windows only).
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/ni,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-ipc</span> </dt><dd 
-class="description">
-      <!--l. 538--><p class="noindent" >Don’t start an IPC server (Linux and Mac only).
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/ns,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-splash-screen</span> </dt><dd 
-class="description">
-      <!--l. 539--><p class="noindent" >Hides the splash screen while the application is loading.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">multiple-instance</span> </dt><dd 
-class="description">
-      <!--l. 540--><p class="noindent" >Allow running multiple instances.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/d,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">debug-log</span> </dt><dd 
-class="description">
-                                                                                       
-                                                                                       
-      <!--l. 541--><p class="noindent" >Display the debug log of the application.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/nc,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-crash-handler</span> </dt><dd 
-class="description">
-      <!--l. 542--><p class="noindent" >Don’t use the crash handler (useful for debugging C::B).
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">prefix=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 543--><p class="noindent" >Sets the shared data directory prefix.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">user-data-dir=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 544--><p class="noindent" >Specify an alternative directory for user settings and user installed plugins
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/p,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">personality=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span><span 
-class="cmssbx-10x-x-120">,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">profile=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 545--><p class="noindent" >Sets the personality to use. You can use ask as the parameter to list all available
-      personalities.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-log</span> </dt><dd 
-class="description">
-      <!--l. 546--><p class="noindent" >Turn off the application log.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">log-to-file</span> </dt><dd 
-class="description">
-      <!--l. 547--><p class="noindent" >Redirect application log to a file.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">rebuild</span> </dt><dd 
-class="description">
-      <!--l. 548--><p class="noindent" >Clean and then build the project or workspace.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">build</span> </dt><dd 
-class="description">
-      <!--l. 549--><p class="noindent" >Build the project or workspace.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">clean</span> </dt><dd 
-class="description">
-      <!--l. 550--><p class="noindent" >Clean the project/workspace.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">target=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 551--><p class="noindent" >Sets target for batch build. For example <span 
-class="cmtt-12">--</span><span 
-class="cmtt-12">target=’Release’</span>.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">no-batch-window-close</span> </dt><dd 
-class="description">
-      <!--l. 552--><p class="noindent" >Keeps the batch log window visible after the batch build is completed.
-                                                                                       
-                                                                                       
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">batch-build-notify</span> </dt><dd 
-class="description">
-      <!--l. 553--><p class="noindent" >Shows a message after the batch build is completed.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">script=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 554--><p class="noindent" >Execute script file.
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">dbg-config=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 555--><p class="noindent" >Selects the debugger config used for attaching (uses the current selected target if
-      omitted).
-      </p></dd><dt class="description">
-<span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">dbg-attach=</span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">str</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 556--><p class="noindent" >String passed to the debugger plugin which is used for attaching to a process.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">/v,</span> <span 
-class="cmtt-12">--</span><span 
-class="cmssbx-10x-x-120">verbose</span> </dt><dd 
-class="description">
-      <!--l. 557--><p class="noindent" >Enable logging of c::b errors.
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">-S setName</span> </dt><dd 
-class="description">
-      <!--l. 558--><p class="noindent" >Set ”setName” to current active set for global variables (after [r13245])
-      </p></dd><dt class="description">
-<span 
-class="cmssbx-10x-x-120">-D </span><span 
-class="cmmi-12">&#x003C;</span><span 
-class="cmssbx-10x-x-120">set</span><span 
-class="cmmi-12">&#x003E;</span><span 
-class="cmssbx-10x-x-120">.uservar.mem=val</span> </dt><dd 
-class="description">
-      <!--l. 559--><p class="noindent" >Set the member mem of user variable uservar in ”set” to value val. This overrides
-      the current ”set” value (after [r13245])
-      </p></dd><dt class="description">
-<span 
-class="cmmi-12">&#x003E; &#x003C;</span><span 
-class="cmssbx-10x-x-120">build log file</span><span 
-class="cmmi-12">&#x003E;</span> </dt><dd 
-class="description">
-      <!--l. 560--><p class="noindent" >Placed in the very last position of the command line, this may be used to redirect
-      standard output to log file. This is not a Code::Blocks option as such, but just a
-      standard DOS/*nix shell output redirection.</p></dd></dl>
-<!--l. 563--><p class="noindent" >
+<img 
+src="main_codeblocks_en0x.png" alt=""  /><a 
+ id="x3-40001r1"></a></div>
+<!--l. 622--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.13</span>  <a 
  id="x3-410001.13"></a>Shortcuts</h3>
-<!--l. 565--><p class="noindent" >This section describes the shortcuts which are or can be used in Code::Blocks.
-                                                                                       
-                                                                                       
-</p><!--l. 567--><p class="noindent" >
+<!--l. 624--><p class="noindent" >This section describes the shortcuts which are or can be used in Code::Blocks.
+</p><!--l. 626--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.1</span>  <a 
  id="x3-420001.13.1"></a>Introduction</h4>
-<!--l. 569--><p class="noindent" >This plugin can be used to bind one or more key shortcuts to the menu items.
-</p><!--l. 571--><p class="noindent" >Even if an IDE such as Code::Blocks is mainly handled by mouse, keyboard shortcuts are
+<!--l. 628--><p class="noindent" >This plugin can be used to bind one or more key shortcuts to the menu items.
+</p><!--l. 630--><p class="noindent" >Even if an IDE such as Code::Blocks is mainly handled by mouse, keyboard shortcuts are
 nevertheless a very helpful way of speeding up and simplifying work processes. In the below
 table, we have collected some of the available keyboard shortcuts.
-</p><!--l. 573--><p class="noindent" >
+</p><!--l. 632--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.2</span>  <a 
  id="x3-430001.13.2"></a>Features</h4>
       <dl class="description"><dt class="description">
  </dt><dd 
 class="description">
-      <!--l. 575--><p class="noindent" >Includes  a  configuation  panel  and  a  complete  system  to  view/remove/add/edit
+      <!--l. 634--><p class="noindent" >Includes  a  configuation  panel  and  a  complete  system  to  view/remove/add/edit
       command shortcuts.
       </p></dd><dt class="description">
  </dt><dd 
 class="description">
-      <!--l. 576--><p class="noindent" >Supports multiple key profiles and a complete load/save system is present.
+      <!--l. 635--><p class="noindent" >Supports multiple key profiles and a complete load/save system is present.
       </p></dd><dt class="description">
  </dt><dd 
 class="description">
-      <!--l. 577--><p class="noindent" >Allows the users to customize any menu command they want, and define multiple
+      <!--l. 636--><p class="noindent" >Allows the users to customize any menu command they want, and define multiple
       key-shortcut to each command.</p></dd></dl>
-<!--l. 580--><p class="noindent" >
+                                                                                       
+                                                                                       
+<!--l. 639--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.3</span>  <a 
  id="x3-440001.13.3"></a>Usage</h4>
-<!--l. 582--><p class="noindent" >The configuration page for the plugin can be accessed through the ’Settings’ <span 
+<!--l. 641--><p class="noindent" >The configuration page for the plugin can be accessed through the ’Settings’ <span 
 class="cmsy-10x-x-120">→</span>’Editor’  menu,
 and then selecting the Keyboard Shortcuts section.
 </p>
@@ -2382,7 +2146,7 @@ and then selecting the Keyboard Shortcuts section.
  id="x3-44001r14"></a>
                                                                                        
                                                                                        
-<!--l. 584--><p class="noindent" ><img 
+<!--l. 643--><p class="noindent" ><img 
 src="KeyBindConfig.png" alt="PIC"  
  />
 </p>
@@ -2391,10 +2155,10 @@ class="content">Keyboard shortcuts configuration dialog</span></figcaption><!--t
                                                                                        
                                                                                        
 </figure>
-<!--l. 586--><p class="noindent" >Selecting a command, from the Commands tree, shows the current shortcuts for that command
+<!--l. 645--><p class="noindent" >Selecting a command, from the Commands tree, shows the current shortcuts for that command
 on the right. In the picture Open... is selected and the default shortcut Ctrl-O is
 displayed.
-</p><!--l. 588--><p class="noindent" >To add a new shortcut, for the selected command, follow these steps:
+</p><!--l. 647--><p class="noindent" >To add a new shortcut, for the selected command, follow these steps:
       </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    1. </dt><dd 
 class="enumerate-enumitem">Place the focus on the text box under New Shortcut and press the keys, for example
@@ -2413,8 +2177,8 @@ class="enumerate-enumitem">Press OK on the dialog to save changes and return to 
  id="x3-450001.13.4"></a>Editor</h4>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_en0x.png" alt=""  /><a 
- id="x3-45001r1"></a></div>
+src="main_codeblocks_en1x.png" alt=""  /><a 
+ id="x3-45001r2"></a></div>
                                                                                        
                                                                                        
 <!--l. 29--><p class="noindent" >This is a list of shortcuts provided by the Code::Blocks editor component. These shortcuts
@@ -2424,8 +2188,8 @@ cannot be rebound.
                                                                                        
                                                                                        
 <img 
-src="main_codeblocks_en1x.png" alt=""  /><a 
- id="x3-45003r2"></a></div>
+src="main_codeblocks_en2x.png" alt=""  /><a 
+ id="x3-45003r3"></a></div>
                                                                                        
                                                                                        
 <!--l. 82--><p class="noindent" >
@@ -2434,15 +2198,15 @@ src="main_codeblocks_en1x.png" alt=""  /><a
  id="x3-460001.13.5"></a>Files</h4>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_en2x.png" alt=""  /><a 
- id="x3-46001r3"></a></div>
+src="main_codeblocks_en3x.png" alt=""  /><a 
+ id="x3-46001r4"></a></div>
 <!--l. 98--><p class="noindent" >This is a list of shortcuts provided by the Code::Blocks editor component. These shortcuts
 cannot be rebound.
 </p>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_en3x.png" alt=""  /><a 
- id="x3-46003r4"></a></div>
+src="main_codeblocks_en4x.png" alt=""  /><a 
+ id="x3-46003r5"></a></div>
 <!--l. 110--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.6</span>  <a 
@@ -2451,16 +2215,16 @@ src="main_codeblocks_en3x.png" alt=""  /><a
                                                                                        
                                                                                        
 <img 
-src="main_codeblocks_en4x.png" alt=""  /><a 
- id="x3-47001r5"></a></div>
+src="main_codeblocks_en5x.png" alt=""  /><a 
+ id="x3-47001r6"></a></div>
 <!--l. 128--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.7</span>  <a 
  id="x3-480001.13.7"></a>Search</h4>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_en5x.png" alt=""  /><a 
- id="x3-48001r6"></a></div>
+src="main_codeblocks_en6x.png" alt=""  /><a 
+ id="x3-48001r7"></a></div>
                                                                                        
                                                                                        
 <!--l. 154--><p class="noindent" >
@@ -2469,16 +2233,16 @@ src="main_codeblocks_en5x.png" alt=""  /><a
  id="x3-490001.13.8"></a>Build</h4>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_en6x.png" alt=""  /><a 
- id="x3-49001r7"></a></div>
+src="main_codeblocks_en7x.png" alt=""  /><a 
+ id="x3-49001r8"></a></div>
 <!--l. 169--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.9</span>  <a 
  id="x3-500001.13.9"></a>Debug</h4>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_en7x.png" alt=""  /><a 
- id="x3-50001r8"></a></div>
+src="main_codeblocks_en8x.png" alt=""  /><a 
+ id="x3-50001r9"></a></div>
 <!--l. 1--><p class="noindent" >
 </p>
                                                                                        
@@ -4636,7 +4400,7 @@ class="newline" />There are two main options to install the clangd.exe as follow
    1. </dt><dd 
 class="enumerate-enumitem">The first option in order to minimise disk space is to install the Clang extra tools using one of the following
       packages: <div class="pic-longtable"><img 
-src="main_codeblocks_en8x.png" alt=""  /><a 
+src="main_codeblocks_en9x.png" alt=""  /><a 
  id="x3-78002r1"></a></div>
       <!--l. 214--><p class="noindent" >To intall the package do the following:
            </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
@@ -4673,7 +4437,7 @@ class="newline" />There are two main options to install the clangd.exe as follow
    1. </dt><dd 
 class="enumerate-enumitem">The first option in order to minimise disk space is to install the Clang extra tools using one of the following
       packages: <div class="pic-longtable"><img 
-src="main_codeblocks_en9x.png" alt=""  /><a 
+src="main_codeblocks_en10x.png" alt=""  /><a 
  id="x3-79002r2"></a></div>
       <!--l. 245--><p class="noindent" >To intall the package do the following:
            </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
@@ -5312,7 +5076,7 @@ class="cmbx-12">Script binding</span>
 </p>
 <div class="pic-longtable">
 <img 
-src="main_codeblocks_en10x.png" alt=""  /><a 
+src="main_codeblocks_en11x.png" alt=""  /><a 
  id="x3-88001r3"></a></div>
 <!--l. 44--><p class="noindent" ><span 
 class="cmbx-12">NOTE</span>: The value arguments are automatically expanded from macros. You do not have to call
