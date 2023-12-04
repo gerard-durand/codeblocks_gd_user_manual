@@ -3,10 +3,10 @@
 This chapter describes how to install and configure \codeblocks. Install process is here described for Windows, but may be adapted to other OS.
 
 \section{Installing the latest official version of \codeblocks on Windows}
-\hint{23.11 version does not still exist. Sorry. Read 20.03 instead, but it's expected that a new version will be published in 2023, so a 23.xx, with xx as the number of the publication month. Text below will be updated as soon as possible.}
+\hint{23.12 version does not still exist. Sorry. Read 20.03 instead, but it's expected that a new version will be published before the end of 2023, so a 23.xx, with xx as the number of the publication month. Text below will be updated as soon as possible.}
 Install steps:
 \begin{itemize}
-\item Download the \codeblocks installer (\url{https://codeblocks.org/downloads/26}). \textcolor{red}{If you know you don't have MinGW installed, or if you don't know which one to choose, \textbf{download the package which has MinGW bundled}}. For 23.11 version, the name of the installer is: codeblocks-23.11mingw-setup.exe. Previous version was identified by 20.03 and earlier one by 17.12.
+\item Download the \codeblocks installer (\url{https://codeblocks.org/downloads/26}). \textcolor{red}{If you know you don't have MinGW installed, or if you don't know which one to choose, \textbf{download the package which has MinGW bundled}}. For 23.12 version, the name of the installer is: codeblocks-23.12mingw-setup.exe. Previous version was identified by 20.03 and earlier one by 17.12.
 \item Run the installer, it's a standard installer for Windows; just press Next after reading each screen.
 \item If you're planning installing a compiler after you've installed \codeblocks, read the information provided in the installer.
 \item If you downloaded the installer which doesn't come with MinGW, you may have to configure the compiler manually (usually \codeblocks' auto detects the compiler).
@@ -17,9 +17,9 @@ We'll see in the next section how to install and configure an other compiler.
 \textbf{Notes:}
 
 \begin{itemize}
-\item The codeblocks-23.11-setup.exe file includes \codeblocks with all plugins. The codeblocks-23.11-setup-nonadmin.exe file is provided for convenience to users that do not have administrator rights on their machine(s).
-\item The codeblocks-23.11mingw-setup.exe file includes additionally the GCC/G++ compiler and GDB debugger version MinGW64 13.1.0, 64 bit. The codeblocks-23.11mingw\_fortran-setup.exe file includes additionally to that the Gfortran compiler.
-\item The codeblocks-23.11(mingw)-nosetup.zip files are provided for convenience to users that are allergic against installers. However, it will not allow to select plugins / features to install (it includes everything) and not create any menu shortcuts. For the "installation" you are on your own.
+\item The codeblocks-23.12-setup.exe file includes \codeblocks with all plugins. The codeblocks-23.12-setup-nonadmin.exe file is provided for convenience to users that do not have administrator rights on their machine(s).
+\item The codeblocks-23.12mingw-setup.exe file includes additionally the GCC/G++ compiler and GDB debugger version MinGW64 13.1.0, 64 bit. The codeblocks-23.12mingw\_fortran-setup.exe file includes additionally to that the Gfortran compiler.
+\item The codeblocks-23.12(mingw)-nosetup.zip files are provided for convenience to users that are allergic against installers. However, it will not allow to select plugins / features to install (it includes everything) and not create any menu shortcuts. For the "installation" you are on your own.
 \item It is possible to use a nightly build from the Forum. This builds does not come bundled with a compiler!! You need to install a compiler by yourself (if you have not already one). Before installing please have a look at \url{https://forums.codeblocks.org/index.php/topic,3232.0.html} 
 \item A good solution, is to install an official distribution with MinGW and to install on the top of this official version a nightly. You will have to follow the procedure carefully because there may have some incompatibilities. Mixing versions brings problems. 
 \item The full version of \codeblocks is distributed with a 64 bit MinGW included in a codeblocks sub-directory. Sometimes, it leads to troubles because the full path contains a space (within Program Files). So a good practice is to move this MinGW directory at the root of your disk. You can also rename it as C:\osp MinGW64. Compiler autodetection in \codeblocks should find it there.
@@ -135,9 +135,9 @@ When, on Windows, you install an official version with MinGW included (the recom
 
 As told previously, a good solution to install a nightly is first to install an official version, then to \textbf{configure and try it}. Like that, your configuration files, associations, shortcuts, will be correctly set and they'll be kept for your nightly install. The link to find last nightlies is \url{https://forums.codeblocks.org/index.php/board,20.0.html}.
 
-If you install your nightly above a 20.03 or 23.11 version, you need to follow carefully this procedure because a few things have changed, at least they are compiled in 64 bits with a recent compiler, a different wxWidgets version and need some complementary dlls.
+If you install your nightly above a 20.03 or 23.12 version, you need to follow carefully this procedure because a few things have changed, at least they are compiled in 64 bits with a recent compiler, a different wxWidgets version and need some complementary dlls.
 
-Normally, you won't have such kind of problems with a 23.11 version.
+Normally, you won't have such kind of problems with a 23.12 version.
 \begin{itemize}
 \item Unzip the downloaded nightly and copy all the files in your codeblocks subdirectory. If you have moved your MinGW subdirectory elsewhere, you can first erase all the contents of the codeblocks subdirectory to be sure that you won't mix versions. One exception : if you have installed in this subdirectory some specific things, as for example localization files, don't erase them.
 \item Unzip the wxWidgets dlls found with your nightly. You can install them directly in the codeblocks directory or for a larger usage, in the bin sub-directory of MinGW. Check that this bin subdirectory is in your PATH. It should be there if you had installed an official CB version with it's installer.

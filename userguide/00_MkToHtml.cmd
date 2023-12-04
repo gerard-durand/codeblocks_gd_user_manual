@@ -15,8 +15,13 @@ if exist %output_dir% (
 
 :process_png_files
 if not exist figures\png\*.png goto error_png
-if exist figures\png\*.xbb goto process
-rem  if files *.xbb exist, work has already been done
+set Number_png=0
+set Number_xbb=0
+For %%a In ("figures\png\*.png") Do Set /A Number_png+=1
+For %%a In ("figures\png\*.xbb") Do Set /A Number_xbb+=1
+rem  if files *.xbb exist, and number of png files is equal to number of xbb files, work has already been done
+if %Number_png% == %Number_xbb% goto process
+
 echo Builds png bounds files with ebb
 cd figures\png
 @for %%i in (*.png) do ebb -x %%i >nul
