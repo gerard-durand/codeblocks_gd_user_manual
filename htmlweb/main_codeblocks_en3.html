@@ -13377,8 +13377,26 @@ overwrite files. Note that we are going to refer to the wx root directory from n
 <span 
 class="cmmi-12">&#x003C;</span>wxDir<span 
 class="cmmi-12">&#x003E;</span>
-</p><!--l. 103--><p class="noindent" >Now, we are going to build the wxWidgets. This is how we do it:
-</p><!--l. 105--><p class="noindent" >First, make sure <span 
+</p>
+<div class="center" 
+>
+<!--l. 103--><p class="noindent" >
+</p>
+<div 
+class="colorbox" id="colorbox75"><span 
+class="cmbx-12">Note:</span><br 
+class="newline" />User PBfordev has created a very nice guide to compile, install and
+use wxWidgets on Windows. You can find it as a pdf file on his git
+repos: <a 
+href="https://github.com/PBfordev/wxpbguide" >wxPBGuide.pdf</a> <span class="cite">[<a 
+href="#Xurl:wxPBguide"> wxPBguide</a>]</span>. His point of view is a little bit
+different, as he creates a wxWidgets multilib version. For Code::Blocks
+itself on Windows, following different advices on the C::B forum, it’s
+better to have a monolitic version. This is how the official and nightlies
+versions are distributed.                                            </div>
+</div>
+<!--l. 105--><p class="noindent" >Now, we are going to build the wxWidgets. This is how we do it:
+</p><!--l. 107--><p class="noindent" >First, make sure <span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">MingGW</span><span 
@@ -13387,7 +13405,7 @@ class="cmtt-12">bin </span>is in your path, during the build some programs will 
 that reside in the the MinGW<span 
 class="cmsy-10x-x-120">∖</span>bin directory. Also, Make has to be version 3.80 or
 above.
-</p><!--l. 107--><p class="noindent" >Now it is time to compile wxWidgets. Open the command prompt and change to the
+</p><!--l. 109--><p class="noindent" >Now it is time to compile wxWidgets. Open the command prompt and change to the
 wxWidgets directory:
                                                                                        
                                                                                        
@@ -13395,24 +13413,24 @@ wxWidgets directory:
 <pre class="verbatim" id="verbatim-49">
 cd &#x003C;wxDir&#x003E;\build\msw
 </pre>
-<!--l. 111--><p class="nopar" >
-</p><!--l. 113--><p class="noindent" >We are now in the right place. We are first going to clean up the source:
+<!--l. 113--><p class="nopar" >
+</p><!--l. 115--><p class="noindent" >We are now in the right place. We are first going to clean up the source:
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-50">
 mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=release UNICODE=1 clean
 </pre>
-<!--l. 117--><p class="nopar" >
-</p><!--l. 119--><p class="noindent" >Once everything is clean, we can compile wxWidgets:
+<!--l. 119--><p class="nopar" >
+</p><!--l. 121--><p class="noindent" >Once everything is clean, we can compile wxWidgets:
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-51">
 mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=release UNICODE=1
 </pre>
-<!--l. 123--><p class="nopar" >
-</p><!--l. 125--><p class="noindent" >If you are using TDM-gcc 5.1.0, or gcc 8.1.0, you will have to add the following options on the
+<!--l. 125--><p class="nopar" >
+</p><!--l. 127--><p class="noindent" >If you are using TDM-gcc 5.1.0, or gcc 8.1.0, you will have to add the following options on the
 same command line:
                                                                                        
                                                                                        
@@ -13423,8 +13441,8 @@ CXXFLAGS+=&#x0022;-fpermissive -fno-keep-inline-dllexport -std=gnu++11
  -Wno-deprecated-declarations&#x0022;
 LDFLAGS=&#x0022;-Wl,--allow-multiple-definition&#x0022;
 </pre>
-<!--l. 131--><p class="nopar" >
-</p><!--l. 133--><p class="noindent" >If you are using more recent compilers as gcc 12.1.0 or gcc 13.1, you can use this build
+<!--l. 133--><p class="nopar" >
+</p><!--l. 135--><p class="noindent" >If you are using more recent compilers as gcc 12.1.0 or gcc 13.1, you can use this build
 command:
                                                                                        
                                                                                        
@@ -13433,12 +13451,12 @@ command:
 mingw32-make -f makefile.gcc -j 4 SHARED=1 MONOLITHIC=1 BUILD=release
              CXXFLAGS=&#x0022;-std=gnu++20&#x0022;
 </pre>
-<!--l. 137--><p class="nopar" > because some parameters are now set by default in last wxWidgets builds or are not necessary
+<!--l. 139--><p class="nopar" > because some parameters are now set by default in last wxWidgets builds or are not necessary
 anymore.<br 
 class="newline" />The parameter -j 4 allows a parallel build on 4 processors and thus strongly accelerates the
 build process. The value 4 has to be adjusted to your processor configuration. The best result is
 when the value is equal to the number of processors (4 in my case).
-</p><!--l. 142--><p class="noindent" >Code::Blocks for Windows, since SVN rev 11701, is generated to support DIRECT2D
+</p><!--l. 144--><p class="noindent" >Code::Blocks for Windows, since SVN rev 11701, is generated to support DIRECT2D
 activated/forced (for faster and better quality graphics). wxWidgets generation needs some
 adjustments to be done directly in setup.h file(s). Normally the only file which needs
 to be modified is in the lib subdirectory, the one created the first time wxWidgets
@@ -13464,15 +13482,15 @@ class="newline" />You can simply modify the line containing (line 1652 in wxWidg
 <pre class="verbatim" id="verbatim-54">
     #define wxUSE_GRAPHICS_DIRECT2D 0
 </pre>
-<!--l. 147--><p class="nopar" > by
+<!--l. 149--><p class="nopar" > by
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-55">
     #define wxUSE_GRAPHICS_DIRECT2D 1
 </pre>
-<!--l. 151--><p class="nopar" > Other setup.h may be modified, but it’s normally not required.
-</p><!--l. 154--><p class="noindent" >optionally :
+<!--l. 153--><p class="nopar" > Other setup.h may be modified, but it’s normally not required.
+</p><!--l. 156--><p class="noindent" >optionally :
                                                                                        
                                                                                        
 </p>
@@ -13480,72 +13498,72 @@ class="newline" />You can simply modify the line containing (line 1652 in wxWidg
 USE_OPENGL=1
 DEBUG_FLAG=0
 </pre>
-<!--l. 158--><p class="nopar" >
+<!--l. 160--><p class="nopar" >
 </p>
 <div class="center" 
 >
-<!--l. 160--><p class="noindent" >
+<!--l. 162--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox75"><span 
+class="colorbox" id="colorbox76"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />USE_OPENGL=1 creates an additional dll, used if your wxWidgets
 program   requires   an   OpenGL   windows,   particularly   when
 wxGLCanvas is used                                               </div>
 </div>
-<!--l. 162--><p class="noindent" >It is also possible to personalise the name of the produced dll:
+<!--l. 164--><p class="noindent" >It is also possible to personalise the name of the produced dll:
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-57">
 VENDOR=cb
 </pre>
-<!--l. 165--><p class="nopar" > or for a 64 bits build :
+<!--l. 167--><p class="nopar" > or for a 64 bits build :
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-58">
 VENDOR=cb_64
 </pre>
-<!--l. 169--><p class="nopar" >
+<!--l. 171--><p class="nopar" >
 </p>
 <div class="center" 
 >
-<!--l. 171--><p class="noindent" >
+<!--l. 173--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox76"><span 
+class="colorbox" id="colorbox77"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />If VENDOR is not specified, it’s equivalent to VENDOR=custom.
 VENDOR=cb is used by Code::Blocks team. So, to avoid confusion,
 it may be advisable to use an other ”vendor” identifier.             </div>
 </div>
-<!--l. 173--><p class="noindent" >This is going to take some time.
-</p><!--l. 175--><p class="noindent" >For making the debug build, follow these same steps and options (the only change is
+<!--l. 175--><p class="noindent" >This is going to take some time.
+</p><!--l. 177--><p class="noindent" >For making the debug build, follow these same steps and options (the only change is
 BUILD=debug):
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 178--><p class="noindent" >Clean any previous compilation with
+      <!--l. 180--><p class="noindent" >Clean any previous compilation with
                                                                                        
                                                                                        
 </p>
       <pre class="verbatim" id="verbatim-59">
        mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=debug UNICODE=1 clean
        </pre>
-      <!--l. 181--><p class="nopar" >
+      <!--l. 183--><p class="nopar" >
       </p></li>
       <li class="itemize">
-      <!--l. 182--><p class="noindent" >Compile with
+      <!--l. 184--><p class="noindent" >Compile with
                                                                                        
                                                                                        
 </p>
       <pre class="verbatim" id="verbatim-60">
        mingw32-make -f makefile.gcc SHARED=1 MONOLITHIC=1 BUILD=debug UNICODE=1
        </pre>
-      <!--l. 185--><p class="nopar" ></p></li></ul>
-<!--l. 188--><p class="noindent" >Eventually, add the same options as above.
-</p><!--l. 190--><p class="noindent" >Well have a little look in the directory (<span 
+      <!--l. 187--><p class="nopar" ></p></li></ul>
+<!--l. 190--><p class="noindent" >Eventually, add the same options as above.
+</p><!--l. 192--><p class="noindent" >Well have a little look in the directory (<span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">wxDir</span><span 
 class="cmmi-12">&#x003E;</span><span 
@@ -13560,7 +13578,7 @@ class="cmsy-10x-x-120">∖</span><span
 class="cmtt-12">wx </span>subdirectory at that position containing
 <span 
 class="cmtt-12">setup.h</span>.
-</p><!--l. 192--><p class="noindent" >You can use strip.exe (distributed with MinGW) to reduce the size of the dlls. for
+</p><!--l. 194--><p class="noindent" >You can use strip.exe (distributed with MinGW) to reduce the size of the dlls. for
 ex:
                                                                                        
                                                                                        
@@ -13569,37 +13587,37 @@ ex:
 strip ..\..\lib\gcc_dll\wxmsw32u_gcc_cb_64.dll
 strip ..\..\lib\gcc_dll\wxmsw32u_gl_gcc_cb_64.dll
 </pre>
-<!--l. 197--><p class="nopar" >
-</p><!--l. 199--><p class="noindent" >Congratulations! You have just built wxWidgets!
-</p><!--l. 201--><p class="noindent" >Let’s do some more preliminary tasks before we get to the real deal of compiling
+<!--l. 199--><p class="nopar" >
+</p><!--l. 201--><p class="noindent" >Congratulations! You have just built wxWidgets!
+</p><!--l. 203--><p class="noindent" >Let’s do some more preliminary tasks before we get to the real deal of compiling
 Code::Blocks.
-</p><!--l. 203--><p class="noindent" >
+</p><!--l. 205--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.4</span>  <a 
  id="x3-2100006.2.4"></a>Zip</h4>
-<!--l. 205--><p class="noindent" >During the build of Code::Blocks, several resources are going to be zipped in zip files. Therefore,
+<!--l. 207--><p class="noindent" >During the build of Code::Blocks, several resources are going to be zipped in zip files. Therefore,
 the build process should have access to a zip.exe. We have to download that zip.exe (if it’s not
 already in your MinGW distribution) and put it somewhere in our path. A good place is:
 <span 
 class="cmtt-12">MingW</span><span 
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">bin</span>.
-</p><!--l. 207--><p class="noindent" >You can download zip.exe for free from this site (<a 
+</p><!--l. 209--><p class="noindent" >You can download zip.exe for free from this site (<a 
 href="http://www.info-zip.org/pub/infozip/Zip.html" class="url" ><span 
 class="cmtt-12">http://www.info-zip.org/pub/infozip/Zip.html</span></a>),
 or from here (<a 
 href="ftp://ftp.info-zip.org/pub/infozip/win32/" class="url" ><span 
 class="cmtt-12">ftp://ftp.info-zip.org/pub/infozip/win32/</span></a>) which is a direct ftp link to
 the directory containing the most recent versions.
-</p><!--l. 209--><p class="noindent" >Once downloaded, simply extract zip.exe to the appropriate location.
-</p><!--l. 211--><p class="noindent" >
+</p><!--l. 211--><p class="noindent" >Once downloaded, simply extract zip.exe to the appropriate location.
+</p><!--l. 213--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.5</span>  <a 
  id="x3-2110006.2.5"></a>Workspace</h4>
-<!--l. 212--><p class="noindent" >This brings us to the last preliminary task. The Code::Blocks code can be divided into 2 major
+<!--l. 214--><p class="noindent" >This brings us to the last preliminary task. The Code::Blocks code can be divided into 2 major
 parts: the core with internal plug-ins, and the contributed plug-ins. You always need to build
 the core/internal parts before building the contrib part.
-</p><!--l. 214--><p class="noindent" >To build the internal part, you can use the Code::Blocks project file which you can find at:
+</p><!--l. 216--><p class="noindent" >To build the internal part, you can use the Code::Blocks project file which you can find at:
 <span 
 class="cmtt-12">&#x003C;cbDir&#x003E;</span><span 
 class="cmsy-10x-x-120">∖</span><span 
@@ -13616,7 +13634,7 @@ class="cmsy-10x-x-120">∖</span><span
 class="cmtt-12">ContribPlugins.workspace</span>.
                                                                                        
                                                                                        
-</p><!--l. 216--><p class="noindent" >But, let’s create a workspace containing everything. Let’s put that workspace in the master
+</p><!--l. 218--><p class="noindent" >But, let’s create a workspace containing everything. Let’s put that workspace in the master
 directory <span 
 class="cmtt-12">&#x003C;cbDir&#x003E;</span>. Just use a regular text editor and create a file with the name
 ”CbProjects.workspace” for example. Such a file already exists in recent C::B versions. You can
@@ -13781,31 +13799,31 @@ give it the following content (here to generate a 64 bit version with wxWidgets 
  &#x003C;/Workspace&#x003E;
 &#x003C;/CodeBlocks_workspace_file&#x003E;
 </pre>
-<!--l. 370--><p class="nopar" >
+<!--l. 372--><p class="nopar" >
 </p>
 <div class="center" 
 >
-<!--l. 373--><p class="noindent" >
+<!--l. 375--><p class="noindent" >
 </p>
                                                                                        
                                                                                        
 <div 
-class="colorbox" id="colorbox77"><span 
+class="colorbox" id="colorbox78"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />Several variants of this file exists, depending on the OS, wxWidgets
 version, 32 or 64 bits build.                                        </div>
 </div>
-<!--l. 375--><p class="noindent" >We will use this workspace to build all of Code::Blocks.
-</p><!--l. 378--><p class="noindent" >
+<!--l. 377--><p class="noindent" >We will use this workspace to build all of Code::Blocks.
+</p><!--l. 380--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.6</span>  <a 
  id="x3-2120006.2.6"></a>Building Codeblocks</h4>
-<!--l. 380--><p class="noindent" >This section describes the final process of building Code::Blocks.
-</p><!--l. 382--><p class="noindent" >
+<!--l. 382--><p class="noindent" >This section describes the final process of building Code::Blocks.
+</p><!--l. 384--><p class="noindent" >
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.6.1  </span> <a 
  id="x3-2130006.2.6.1"></a>Windows</h5>
-<!--l. 384--><p class="noindent" >Finally we have arrived at the final step; our final goal. Run the Code::Blocks executable from
+<!--l. 386--><p class="noindent" >Finally we have arrived at the final step; our final goal. Run the Code::Blocks executable from
 your nightly build download. Choose Open from the File menu and browse for our
 above created workspace, and open it up. Be a little patient while Code::Blocks is
 parsing everything, and Code::Blocks will ask us for 3 or 4 global variables, these global
@@ -13818,7 +13836,7 @@ plug-in) where the sdk (Code::Blocks header files) are. These are the values in 
 <span 
 class="cmssbx-10x-x-120">wx</span> </dt><dd 
 class="description">
-      <!--l. 386--><p class="noindent" ><span 
+      <!--l. 388--><p class="noindent" ><span 
 class="cmmi-12">&#x003C;</span>wxDir<span 
 class="cmmi-12">&#x003E; </span>base directory of wxWidgets.: the variable name may be wx32, wx32_64,
       ...
@@ -13826,7 +13844,7 @@ class="cmmi-12">&#x003E; </span>base directory of wxWidgets.: the variable name 
 <span 
 class="cmssbx-10x-x-120">cb</span> </dt><dd 
 class="description">
-      <!--l. 387--><p class="noindent" ><span 
+      <!--l. 389--><p class="noindent" ><span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">cbDir</span><span 
 class="cmmi-12">&#x003E;</span><span 
@@ -13837,21 +13855,21 @@ class="cmssbx-10x-x-120">cb</span><span
 class="cmssbx-10x-x-120">_release</span><span 
 class="cmssbx-10x-x-120">_type</span> </dt><dd 
 class="description">
-      <!--l. 388--><p class="noindent" >: -O (for a release version, usual case. For developpers you can put -g to debug C::B)
+      <!--l. 390--><p class="noindent" >: -O (for a release version, usual case. For developpers you can put -g to debug C::B)
                                                                                        
                                                                                        
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">boost</span> </dt><dd 
 class="description">
-      <!--l. 390--><p class="noindent" >:   main   directory   where   boost   is   installed   (ex:   <span 
+      <!--l. 392--><p class="noindent" >:   main   directory   where   boost   is   installed   (ex:   <span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">boost</span>).   Used   by   the
       NassiShneiderman plugin, fill with the same value the subsections include and lib</p></dd></dl>
-<!--l. 395--><p class="noindent" >Now go to the Project Menu and choose (re)build workspace, and off you go. Watch how
+<!--l. 397--><p class="noindent" >Now go to the Project Menu and choose (re)build workspace, and off you go. Watch how
 Code::Blocks is building Code::Blocks.
-</p><!--l. 397--><p class="noindent" >After the creation of Code::Blocks, the generated files with the debug information can be found
+</p><!--l. 399--><p class="noindent" >After the creation of Code::Blocks, the generated files with the debug information can be found
 in the <span 
 class="cmtt-12">devel </span>subdirectory. By calling, or executing in a console, the batch file <span 
 class="cmtt-12">update.bat</span>
@@ -13870,15 +13888,15 @@ will strip out all debugging symbols. <span
 class="cmti-12">This step is very important - never ever forget</span>
 <span 
 class="cmti-12">it</span>.
-</p><!--l. 399--><p class="noindent" >Now you can copy the wx dll in both that output and, optionally, the devel directory.
-</p><!--l. 401--><p class="noindent" >Then you can close Code::Blocks. That was the downloaded nightly remember?
-</p><!--l. 403--><p class="noindent" >Time to test it. In the output directory, start up the CodeBlocks.exe. If everything went well,
+</p><!--l. 401--><p class="noindent" >Now you can copy the wx dll in both that output and, optionally, the devel directory.
+</p><!--l. 403--><p class="noindent" >Then you can close Code::Blocks. That was the downloaded nightly remember?
+</p><!--l. 405--><p class="noindent" >Time to test it. In the output directory, start up the CodeBlocks.exe. If everything went well,
 you’ll have your very own home-built Code::Blocks running.
-</p><!--l. 405--><p class="noindent" >
+</p><!--l. 407--><p class="noindent" >
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.6.2  </span> <a 
  id="x3-2140006.2.6.2"></a>Linux</h5>
-<!--l. 407--><p class="noindent" ><span 
+<!--l. 409--><p class="noindent" ><span 
 class="cmbx-12">(Note: this section should be reviewed and completed. Does not seem to be totally</span>
 <span 
 class="cmbx-12">updated)</span>
@@ -13886,12 +13904,12 @@ class="cmbx-12">updated)</span>
 <span 
 class="cmssbx-10x-x-120">linux</span> </dt><dd 
 class="description">
-      <!--l. 410--><p class="noindent" >Starting <span 
+      <!--l. 412--><p class="noindent" >Starting <span 
 class="cmtt-12">update</span><span 
 class="cmtt-12">_revision.sh</span></p></dd></dl>
-<!--l. 413--><p class="noindent" >With this function the SVN revision of the Nightly Builts is updated in the sources. The file can
+<!--l. 415--><p class="noindent" >With this function the SVN revision of the Nightly Builts is updated in the sources. The file can
 be found in the main directory of the Code::Blocks sources.
-</p><!--l. 415--><p class="noindent" >When generating under Linux, the following steps are necessary. In this example we assume
+</p><!--l. 417--><p class="noindent" >When generating under Linux, the following steps are necessary. In this example we assume
 that you are in the Code::Blocks source directory. Under Linux, the environment variable
 <code class="lstinline"><span style="color:#000000">PKG_CONFIG_PATH</span></code> must be set. The <span 
 class="cmmi-12">&#x003C;</span>prefix<span 
@@ -13904,7 +13922,7 @@ file.
 <pre class="verbatim" id="verbatim-63">
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:&#x003C;prefix&#x003E;
 </pre>
-<!--l. 419--><p class="nopar" >
+<!--l. 421--><p class="nopar" >
                                                                                        
                                                                                        
 </p>
@@ -13916,53 +13934,53 @@ sh update_revsion.sh
 make
 make install (as root)
 </pre>
-<!--l. 429--><p class="nopar" >
-</p><!--l. 431--><p class="noindent" >You can also build under Linux as under Windows, with a workspace file. Nevertheless,
+<!--l. 431--><p class="nopar" >
+</p><!--l. 433--><p class="noindent" >You can also build under Linux as under Windows, with a workspace file. Nevertheless,
 pkg_config and wx-config must be set correctly.
-</p><!--l. 433--><p class="noindent" >
+</p><!--l. 435--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.7</span>  <a 
  id="x3-2150006.2.7"></a>Generate plugins only</h4>
-<!--l. 435--><p class="noindent" >This section is for generating only plugins.
-</p><!--l. 437--><p class="noindent" >
+<!--l. 437--><p class="noindent" >This section is for generating only plugins.
+</p><!--l. 439--><p class="noindent" >
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.7.1  </span> <a 
  id="x3-2160006.2.7.1"></a>Windows</h5>
-<!--l. 439--><p class="noindent" >Configure the global variables via ’Settings’ <span 
+<!--l. 441--><p class="noindent" >Configure the global variables via ’Settings’ <span 
 class="cmsy-10x-x-120">→</span>’Global Variables’ .
-</p><!--l. 441--><p class="noindent" ><span 
+</p><!--l. 443--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Variable</span>
 <span 
 class="cmssbx-10x-x-120">cb</span>
-</p><!--l. 443--><p class="noindent" >For the <code class="lstinline"><span style="color:#000000">cb</span></code> variable, set the <code class="lstinline"><span style="color:#000000">base</span></code> entry to the source directory of Code::Blocks.
+</p><!--l. 445--><p class="noindent" >For the <code class="lstinline"><span style="color:#000000">cb</span></code> variable, set the <code class="lstinline"><span style="color:#000000">base</span></code> entry to the source directory of Code::Blocks.
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-65">
 &#x003C;cbDir&#x003E;/codeblocks/src
 </pre>
-<!--l. 447--><p class="nopar" >
-</p><!--l. 449--><p class="noindent" ><span 
+<!--l. 449--><p class="nopar" >
+</p><!--l. 451--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Variable</span>
 <span 
 class="cmssbx-10x-x-120">wx</span>
-</p><!--l. 451--><p class="noindent" >For the <code class="lstinline"><span style="color:#000000">wx</span></code> variable, set the <code class="lstinline"><span style="color:#000000">base</span></code> entry to the source directory of wx: e.g.
+</p><!--l. 453--><p class="noindent" >For the <code class="lstinline"><span style="color:#000000">wx</span></code> variable, set the <code class="lstinline"><span style="color:#000000">base</span></code> entry to the source directory of wx: e.g.
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-66">
 C:\wxWidgets-2.8.12
 </pre>
-<!--l. 455--><p class="nopar" >
-</p><!--l. 457--><p class="noindent" >or to build with a more recent version, wx32 (or wx32_64)
+<!--l. 457--><p class="nopar" >
+</p><!--l. 459--><p class="noindent" >or to build with a more recent version, wx32 (or wx32_64)
                                                                                        
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-67">
 C:\wxWidgets-3.2.3
 </pre>
-<!--l. 461--><p class="nopar" >
-</p><!--l. 463--><p class="noindent" >In the Code::Blocks project, the project variable <code class="lstinline"><span style="color:#000000">WX_SUFFIX</span></code> is set to <code class="lstinline"><span style="color:#000000">u</span></code>. This means that, when
+<!--l. 463--><p class="nopar" >
+</p><!--l. 465--><p class="noindent" >In the Code::Blocks project, the project variable <code class="lstinline"><span style="color:#000000">WX_SUFFIX</span></code> is set to <code class="lstinline"><span style="color:#000000">u</span></code>. This means that, when
 generating Code::Blocks linking will be carried out against the <span 
 class="cmtt-12">*u</span><span 
 class="cmtt-12">_gcc</span><span 
@@ -13977,15 +13995,15 @@ so, the layout is as follows.
 <pre class="verbatim" id="verbatim-68">
 gcc_&#x003C;VENDOR&#x003E;.dll
 </pre>
-<!--l. 467--><p class="nopar" >
-</p><!--l. 469--><p class="noindent" >The <span 
+<!--l. 469--><p class="nopar" >
+</p><!--l. 471--><p class="noindent" >The <span 
 class="cmmi-12">&#x003C;</span>VENDOR<span 
 class="cmmi-12">&#x003E; </span>variable is set in the configuration file <span 
 class="cmtt-12">compiler.gcc </span>or in the make
 command line as shown before. To ensure, that a distinction is possible between the officially
 generated Code::Blocks and those generated by yourself, the default setting <code class="lstinline"><span style="color:#000000">VENDOR</span><span style="color:#000000">=</span><span style="color:#000000">custom</span></code>
 should never be changed.
-</p><!--l. 471--><p class="noindent" >Afterwards create the workspace <span 
+</p><!--l. 473--><p class="noindent" >Afterwards create the workspace <span 
 class="cmtt-12">ContribPlugins.cbp </span>via ’Project’ <span 
 class="cmsy-10x-x-120">→</span>’Build workspace’ . Then
 execute <span 
@@ -13993,22 +14011,22 @@ class="cmtt-12">update.bat </span>once more.
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.7.2  </span> <a 
  id="x3-2170006.2.7.2"></a>Linux</h5>
-<!--l. 475--><p class="noindent" >Configure the <code class="lstinline"><span style="color:#000000">wx</span></code> variable with the global variables.
+<!--l. 477--><p class="noindent" >Configure the <code class="lstinline"><span style="color:#000000">wx</span></code> variable with the global variables.
       </p><dl class="description"><dt class="description">
 <span 
 class="cmssbx-10x-x-120">base</span> </dt><dd 
 class="description">
-      <!--l. 478--><p class="noindent" >/usr
+      <!--l. 480--><p class="noindent" >/usr
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">include</span> </dt><dd 
 class="description">
-      <!--l. 479--><p class="noindent" >/usr/include/wx-2.8 (or the version installed on your machine)
+      <!--l. 481--><p class="noindent" >/usr/include/wx-2.8 (or the version installed on your machine)
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">lib</span> </dt><dd 
 class="description">
-      <!--l. 480--><p class="noindent" >/usr/lib</p></dd></dl>
+      <!--l. 482--><p class="noindent" >/usr/lib</p></dd></dl>
                                                                                        
                                                                                        
                                                                                        
@@ -14583,6 +14601,26 @@ class="cmr-10x-x-109">Forum.</span><br />
 <a 
 href="https://forums.codeblocks.org/index.php/topic,1022.0.html" class="url" ><span 
 class="cmtt-10x-x-109">https://forums.codeblocks.org/index.php/topic,1022.0.html</span></a>
+</p></dd><dt class="list">
+<span 
+class="cmr-10x-x-109">[ wxPBguide]</span></dt><dd 
+class="list">
+<!--l. 129--><p class="noindent" ><a 
+ id="Xurl:wxPBguide"></a>
+<span 
+class="cmr-10x-x-109">wxPBguide</span>
+<span 
+class="cmr-10x-x-109">on</span>
+                                                                                       
+                                                                                       
+<span 
+class="cmr-10x-x-109">Git</span>
+<span 
+class="cmr-10x-x-109">repos.</span><br />
+
+<a 
+href="https://github.com/PBfordev/wxpbguide" class="url" ><span 
+class="cmtt-10x-x-109">https://github.com/PBfordev/wxpbguide</span></a>
 </p>
 </dd></dl>
                                                                                        

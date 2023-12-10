@@ -126,4 +126,8 @@ New Translation page on Launchpad.\\ \url{https://launchpad.net/codeblocks-gd}
 \ShowURN{Translation}
 Translation topic on CB Forum.\\ \url{https://forums.codeblocks.org/index.php/topic,1022.0.html}
 
+\urlbibitem[\hightechook wxPBguide]{url:wxPBguide}
+\ShowURN{wxPBguide}
+wxPBguide on Git repos.\\ \url{https://github.com/PBfordev/wxpbguide}
+
 \end{theurlbibliography}

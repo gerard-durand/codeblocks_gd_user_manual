@@ -100,6 +100,8 @@ Wx is provided as a zip file of it's sources, so we need to build that ourselves
 Next, let's unzip the wx sources into \file{C:\osp Projects} so we will end up with a wx root directory like this:\\
 \file{C:\osp Projects\osp wxWidgets-3.2.3}. Next unzip the patch into the same directory letting it overwrite files. Note that we are going to refer to the wx root directory from now on as \var{wxDir}
 
+\hint{User PBfordev has created a very nice guide to compile, install and use wxWidgets on Windows. You can find it as a pdf file on his git repos: \href{https://github.com/PBfordev/wxpbguide}{wxPBGuide.pdf} \cite{url:wxPBguide}. His point of view is a little bit different, as he creates a wxWidgets multilib version. For \codeblocks itself on Windows, following different advices on the C::B forum, it's better to have a monolitic version. This is how the official and nightlies versions are distributed. }
+
 Now, we are going to build the wxWidgets. This is how we do it:
 
 First, make sure \file{C:\osp MingGW\osp bin} is in your path, during the build some programs will be called that reside in the the MinGW\osp bin directory. Also, Make has to be version 3.80 or above.
