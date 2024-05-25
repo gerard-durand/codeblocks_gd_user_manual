@@ -33,7 +33,7 @@ First, a brief explanation of MinGW components:
 \begin{description}
 \item[gcc-core] the core of the GCC suite
 \item[gcc-g++] the c and c++ compiler
-\item[gfortran] the fortran compiler. IMPORTANT : gfortran 5.1 has a bug : open instruction, to open a file for reading data, does not work ! Unfortunately, last TDM distribution use this gfortran and has not been corrected.
+\item[gfortran] the fortran compiler. IMPORTANT : gfortran 5.1 (rather old version) has a bug: open instruction, to open a file for reading data, does not work !
 \item[mingw Runtime] implementation of the run time libraries
 \item[mingw utils] several utilities (implementation of smaller programs that GCC itself uses)
 \item[win32Api] the APIs for creating Windows programs
@@ -98,7 +98,7 @@ However, if we want to build a wx application, we need to include the headers of
 Wx is provided as a zip file of it's sources, so we need to build that ourselves. We already shopped for the MinGW compiler, so we have all the tools we need at hand.
 
 Next, let's unzip the wx sources into \file{C:\osp Projects} so we will end up with a wx root directory like this:\\
-\file{C:\osp Projects\osp wxWidgets-3.2.3}. Next unzip the patch into the same directory letting it overwrite files. Note that we are going to refer to the wx root directory from now on as \var{wxDir}
+\file{C:\osp Projects\osp wxWidgets-3.2.5}. Next unzip the patch into the same directory letting it overwrite files. Note that we are going to refer to the wx root directory from now on as \var{wxDir}
 
 \hint{User PBfordev has created a very nice guide to compile, install and use wxWidgets on Windows. You can find it as a pdf file on his git repos: \href{https://github.com/PBfordev/wxpbguide}{wxPBGuide.pdf} \cite{url:wxPBguide}. His point of view is a little bit different, as he creates a wxWidgets multilib version. For \codeblocks itself on Windows, following different advices on the C::B forum, it's better to have a monolitic version. This is how the official and nightlies versions are distributed. }
 
@@ -142,8 +142,8 @@ The parameter -j 4 allows a parallel build on 4 processors and thus strongly acc
 The best result is when the value is equal to the number of processors (4 in my case).
 
 \codeblocks for Windows, since SVN rev 11701, is generated to support DIRECT2D activated/forced (for faster and better quality graphics). wxWidgets generation needs some adjustments to be done directly in setup.h file(s). Normally the only file which needs to be modified is in the lib subdirectory, the one created the first time wxWidgets is generated, and used in following generations. For a gcc, dll build, it's something like:\newline
-\file{C:\osp wxWidgets-3.2.3\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
-You can simply modify the line containing (line 1652 in wxWidgets 3.2.3):
+\file{C:\osp wxWidgets-3.2.5\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
+You can simply modify the line containing (line 1651 in wxWidgets 3.2.5):
 \begin{verbatim}
     #define wxUSE_GRAPHICS_DIRECT2D 0 
 \end{verbatim}
@@ -459,7 +459,7 @@ C:\wxWidgets-2.8.12
 or to build with a more recent version, wx32 (or wx32\_64)
 
 \begin{verbatim}
-C:\wxWidgets-3.2.3
+C:\wxWidgets-3.2.5
 \end{verbatim}
 
 In the \codeblocks project, the project variable \codeline{WX_SUFFIX} is set to \codeline{u}. This means that, when generating \codeblocks linking will be carried out against the \file{*u\_gcc\_custom.dll} library (by default). The official nightly Builts of \codeblocks will be linked against \file{gcc\_cb.dll}. In doing so, the layout is as follows.

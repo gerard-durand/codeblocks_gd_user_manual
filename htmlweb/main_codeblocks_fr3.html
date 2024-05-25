@@ -31,7 +31,7 @@ class="cmbx-12x-x-207">Code::Blocks</span><br /><br />
 <span 
 class="cmr-17x-x-143">Manuel Utilisateur</span><br /><br />
 <span 
-class="cmr-12x-x-120">Version 2.1.11</span><br /><br />
+class="cmr-12x-x-120">Version 2.1.12</span><br /><br />
 </p><!--l. 60--><p class="noindent" >Merci à l’équipe Code::Blocks:<br />
 Anders F. Björklund (afb), Biplab Kumar Modak (biplab), Bartomiej wiecki (byo), Paul
 A. Jimenez (ceniza), Koa Chong Gee (cyberkoa), Daniel Orb (daniel2000), Lieven de
@@ -52,7 +52,7 @@ les informations y sont peut-être plus à jour.<br />
 Il est permis de copier, distribuer et/ou modifier ce document dans le respect de la
 licence ”GNU Free Documentation”, Version 1.2 ou toute autre version postérieure
 publiée par la ”Free Software Foundation”.
-</p><!--l. 60--><p class="noindent" >Manuel Utilisateur mis à jour en décembre 2023</p></div>
+</p><!--l. 60--><p class="noindent" >Manuel Utilisateur mis à jour en mai 2024</p></div>
                                                                                        
                                                                                        
 </div>
@@ -8883,10 +8883,11 @@ de variables. Un ensemble de variables est une collection indépendante de varia
 identifiée par un nom (les noms d’ensemble ont les mêmes contraintes que les noms de
 variables).
 </p><!--l. 312--><p class="noindent" >Si vous souhaitez basculer vers un autre ensemble de variables, vous sélectionnez tout
-simplement un ensemble différent depuis le menu. Des ensembles différents n’ont
-pas obligatoirement les mêmes variables, et des variables identiques dans différents
-ensembles n’ont pas forcément les mêmes valeurs, ni même des membres utilisateurs
-identiques.
+simplement un ensemble différent depuis le menu déroulant en haut du dialogue (voir
+<a 
+href="#x3-149001r1">figure 3.1</a>). Des ensembles différents n’ont pas obligatoirement les mêmes variables, et des
+variables i dentiques dans différents ensembles n’ont pas forcément les mêmes valeurs, ni même
+des membres utilisateurs identiques.
 </p><!--l. 314--><p class="noindent" >Un autre point positif à propos des ensembles est que si vous avez une douzaine de variables et
 que vous voulez obtenir un nouvel ensemble avec une de ces variables pointant vers un endroit
 différent, vous n’êtes pas obligés de ré-entrer toutes les données à nouveau. Vous
@@ -13846,9 +13847,9 @@ class="description">
 <span 
 class="cmssbx-10x-x-120">gfortran</span> </dt><dd 
 class="description">
-      <!--l. 36--><p class="noindent" >le compilateur fortran. IMPORTANT : gfortran 5.1 a un bug : l’instruction open,
-      pour ouvrir un fichier de données en lecture, ne fonctionne pas ! Malheureusement,
-      la dernière distribution TDM utilise ce gfortran et n’a pas été mise à jour.
+      <!--l. 36--><p class="noindent" >le compilateur fortran. IMPORTANT : gfortran 5.1 (une version assez ancienne) a un
+      bug : l’instruction open, pour ouvrir un fichier de données en lecture, ne fonctionne
+      pas !
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">mingw Runtime</span> </dt><dd 
@@ -14038,7 +14039,7 @@ class="cmtt-12">C:</span><span
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">Projets</span><span 
 class="cmsy-10x-x-120">∖</span><span 
-class="cmtt-12">wxWidgets-3.2.3</span>. Ensuite, dézippez les patchs (s’il y en a !) dans le même sous
+class="cmtt-12">wxWidgets-3.2.4</span>. Ensuite, dézippez les patchs (s’il y en a !) dans le même sous
 répertoire afin de remplacer les fichiers modifiés. Notez que nous allons référencer le répertoire
 wx de base à partir de maintenant comme <span 
 class="cmmi-12">&#x003C;</span>wxDir<span 
@@ -14134,7 +14135,7 @@ c’est quelque chose comme :<br
 class="newline" /><span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">∖</span><span 
-class="cmtt-12">wxWidgets-3.2.3</span><span 
+class="cmtt-12">wxWidgets-3.2.4</span><span 
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">lib</span><span 
 class="cmsy-10x-x-120">∖</span><span 
@@ -14145,7 +14146,7 @@ class="cmtt-12">mswu</span><span
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">wx</span>.<br 
 class="newline" />Vous pouvez simplement modifier la ligne contenant (ligne 1652 dans wxWidgets
-3.2.3):
+3.2.4):
                                                                                        
                                                                                        
 </p>
@@ -14660,7 +14661,7 @@ C:\wxWidgets-2.8.12
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-68">
-C:\wxWidgets-3.2.3
+C:\wxWidgets-3.2.4
 </pre>
 <!--l. 463--><p class="nopar" >
 </p><!--l. 465--><p class="noindent" >Dans le projet Code::Blocks, la variable projet <code class="lstinline"><span style="color:#000000">WX_SUFFIX</span></code> est configurée à <code class="lstinline"><span style="color:#000000">u</span></code>. Cela

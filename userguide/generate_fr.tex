@@ -33,7 +33,7 @@ D'abord, une brève explication des composants de MinGW :
 \begin{description}
 \item[gcc-core] le coeur de la suite GCC
 \item[gcc-g++] les compilateurs c et c++
-\item[gfortran] le compilateur fortran. IMPORTANT : gfortran 5.1 a un bug : l'instruction open, pour ouvrir un fichier de données en lecture, ne fonctionne pas ! Malheureusement, la dernière distribution TDM utilise ce gfortran et n'a pas été mise à jour.
+\item[gfortran] le compilateur fortran. IMPORTANT : gfortran 5.1 (une  version assez ancienne) a un bug : l'instruction open, pour ouvrir un fichier de données en lecture, ne fonctionne pas !
 \item[mingw Runtime] l'implémentation des librairies "run time"
 \item[mingw utils] plusieurs utilitaires (implémentation de petits programmes que GCC utilise lui-même)
 \item[win32Api] l'API (Interface de Programmation d'Application) pour créer des programmes Windows
@@ -98,7 +98,7 @@ Néanmoins, si nous voulons générer une application wx, nous devons inclure le
 Wx est fourni sous forme de fichiers sources dans un fichier zip, aussi, nous devons le générer par nous-mêmes. Nous avons déjà le compilateur MinGW, donc nous avons tous les outils nécessaires sous la main.
 
 Dézippez maintenant les sources wx dans \file{C:\osp Projets} et ainsi nous aurons au final un répertoire wx de base comme celui-ci :\\
-\file{C:\osp Projets\osp wxWidgets-3.2.3}. Ensuite, dézippez les patchs (s'il y en a !) dans le même sous répertoire afin de remplacer les fichiers modifiés. Notez que nous allons référencer le répertoire wx de base à partir de maintenant comme \var{wxDir}
+\file{C:\osp Projets\osp wxWidgets-3.2.5}. Ensuite, dézippez les patchs (s'il y en a !) dans le même sous répertoire afin de remplacer les fichiers modifiés. Notez que nous allons référencer le répertoire wx de base à partir de maintenant comme \var{wxDir}
 
 \hint{L'utilisateur PBfordev a créé un très bon guide pour compiler, installer et utiliser wxWidgets sous Windows. Vous pouvez le trouver en tant que fichier pdf sur son dépôt git : \href{https://github.com/PBfordev/wxpbguide}{wxPBGuide.pdf} \cite{url:wxPBguide}. Son point de vue est un peu différent, car il crée une version multilib de wxWidgets. Pour \codeblocks lui-même sous Windows, d'après différents avis sur les forums de C::B, il vaut mieux avoir une version monolithique. C'est d'ailleurs ainsi que sont distribuées les versions officielles et "nightlies".}
 
@@ -142,8 +142,8 @@ Le paramètre -j 4 permet une génération en parallèle sur 4 processeurs et do
 Le meilleur résultat est obtenu lorsque la valeur est égale au nombre de processeurs (4 dans mon cas).
 
 Depuis la révision SVN 11701, \codeblocks sous Windows est généré en activant/forçant le support de DIRECT2D (pour une plus rapide et meilleure qualité graphique). La génération de wxWidgets nécessite quelques ajustments à effectuer directement dans le(s) fichier(s) setup.h. Normalement le seul fichier à modifier est dans le sous-répertoire lib, celui créé lors de la première génération de wxWidgets, et utilisé par la suite. Pour une génération par gcc, dll, c'est quelque chose comme :\newline
-\file{C:\osp wxWidgets-3.2.3\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
-Vous pouvez simplement modifier la ligne contenant (ligne 1652 dans wxWidgets 3.2.3):
+\file{C:\osp wxWidgets-3.2.5\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
+Vous pouvez simplement modifier la ligne contenant (ligne 1651 dans wxWidgets 3.2.5):
 \begin{verbatim}
     #define wxUSE_GRAPHICS_DIRECT2D 0 
 \end{verbatim}
@@ -459,7 +459,7 @@ C:\wxWidgets-2.8.12
 ou pour générer avec une version plus récente, wx32 (ou wx32\_64)
 
 \begin{verbatim}
-C:\wxWidgets-3.2.3
+C:\wxWidgets-3.2.5
 \end{verbatim}
 
 Dans le projet \codeblocks, la variable projet \codeline{WX_SUFFIX} est configurée à \codeline{u}. Cela signifie que pendant la génération de \codeblocks l'édition de liens se fera avec la librairie \file{*u\_gcc\_custom.dll} (par défaut). Les générations officielles des nightlies de \codeblocks seront liées avec \file{gcc\_cb.dll}. Pour ce faire, il faut faire comme suit.

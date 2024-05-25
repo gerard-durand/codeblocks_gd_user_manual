@@ -31,7 +31,7 @@ class="cmbx-12x-x-207">Code::Blocks</span><br /><br />
 <span 
 class="cmr-17x-x-143">User Manual</span><br /><br />
 <span 
-class="cmr-12x-x-120">Version 2.1.11</span><br /><br />
+class="cmr-12x-x-120">Version 2.1.12</span><br /><br />
 </p><!--l. 60--><p class="noindent" >Thanks to the Code::Blocks team:<br />
 Anders F. Björklund (afb), Biplab Kumar Modak (biplab), Bartomiej wiecki (byo), Paul
 A. Jimenez (ceniza), Koa Chong Gee (cyberkoa), Daniel Orb (daniel2000), Lieven de
@@ -52,7 +52,7 @@ up to date.<br />
 Permission is granted to copy, distribute and/or modify this document under the terms
 of the GNU Free Documentation License, Version 1.2 or any later version published by
 the Free Software Foundation.
-</p><!--l. 60--><p class="noindent" >User Manual updated in december 2023</p></div>
+</p><!--l. 60--><p class="noindent" >User Manual updated in may 2024</p></div>
                                                                                        
                                                                                        
 </div>
@@ -8559,9 +8559,10 @@ can become tedious. For such a purpose, Code::Blocks supports variable sets. A v
 an independent collection of variables identified by a name (set names have the same
 constraints as variable names).
 </p><!--l. 313--><p class="noindent" >If you wish to switch to a different set of variables, you simply select a different set from the
-menu. Different sets are not required to have the same variables, and identical variables in
-different sets are not required to have the same values, or even the same custom
-members.
+scroll-down menu at the top of the dialog (see <a 
+href="#x3-149001r1">Figure 3.1</a>). Different sets are not required to
+have the same variables, and identical variables in different sets are not required to have the
+same values, or even the same custom members.
 </p><!--l. 315--><p class="noindent" >Another positive thing about sets is that if you have a dozen variables and you want to have a
 new set with one of these variables pointing to a different location, you are not required to
 re-enter all the data again. You can simply create a clone of your current set, which will then
@@ -13188,9 +13189,8 @@ class="description">
 <span 
 class="cmssbx-10x-x-120">gfortran</span> </dt><dd 
 class="description">
-      <!--l. 36--><p class="noindent" >the fortran compiler. IMPORTANT : gfortran 5.1 has a bug : open instruction, to
-      open a file for reading data, does not work ! Unfortunately, last TDM distribution
-      use this gfortran and has not been corrected.
+      <!--l. 36--><p class="noindent" >the fortran compiler. IMPORTANT : gfortran 5.1 (rather old version) has a bug:
+      open instruction, to open a file for reading data, does not work !
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">mingw Runtime</span> </dt><dd 
@@ -13372,7 +13372,7 @@ class="cmtt-12">C:</span><span
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">Projects</span><span 
 class="cmsy-10x-x-120">∖</span><span 
-class="cmtt-12">wxWidgets-3.2.3</span>. Next unzip the patch into the same directory letting it
+class="cmtt-12">wxWidgets-3.2.4</span>. Next unzip the patch into the same directory letting it
 overwrite files. Note that we are going to refer to the wx root directory from now on as
 <span 
 class="cmmi-12">&#x003C;</span>wxDir<span 
@@ -13465,7 +13465,7 @@ like:<br
 class="newline" /><span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">∖</span><span 
-class="cmtt-12">wxWidgets-3.2.3</span><span 
+class="cmtt-12">wxWidgets-3.2.4</span><span 
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">lib</span><span 
 class="cmsy-10x-x-120">∖</span><span 
@@ -13475,7 +13475,7 @@ class="cmsy-10x-x-120">∖</span><span
 class="cmtt-12">mswu</span><span 
 class="cmsy-10x-x-120">∖</span><span 
 class="cmtt-12">wx</span>.<br 
-class="newline" />You can simply modify the line containing (line 1652 in wxWidgets 3.2.3):
+class="newline" />You can simply modify the line containing (line 1652 in wxWidgets 3.2.4):
                                                                                        
                                                                                        
 </p>
@@ -13977,7 +13977,7 @@ C:\wxWidgets-2.8.12
                                                                                        
 </p>
 <pre class="verbatim" id="verbatim-67">
-C:\wxWidgets-3.2.3
+C:\wxWidgets-3.2.4
 </pre>
 <!--l. 463--><p class="nopar" >
 </p><!--l. 465--><p class="noindent" >In the Code::Blocks project, the project variable <code class="lstinline"><span style="color:#000000">WX_SUFFIX</span></code> is set to <code class="lstinline"><span style="color:#000000">u</span></code>. This means that, when
