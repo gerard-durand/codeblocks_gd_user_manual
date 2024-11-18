@@ -12,11 +12,11 @@ set name=main_codeblocks_%lang%
 
 :suite
 REM Version with a call to htlatex
-rem call .\00_ToHtml.cmd
+call .\00_ToHtml.cmd
 rem > .\00_ToHtml.log 2>&1
 
 REM Version with a call to make4ht
-call .\00_MkToHtml.cmd
+rem call .\00_MkToHtml.cmd
 rem > .\00_MkToHtml.log 2>&1
 
 rem Remplacement de mots "Contents" spécifiques par leur équivalent en français

@@ -205,9 +205,9 @@ In \codeblocks you can easily navigate between header/source files like:
 
 \screenshot{open_header}{Opening of a header file}
 
-\codeblocks offeres several ways of searching within a file or directory. The dialogue box for searching is opened via \menu{Search,Find} (Ctrl-F) or \menu{Find in Files} (Ctrl-Shift-F).
+\codeblocks offeres several ways of searching within a file or directory. The dialog box for searching is opened via \menu{Search,Find} (Ctrl-F) or \menu{Find in Files} (Ctrl-Shift-F).
 
-Alt-G and Ctrl-Alt-G are another useful functions. The dialogue which will open on using this shortcut, lets you select files/functions and then jumps to the implementation of the selected function (see \pxref{fig:select_function}) or opens the selected file in the editor. You may use wildcards like \codeline{*} or \codeline{?} etc. for an incremental search in the dialog.
+Alt-G and Ctrl-Alt-G are another useful functions. The dialog which will open on using this shortcut, lets you select files/functions and then jumps to the implementation of the selected function (see \pxref{fig:select_function}) or opens the selected file in the editor. You may use wildcards like \codeline{*} or \codeline{?} etc. for an incremental search in the dialog.
 
 \screenshot[!hbt][width=.5\columnwidth]{select_function}{Search for functions}
 
@@ -356,7 +356,7 @@ The configuration for an operating system is specified by so-called environmenta
 \item Installed software packages call each other
 \end{itemize}
 
-So it might be the case that different versions of a compilers or other tools are mandatory for different projects. One possibility in such a case is to change the environmental variables in the system control for every project. However, this procedure is error-prone and not flexible. For this requirement, \codeblocks offers an elegant solution. Different configurations of environmental variables can be created which are used only internally in \codeblocks. Additionally, you can switch between these configurations. The \pxref{fig:env_variables} shows the dialogue which you can open via \samp{Environment Varibales} under \menu{Settings,Environment}. A configuration is created via the \samp{Create} button.
+So it might be the case that different versions of a compilers or other tools are mandatory for different projects. One possibility in such a case is to change the environmental variables in the system control for every project. However, this procedure is error-prone and not flexible. For this requirement, \codeblocks offers an elegant solution. Different configurations of environmental variables can be created which are used only internally in \codeblocks. Additionally, you can switch between these configurations. The \pxref{fig:env_variables} shows the dialog which you can open via \samp{Environment Varibales} under \menu{Settings,Environment}. A configuration is created via the \samp{Create} button.
 
 \screenshot{env_variables}{Environmental variables}
 
@@ -473,7 +473,7 @@ During compiling, objects \file{name.o} are created from the sources \file{name.
 
 \subsection{Settings for file extensions}\label{sec:file_extension}
 
-In \codeblocks, you can choose between several ways of treating file extensions. The settings dialogue can be opened via \menu{Settings,Files extension handling}.
+In \codeblocks, you can choose between several ways of treating file extensions. The settings dialog can be opened via \menu{Settings,Files extension handling}.
 You can either use the applications assigned by Windows for each file extension (open it with the associated application), or change the setting for each extensions in such a way that either a user-defined program will start (launch an external program), or the file will be opened in the \codeblocks editor (open it inside \codeblocks editor).
 
 \hint{If a user-defined program is assigned to a certain file extension, the setting \samp{Disable \codeblocks while the external program is running} should be deactivated because otherwise \codeblocks will be closed whenever a file with this extension is opened.}
@@ -486,7 +486,7 @@ IDE \codeblocks can be executed from the command line without a graphic interfac
 
 If your enter in a command line:\\
 \codeline{codeblocks /h}\\
-You will see a new window containing a list of arguments:
+You will see a new window containing a list of arguments as this one:
 \begin{lstlisting}
 Usage:
 codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
@@ -539,39 +539,38 @@ Example:\\
                                                                   filename. For instance, \var{filename} may be \file{project.cbp}. Place this 
                                                                   argument at the end of the command line, just before the output redirection 
                                                                   if there is any.                                                                  \\ \hline
-                &  \footnotesize{\opt{--file=\var{filename}\optional{:ligne}}} & Open file in \codeblocks and optionally jump to a specific line.   \\ \hline
 \textbf{/h, /?} & \footnotesize{\opt{--help, --?}}              & Shows a help message regarding the command line arguments.                        \\ \hline
-                & \footnotesize{\opt{--safe-mode}}              & All plugins are disabled on startup.                                              \\ \hline
+                & \footnotesize{\opt{--safe-mode}}              & Load in safe mode (All plugins are disabled on startup.)           				\\ \hline
 \textbf{/na}    & \footnotesize{\opt{--no-check-associations}}  & Don't perform any file association checks (Windows only).                         \\ \hline
 \textbf{/nd}    & \footnotesize{\opt{--no-dde}}                 & Don't start a DDE server (Windows only).                                          \\ \hline
-\textbf{/ni}    & \footnotesize{\opt{--no-ipc}}                 & Don't start an IPC server (Linux and Mac only).                                   \\ \hline
 \textbf{/ns}    & \footnotesize{\opt{--no-splash-screen}}       & Hides the splash screen while the application is loading.                         \\ \hline
                 & \footnotesize{\opt{--multiple-instance}}      & Allow running multiple instances.                                                 \\ \hline
 \textbf{/d}     & \footnotesize{\opt{--debug-log}}              & Display the debug log of the application.                                         \\ \hline
 \textbf{/nc}    & \footnotesize{\opt{--no-crash-handler}}       & Don't use the crash handler (useful for debugging C::B).                          \\ \hline
+\textbf{/v}     & \footnotesize{\opt{--verbose}}                & Show more debugging c::b messages.                                                \\ \hline
                 & \footnotesize{\opt{--prefix=\var{str}}}       & Sets the shared data directory prefix.                                            \\ \hline
                 & \footnotesize{\opt{--user-data-dir=\var{str}}}& Specify an alternative directory for user settings and user installed plugins.    \\ \hline
-\textbf{/p}     & \makecell[l]{
+\textbf{/p} str & \makecell[l]{
                   \footnotesize{\opt{--personality=\var{str},}}\\
                   \footnotesize{\opt{--profile=\var{str}}} }    & Sets the personality to use. You can use ask as the parameter to list all
                                                                   available personalities.                                                          \\ \hline
                 & \footnotesize{\opt{--no-log}}                 & Turn off the application log.                                                     \\ \hline
                 & \footnotesize{\opt{--log-to-file}}            & Redirect application log to a file.                                               \\ \hline
                 & \footnotesize{\opt{--debug-log-to-file}}      & Redirect application debug log to a file.                                         \\ \hline
-                & \footnotesize{\opt{--clean}}                  & Clean the project or workspace.                                                   \\ \hline
+\textbf{/S} name& \footnotesize{\opt{--set=name}}               & Set "name" to current active set for global variables (after [r13245])         	\\ \hline
+\textbf{/D} str & \footnotesize{\opt{-D $<$set$>$.uservar.mem=val}} & Set the member mem of user variable uservar in "set" to value val. This
+                                                                      overrides the current "set" value (after [r13245])                            \\ \hline
                 & \footnotesize{\opt{--rebuild}}                & Clean and then build the project or workspace.                                    \\ \hline
                 & \footnotesize{\opt{--build}}                  & Build the project or workspace.                                                   \\ \hline
+                & \footnotesize{\opt{--clean}}                  & Clean the project or workspace.                                                   \\ \hline
                 & \footnotesize{\opt{--target=\var{str}}}       & Sets target for batch build. For example \cmdline{\opt{--}target='Release'}.      \\ \hline
                 & \footnotesize{\opt{--no-batch-window-close}}  & Keeps the batch log window visible after the batch build is completed.            \\ \hline
                 & \footnotesize{\opt{--batch-build-notify}}     & Shows a message after the batch build is completed.                               \\ \hline
                 & \footnotesize{\opt{--script=\var{str}}}       & Execute script file.                                                              \\ \hline
+                & \footnotesize{\opt{--file=\var{filename}\optional{:ligne}}} & Open file in \codeblocks and optionally jump to a specific line.    \\ \hline
                 & \footnotesize{\opt{--dbg-config=\var{str}}}   & Selects the debugger config used for attaching (uses the current selected 
                                                                   target if omitted).                                                               \\ \hline
                 & \footnotesize{\opt{--dbg-attach=\var{str}}}   & String passed to the debugger plugin which is used for attaching to a process.    \\ \hline
-\textbf{/v}     & \footnotesize{\opt{--verbose}}                & Enable logging of c::b errors.                                                    \\ \hline
-                & \footnotesize{\opt{-S setName}}               & Set "setName" to current active set for global variables (after [r13245])         \\ \hline
-                & \footnotesize{\opt{-D $<$set$>$.uservar.mem=val}} & Set the member mem of user variable uservar in "set" to value val. This
-                                                                      overrides the current "set" value (after [r13245])                            \\ \hline
                 & \footnotesize{\opt{$>$ \var{build log file}}} & Placed in the very last position of the command line, this may be used to
                                                                   redirect standard output to log file. This is not a \codeblocks option as
                                                                   such, but just a standard DOS/*nix shell output redirection.                      \\ \hline

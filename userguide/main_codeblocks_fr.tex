@@ -3,6 +3,9 @@
 
 % Version without Table of Contents generation, to create html version, then chm
 
+% pour l'ajout ci-dessous, voir https://tex.stackexchange.com/questions/720126/compiling-of-pdf-a-1b-compatible-document-fails-due-to-latex-error-loading-a-cl
+\RequirePackage[2024-05-01]{latexrelease}
+
 \title{Manuel Utilisateur de CodeBlocks}
 \def\newcharencode{utf8}        % set character encoding
 \input{mystyles/booleans}       % boolean declaration
@@ -29,7 +32,7 @@
 %%%%%%%% parameter for titlepage %%%%%%%%%%
 \def\Subject{Code::Blocks}
 \def\Title{Manuel Utilisateur}
-\def\DocVersion{2.1.12}
+\def\DocVersion{2.1.14}
 
 % style for documentation
 \input{mystyles/format_docu}

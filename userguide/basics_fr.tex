@@ -491,7 +491,7 @@ L'Environnement de Développement Intégré (IDE) \codeblocks peut être exécut
 
 Si vous entrez en ligne de commande :\\
 \codeline{codeblocks /h}\\
-Vous verrez une nouvelle fenêtre contenant une liste d'arguments :
+Vous verrez une nouvelle fenêtre contenant une liste d'arguments comme celle-ci :
 \begin{lstlisting}
 Usage:
 codeblocks [/h] [/?] [--safe-mode] [/na] [/nd] [/ni] [/ns]
@@ -544,34 +544,37 @@ Exemple:\\
                                                                   peut être \file{project.cbp}. Placez cet argument en fin de ligne
                                                                   de commande, juste avant la redirection de la sortie, s'il y  
                                                                   en a une.                                                     \\ \hline
-                &  \footnotesize{\opt{--file=\var{filename}\optional{:ligne}}} & Ouvrir un fichier dans \codeblocks et, en option,
-                                                                                 se positionner sur une ligne particulière.     \\ \hline
 \textbf{/h, /?} & \footnotesize{\opt{--help, --?}}              & Affiche un message d'aide concernant les arguments en
                                                                         ligne de commande.                                      \\ \hline
                 & \footnotesize{\opt{--safe-mode}}              & Désactive toutes les extensions (plugins) au démarrage.       \\ \hline
 \textbf{/na}    & \footnotesize{\opt{--no-check-associations}}  & Ne faire aucun contrôle d'association de fichiers (Windows
                                                                   seulement).                                                   \\ \hline
 \textbf{/nd}    & \footnotesize{\opt{--no-dde}}                 & Ne pas lancer le serveur DDE (Windows seulement).             \\ \hline
-\textbf{/ni}    & \footnotesize{\opt{--no-ipc}}                 & Ne pas lancer le serveur IPC (Linux et Mac seulement).        \\ \hline
 \textbf{/ns}    & \footnotesize{\opt{--no-splash-screen}}       & Ne pas afficher l'écran de démarrage pendant le chargement
                                                                   de l'application.                                             \\ \hline
                 & \footnotesize{\opt{--multiple-instance}}      & Autorise l'exécution de plusieurs instances.                  \\ \hline
 \textbf{/d}     & \footnotesize{\opt{--debug-log}}              & Afficher le journal de débogage de l'application.             \\ \hline
 \textbf{/nc}    & \footnotesize{\opt{--no-crash-handler}}       & Ne pas utiliser le "crash handler" (utile pour déboguer C::B).\\ \hline
+\textbf{/v}     & \footnotesize{\opt{--verbose}}                & Active davantage de messages d'erreurs de c::b.               \\ \hline
                 & \footnotesize{\opt{--prefix=\var{str}}}       & Configure le préfixe du répertoire de données partagées.      \\ \hline
                 & \footnotesize{\opt{--user-data-dir=\var{str}}}& Configure un répertoire alternatif pour la configuration
                                                                   utilisateur et les greffons installés par l'utilisateur.      \\ \hline
-\textbf{/p}     & \makecell[l]{
+\textbf{/p} str & \makecell[l]{
                   \footnotesize{\opt{--personality=\var{str},}}\\
                   \footnotesize{\opt{--profile=\var{str}}} }    & Configure le profil (ou personnalité) à utiliser. Vous pouvez
                                                                   utiliser le paramètre ask pour afficher la liste de tous
                                                                   les profils disponibles.                                      \\ \hline
                 & \footnotesize{\opt{--no-log}}                 & Désactive le journal d'application.                           \\ \hline
                 & \footnotesize{\opt{--log-to-file}}            & Redirige le journal application vers un fichier.              \\ \hline
-                & \footnotesize{\opt{--debug-log-to-file}}      & Redirige le journal application de débogage vers un fichier.              \\ \hline
-                & \footnotesize{\opt{--clean}}                  & Nettoie le project/espace de travail.                         \\ \hline
+                & \footnotesize{\opt{--debug-log-to-file}}      & Redirige le journal application de débogage vers un fichier.  \\ \hline
+\textbf{/S} name& \footnotesize{\opt{--set=name}}               & Configure "name" en tant qu'ensemble courant de
+                                                                  variables globales (après [r13245])                           \\ \hline
+\textbf{/D} str & \footnotesize{\opt{-D $<$set$>$.uservar.mem=val}} & Configure le membre mem de la variable utilisateur
+                                                                      uservar de l'ensemble "set" à la valeur val. Cela se
+                                                                      substitue à la valeur courante dans "set"(après [r13245]) \\ \hline
                 & \footnotesize{\opt{--rebuild}}                & Nettoie et génère le projet ou l'espace de travail.           \\ \hline
                 & \footnotesize{\opt{--build}}                  & Génère le projet ou l'espace de travail.                      \\ \hline
+                & \footnotesize{\opt{--clean}}                  & Nettoie le project/espace de travail.                         \\ \hline
                 & \footnotesize{\opt{--target=\var{str}}}       & Configure la cible de génération. Par exemple
                                                                   \cmdline{\opt{--}target='Release'}.                           \\ \hline
                 & \footnotesize{\opt{--no-batch-window-close}}  & Garde la fenêtre batch de journalisation visible après que
@@ -579,16 +582,12 @@ Exemple:\\
                 & \footnotesize{\opt{--batch-build-notify}}     & Affiche un message une fois que la génération batch est
                                                                   terminée.                                                     \\ \hline
                 & \footnotesize{\opt{--script=\var{str}}}       & Exécute un fichier de script.                                 \\ \hline
+                & \footnotesize{\opt{--file=\var{filename}\optional{:ligne}}} & Ouvrir un fichier dans \codeblocks et, en option,
+                                                                                 se positionner sur une ligne particulière.     \\ \hline
                 & \footnotesize{\opt{--dbg-config=\var{str}}}   & Sélectionne la configuration de débogage à utiliser
                                                                   (utilise la cible courante si omis).                          \\ \hline
                 & \footnotesize{\opt{--dbg-attach=\var{str}}}   & Chaîne passée au greffon du debugger qui est utilisé
                                                                   lors de l'attachement au processus.                           \\ \hline
-\textbf{/v}     & \footnotesize{\opt{--verbose}}                & Active la journalisation des erreurs de c::b.                 \\ \hline
-                & \footnotesize{\opt{-S setName}}               & Configure "setName" en tant qu'ensemble courant de
-                                                                  variables globales (après [r13245])                           \\ \hline
-                & \footnotesize{\opt{-D $<$set$>$.uservar.mem=val}} & Configure le membre mem de la variable utilisateur
-                                                                      uservar de l'ensemble "set" à la valeur val. Cela se
-                                                                      substitue à la valeur courante dans "set"(après [r13245]) \\ \hline
                 & \footnotesize{\opt{$>$ \var{build log file}}} & Placé en toute dernière position d'une ligne de commande,
                                                                   ceci permet à l'utilisateur de rediriger la sortie standard
                                                                   vers un fichier log. Ceci n'est pas à proprement parler

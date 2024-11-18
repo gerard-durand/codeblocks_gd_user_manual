@@ -24,7 +24,7 @@ In order to perform our build tasks, we will need several tools. Let's create an
 This section is written for a Windows syntax, but can be easily adapted to Linux. 
 Other detailed instructions may be found in the Wiki: \url{ https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Linux}
 
-Since the \codeblocks developers build \codeblocks using GCC, we might as well use that one under windows. The easiest and cleanest port is MinGW. This is the compiler distributed with \codeblocks when you download the FULL official package. With C::B 17.12 it was a version TDM 5.1.0 which was distributed, a rather old one. With C::B 20.03 we still used version 8.1.0, which works nicely and which was distributed with this \codeblocks release, but you can find more recent ones (as shown in MinGW Compiler Toolchains (\pxref{sec:install_toolchains}). You can obtain two MinGW versions : for generating 32 bits code, or for 64 bits code on \href{https://sourceforge.net/projects/mingw-w64/files/}{mingw64}. Many sub-choices are available. For 32 bits, I would suggest i686-posix-sjlj and for 64 bits x86\_64-posix-seh \cite{url:mingw64}. New C::B 2023 versions are now bundled with gcc 13.1.
+Since the \codeblocks developers build \codeblocks using GCC, we might as well use that one under windows. The easiest and cleanest port is MinGW. This is the compiler distributed with \codeblocks when you download the FULL official package. With C::B 17.12 it was a version TDM 5.1.0 which was distributed, a rather old one. With C::B 20.03 we still used version 8.1.0, which works nicely and which was distributed with this \codeblocks release, but you can find more recent ones (as shown in MinGW Compiler Toolchains (\pxref{sec:install_toolchains}). For example, nightlies versions before C::B 24.12 for Windows use gcc 14.1 distibution You can obtain two MinGW versions : for generating 32 bits code, or for 64 bits code on \href{https://sourceforge.net/projects/mingw-w64/files/}{mingw64}. Many sub-choices are available. For 32 bits, I would suggest i686-posix-sjlj and for 64 bits x86\_64-posix-seh \cite{url:mingw64}. New C::B 2024 versions are now bundled with gcc 14 (see \url{https://winlibs.com/}).
 
 \hint{The 64 bits version can produce 64 bits code and 32 bits code. Simply add option -m64 or -m32 to your compilation AND link options. Normally, 32 bits version produces only 32 bits code. Just take care that if you use libraries, static or dynamic, they must have been generated with the same bits number}
 
@@ -98,7 +98,7 @@ However, if we want to build a wx application, we need to include the headers of
 Wx is provided as a zip file of it's sources, so we need to build that ourselves. We already shopped for the MinGW compiler, so we have all the tools we need at hand.
 
 Next, let's unzip the wx sources into \file{C:\osp Projects} so we will end up with a wx root directory like this:\\
-\file{C:\osp Projects\osp wxWidgets-3.2.5}. Next unzip the patch into the same directory letting it overwrite files. Note that we are going to refer to the wx root directory from now on as \var{wxDir}
+\file{C:\osp Projects\osp wxWidgets-3.2.6}. Next unzip the patch into the same directory letting it overwrite files. Note that we are going to refer to the wx root directory from now on as \var{wxDir}
 
 \hint{User PBfordev has created a very nice guide to compile, install and use wxWidgets on Windows. You can find it as a pdf file on his git repos: \href{https://github.com/PBfordev/wxpbguide}{wxPBGuide.pdf} \cite{url:wxPBguide}. His point of view is a little bit different, as he creates a wxWidgets multilib version. For \codeblocks itself on Windows, following different advices on the C::B forum, it's better to have a monolitic version. This is how the official and nightlies versions are distributed. }
 
@@ -142,8 +142,8 @@ The parameter -j 4 allows a parallel build on 4 processors and thus strongly acc
 The best result is when the value is equal to the number of processors (4 in my case).
 
 \codeblocks for Windows, since SVN rev 11701, is generated to support DIRECT2D activated/forced (for faster and better quality graphics). wxWidgets generation needs some adjustments to be done directly in setup.h file(s). Normally the only file which needs to be modified is in the lib subdirectory, the one created the first time wxWidgets is generated, and used in following generations. For a gcc, dll build, it's something like:\newline
-\file{C:\osp wxWidgets-3.2.5\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
-You can simply modify the line containing (line 1651 in wxWidgets 3.2.5):
+\file{C:\osp wxWidgets-3.2.6\osp lib\osp gcc\_dll\osp mswu\osp wx}.\newline
+You can simply modify the line containing (line 1651 in wxWidgets 3.2.6):
 \begin{verbatim}
     #define wxUSE_GRAPHICS_DIRECT2D 0 
 \end{verbatim}
@@ -459,7 +459,7 @@ C:\wxWidgets-2.8.12
 or to build with a more recent version, wx32 (or wx32\_64)
 
 \begin{verbatim}
-C:\wxWidgets-3.2.5
+C:\wxWidgets-3.2.6
 \end{verbatim}
 
 In the \codeblocks project, the project variable \codeline{WX_SUFFIX} is set to \codeline{u}. This means that, when generating \codeblocks linking will be carried out against the \file{*u\_gcc\_custom.dll} library (by default). The official nightly Builts of \codeblocks will be linked against \file{gcc\_cb.dll}. In doing so, the layout is as follows.

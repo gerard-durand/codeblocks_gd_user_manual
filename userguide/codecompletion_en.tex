@@ -59,6 +59,12 @@ Clangd\_client additionally enhances the clangd server by providing:
 \item symbol renaming
 \end{itemize}
 
+\textbf{NOTE:} A \codeblocks \textbf{project is required} for Clangd\_client.
+
+Clangd\_client does not work with non-project translation units.
+
+A project provides the necessary resources to interface between the Editor and the Clangd server.
+
 \subsubsection{Configuring clangd\_client}\label{sec:cfg_client}
 
 Clangd\_client requires the third-party binary clangd executable.
