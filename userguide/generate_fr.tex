@@ -24,7 +24,7 @@ Afin de procéder à notre tâche de génération, nous aurons besoin de plusieu
 Cette section est écrite avec une syntaxe Windows mais peut facilement être adaptée à Linux.
 D'autres instructions détaillées se trouvent dans le Wiki : \url{https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Linux}
 
-Comme les développeurs de \codeblocks génèrent \codeblocks en utilisant GCC, nous ferons de même sous Windows. Le portage le plus facile et le plus propre est MinGW. C'est le compilateur distribué avec \codeblocks quand vous téléchargez le package officiel COMPLET. Avec C::B 17.12, c'était la version TDM 5.1.0 qui était distribuée, une version déjà ancienne. C::B 20.03 était fourni avec la version 8.1.0, qui fonctionne bien et qui est distribuée avec cette "release" de \codeblocks 20.03, mais on en trouve de plus récentes (Comme vu dans La chaîne d'outils de compilation MinGW (\pxref{sec:install_toolchains}). Vous pouvez obtenir 2 versions différentes de MinGW : pour générer du code 32 bits, ou pour générer du code 64 bits sur \href{https://sourceforge.net/projects/mingw-w64/files/}{mingw64} \cite{url:mingw64}. Plusieurs sous-choix sont possibles. Pour du 32 bits, je suggérerais i686-posix-sjlj et pour du 64 bits x86\_64-posix-seh. Les nouvelles versions 2024 de C::B sont maintenant fournies avec gcc 14 (voir \url{https://winlibs.com/}).
+Comme les développeurs de \codeblocks génèrent \codeblocks en utilisant GCC, nous ferons de même sous Windows. Le portage le plus facile et le plus propre est MinGW. C'est le compilateur distribué avec \codeblocks quand vous téléchargez le package officiel COMPLET. Avec C::B 17.12, c'était la version TDM 5.1.0 qui était distribuée, une version déjà ancienne. C::B 20.03 était fourni avec la version 8.1.0, qui fonctionne bien et qui est distribuée avec cette "release" de \codeblocks 20.03, mais on en trouve de plus récentes (Comme vu dans La chaîne d'outils de compilation MinGW (\pxref{sec:install_toolchains}). Vous pouvez obtenir 2 versions différentes de MinGW : pour générer du code 32 bits, ou pour générer du code 64 bits sur \href{https://sourceforge.net/projects/mingw-w64/files/}{mingw64} \cite{url:mingw64}. Plusieurs sous-choix sont possibles. Pour du 32 bits, je suggérerais i686-posix-sjlj et pour du 64 bits x86\_64-posix-seh. Les nouvelles versions 2025 de C::B sont maintenant fournies avec gcc 14 (voir \url{https://winlibs.com/}).
 
 \hint{La version MinGW 64 bits peut générer du code 64 bits et du code 32 bits. Ajoutez simplement l'option -m64 ou -m32 à vos options de compilation ET d'édition de liens. En principe, la version 32 bits ne génère que du code 32 bits. Faites juste attention si vous utilisez des librairies, statiques ou dynamiques, à ce qu'elles aient été générées avec le même nombre de bits}
 
@@ -63,7 +63,7 @@ Vous pouvez aussi modifier la variable d'environnement PATH (globale ou utilisat
 
 Sur \href{https://www.codeblocks.org/}{\codeblocks} un fichier de description de projet \file{CodeBlocks.cbp} est disponible. Si vous chargez ce fichier dans \codeblocks alors vous êtes en mesure de générer \codeblocks à partir des sources \cite{url:cb}. Tout ce dont vous avez besoin c'est d'une version de \codeblocks déjà pré-générée.
 
-Premièrement, téléchargez une version "nightly". Vous pouvez faire votre sélection \href{https://forums.codeblocks.org/}{à partir de là} (\cite{url:cbforum} rubrique Nightly Builds). Les versions nightly sont des versions Unicode, contenant le coeur et les plugins contributifs. Lisez avec attention le premier "post" de chaque "nightly" : il contient des instructions pour télécharger et installer des dlls complémentaires, nécessaires avec les versions récentes de MinGW/gcc, en particulier la 13.1 utilisée pour compiler les dernières versions "nightly" de C::B.
+Premièrement, téléchargez une version "nightly". Vous pouvez faire votre sélection \href{https://forums.codeblocks.org/}{à partir de là} (\cite{url:cbforum} rubrique Nightly Builds). Les versions nightly sont des versions Unicode, contenant le coeur et les plugins contributifs. Lisez avec attention le premier "post" de chaque "nightly" : il contient des instructions pour télécharger et installer des dlls complémentaires, nécessaires avec les versions récentes de MinGW/gcc, en particulier la 14.1 utilisée pour compiler les dernières versions "nightly" de C::B.
 
 Ensuite, décompressez le fichier 7-zip \cite{url:zip} dans n'importe quel répertoire de votre choix. Si vous n'avez pas 7-zip, vous pouvez le télécharger gratuitement depuis \href{https://www.7-zip.org}{le site 7-Zip}.
 
@@ -132,7 +132,7 @@ CXXFLAGS+="-fpermissive -fno-keep-inline-dllexport -std=gnu++11
 LDFLAGS="-Wl,--allow-multiple-definition"
 \end{verbatim}  
 
-Si vous utilisez une version pus récente comme gcc 12.1.0 ou gcc 13.1, vous pouvez utiliser cette ligne de commande:
+Si vous utilisez une version pus récente comme gcc 12.1.0 ou gcc 14.1, vous pouvez utiliser cette ligne de commande:
 \begin{verbatim}
 mingw32-make -f makefile.gcc -j 4 SHARED=1 MONOLITHIC=1 BUILD=release
              CXXFLAGS="-std=gnu++20"
