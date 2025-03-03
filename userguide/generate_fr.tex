@@ -63,7 +63,7 @@ Vous pouvez aussi modifier la variable d'environnement PATH (globale ou utilisat
 
 Sur \href{https://www.codeblocks.org/}{\codeblocks} un fichier de description de projet \file{CodeBlocks.cbp} est disponible. Si vous chargez ce fichier dans \codeblocks alors vous êtes en mesure de générer \codeblocks à partir des sources \cite{url:cb}. Tout ce dont vous avez besoin c'est d'une version de \codeblocks déjà pré-générée.
 
-Premièrement, téléchargez une version "nightly". Vous pouvez faire votre sélection \href{https://forums.codeblocks.org/}{à partir de là} (\cite{url:cbforum} rubrique Nightly Builds). Les versions nightly sont des versions Unicode, contenant le coeur et les plugins contributifs. Lisez avec attention le premier "post" de chaque "nightly" : il contient des instructions pour télécharger et installer des dlls complémentaires, nécessaires avec les versions récentes de MinGW/gcc, en particulier la 14.1 utilisée pour compiler les dernières versions "nightly" de C::B.
+Premièrement, téléchargez une version "nightly". Vous pouvez faire votre sélection \href{https://forums.codeblocks.org/}{à partir de là} (\cite{url:cbforum} rubrique Nightly Builds). Les versions nightly sont des versions Unicode, contenant le coeur et les plugins contributifs. Lisez avec attention le premier "post" de chaque "nightly" : il contient des instructions pour télécharger et installer des dlls complémentaires, nécessaires avec les versions récentes de MinGW/gcc, en particulier la 14.2 utilisée pour compiler les dernières versions "nightly" de C::B.
 
 Ensuite, décompressez le fichier 7-zip \cite{url:zip} dans n'importe quel répertoire de votre choix. Si vous n'avez pas 7-zip, vous pouvez le télécharger gratuitement depuis \href{https://www.7-zip.org}{le site 7-Zip}.
 
@@ -132,7 +132,7 @@ CXXFLAGS+="-fpermissive -fno-keep-inline-dllexport -std=gnu++11
 LDFLAGS="-Wl,--allow-multiple-definition"
 \end{verbatim}  
 
-Si vous utilisez une version pus récente comme gcc 12.1.0 ou gcc 14.1, vous pouvez utiliser cette ligne de commande:
+Si vous utilisez une version pus récente comme gcc 12.1.0 ou gcc 14.2, vous pouvez utiliser cette ligne de commande:
 \begin{verbatim}
 mingw32-make -f makefile.gcc -j 4 SHARED=1 MONOLITHIC=1 BUILD=release
              CXXFLAGS="-std=gnu++20"

@@ -24,7 +24,7 @@ In order to perform our build tasks, we will need several tools. Let's create an
 This section is written for a Windows syntax, but can be easily adapted to Linux. 
 Other detailed instructions may be found in the Wiki: \url{ https://wiki.codeblocks.org/index.php/Installing_Code::Blocks_from_source_on_Linux}
 
-Since the \codeblocks developers build \codeblocks using GCC, we might as well use that one under windows. The easiest and cleanest port is MinGW. This is the compiler distributed with \codeblocks when you download the FULL official package. With C::B 17.12 it was a version TDM 5.1.0 which was distributed, a rather old one. With C::B 20.03 we still used version 8.1.0, which works nicely and which was distributed with this \codeblocks release, but you can find more recent ones (as shown in MinGW Compiler Toolchains (\pxref{sec:install_toolchains}). For example, nightlies versions before C::B 25.01 for Windows use gcc 14.1 distibution You can obtain two MinGW versions : for generating 32 bits code, or for 64 bits code on \href{https://sourceforge.net/projects/mingw-w64/files/}{mingw64}. Many sub-choices are available. For 32 bits, I would suggest i686-posix-sjlj and for 64 bits x86\_64-posix-seh \cite{url:mingw64}. New C::B 2025 versions are now bundled with gcc 14 (see \url{https://winlibs.com/}).
+Since the \codeblocks developers build \codeblocks using GCC, we might as well use that one under windows. The easiest and cleanest port is MinGW. This is the compiler distributed with \codeblocks when you download the FULL official package. With C::B 17.12 it was a version TDM 5.1.0 which was distributed, a rather old one. With C::B 20.03 we still used version 8.1.0, which works nicely and which was distributed with this \codeblocks release, but you can find more recent ones (as shown in MinGW Compiler Toolchains (\pxref{sec:install_toolchains}). You can obtain two MinGW versions : for generating 32 bits code, or for 64 bits code on \href{https://sourceforge.net/projects/mingw-w64/files/}{mingw64}. Many sub-choices are available. For 32 bits, I would suggest i686-posix-sjlj and for 64 bits x86\_64-posix-seh \cite{url:mingw64}. New C::B 2025 versions are now bundled with gcc 14 (see \url{https://winlibs.com/}).
 
 \hint{The 64 bits version can produce 64 bits code and 32 bits code. Simply add option -m64 or -m32 to your compilation AND link options. Normally, 32 bits version produces only 32 bits code. Just take care that if you use libraries, static or dynamic, they must have been generated with the same bits number}
 
@@ -63,7 +63,7 @@ You can also modify the global (or user) PATH enviroment variable.
 
 For \href{https://www.codeblocks.org/}{\codeblocks} a project description \file{CodeBlocks.cbp} is available. If you load this project file in \codeblocks then you are able to build \codeblocks from sources \cite{url:cb}. All we need to do is get hold of a pre-built version \codeblocks.
 
-First, download a nightly build. You can make your selection from \href{https://forums.codeblocks.org/}{here} (\cite{url:cbforum} in Nightly Builds). The nightly builds are unicode versions, containing the core and contributed plug-ins. Read carefully the first post of each nightly : it contains instructions to download and install additionnal dlls, necessary with recent MinGW/gcc versions, particularly version 14.1 used to build recent C::B nightly.
+First, download a nightly build. You can make your selection from \href{https://forums.codeblocks.org/}{here} (\cite{url:cbforum} in Nightly Builds). The nightly builds are unicode versions, containing the core and contributed plug-ins. Read carefully the first post of each nightly : it contains instructions to download and install additionnal dlls, necessary with recent MinGW/gcc versions, particularly version 14.2 used to build recent C::B nightly.
 
 Next, unpack the 7-zip file \cite{url:zip} to any directory you like. If you don't have 7-zip, you can download it for free from \href{https://www.7-zip.org}{here}.
 
@@ -132,7 +132,7 @@ CXXFLAGS+="-fpermissive	-fno-keep-inline-dllexport -std=gnu++11
 LDFLAGS="-Wl,--allow-multiple-definition"
 \end{verbatim}  
 
-If you are using more recent compilers as gcc 12.1.0 or gcc 14.1, you can use this build command:
+If you are using more recent compilers as gcc 12.1.0 or gcc 14.2, you can use this build command:
 \begin{verbatim}
 mingw32-make -f makefile.gcc -j 4 SHARED=1 MONOLITHIC=1 BUILD=release
              CXXFLAGS="-std=gnu++20"
