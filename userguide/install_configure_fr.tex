@@ -3,7 +3,6 @@
 Ce chapitre décrit comment installer et configurer \codeblocks. Le processus d'installation est ici décrit pour Windows, mais peut être adapté aux autres OS.
 
 \section{Installation de la dernière version officielle de \codeblocks sous Windows}
-\hint{La version 25.03 n'existe pas encore, désolé. Lire 20.03 à la place, mais une nouvelle version devrait être publiée au début de 2025, donc une 25.xx, xx étant le numéro du mois de publication. Le texte ci-dessous sera mis à jour dès que possible.}
 Étapes d'installation :
 \begin{itemize}
 \item Télécharger l'installateur de \codeblocks (\url{https://codeblocks.org/downloads/26}). \textcolor{red}{Si vous n'avez pas MinGW d'installé, ou si vous ne savez pas lequel choisir, \textbf{télécharger la version qui intègre MinGW}}. Pour une version 25.03, le nom de l'installateur est : codeblocks-25.03mingw-setup.exe. La version précédente était identifiée par 20.03 et encore avant par 17.12.
@@ -67,8 +66,9 @@ Si vous voulez utiliser le greffon clangd\_client, il peut être utile d'install
 et/ou \\
 \file{pacman -S mingw-w64-i686-clang-tools-extra} pour ajouter \file{clangd.exe} dans \file{mingw32}, pour une installation en 32 bits,\\
 si vous n'avez pas besoin d'une installation complète de clang.\\
-Mais, si vous préférez une version complète de clang, vous pouvez installer avec pacman le package \file{mingw-w64-clang-x86\_64-toolchain} en 64 bits, ou \file{mingw-w64-clang-i686-toolchain} en 32 bits.\\
-\\
+Mais, si vous préférez une version complète de clang, vous pouvez installer avec pacman le package \file{mingw-w64-clang-x86\_64-toolchain} en 64 bits, ou \file{mingw-w64-clang-i686-toolchain} en 32 bits.
+\hint{Parmi les packages Msys2, il en existe qui installent \codeblocks en 64 bits. Ils sont basés sur des versions svn plus récentes que celles de la version officielle du site de \codeblocks, mais pas forcément la toute dernière version svn. Cela peut être intéressant si vous ne voulez pas compiler vous-même \codeblocks ni même utiliser une version "Nightly". Voir \url{https://packages.msys2.org/base/mingw-w64-codeblocks} ou \cite{url:msys2cb} : les packages proposés se différentient par le compilateur utilisé pour générer \codeblocks et ses dépendances (dlls, utilitaires, ...). Soyez homogènes dans vos choix, mais Msys2 vous aidera. Vous n'êtes toutefois pas obligés d'utiliser le même compilateur pour vos propres programmes mais cela pourrait vous faciliter la vie par la suite.}
+
 \textbf{\textit{Autres astuces avec pacman ou paccache :}}\\
 \file{pacman -Syu} met à jour votre installation (éventuellement pacman lui-même, mais dans une passe séparée);\\
 \file{pacman -Sc} supprimera les anciens packages;\\

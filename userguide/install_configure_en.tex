@@ -3,7 +3,6 @@
 This chapter describes how to install and configure \codeblocks. Install process is here described for Windows, but may be adapted to other OS.
 
 \section{Installing the latest official version of \codeblocks on Windows}
-\hint{25.03 version does not still exist. Sorry. Read 20.03 instead, but a new version is scheduled for release in early 2025, so a 25.xx, with xx as the number of the publication month. Text below will be updated as soon as possible.}
 Install steps:
 \begin{itemize}
 \item Download the \codeblocks installer (\url{https://codeblocks.org/downloads/26}). \textcolor{red}{If you know you don't have MinGW installed, or if you don't know which one to choose, \textbf{download the package which has MinGW bundled}}. For 25.03 version, the name of the installer is: codeblocks-25.03mingw-setup.exe. Previous version was identified by 20.03 and earlier one by 17.12.
@@ -69,10 +68,10 @@ and/or \\
 \file{pacman -S mingw-w64-i686-clang-tools-extra} to add \file{clangd.exe} within \file{mingw32}, for a 32 bit install,\\
 if you don't need a full clang installation.\\
 But, if you prefer a full clang version you can install with pacman the package \\
-\file{mingw-w64-clang-x86\_64-toolchain} for 64 bit, or \file{mingw-w64-clang-i686-toolchain} for 32 bit.\\
-\\
+\file{mingw-w64-clang-x86\_64-toolchain} for 64 bit, or \file{mingw-w64-clang-i686-toolchain} for 32 bit.
+\hint{Among the Msys2 packages, there are some that install \codeblocks 64 bits. They are based on more recent svn versions than those of the official \codeblocks website, but not necessarily the very latest svn version. This can be interesting if you don't want to compile \codeblocks yourself or even use a “Nightly” version release. See \url{https://packages.msys2.org/base/mingw-w64-codeblocks} or \cite{url:msys2cb}: the packages differ in the compiler used to generate \codeblocks and its dependencies (dlls, utilities, etc.). Be consistent in your choices, but Msys2 will help you.. You are not obliged to use the same compiler for your own programs, but it may make life easier for you in the future.}
+
 \textbf{\textit{Some other pacman or paccache tips:}}\\
-\\
 \file{pacman -Syu} will update your installation (eventually pacman itself, but in a separate pass);\\
 \file{pacman -Sc} will delete old packages;\\
 \file{pacman -Qe} list installed packages;\\

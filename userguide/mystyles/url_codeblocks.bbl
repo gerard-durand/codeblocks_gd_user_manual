@@ -66,6 +66,10 @@ Msys2 home page.\\ \url{https://www.msys2.org/}
 \ShowURN{MSys2-MinGW64-Toolchain}
 Msys2 Toolchain for MinGW64.\\ \url{https://packages.msys2.org/group/mingw-w64-x86_64-toolchain}
 
+\urlbibitem[\hightechook MSys2-CodeBlocks]{url:msys2cb}
+\ShowURN{MSys2-CodeBlocks}
+Msys2 CodeBlocks 64 bits.\\ \url{https://packages.msys2.org/base/mingw-w64-codeblocks}
+
 \urlbibitem[\hightechook niXman releases distribution]{url:niXman}
 \ShowURN{niXman}
 niXman releases page.\\ \url{https://github.com/niXman/mingw-builds-binaries/releases/}
