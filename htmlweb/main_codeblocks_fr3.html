@@ -34,7 +34,7 @@ class="cmbx-12x-x-207">Code::Blocks</span><br /><br />
 <span 
 class="cmr-17x-x-143">Manuel Utilisateur</span><br /><br />
 <span 
-class="cmr-12x-x-120">Version 2.1.17</span><br /><br />
+class="cmr-12x-x-120">Version 2.1.18</span><br /><br />
 </p><!--l. 60--><p class="noindent" >Merci à l&#8217;équipe Code::Blocks:<br />
 Anders F. Björklund (afb), Biplab Kumar Modak (biplab), Bartomiej wiecki (byo), Paul
 A. Jimenez (ceniza), Koa Chong Gee (cyberkoa), Daniel Orb (daniel2000), Lieven de
@@ -55,7 +55,7 @@ les informations y sont peut-être plus à jour.<br />
 Il est permis de copier, distribuer et/ou modifier ce document dans le respect de la
 licence &#8221;GNU Free Documentation&#8221;, Version 1.2 ou toute autre version postérieure
 publiée par la &#8221;Free Software Foundation&#8221;.
-</p><!--l. 60--><p class="noindent" >Manuel Utilisateur mis à jour en mars 2025</p></div>
+</p><!--l. 60--><p class="noindent" >Manuel Utilisateur mis à jour en avril 2025</p></div>
                                                                                        
                                                                                        
 </div>
@@ -13122,9 +13122,8 @@ class="cmbx-12">Notes:</span>
       </p></li>
       <li class="itemize">
       <!--l. 20--><p class="noindent" >Le   fichier   codeblocks-25.03mingw-setup.exe   inclut   en   plus   un   compilateur
-      GCC/G++ et un débugueur GDB provenant la version MinGW64 14.2, 64 bits.
-      Le fichier codeblocks-25.03mingw_fortran-setup.exe inclut de plus un compilateur
-      Gfortran.
+      GCC/G++ et un débugueur GDB provenant la version MinGW64 14.2, 64 bits. Ce
+      fichier inclut un compilateur Gfortran.
       </p></li>
       <li class="itemize">
       <!--l. 21--><p class="noindent" >Le  fichier  codeblocks-25.03(mingw)-nosetup.zip  est  fourni  par  commodité  aux
@@ -13154,19 +13153,22 @@ class="cmtt-12">https://forums.codeblocks.org/index.php/topic,3232.0.html</span>
       consiste à déplacer le répertoire MinGW à la racine de votre disque. Vous pouvez
       aussi  le  renommer  en  C:<span 
 class="cmsy-10x-x-120">\</span>MinGW64.  La  détection  automatique  du  compilateur
-      devrait l&#8217;y trouver.</p></li></ul>
-<!--l. 27--><p class="noindent" >
+      devrait l&#8217;y trouver.
+      </p></li>
+      <li class="itemize">
+      <!--l. 25--><p class="noindent" >Des versions en 32 bits pour différents OS sont aussi disponibles.</p></li></ul>
+                                                                                       
+                                                                                       
+<!--l. 28--><p class="noindent" >
 </p>
-                                                                                       
-                                                                                       
 <h3 class="sectionHead"><span class="titlemark">5.2</span>&#x00A0;&#x00A0;<a 
  id="x3-1990005.2"></a>Configurer MinGW</h3>
-<!--l. 29--><p class="noindent" >Cette section décrit comment installer et configurer MinGW.
-</p><!--l. 31--><p class="noindent" >
+<!--l. 30--><p class="noindent" >Cette section décrit comment installer et configurer MinGW.
+</p><!--l. 32--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">5.2.1</span>&#x00A0;&#x00A0;<a 
  id="x3-2000005.2.1"></a>Généralités</h4>
-<!--l. 33--><p class="noindent" >Une chaîne d&#8217;outils de compilation est ce que Code::Blocks utilise pour transformer le code que
+<!--l. 34--><p class="noindent" >Une chaîne d&#8217;outils de compilation est ce que Code::Blocks utilise pour transformer le code que
 vous avez tapé en nombres que l&#8217;ordinateur peut comprendre. Comme une chaîne d&#8217;outils de
 compilation est une chose plutôt complexe <span 
 class="cmbx-12">ce n&#8217;est pas une partie int</span><span 
@@ -13177,7 +13179,7 @@ chaîne de compilation dont il est question dans ces pages est la chaîne d&#8217;
 veut dire &#8221;Minimalist GNU for Windows.&#8221; Et &#8221;GNU&#8221; peut s&#8217;interpréter par &#8221;GNU&#8217;s Not
 Unix.&#8221; Davantage d&#8217;informations sur le projet GNU peuvent être trouvées via la page d&#8217;accueil
 de GNU.
-</p><!--l. 35--><p class="noindent" >Pour la plupart des chaînes d&#8217;outils de compilation basées sur MinGW, il est important d&#8217;avoir
+</p><!--l. 36--><p class="noindent" >Pour la plupart des chaînes d&#8217;outils de compilation basées sur MinGW, il est important d&#8217;avoir
 le chemin de cette chaîne dans votre variable d&#8217;environnement PATH car cela signifie que
 pendant le développement les librairies seront accessibles par défaut à vos programmes pendant
 que vous les développez mais cela rend aussi plus facile l&#8217;utilisation d&#8217;utilitaires comme CMake
@@ -13189,21 +13191,21 @@ machine elles sont dans votre PATH et donc vous les avez toujours à portée, mais
 sur les ordinateurs des autres utilisateurs, ils n&#8217;auront peut-être pas cette chaîne
 d&#8217;outils de compilation, c&#8217;est pourquoi vous devrez fournir vos fichier dll avec votre
 programme.
-</p><!--l. 37--><p class="noindent" >
+</p><!--l. 38--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">5.2.2</span>&#x00A0;&#x00A0;<a 
  id="x3-2010005.2.2"></a>La chaîne d&#8217;outils de compilation MinGW</h4>
-<!--l. 39--><p class="noindent" >Vous pouvez trouver sur le web plusieurs distributions de MinGW. Voici une liste non
+<!--l. 40--><p class="noindent" >Vous pouvez trouver sur le web plusieurs distributions de MinGW. Voici une liste non
 exhaustive de distributions.
+                                                                                       
+                                                                                       
       </p><dl class="description"><dt class="description">
 <span 
 class="cmssbx-10x-x-120">MinGW - Le projet original</span> </dt><dd 
 class="description">
-      <!--l. 42--><p class="noindent" ><a 
+      <!--l. 43--><p class="noindent" ><a 
 href="https://www.mingw.org/" class="url" ><span 
 class="cmtt-12">https://www.mingw.org/</span></a>: Compilateurs 32 bits seulement. Maintenant déplacé
-                                                                                       
-                                                                                       
       vers      <a 
 href="https://sourceforge.net/projects/mingw/" class="url" ><span 
 class="cmtt-12">https://sourceforge.net/projects/mingw/</span></a>    ou      
@@ -13216,7 +13218,7 @@ class="cmtt-12">https://osdn.net/projects/mingw/</span></a>;
 <span 
 class="cmssbx-10x-x-120">Distribution TDM</span> </dt><dd 
 class="description">
-      <!--l. 43--><p class="noindent" ><a 
+      <!--l. 44--><p class="noindent" ><a 
 href="http://tdm-gcc.tdragon.net/" class="url" ><span 
 class="cmtt-12">http://tdm-gcc.tdragon.net/</span></a>:  32  et  64  bits,  mais  une  distribution  5.1,
       maintenant obsolète. Était utilisée et distribuée avec Code::Blocks 17.12;
@@ -13224,7 +13226,7 @@ class="cmtt-12">http://tdm-gcc.tdragon.net/</span></a>:  32  et  64  bits,  mais
 <span 
 class="cmssbx-10x-x-120">Nouvelle distribution TDM</span> </dt><dd 
 class="description">
-      <!--l. 44--><p class="noindent" ><a 
+      <!--l. 45--><p class="noindent" ><a 
 href="https://jmeubank.github.io/tdm-gcc/" class="url" ><span 
 class="cmtt-12">https://jmeubank.github.io/tdm-gcc/</span></a>: basée sur une distribution 10.3, 32 et
       64 bits multilib. Semble avoir encore parfois des soucis, du moins pour Code::Blocks
@@ -13233,7 +13235,7 @@ class="cmtt-12">https://jmeubank.github.io/tdm-gcc/</span></a>: basée sur une di
 <span 
 class="cmssbx-10x-x-120">MinGW 64</span> </dt><dd 
 class="description">
-      <!--l. 45--><p class="noindent" ><a 
+      <!--l. 46--><p class="noindent" ><a 
 href="https://sourceforge.net/projects/mingw-w64/files/" class="url" ><span 
 class="cmtt-12">https://sourceforge.net/projects/mingw-w64/files/</span></a>: 32 et 64 bits, une
       distribution  en  version  8.1  dans  &#8221;Toolchains  targetting&#8221;.  Le  projet  parent  des
@@ -13252,7 +13254,7 @@ class="cmtt-12">https://sourceforge.net/projects/mingw-w64/files/</span></a>: 32
 class="cmssbx-10x-x-120">MinGW 64 Ray</span><span 
 class="cmssbx-10x-x-120">_linn Personal build</span> </dt><dd 
 class="description">
-      <!--l. 46--><p class="noindent" ><a 
+      <!--l. 47--><p class="noindent" ><a 
 href="https://sourceforge.net/projects/mingw-w64/files/Multilib%20Toolchains%28Targetting%20Win32%20and%20Win64%29/ray_linn/gcc-10.x-with-ada/" class="url" ><span 
 class="cmtt-12">https://sourceforge.net/projects/mingw-w64/files/Multilib%20Toolchains%28Targetting%20Win32%20and%20Win64%29/ray_linn/gcc-10.x-with-ada/</span></a>:
       une distribution 64/32 bits (multilib), version 10.2 (un peu ancienne) dans le sous-répertoire
@@ -13265,22 +13267,22 @@ class="cmbx-12">librairies statiques</span>, et dons pas besoin de distribuer
 <span 
 class="cmssbx-10x-x-120">MinGW Equation</span> </dt><dd 
 class="description">
-      <!--l. 47--><p class="noindent" ><a 
+      <!--l. 48--><p class="noindent" ><a 
 href="http://www.equation.com/servlet/equation.cmd?fa=fortran" class="url" ><span 
 class="cmtt-12">http://www.equation.com/servlet/equation.cmd?fa=fortran</span></a>: 32 et 64 bits,
       versions récentes (plusieurs choix). Utilise des <span 
 class="cmbx-12">librairies statiques</span>, donc, comme
       avec la version ci-dessus, produit des exécutables plus gros, mais pas besoin de
+                                                                                       
+                                                                                       
       distribuer les dlls avec vos propres exécutables. gcc, g++, gfortran, gdb, lto, omp,
       make sont dans la distribution;
       </p></dd><dt class="description">
-                                                                                       
-                                                                                       
 <span 
 class="cmssbx-10x-x-120">MinGW LH</span><span 
 class="cmssbx-10x-x-120">_Mouse version</span> </dt><dd 
 class="description">
-      <!--l. 48--><p class="noindent" ><a 
+      <!--l. 49--><p class="noindent" ><a 
 href="https://gcc-mcf.lhmouse.com/" class="url" ><span 
 class="cmtt-12">https://gcc-mcf.lhmouse.com/</span></a>: 32 et 64 bits, versions récentes (mais pas
       forcément la toute dernière). Pas de gfortran (?). Modèle de thread spécial (mcf).
@@ -13289,7 +13291,7 @@ class="cmtt-12">https://gcc-mcf.lhmouse.com/</span></a>: 32 et 64 bits, versions
 <span 
 class="cmssbx-10x-x-120">MinGW sur Winlibs</span> </dt><dd 
 class="description">
-      <!--l. 49--><p class="noindent" ><a 
+      <!--l. 50--><p class="noindent" ><a 
 href="https://winlibs.com/" class="url" ><span 
 class="cmtt-12">https://winlibs.com/</span></a>:  64  bits  (ou  32  bits),  versions  récentes  (mais  pas
       forcément la toute dernière). gcc, g++, gfortran, gdb, lto, objc, obj-c++, omp,
@@ -13300,7 +13302,7 @@ class="cmtt-12">https://winlibs.com/</span></a>:  64  bits  (ou  32  bits),  ver
 <span 
 class="cmssbx-10x-x-120">Msys2</span> </dt><dd 
 class="description">
-      <!--l. 50--><p class="noindent" ><a 
+      <!--l. 51--><p class="noindent" ><a 
 href="https://www.msys2.org/" class="url" ><span 
 class="cmtt-12">https://www.msys2.org/</span></a>
       et <a 
@@ -13330,7 +13332,7 @@ class="cmtt-12">mingw64</span>.
 <span 
 class="cmssbx-10x-x-120">niXman</span> </dt><dd 
 class="description">
-      <!--l. 51--><p class="noindent" ><a 
+      <!--l. 52--><p class="noindent" ><a 
 href="https://github.com/niXman/mingw-builds-binaries/releases/" class="url" ><span 
 class="cmtt-12">https://github.com/niXman/mingw-builds-binaries/releases/</span></a>: versions
       récentes, 64 (ou 32 bit), compilateurs gcc, g++, gfortran ainsi que gdb. Fournit
@@ -13338,8 +13340,10 @@ class="cmtt-12">https://github.com/niXman/mingw-builds-binaries/releases/</span>
       win32;</p></dd></dl>
 <div class="center" 
 >
-<!--l. 54--><p class="noindent" >
+<!--l. 55--><p class="noindent" >
 </p>
+                                                                                       
+                                                                                       
 <div 
 class="colorbox" id="colorbox69"><span 
 class="cmbx-12">Note :</span><br 
@@ -13349,9 +13353,7 @@ environnements. Les autres versions nécessitent d&#8217;avoir deux chaînes
 d&#8217;outils différentes pour produire du code en 32 ou en 64 bits. Ces
 deux chaînes peuvent coexister sans problèmes sur le même système.</div>
 </div>
-                                                                                       
-                                                                                       
-<!--l. 57--><p class="noindent" ><span 
+<!--l. 58--><p class="noindent" ><span 
 class="cmbxti-10x-x-120">Quelques astuces avec msys2 : </span><br 
 class="newline" /><br 
 class="newline" />Installer msys2 depuis <a 
@@ -13404,8 +13406,10 @@ class="cmtt-12">mingw-w64-clang-i686-toolchain </span>en 32
 bits. </p>
 <div class="center" 
 >
-<!--l. 70--><p class="noindent" >
+<!--l. 71--><p class="noindent" >
 </p>
+                                                                                       
+                                                                                       
 <div 
 class="colorbox" id="colorbox70"><span 
 class="cmbx-12">Note :</span><br 
@@ -13426,7 +13430,7 @@ vous  aidera.  Vous  n&#8217;êtes  toutefois  pas  obligés  d&#8217;utiliser  le
 compilateur pour vos propres programmes mais cela pourrait vous
 faciliter la vie par la suite.                                         </div>
 </div>
-<!--l. 72--><p class="noindent" ><span 
+<!--l. 73--><p class="noindent" ><span 
 class="cmbxti-10x-x-120">Autres astuces avec pacman ou paccache :</span><br 
 class="newline" /><span 
 class="cmtt-12">pacman -Syu </span>met à jour votre installation (éventuellement pacman lui-même, mais dans une
@@ -13461,13 +13465,13 @@ class="cmsy-10x-x-120">\</span><span
 class="cmtt-12">pacman</span><span 
 class="cmsy-10x-x-120">\</span><span 
 class="cmtt-12">pkg</span>.
-</p><!--l. 83--><p class="noindent" >
+</p><!--l. 84--><p class="noindent" >
                                                                                        
                                                                                        
 </p>
 <h4 class="subsectionHead"><span class="titlemark">5.2.3</span>&#x00A0;&#x00A0;<a 
  id="x3-2020005.2.3"></a>Configuration de Code::Blocks</h4>
-<!--l. 86--><p class="noindent" >Allez dans vos paramètres du Compilateur :
+<!--l. 87--><p class="noindent" >Allez dans vos paramètres du Compilateur :
 </p>
 <hr class="figure" /><div class="figure" 
 >
@@ -13477,7 +13481,7 @@ class="cmtt-12">pkg</span>.
  id="x3-202001r1"></a>
                                                                                        
                                                                                        
-<!--l. 88--><p class="noindent" ><img 
+<!--l. 89--><p class="noindent" ><img 
 src="Compiler_Settings.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -13486,7 +13490,7 @@ class="content">Paramètres des Compilateurs</td></tr></table></div><!--tex4ht:la
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 90--><p class="noindent" >Puis dans l&#8217;onglet &#8221;Programmes&#8221; (ou &#8221;Toolchain executables&#8221;) (flèche en rouge), cliquez
+<!--l. 91--><p class="noindent" >Puis dans l&#8217;onglet &#8221;Programmes&#8221; (ou &#8221;Toolchain executables&#8221;) (flèche en rouge), cliquez
 sur &#8221;...&#8221;, (flèche en bleu) et choisissez le répertoire de base où vous avez installé
 MinGW (64-bits ici). Une fois que vous avez choisi ce répertoire, dans la sous rubrique
 &#8221;Fichiers de Programmes&#8221; (flèche en vert) des champs à rempli sont affichés. Si vous
@@ -13504,7 +13508,7 @@ programmes.
  id="x3-202002r2"></a>
                                                                                        
                                                                                        
-<!--l. 92--><p class="noindent" ><img 
+<!--l. 93--><p class="noindent" ><img 
 src="CB_Toolchain.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -13513,14 +13517,14 @@ class="content">Configuration de la chaine d&#8217;outils de Code::Blocks</td></
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 94--><p class="noindent" ><span 
+<!--l. 95--><p class="noindent" ><span 
 class="cmbx-12">Note : </span>Vous pouvez entrer le nom comme gcc.exe ou x86_64-w64-mingw32-gcc.exe ou
 mingw32-gcc.exe (cela dépend de la distribution) : c&#8217;est en fait le même exécutable. De même
 pour g++.
 </p>
 <div class="center" 
 >
-<!--l. 96--><p class="noindent" >
+<!--l. 97--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox71"><span 
@@ -13537,7 +13541,7 @@ Programmes&#8221;, ou le nom exact qui est dans votre distribution      </div>
  id="x3-202003r3"></a>
                                                                                        
                                                                                        
-<!--l. 98--><p class="noindent" ><img 
+<!--l. 99--><p class="noindent" ><img 
 src="CB_Toolchain_gfortran.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -13546,7 +13550,7 @@ class="content">Configuration de la chaine d&#8217;outils pour gfortran dans Cod
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 100--><p class="noindent" >Maintenant, allez dans les paramètres du Débugueur :
+<!--l. 101--><p class="noindent" >Maintenant, allez dans les paramètres du Débugueur :
 </p>
 <hr class="figure" /><div class="figure" 
 >
@@ -13556,7 +13560,7 @@ class="content">Configuration de la chaine d&#8217;outils pour gfortran dans Cod
  id="x3-202004r4"></a>
                                                                                        
                                                                                        
-<!--l. 102--><p class="noindent" ><img 
+<!--l. 103--><p class="noindent" ><img 
 src="Settings_Debugger.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -13565,7 +13569,7 @@ class="content">Paramètres du Débugueur</td></tr></table></div><!--tex4ht:label?
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 104--><p class="noindent" >Choisissez votre débugueur par défaut (flèche en rouge), puis remplissez dans le champ de
+<!--l. 105--><p class="noindent" >Choisissez votre débugueur par défaut (flèche en rouge), puis remplissez dans le champ de
 l&#8217;exécutable comme indiqué pour MinGW 64-bits (flèche en bleu).
 </p>
 <hr class="figure" /><div class="figure" 
@@ -13576,7 +13580,7 @@ l&#8217;exécutable comme indiqué pour MinGW 64-bits (flèche en bleu).
  id="x3-202005r5"></a>
                                                                                        
                                                                                        
-<!--l. 106--><p class="noindent" ><img 
+<!--l. 107--><p class="noindent" ><img 
 src="Debugger_Default.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -13585,45 +13589,45 @@ class="content">Configuration du Débugueur par Default</td></tr></table></div><!
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 108--><p class="noindent" ><span 
+<!--l. 109--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">R</span><span 
 class="cmssbx-10x-x-120">ésum</span><span 
 class="cmssbx-10x-x-120">é</span>
-</p><!--l. 110--><p class="noindent" >Vous avez maintenant un environnement de Code::Blocks qui est configuré pour utiliser
+</p><!--l. 111--><p class="noindent" >Vous avez maintenant un environnement de Code::Blocks qui est configuré pour utiliser
 correctement MinGW 64-bits. Utilisez ce guide comme un modèle pour configurer d&#8217;autres
 chaînes d&#8217;outils de compilation qu&#8217;elle qu&#8217;en soit la source - suivez simplement cette procédure
 de base.
-</p><!--l. 112--><p class="noindent" ><span 
+</p><!--l. 113--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Outils</span>
 <span 
 class="cmssbx-10x-x-120">de</span>
 <span 
 class="cmssbx-10x-x-120">D</span><span 
 class="cmssbx-10x-x-120">éveloppement</span>
-</p><!--l. 113--><p class="noindent" >Normalement vous ne devriez pas avoir besoin de ces outils. ZIP est pratique, notamment pour
+</p><!--l. 114--><p class="noindent" >Normalement vous ne devriez pas avoir besoin de ces outils. ZIP est pratique, notamment pour
 générer Code::Blocks lui-même, est souvent déjà présent dans MinGW, mais les autres outils
 servent seulement dans des cas particuliers. </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 115--><p class="noindent" >UnxUtils          :          différents          outils          Unix-Like          sur          
+      <!--l. 116--><p class="noindent" >UnxUtils          :          différents          outils          Unix-Like          sur          
 <a 
 href="https://sourceforge.net/projects/unxutils/" class="url" ><span 
 class="cmtt-12">https://sourceforge.net/projects/unxutils/</span></a>
       </p></li>
       <li class="itemize">
-      <!--l. 116--><p class="noindent" >GnuWin32           :           d&#8217;autres           outils           Gnu           sur           
+      <!--l. 117--><p class="noindent" >GnuWin32           :           d&#8217;autres           outils           Gnu           sur           
 <a 
 href="https://sourceforge.net/projects/gnuwin32/" class="url" ><span 
 class="cmtt-12">https://sourceforge.net/projects/gnuwin32/</span></a>
       </p></li>
       <li class="itemize">
-      <!--l. 117--><p class="noindent" >ZIP : 32-bits ou 64-bits sur <a 
+      <!--l. 118--><p class="noindent" >ZIP : 32-bits ou 64-bits sur <a 
 href="ftp://ftp.info-zip.org/pub/infozip/win32/" class="url" ><span 
 class="cmtt-12">ftp://ftp.info-zip.org/pub/infozip/win32/</span></a> :
       choisissez plutôt une version zip300xn.</p></li></ul>
 <div class="center" 
 >
-<!--l. 119--><p class="noindent" >
+<!--l. 120--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox72"><span 
@@ -13637,13 +13641,13 @@ Windows.                                                          </div>
  id="x3-2030005.3"></a>Version Nightly de Code::Blocks sous Windows</h3>
                                                                                        
                                                                                        
-<!--l. 123--><p class="noindent" >Les générations de &#8221;Nightly&#8221; sont distribuées &#8221;telles que&#8221;. Ce sont des distributions &#8221;binaires&#8221;,
+<!--l. 124--><p class="noindent" >Les générations de &#8221;Nightly&#8221; sont distribuées &#8221;telles que&#8221;. Ce sont des distributions &#8221;binaires&#8221;,
 normalement fournies au jour le jour, représentant les dernières avancées de l&#8217;état de l&#8217;art
 des sources de Code::Blocks. En principe, elles sont relativement stables, cependant
 elles peuvent aussi introduire de nouveaux bugs, des régressions, mais d&#8217;un autre
 côté elles peuvent apporter de nouvelles fonctionnalités, des corrections de bugs,
 ...
-</p><!--l. 125--><p class="noindent" >Avant de décrire ce que ces générations contiennent, il est important de commencer par revoir
+</p><!--l. 126--><p class="noindent" >Avant de décrire ce que ces générations contiennent, il est important de commencer par revoir
 ce que NE SONT PAS les générations &#8221;nightly&#8221;. Pour débuter demandez-vous : qu&#8217;est-ce que
 Code::Blocks?<br 
 class="newline" />Bon, c&#8217;est un IDE (Integrated Development Environment) soit en français un Environnement de
@@ -13680,7 +13684,7 @@ class="cmti-12">_gcc</span><span
 class="cmti-12">_cb.dll&#8221;</span>). Une fois de plus, sur
 chaque annonce de génération &#8221;nightly&#8221; vous trouverez un lien vers cette dll ainsi que d&#8217;autres
 prérequis.
-</p><!--l. 131--><p class="noindent" >Quand, sous Windows, vous installez une version officielle incluant MinGW (la version
+</p><!--l. 132--><p class="noindent" >Quand, sous Windows, vous installez une version officielle incluant MinGW (la version
 recommandée), vous trouverez un répertoire MinGW dans <span 
 class="cmtt-12">C:</span><span 
 class="cmsy-10x-x-120">\</span><span 
@@ -13693,7 +13697,7 @@ peut troubler certains des composants de MinGW. Alors, sous Windows, déplacez de
 répertoire MinGW vers C:, par exemple. Vous pouvez même le renommer MinGW32 pour
 une chaîne d&#8217;outils de compilation en 32 bits, ou MinGW64 pour une chaîne en 64
 bits.
-</p><!--l. 133--><p class="noindent" >Comme dit précédemment, une bonne solution pour installer une version &#8221;nightly&#8221; est de
+</p><!--l. 134--><p class="noindent" >Comme dit précédemment, une bonne solution pour installer une version &#8221;nightly&#8221; est de
                                                                                        
                                                                                        
 commencer par installer une version officielle, puis de la <span 
@@ -13703,15 +13707,15 @@ seront conservés lors de l&#8217;installation de la &#8221;nightly&#8221;. Le li
 &#8220;nightlies&#8220; est <a 
 href="https://forums.codeblocks.org/index.php/board,20.0.html" class="url" ><span 
 class="cmtt-12">https://forums.codeblocks.org/index.php/board,20.0.html</span></a>.
-</p><!--l. 135--><p class="noindent" >Si vous installez votre &#8221;nightly&#8221; par-dessus une version 20.03 ou 25.03, vous devez suivre avec
+</p><!--l. 136--><p class="noindent" >Si vous installez votre &#8221;nightly&#8221; par-dessus une version 20.03 ou 25.03, vous devez suivre avec
 attention la procédure car un certain nombre de choses ont changé, notamment, elles sont
 compilées en 64 bits avec un compilateur récent, une version différente de wxWidgets et ont
 besoin de dlls complémentaires.
-</p><!--l. 137--><p class="noindent" >Normallement, vous ne devriez pas avoir ce type de problèmes avec une version 25.03.
+</p><!--l. 138--><p class="noindent" >Normallement, vous ne devriez pas avoir ce type de problèmes avec une version 25.03.
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 139--><p class="noindent" >Dézippez  la  version  &#8221;nightly&#8221;  téléchargée  et  copiez  tous  les  fichiers  dans  votre
+      <!--l. 140--><p class="noindent" >Dézippez  la  version  &#8221;nightly&#8221;  téléchargée  et  copiez  tous  les  fichiers  dans  votre
       sous-répertoire  codeblocks.  Si  vous  avez  déplacé  votre  sous-répertoire  MinGW
       ailleurs, vous pouvez même d&#8217;abord effacer tout le contenu de ce sous-répertoire
       codeblocks pour être certain de ne pas mélanger les versions. Une exception : si vous
@@ -13719,14 +13723,14 @@ besoin de dlls complémentaires.
       des fichiers de localisation, ne les effacez pas.
       </p></li>
       <li class="itemize">
-      <!--l. 140--><p class="noindent" >Dézippez les dlls wxWidgets trouvées avec votre nightly. Vous pouvez les installer
+      <!--l. 141--><p class="noindent" >Dézippez les dlls wxWidgets trouvées avec votre nightly. Vous pouvez les installer
       directement  dans  votre  sous-répertoire  codeblocks  ou  pour  une  utilisation  plus
       étendue, dans le sous-répertoire bin de MinGW. Vérifiez que ce sous-répertoire bin
       est bien dans votre PATH. Il devrait l&#8217;être si vous avez installé une version officielle
       de CB via l&#8217;installateur.
       </p></li>
       <li class="itemize">
-      <!--l. 141--><p class="noindent" >Dézippez les dlls pré-requises. Vous pouvez les installer directement dans votre
+      <!--l. 142--><p class="noindent" >Dézippez les dlls pré-requises. Vous pouvez les installer directement dans votre
       sous-répertoire codeblocks. Ici également, pour une utilisation plus étendue, vous
       pouvez les installer dans le sous-répertoire bin de MinGW ou tout autre chemin
       accessible via votre variable PATH. Mais faites attention, car elles peuvent déjà y
@@ -13735,7 +13739,7 @@ besoin de dlls complémentaires.
       pour un usage privé et pour éviter des soucis liés au mélange de versions de MinGW.</p></li></ul>
 <div class="center" 
 >
-<!--l. 144--><p class="noindent" >
+<!--l. 145--><p class="noindent" >
 </p>
                                                                                        
                                                                                        
@@ -13748,7 +13752,7 @@ précédente, il n&#8217;est pas forcément nécessaire de les mettre à jour.
 Lisez avec attention le sujet du forum concernant spécifiquement cette
 &#8221;nightly&#8221;.                                                          </div>
 </div>
-<!--l. 146--><p class="noindent" >Normalement, c&#8217;est tout. Votre &#8221;nightly&#8221; est prête à l&#8217;emploi ...
+<!--l. 147--><p class="noindent" >Normalement, c&#8217;est tout. Votre &#8221;nightly&#8221; est prête à l&#8217;emploi ...
                                                                                        
                                                                                        
                                                                                        
