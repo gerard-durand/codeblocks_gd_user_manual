@@ -389,15 +389,26 @@ En fonction des tâches à effectuer, il peut être utile d'avoir plusieurs conf
 
 \hint{Autre exemple : éditer un fichier en mode plein écran sans barre de symboles. Vous pouvez créer une disposition comme \samp{Plein Ecran} et lui assigner un raccourci spécifique.}
 
-\subsection{Basculer entre projets}
+\subsection{Basculer entre projets et fichiers}
 
 Si plusieurs projets ou fichiers sont ouverts en même temps, l'utilisateur a besoin d'un moyen pour passer rapidement de l'un à l'autre. \codeblocks possède plusieurs raccourcis pour ce faire.
 
 \begin{description}
 \item[Alt-F5] Active le projet précédent de la vue des projets.
 \item[Alt-F6] Active le projet suivant de la vue des projets.
-\item[F11] Dans l'éditeur, bascule entre un fichier source \file{\var{name}.cpp} et le fichier d'en-tête (header) correspondant \file{\var{name}.h}
+\item[F11] Dans l'éditeur, bascule entre un fichier source \file{\var{name}.cpp} et le fichier d'en-têtes (header) correspondant \file{\var{name}.h}
 \end{description}
+
+\subsection{Affichage de plusieurs fichiers sur un même écran}
+
+Comme vu ci-dessus, la touche F11 est utile pour basculer entre un fichier source \file{\var{name}.cpp} et le fichier d'en-têtes correspondant \file{\var{name}.h}: Ils utilisent la même fenêtre d'édition. Une autre option utile est d'afficher sur un même écran deux parties d'un même fichier, séparées horizontalement ou verticalement. On obtient cela par un clic droit sur l'onglet contenant le nom du fichier désiré, puis en choisissant la bonne option dans le sous-menu séparer la vue. Vous pouvez alors naviguer indépendamment dans chaque partie du fichier.
+
+Toutefois, il peut aussi être intéressant de diviser la fenêtre d'affichage en deux parties (ou plus) et d'afficher dans chaque sous-fenêtre des fichiers différents (par exemple un fichier source \file{\var{name}.cpp} dans une des vues et le fichier d'en-têtes correspondant \file{\var{name}.h} dans l'autre vue. Une façon d'obtenir cela est d'avoir un projet avec plusieurs onglets affichés (un fichier pour chaque onglet). Avec votre souris, vous sélectionnez puis glissez-déposez un onglet tout en haut (ou tout en bas) de la fenêtre d'édition pour séparer la vue horizontalement, ou complètement à droite (ou à gauche) de la fenêtre d'édition pour séparer la vue verticalement. Une fenêtre "fantôme" en bleu apparait dans la fenêtre d'édition pendant que vous glissez la souris. La seconde vue est créée lorsque vous relachez la souris.
+
+\figures[H][width=\columnwidth]{splitting_horizontally}{Glisser-Déposer pour obtenir une vue sépararée horizontalement avec 2 fichiers différents}
+\figures[H][width=\columnwidth]{splitting_vertically}{Glisser-Déposer pour obtenir une vue sépararée verticalement avec 2 fichiers différents}
+
+\hint{Vous pouvez faire cela plusieurs fois, mais sur de trop petits écrans vous aurez trop de sous-fenêtres, difficiles à lire}
 
 \subsection{Configurations étendue des compilateurs}
 

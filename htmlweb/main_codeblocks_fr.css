@@ -305,10 +305,10 @@ BODY#menu {color: rgb(255,255,255); }
 #colorbox49{background-color: rgb(238,255,204);}
 #colorbox50{border: solid 1px #000000;}
 #colorbox50{background-color: rgb(238,255,204);}
-span#textcolor51{color:#0000FF}
+#colorbox51{border: solid 1px #000000;}
+#colorbox51{background-color: rgb(238,255,204);}
 span#textcolor52{color:#0000FF}
-#colorbox53{border: solid 1px #000000;}
-#colorbox53{background-color: rgb(238,255,204);}
+span#textcolor53{color:#0000FF}
 #colorbox54{border: solid 1px #000000;}
 #colorbox54{background-color: rgb(238,255,204);}
 #colorbox55{border: solid 1px #000000;}
@@ -337,9 +337,9 @@ span#textcolor52{color:#0000FF}
 #colorbox66{background-color: rgb(238,255,204);}
 #colorbox67{border: solid 1px #000000;}
 #colorbox67{background-color: rgb(238,255,204);}
-span#textcolor68{color:#FF0000}
-#colorbox69{border: solid 1px #000000;}
-#colorbox69{background-color: rgb(238,255,204);}
+#colorbox68{border: solid 1px #000000;}
+#colorbox68{background-color: rgb(238,255,204);}
+span#textcolor69{color:#FF0000}
 #colorbox70{border: solid 1px #000000;}
 #colorbox70{background-color: rgb(238,255,204);}
 #colorbox71{border: solid 1px #000000;}
@@ -360,5 +360,7 @@ span#textcolor68{color:#FF0000}
 #colorbox78{background-color: rgb(238,255,204);}
 #colorbox79{border: solid 1px #000000;}
 #colorbox79{background-color: rgb(238,255,204);}
+#colorbox80{border: solid 1px #000000;}
+#colorbox80{background-color: rgb(238,255,204);}
 /* end css.sty */
 

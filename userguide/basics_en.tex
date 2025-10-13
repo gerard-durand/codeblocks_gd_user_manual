@@ -384,7 +384,7 @@ Depending on the task in hand, it can be useful to have different configurations
 
 \hint{Another example is editing a file in Full Screen mode without symbol bars. You can create a perspective such as \samp{Full} and assign a hot key for this purpose.}
 
-\subsection{Switching between projects}
+\subsection{Switching between projects or files}
 
 If several projects or files are opened at the same time, the user needs a way to switch quickly between the projects or files. \codeblocks has a number of shortcuts for such situations.
 
@@ -393,6 +393,17 @@ If several projects or files are opened at the same time, the user needs a way t
 \item[Alt-F6] Activates the next project from the project view.
 \item[F11] Switches within the editor between a source file \file{\var{name}.cpp} and the corresponding header file \file{\var{name}.h}
 \end{description}
+
+\subsection{Displaying several files on the same screen}
+
+As seen above, F11 is usefull to switch between a file \file{\var{name}.cpp} and the corresponding header file \file{\var{name}.h}: They use the same editor view. An other usefull option is to split only one file on the screen in two parts, horizontally or vertically. This is obtained by a right click on the tab containing the name of the desired file, and choosing the right option in the split view sub-menu. Then you can navigate independantly in each part of the file.
+
+Nevertheless, it's also usefull to split the display window into two (or more) parts and display in each sub-view a different file (for example a source file \file{\var{name}.cpp} in one view and the corresponding header file \file{\var{name}.h} in the other view. A way to achieve this, is to have a project with several editor tabs displayed (one file in each tab). With your mouse, you select then drag and release one tab at the top (or the bottom) of the editor window to split horizontally, or completely at the right (or the left) of the editor window to split vertically. A blue "ghost" windows appears in the editor during the mouse drag. The second view is created after the mouse release.
+
+\figures[H][width=\columnwidth]{splitting_horizontally}{Drag and release to obtain a horizontal splitted view with two different files}
+\figures[H][width=\columnwidth]{splitting_vertically}{Drag and release to obtain a vertical splitted view with two different files}
+
+\hint{You can do this several times, but on too small screens you will obtain too many subwindows, not easy to read}
 
 \subsection{Extended settings for compilers}
 

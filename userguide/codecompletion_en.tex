@@ -124,6 +124,8 @@ See the Nightly builds at \url{https://forums.codeblocks.org/index.php/board,20.
     \begin{verbatim}
     C:\msys64\clang64\bin\clangd.exe
     C:\msys64\clang32\bin\clangd.exe
+    C:\msys64\mingw64\bin\clangd.exe
+    C:\msys64\mingw32\bin\clangd.exe
     C:\LLVM\bin\clangd.exe
     C:\compilers\clang\clangd.exe
     \end{verbatim}
@@ -193,7 +195,7 @@ The  process for the three options above are detailed below.
     bin\clangd.exe
     bin\msvcp140.dll
     bin\vcruntime140.dll
-    bin\vcruntime140\_1.dll
+    bin\vcruntime140_1.dll
     \end{verbatim}
 \end{enumerate}
 
@@ -211,9 +213,10 @@ The  process for the three options above are detailed below.
         \begin{longtable}{|l|l|}\hline
         \textbf{Package}                            & \textbf{Clangd executable}    \\ \hline
 %        \endhead   % To repeat the title line, if needed
-        mingw-w64-clang-x86\_64-clang-tools-extra   & clang64/bin/clangd.exe        \\
-        mingw-w64-x86\_64-clang-tools-extra         & mingw64/bin/clangd.exe        \\ \hline
-%        \caption{Msys2 - Clang Extra Packages for MinGW64}
+        mingw-w64-clang-x86\_64-clang-tools-extra   & clang64\osp bin\osp clangd.exe        \\
+        mingw-w64-x86\_64-clang-tools-extra         & mingw64\osp bin\osp clangd.exe        \\
+        mingw-w64-ucrt-x86\_64-clang-tools-extra    & ucrt64\osp bin\osp clangd.exe         \\ \hline
+        \caption{Msys2 - Clang Extra Packages for MinGW64}
         \end{longtable}
         \par}
  
@@ -242,9 +245,9 @@ The  process for the three options above are detailed below.
         \begin{longtable}{|l|l|}\hline
         \textbf{Package}                            & \textbf{Clangd executable}    \\ \hline
 %        \endhead   % To repeat the title line, if needed
-        mingw-w64-clang-i686-clang-tools-extra      & clang32/bin/clangd.exe        \\
-        mingw-w64-i686-clang-tools-extra            & mingw32/bin/clangd.exe        \\ \hline
-%        \caption{Msys2 - Clang Extra Packages for MinGW32}
+        mingw-w64-clang-i686-clang-tools-extra      & clang32\osp bin\osp clangd.exe        \\
+        mingw-w64-i686-clang-tools-extra            & mingw32\osp bin\osp clangd.exe        \\ \hline
+        \caption{Msys2 - Clang Extra Packages for MinGW32}
         \end{longtable}
         \par}
 

@@ -69,6 +69,9 @@ del /Q %name%*.html > nul
 rem Reset_png no more useful: same job done by unix tool sed!
 rem Reset_png %lang%
 
+echo VERIFY: Some png images, those containing a text with a _ like x86_64 may be not totally correct (text appear as x8664).
+echo If necessary, it's possible to correct those images by a photo editor (Paint Shop Pro for example)
+
 goto end
 
 :usage
