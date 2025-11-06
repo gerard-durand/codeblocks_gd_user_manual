@@ -104,3 +104,17 @@ Fichiers générés: $file_dir/$file_name.scanner.cc
 \item Si vous changez l'un quelconque des paramètres mentionnés ici dans les options de compilation avancées, vous \textbf{devez} fermer puis ré-ouvrir votre projet pour que les changements soient pris en compte. Pour le moment, aucun message ne le signale.
 \item Si vous utilisez un compilateur autre que celui par défaut (pour une compilation croisée, par exemple), vous devrez peut-être effectuer ces réglages dans le compilateur par défaut, et non dans le compilateur croisé, où ils semblent n'avoir aucun effet.
 \end{itemize}
+
+\genterm{Autre exemple - Rust}
+Il y a quelques années, un utilisateur de \codeblocks, Barracuda72, a publié un travail pour intégrer le langage Rust dans \codeblocks. On peut trouver ce travail sur un dépot git :\\ \url{https://github.com/Barracuda72/Codeblocks-Rust/}.\\
+Suivez simplement le guide d'installation (dans le readme.md). Comme ce travail est maintenant un peu ancien, et n'a pas été mis à jour depuis un certain temps, vous pouvez rencontrer des mots clés absents ou d'autres choses, mais ça marche. Vous pouvez modifier les fichiers dans votre installation et les ajuster à vos besoins.\\
+Bien sûr, vous devrez avoir installé un compilateur Rust/Cargo.\\
+Pour les utilisateurs Windows, si vous utilisez et avez déjà installé la chaîne d'outils msys2 sur votre PC, c'est assez facile à obtenir :
+\begin{itemize}
+\item Utilisez pacman pour télécharger et installer un package rust :\\
+	\codeline{pacman -S mingw-w64-x86\_64-rust},\\
+	qui installe rustc, cargo, et d'autres outils dans le sous-répertoire \file{\osp bin} (par défaut de \file{C:\osp msys64\osp mingw64}) pour une installation en 64 bits ;\\
+	\textbf{Note}: Il existe un autre package, mingw-w64-x86\_64-rustup, mais il semble plutôt adapté à Visual Studio.
+\item La prochaine fois que vous lancerez \codeblocks, il vous demandera de configurer la variable d'environnement \codeline{$(#rust)}. Entrez simplement le chemin où rustc.exe est localisé (voir ci-dessus la valeur par défaut mais sans entrer le sous-répertoire \file{\osp bin});
+\item Vous être maintenant prêt à utiliser le modèle (template) rust et à créer vos programmes en Rust.
+\end{itemize}

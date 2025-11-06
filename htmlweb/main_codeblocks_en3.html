@@ -34,7 +34,7 @@ class="cmbx-12x-x-207">Code::Blocks</span><br /><br />
 <span 
 class="cmr-17x-x-143">User Manual</span><br /><br />
 <span 
-class="cmr-12x-x-120">Version 2.1.19</span><br /><br />
+class="cmr-12x-x-120">Version 2.1.20</span><br /><br />
 </p><!--l. 60--><p class="noindent" >Thanks to the Code::Blocks team:<br />
 Anders F. Björklund (afb), Biplab Kumar Modak (biplab), Bartomiej wiecki (byo), Paul
 A. Jimenez (ceniza), Koa Chong Gee (cyberkoa), Daniel Orb (daniel2000), Lieven de
@@ -55,7 +55,7 @@ up to date.<br />
 Permission is granted to copy, distribute and/or modify this document under the terms
 of the GNU Free Documentation License, Version 1.2 or any later version published by
 the Free Software Foundation.
-</p><!--l. 60--><p class="noindent" >User Manual updated in october 2025</p></div>
+</p><!--l. 60--><p class="noindent" >User Manual updated in november 2025</p></div>
                                                                                        
                                                                                        
 </div>
@@ -81,7 +81,47 @@ href="#x3-1300003">3</a>) are official documentations of the
 Code::Blocks Wiki site (eventually reviewed and amended) and available in english only. This
 documentation is an extension of the original version 1.1, compiled and/or written by Mario
 Cupelli.
-</p><!--l. 6--><p class="noindent" >The below illustration shows the design of the Code::Blocks user interface.
+</p><!--l. 7--><p class="noindent" ><span 
+class="cmbxti-10x-x-120">What is an IDE?</span><br 
+class="newline" />Code::Blocks is an <span 
+class="cmbx-12">IDE</span>. What does that mean?<br 
+class="newline" />IDE is for <span 
+class="cmbx-12">I</span>ntegrated <span 
+class="cmbx-12">D</span>evelopment <span 
+class="cmbx-12">E</span>nvironment. It is a graphical environment framework for
+working with source code and using compilers and linkers (in the case of Code::Blocks, these
+can be several). For several languages, Code::Blocks has a built-in syntax highlighting system
+and offers code completion which helps you to identify language-specific features as keywords,
+classes, functions, etc.<br 
+class="newline" />With Code::Blocks you&#8217;ll be able to write codes in different high level languages as C, C++,
+fortran and some others. Code::Blocks will help you to translate these source codes to binary
+executables. These translations are made with a compiler and a linker. Code::Blocks itself, is
+<span 
+class="cmbx-12">NOT </span>a compiler nor a linker, but it creates a graphic interface to these tools (and many
+others) to help you to build your executables by using <span 
+class="cmbx-12">external </span>compilers and linkers.
+Code::Blocks can use different compilers (and linkers), from Microsoft/Windows world
+as Visual C, C++, etc, but also from Unix/Linux world as many distributions of
+CC/C++/gcc/g++. Many compilers/linkers commonly used in Linux have been ported to
+Windows.<br 
+class="newline" />If you use Linux, you have already compilers/linkers installed on your system.<br 
+class="newline" />On Windows, it&#8217;s generally not the case: no compiler/linker installed. For your convenience, a
+Windows version of Code::Blocks is distributed with a compilation toolchain, MinGW/GCC in
+64 or 32 bits, coming from the Linux world. However, this is provided &#8221;as-is&#8221; and not
+developed/maintained by the Code::Blocks development team. You are not obliged to use this
+toolchain. Other Windows versions are distributed without a compiler but you&#8217;ll have to install
+at least one to be able to build executables.<br 
+class="newline" />Code::Blocks is able to identify by itself some compilers/linkers during installation. In any case,
+it will be possible, afterwards, to configure Code::Blocks to use them or to modify the
+configuration.<br 
+class="newline" />It&#8217;s also possible, in Code::Blocks, to support languages that are not natively supported (for
+example D, java, fortran, rust,&#x2026;) through the use of plugins that you can find inside
+Code::Blocks distributions, built by users on Internet (on Code::Blocks forums for example) or
+simply by configuring a new language by yourself (of course needs some knowledge and work by
+you).
+                                                                                       
+                                                                                       
+</p><!--l. 16--><p class="noindent" >The below illustration shows the design of the Code::Blocks user interface.
 </p>
 <hr class="figure" /><div class="figure" 
 >
@@ -91,7 +131,7 @@ Cupelli.
  id="x3-2001r1"></a>
                                                                                        
                                                                                        
-<!--l. 8--><p class="noindent" ><img 
+<!--l. 18--><p class="noindent" ><img 
 src="codeblocks.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -104,7 +144,7 @@ class="content">IDE Code::Blocks</td></tr></table></div><!--tex4ht:label?: x3-20
 <span 
 class="cmssbx-10x-x-120">Management</span> </dt><dd 
 class="description">
-      <!--l. 11--><p class="noindent" >This  window  contains  the  interface  &#8217;Projects&#8217;   which  will  in  the  following  text
+      <!--l. 21--><p class="noindent" >This  window  contains  the  interface  &#8217;Projects&#8217;   which  will  in  the  following  text
       be  referred  to  as  the  project  view.  This  view  show  all  the  projects  opened  in
       Code::Blocks at a certain time. The &#8217;Symbols&#8217; tab of the Management window shows
       symbols, variables etc..
@@ -112,57 +152,57 @@ class="description">
 <span 
 class="cmssbx-10x-x-120">Editor</span> </dt><dd 
 class="description">
-      <!--l. 12--><p class="noindent" >In the above illustration, a source named <span 
+      <!--l. 22--><p class="noindent" >In the above illustration, a source named <span 
 class="cmtt-12">hello.c </span>is opened with syntax highlighting
       in the editor.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Open files list</span> </dt><dd 
 class="description">
-      <!--l. 13--><p class="noindent" >shows a list of all files opened in the editor, in this example: <span 
+      <!--l. 23--><p class="noindent" >shows a list of all files opened in the editor, in this example: <span 
 class="cmtt-12">hello.c</span>.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">CodeSnippets</span> </dt><dd 
 class="description">
-      <!--l. 14--><p class="noindent" >can be displayed via the menu &#8217;View&#8217; <span 
+      <!--l. 24--><p class="noindent" >can be displayed via the menu &#8217;View&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;CodeSnippets&#8217; . Here you can manage text
       modules, links to files and links to urls.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Logs &amp; others</span> </dt><dd 
 class="description">
-      <!--l. 15--><p class="noindent" >This window is used for outputting search results, log messages of a compiler etc...</p></dd></dl>
-<!--l. 18--><p class="noindent" >The status bar gives an overview of the following settings:
+      <!--l. 25--><p class="noindent" >This window is used for outputting search results, log messages of a compiler etc...</p></dd></dl>
+<!--l. 28--><p class="noindent" >The status bar gives an overview of the following settings:
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 21--><p class="noindent" >Absolute path of an opened file in the editor.
+      <!--l. 31--><p class="noindent" >Absolute path of an opened file in the editor.
       </p></li>
       <li class="itemize">
-      <!--l. 22--><p class="noindent" >The editor uses the default character encoding of your host operating system. This
+      <!--l. 32--><p class="noindent" >The editor uses the default character encoding of your host operating system. This
       setting will be displayed with <code class="lstinline"><span style="color:#0000FF">default</span></code>.
       </p></li>
       <li class="itemize">
-      <!--l. 23--><p class="noindent" >Row and column number of the current cursor position in the editor.
+      <!--l. 33--><p class="noindent" >Row and column number of the current cursor position in the editor.
       </p></li>
       <li class="itemize">
-      <!--l. 24--><p class="noindent" >The configured keyboard mode for inserting text (Insert or Overwrite).
+      <!--l. 34--><p class="noindent" >The configured keyboard mode for inserting text (Insert or Overwrite).
                                                                                        
                                                                                        
       </p></li>
       <li class="itemize">
-      <!--l. 25--><p class="noindent" >Current state of a file. A modified file will be marked with <code class="lstinline"><span style="color:#000000">Modified</span></code> otherwise this
+      <!--l. 35--><p class="noindent" >Current state of a file. A modified file will be marked with <code class="lstinline"><span style="color:#000000">Modified</span></code> otherwise this
       entry is empty.
       </p></li>
       <li class="itemize">
-      <!--l. 26--><p class="noindent" >The permission of a file. A file with read only settings will display <code class="lstinline"><span style="color:#000000">Read</span><span style="color:#000000"> </span><span style="color:#000000">only</span></code> in the
+      <!--l. 36--><p class="noindent" >The permission of a file. A file with read only settings will display <code class="lstinline"><span style="color:#000000">Read</span><span style="color:#000000"> </span><span style="color:#000000">only</span></code> in the
       status bar. In the window &#8217;Open files list&#8217;  these files will be emphasised with a lock
       as icon overlay.
 </p>
       <div class="center" 
 >
-<!--l. 28--><p class="noindent" >
+<!--l. 38--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox1"><span 
@@ -175,7 +215,7 @@ attributes of the file on the filesystem are not modified.             </div>
 </div>
       </li>
       <li class="itemize">
-      <!--l. 30--><p class="noindent" >If you start Code::Blocks with the command line option <span 
+      <!--l. 40--><p class="noindent" >If you start Code::Blocks with the command line option <span 
 class="cmtt-12">--personality=</span><span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">profile</span><span 
@@ -187,12 +227,12 @@ class="cmmi-12">&#x003C;</span><span
 class="cmtt-12">personality</span><span 
 class="cmmi-12">&#x003E;</span><span 
 class="cmtt-12">.conf</span>.</p></li></ul>
-<!--l. 33--><p class="noindent" >Code::Blocks offers a very flexible and comprehensive project management. The following text
+<!--l. 43--><p class="noindent" >Code::Blocks offers a very flexible and comprehensive project management. The following text
 will address only some of the features of the project management.
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.1</span>&#x00A0;&#x00A0;<a 
  id="x3-30001.1"></a>Project View</h3>
-<!--l. 37--><p class="noindent" >In Code::Blocks, the sources and the settings for the build process are stored in a project file
+<!--l. 47--><p class="noindent" >In Code::Blocks, the sources and the settings for the build process are stored in a project file
 <span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">name</span><span 
@@ -202,7 +242,7 @@ a project. The easiest way to create a new project is executing the command &#82
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Project&#8217;
 and selecting a wizard. Then you can add files to the project via the context menu &#8217;Add files&#8217;
 in the Management window.
-</p><!--l. 39--><p class="noindent" >Code::Blocks governs the project files in categories according to their file extensions. These are
+</p><!--l. 49--><p class="noindent" >Code::Blocks governs the project files in categories according to their file extensions. These are
 the preset categories:
                                                                                        
                                                                                        
@@ -210,29 +250,29 @@ the preset categories:
 <span 
 class="cmssbx-10x-x-120">Sources</span> </dt><dd 
 class="description">
-      <!--l. 42--><p class="noindent" >includes source files with the extensions <span 
+      <!--l. 52--><p class="noindent" >includes source files with the extensions <span 
 class="cmtt-12">*.c;*.cpp;</span>.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">ASM Sources</span> </dt><dd 
 class="description">
-      <!--l. 43--><p class="noindent" >includes source files with the extensions <span 
+      <!--l. 53--><p class="noindent" >includes source files with the extensions <span 
 class="cmtt-12">*.s;*.S;*.ss;*.asm</span>.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Headers</span> </dt><dd 
 class="description">
-      <!--l. 44--><p class="noindent" >includes, among others, files with the extension <span 
+      <!--l. 54--><p class="noindent" >includes, among others, files with the extension <span 
 class="cmtt-12">*.h;</span>.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Resources</span> </dt><dd 
 class="description">
-      <!--l. 45--><p class="noindent" >includes files for layout descriptions for wxWidgets windows with the extensions
+      <!--l. 55--><p class="noindent" >includes files for layout descriptions for wxWidgets windows with the extensions
       <span 
 class="cmtt-12">*.res;*.xrc;</span>.  These  file  types  are  shown  in  the  &#8217;Resources&#8217;  tab  of  the
       Manangement window.</p></dd></dl>
-<!--l. 48--><p class="noindent" >The settings for types and categories of files can be adjusted via the context menu &#8217;Project
+<!--l. 58--><p class="noindent" >The settings for types and categories of files can be adjusted via the context menu &#8217;Project
 tree&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Edit file types &amp; categories&#8217; . Here you can also define custom categories for
 file extensions of your own. For example, if you wish to list linker scripts with the
@@ -243,7 +283,7 @@ category.
 </p>
 <div class="center" 
 >
-<!--l. 50--><p class="noindent" >
+<!--l. 60--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox2"><span 
@@ -253,22 +293,22 @@ class="cmsy-10x-x-120">&#x2192;</span>&#8217;Categorize by file types&#8217;   i
 context menu, the category display will be switched off, and the files
 will be listed as they are stored in the file system.                  </div>
 </div>
-<!--l. 52--><p class="noindent" >
+<!--l. 62--><p class="noindent" >
 </p>
                                                                                        
                                                                                        
 <h3 class="sectionHead"><span class="titlemark">1.2</span>&#x00A0;&#x00A0;<a 
  id="x3-40001.2"></a>Notes for Projects</h3>
-<!--l. 54--><p class="noindent" >In Code::Blocks, so-called notes can be stored for a project. These notes should contain short
+<!--l. 64--><p class="noindent" >In Code::Blocks, so-called notes can be stored for a project. These notes should contain short
 descriptions or hints for the corresponding project. By displaying this information during the
 opening of a project, other users are provided with a quick survey of the project. The
 display of notes can be switched on or off in the Notes tab of the Properties of a
 project.
-</p><!--l. 56--><p class="noindent" >
+</p><!--l. 66--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.3</span>&#x00A0;&#x00A0;<a 
  id="x3-50001.3"></a>Project Templates</h3>
-<!--l. 58--><p class="noindent" >Code::Blocks is supplied with a variety of project templates which are displayed when creating a
+<!--l. 68--><p class="noindent" >Code::Blocks is supplied with a variety of project templates which are displayed when creating a
 new project. However, it is also possible to store custom templates for collecting your own
 specifications for compiler switches, the optimisation to be used, machine-specific
 switches etc. in templates. These templates will be stored in the <span 
@@ -313,7 +353,7 @@ class="cmsy-10x-x-120">&#x2192;</span>&#8217;User templates&#8217;
 </p>
 <div class="center" 
 >
-<!--l. 60--><p class="noindent" >
+<!--l. 70--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox3"><span 
@@ -321,13 +361,13 @@ class="cmbx-12">Note:</span><br
 class="newline" />The  available  templates  in  the  Project  Wizard  can  be  edited  by
 selection via right-click.                                            </div>
 </div>
-<!--l. 62--><p class="noindent" >
+<!--l. 72--><p class="noindent" >
 </p>
                                                                                        
                                                                                        
 <h3 class="sectionHead"><span class="titlemark">1.4</span>&#x00A0;&#x00A0;<a 
  id="x3-60001.4"></a>Create Projects from Build Targets</h3>
-<!--l. 64--><p class="noindent" >In projects it is necessary to have different variants of the project available. Variants are called
+<!--l. 74--><p class="noindent" >In projects it is necessary to have different variants of the project available. Variants are called
 Build Targets. They differ with respect to their compiler options, debug information and/or
 choice of files. A Build Target can also be outsourced to a separate project. To do so, click
 &#8217;Project&#8217; <span 
@@ -343,7 +383,7 @@ href="#x3-6001r2">Figure&#x00A0;1.2</a>).
  id="x3-6001r2"></a>
                                                                                        
                                                                                        
-<!--l. 66--><p class="noindent" ><img 
+<!--l. 76--><p class="noindent" ><img 
 src="build_targets.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -354,7 +394,7 @@ class="content">Build Targets</td></tr></table></div><!--tex4ht:label?: x3-6001r
 </div><hr class="endfigure" />
 <h3 class="sectionHead"><span class="titlemark">1.5</span>&#x00A0;&#x00A0;<a 
  id="x3-70001.5"></a>Virtual Targets</h3>
-<!--l. 70--><p class="noindent" >Projects can be further structured in Code::Blocks by so-called Virtual Targets. A frequently
+<!--l. 80--><p class="noindent" >Projects can be further structured in Code::Blocks by so-called Virtual Targets. A frequently
 used project structure consists of two Build Targets, one &#8217;Debug&#8217; Target which contains debug
 information and one &#8217;Release&#8217; Target without this information. By adding Virtual
 Targets via &#8217;Project&#8217; <span 
@@ -363,33 +403,33 @@ class="cmsy-10x-x-120">&#x2192;</span>&#8217;Build Targets&#8217;  individual Bu
 combined. For example, a Virtual Target &#8217;All&#8217; can create the Targets Debug and Release
 simultaneously. Virtual Targets are shown in the symbol bar of the compiler under Build
 Targets.
-</p><!--l. 72--><p class="noindent" >
+</p><!--l. 82--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.6</span>&#x00A0;&#x00A0;<a 
  id="x3-80001.6"></a>Pre- and Postbuild steps</h3>
-<!--l. 74--><p class="noindent" >Code::Blocks makes it possible to perform additional operations before or after compiling a
+<!--l. 84--><p class="noindent" >Code::Blocks makes it possible to perform additional operations before or after compiling a
 project. These operations are called Prebuilt or Postbuilt Steps. Typical Postbuilt Steps
 are:
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 77--><p class="noindent" >Creating an Intel Hexformat from a finished object
+      <!--l. 87--><p class="noindent" >Creating an Intel Hexformat from a finished object
       </p></li>
       <li class="itemize">
-      <!--l. 78--><p class="noindent" >Manipulating objects by <span 
+      <!--l. 88--><p class="noindent" >Manipulating objects by <span 
 class="cmtt-12">objcopy</span>
       </p></li>
       <li class="itemize">
-      <!--l. 79--><p class="noindent" >Generating dump files by <span 
+      <!--l. 89--><p class="noindent" >Generating dump files by <span 
 class="cmtt-12">objdump</span></p></li></ul>
-<!--l. 82--><p class="noindent" ><span 
+<!--l. 92--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Example</span>
-</p><!--l. 84--><p class="noindent" >Creating a Disassembly from an object under Windows. Piping to a file requires calling <span 
+</p><!--l. 94--><p class="noindent" >Creating a Disassembly from an object under Windows. Piping to a file requires calling <span 
 class="cmtt-12">cmd</span>
 with the <span 
 class="cmtt-12">/c</span> option.
 </p>
-<!--l. 86-->
+<!--l. 96-->
                                                                                        
                                                                                        
 <pre class="lstlisting" id="listing-5"><span class="label"><a 
@@ -407,11 +447,11 @@ class="cmtt-10x-x-109">&#x003E;</span></span><span style="color:#000000"> </span
 class="cmtt-10x-x-109">name</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">.</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">dis</span></span></pre>
-<!--l. 90--><p class="noindent" >Archiving a project can be another example for a Postbuilt Step. For this purpose,
+<!--l. 100--><p class="noindent" >Archiving a project can be another example for a Postbuilt Step. For this purpose,
 create a Build Target &#8217;Archive&#8217; and include the following instruction in the Postbuilt
 Step:
 </p>
-<!--l. 92-->
+<!--l. 102-->
 <pre class="lstlisting" id="listing-6"><span class="label"><a 
  id="x3-8002r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">zip</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
@@ -435,12 +475,12 @@ class="cmtt-10x-x-109">(</span></span><span style="color:#000000"><span
 class="cmtt-10x-x-109">PROJECT_NAME</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">).</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">cbp</span></span></pre>
-<!--l. 96--><p class="noindent" >With this command, the active project and its sources, header and objects will be packed as a
+<!--l. 106--><p class="noindent" >With this command, the active project and its sources, header and objects will be packed as a
 zip file. In doing so, the Built-in variables <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(</span><span style="color:#000000">PROJECT_NAME</span><span style="color:#000000">)</span></code> and <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(</span><span style="color:#000000">TODAY</span><span style="color:#000000">)</span></code>, the project name and
 the current date will be extracted (see <a 
 href="#x3-1320003.2">section&#x00A0;3.2</a>). After the execution of the Target &#8217;Archive&#8217;,
 the packed file will be stored in the project directory.
-</p><!--l. 98--><p class="noindent" >In the <span 
+</p><!--l. 108--><p class="noindent" >In the <span 
 class="cmtt-12">share/codeblocks/scripts </span>directory you will find some examples for scripts. You can
 add a script via menu &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Scripting&#8217;  and register in a menu. If you execute e.g. the
@@ -452,16 +492,16 @@ class="cmmi-12">&#x003C;</span><span
 class="cmtt-12">project</span><span 
 class="cmmi-12">&#x003E;</span><span 
 class="cmtt-12">.tar.gz</span>.
-</p><!--l. 100--><p class="noindent" >
+</p><!--l. 110--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.7</span>&#x00A0;&#x00A0;<a 
  id="x3-90001.7"></a>Adding Scripts in Build Targets</h3>
-<!--l. 102--><p class="noindent" >Code::Blocks offers the possibility of using menu actions in scripts. The script represents
+<!--l. 112--><p class="noindent" >Code::Blocks offers the possibility of using menu actions in scripts. The script represents
 another degree of freedom for controlling the generation of your project.
 </p>
 <div class="center" 
 >
-<!--l. 104--><p class="noindent" >
+<!--l. 114--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox4"><span 
@@ -470,11 +510,11 @@ class="newline" />A script can also be included at a Build Target.              
 </div>
                                                                                        
                                                                                        
-<!--l. 106--><p class="noindent" >
+<!--l. 116--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.8</span>&#x00A0;&#x00A0;<a 
  id="x3-100001.8"></a>Workspace and Project Dependencies</h3>
-<!--l. 108--><p class="noindent" >In Code::Blocks, multiple projects can be open. By saving open projects via &#8217;File&#8217; <span 
+<!--l. 118--><p class="noindent" >In Code::Blocks, multiple projects can be open. By saving open projects via &#8217;File&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Save
 workspace&#8217;  you can collect them in a single workspace under <span 
 class="cmmi-12">&#x003C;</span><span 
@@ -487,12 +527,12 @@ class="cmtt-12">name</span><span
 class="cmmi-12">&#x003E;</span><span 
 class="cmtt-12">.workspace </span>during the next startup of von Code::Blocks, all projects will show up
 again.
-</p><!--l. 110--><p class="noindent" >Complex software systems consist of components which are managed in different Code::Blocks
+</p><!--l. 120--><p class="noindent" >Complex software systems consist of components which are managed in different Code::Blocks
 projects. Furthermore, with the generation of such software systems, there are often
 dependencies between these projects.
-</p><!--l. 112--><p class="noindent" ><span 
+</p><!--l. 122--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Example</span>
-</p><!--l. 114--><p class="noindent" >A project A contains fundamental functions which are made available to other projects in the
+</p><!--l. 124--><p class="noindent" >A project A contains fundamental functions which are made available to other projects in the
 form of a library. Now, if the sources of this project are modified, then the library has to be
 rebuilt. To maintain consistency between a project B which uses the functions and project A
 which implements the functions, project B has to depend on project A. The necessary
@@ -505,14 +545,14 @@ button.
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.9</span>&#x00A0;&#x00A0;<a 
  id="x3-110001.9"></a>Including Assembler files</h3>
-<!--l. 118--><p class="noindent" >In the Management window of the Project View, Assembler files are shown in the <span 
+<!--l. 128--><p class="noindent" >In the Management window of the Project View, Assembler files are shown in the <span 
 class="cmtt-12">ASM Sources</span>
 category. The user can change the listing of files in categories (see <a 
 href="#x3-30001.1">section&#x00A0;1.1</a>). Right-clicking
 one of the listed Assembler files will open a context menu. Select &#8217;Properties&#8217;  to open a new
 window. Now select the &#8217;Build&#8217; tab and activate the two fields &#8217;Compile file&#8217; and &#8217;Link file&#8217;.
 Then select the &#8217;Advanced&#8217; tab and execute the following steps:
-</p><!--l. 121--><p class="noindent" >
+</p><!--l. 131--><p class="noindent" >
       </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    1. </dt><dd 
 class="enumerate-enumitem">Set &#8217;Compiler variable&#8217; to CC
@@ -526,7 +566,7 @@ class="enumerate-enumitem">Select &#8217;Use custom command to build this file&#
                                                                                        
       </dd><dt class="enumerate-enumitem">
    4. </dt><dd 
-class="enumerate-enumitem">In the window, enter: <!--l. 125-->
+class="enumerate-enumitem">In the window, enter: <!--l. 135-->
       <pre class="lstlisting" id="listing-9"><span class="label"><a 
  id="x3-11005r1"></a></span><span style="color:#000000"><span 
 class="tctt-1095">$</span><span 
@@ -548,21 +588,21 @@ class="tctt-1095">$</span><span
 class="cmtt-10x-x-109">object</span></span></pre>
       
       </dd></dl>
-<!--l. 130--><p class="noindent" >The Code::Blocks variables are marked by <code class="lstinline"><span style="color:#000000">$</span></code> (see <a 
+<!--l. 140--><p class="noindent" >The Code::Blocks variables are marked by <code class="lstinline"><span style="color:#000000">$</span></code> (see <a 
 href="#x3-1450003.4">section&#x00A0;3.4</a>). They are set automatically so
 that you only have to replace the Assembler option <span 
 class="cmmi-12">&#x003C;</span>asopt<span 
 class="cmmi-12">&#x003E; </span>by your own settings.
-</p><!--l. 132--><p class="noindent" >
+</p><!--l. 142--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.10</span>&#x00A0;&#x00A0;<a 
  id="x3-120001.10"></a>Editor and Tools</h3>
-<!--l. 134--><p class="noindent" >This section describe tools in the éditor window.
-</p><!--l. 136--><p class="noindent" >
+<!--l. 144--><p class="noindent" >This section describe tools in the éditor window.
+</p><!--l. 146--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.10.1</span>&#x00A0;&#x00A0;<a 
  id="x3-130001.10.1"></a>Default Code</h4>
-<!--l. 138--><p class="noindent" >The company&#8217;s Coding Rules require source files to have a standard design. Code::Blocks makes
+<!--l. 148--><p class="noindent" >The company&#8217;s Coding Rules require source files to have a standard design. Code::Blocks makes
 it possible to include a predefined content at the beginning of a file automatically when creating
 new C/C++ sources and headers. This predefined content is called default code. This
 setting can be selected under &#8217;Settings&#8217; <span 
@@ -573,10 +613,10 @@ variables&#8217; , is performed. A new file can be created via the menu &#8217;F
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;New&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;File&#8217;
 .
-</p><!--l. 140--><p class="noindent" ><span 
+</p><!--l. 150--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Example</span>
 </p>
-<!--l. 142-->
+<!--l. 152-->
 <pre class="lstlisting" id="listing-11"><span class="label"><a 
  id="x3-13001r1"></a></span><span style="color:#008000"><span 
 class="cmtt-10x-x-109">/*</span></span><span style="color:#008000"><span 
@@ -650,13 +690,13 @@ class="cmtt-10x-x-109">*</span></span>
 class="cmtt-10x-x-109">&#x00A0;</span><span style="color:#008000"><span 
 class="cmtt-10x-x-109">**************************************************************</span></span><span style="color:#008000"><span 
 class="cmtt-10x-x-109">*/</span></span></pre>
-<!--l. 156--><p class="noindent" >
+<!--l. 166--><p class="noindent" >
 </p>
                                                                                        
                                                                                        
 <h4 class="subsectionHead"><span class="titlemark">1.10.2</span>&#x00A0;&#x00A0;<a 
  id="x3-140001.10.2"></a>Abbreviation</h4>
-<!--l. 158--><p class="noindent" >A lot of typing can be saved in Code::Blocks by defining abbreviation. This is done by selecting
+<!--l. 168--><p class="noindent" >A lot of typing can be saved in Code::Blocks by defining abbreviation. This is done by selecting
 &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Editor&#8217;  and defining the abbreviations under the name <span 
 class="cmmi-12">&#x003C;</span>name<span 
@@ -672,7 +712,7 @@ href="#x3-14001r3">Figure&#x00A0;1.3</a>).
  id="x3-14001r3"></a>
                                                                                        
                                                                                        
-<!--l. 160--><p class="noindent" ><img 
+<!--l. 170--><p class="noindent" ><img 
 src="abbreviation.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -681,9 +721,9 @@ class="content">Defining abbreviations</td></tr></table></div><!--tex4ht:label?:
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 162--><p class="noindent" >Parametrisation is also possible by including variables <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(</span><span style="color:#000000">NAME</span></code>) in the abbreviations.
+<!--l. 172--><p class="noindent" >Parametrisation is also possible by including variables <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(</span><span style="color:#000000">NAME</span></code>) in the abbreviations.
 </p>
-<!--l. 164-->
+<!--l. 174-->
 <pre class="lstlisting" id="listing-13"><span class="label"><a 
  id="x3-14002r1"></a></span><span style="color:#0000FF"><span 
 class="cmtt-10x-x-109">#</span></span><span style="color:#0000FF"><span 
@@ -712,14 +752,14 @@ class="cmtt-10x-x-109">(</span></span><span style="color:#008000"><span
 class="cmtt-10x-x-109">Guard</span></span><span style="color:#008000"> </span><span style="color:#008000"><span 
 class="cmtt-10x-x-109">token</span></span><span style="color:#008000"><span 
 class="cmtt-10x-x-109">)</span></span></pre>
-<!--l. 170--><p class="noindent" >When performing the abbreviation <span 
+<!--l. 180--><p class="noindent" >When performing the abbreviation <span 
 class="cmmi-12">&#x003C;</span>name<span 
 class="cmmi-12">&#x003E; </span>in the source text and performing Ctrl-J, the
 content of the variable is requested and included.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.10.3</span>&#x00A0;&#x00A0;<a 
  id="x3-150001.10.3"></a>Personalities</h4>
-<!--l. 176--><p class="noindent" >Code::Blocks settings are saved as application data in a file called <span 
+<!--l. 186--><p class="noindent" >Code::Blocks settings are saved as application data in a file called <span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">user</span><span 
 class="cmmi-12">&#x003E;</span><span 
@@ -741,7 +781,7 @@ profiles.
 </p>
 <div class="center" 
 >
-<!--l. 178--><p class="noindent" >
+<!--l. 188--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox5"><span 
@@ -749,13 +789,13 @@ class="cmbx-12">Note:</span><br
 class="newline" />The name of the current profile/personality is displayed in the right
 corner of the status bar.                                           </div>
 </div>
-<!--l. 180--><p class="noindent" >
+<!--l. 190--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.10.4</span>&#x00A0;&#x00A0;<a 
  id="x3-160001.10.4"></a>Configuration Files</h4>
                                                                                        
                                                                                        
-<!--l. 182--><p class="noindent" >The Code::Blocks settings are stored in the <span 
+<!--l. 192--><p class="noindent" >The Code::Blocks settings are stored in the <span 
 class="cmtt-12">default.conf </span>profile in the <span 
 class="cmtt-12">codeblocks </span>directory
 of your Application Data. When using personalities (see <a 
@@ -765,12 +805,12 @@ class="cmmi-12">&#x003C;</span><span
 class="cmtt-12">personality</span><span 
 class="cmmi-12">&#x003E;</span><span 
 class="cmtt-12">.conf </span>file.
-</p><!--l. 184--><p class="noindent" >The tool <span 
+</p><!--l. 194--><p class="noindent" >The tool <span 
 class="cmtt-12">cb</span><span 
 class="cmtt-12">_share</span><span 
 class="cmtt-12">_conf</span>, which can be found in the Code::Blocks installation directory, is used
 for managing and storing these settings.
-</p><!--l. 186--><p class="noindent" >If you wish to define standard settings for several users of a computer, the configuration file
+</p><!--l. 196--><p class="noindent" >If you wish to define standard settings for several users of a computer, the configuration file
 <span 
 class="cmtt-12">default.conf </span>has to be stored in the directory <span 
 class="cmsy-10x-x-120">\</span><span 
@@ -796,21 +836,21 @@ class="cmtt-12">CodeBlocks</span>
 in Windows 10 or 11, or an equivallent profile path for other OS. During the first startup,
 Code::Blocks will copy the presettings from &#8217;Default User&#8217; to the application data of the current
 users.
-</p><!--l. 188--><p class="noindent" >To create a portable version of Code::Blocks on a USB stick, proceed as follows.
+</p><!--l. 198--><p class="noindent" >To create a portable version of Code::Blocks on a USB stick, proceed as follows.
 Copy the Code::Blocks installation to a USB stick and store the configuration file
 <span 
 class="cmtt-12">default.conf </span>in this directory. The configuration will be used as a global setting. Please
 take care that the file is writeable, otherwise changes of the configuration cannot be
 stored.
-</p><!--l. 190--><p class="noindent" >
+</p><!--l. 200--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.10.5</span>&#x00A0;&#x00A0;<a 
  id="x3-170001.10.5"></a>Navigate and Search</h4>
-<!--l. 192--><p class="noindent" >In Code::Blocks there are different ways of quick navigation between files and functions. Setting
+<!--l. 202--><p class="noindent" >In Code::Blocks there are different ways of quick navigation between files and functions. Setting
 bookmarks is a typical procedure. Via the shortcut Ctrl-B a bookmark is set or deleted in the
 source file. Via Alt-PgUp you can jump to the previous bookmark, and via Alt-PgDn you can
 jump to the next bookmark.
-</p><!--l. 194--><p class="noindent" >If you select the workspace or a project in the workspace in the project view you will be able to
+</p><!--l. 204--><p class="noindent" >If you select the workspace or a project in the workspace in the project view you will be able to
 search for a file in the project. Just select &#8217;Find file&#8217;  from the context menu, then type the
 name of the file and the file will be selected. If you hit return this file will be opened in the
 editor (see <a 
@@ -824,7 +864,7 @@ href="#x3-17001r4">Figure&#x00A0;1.4</a>).
  id="x3-17001r4"></a>
                                                                                        
                                                                                        
-<!--l. 196--><p class="noindent" ><img 
+<!--l. 206--><p class="noindent" ><img 
 src="project_find_file.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -833,7 +873,7 @@ class="content">Searching for files</td></tr></table></div><!--tex4ht:label?: x3
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 198--><p class="noindent" >In Code::Blocks you can easily navigate between header/source files like:
+<!--l. 208--><p class="noindent" >In Code::Blocks you can easily navigate between header/source files like:
       </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    1. </dt><dd 
 class="enumerate-enumitem">Set cursor at the location where a header file is included and open this file via the
@@ -854,7 +894,7 @@ class="enumerate-enumitem">Select e.g. a define in the editor and choose &#8217;
  id="x3-17005r5"></a>
                                                                                        
                                                                                        
-<!--l. 206--><p class="noindent" ><img 
+<!--l. 216--><p class="noindent" ><img 
 src="open_header.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -863,10 +903,10 @@ class="content">Opening of a header file</td></tr></table></div><!--tex4ht:label
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 208--><p class="noindent" >Code::Blocks offeres several ways of searching within a file or directory. The dialog box for
+<!--l. 218--><p class="noindent" >Code::Blocks offeres several ways of searching within a file or directory. The dialog box for
 searching is opened via &#8217;Search&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Find&#8217;  (Ctrl-F) or &#8217;Find in Files&#8217;  (Ctrl-Shift-F).
-</p><!--l. 210--><p class="noindent" >Alt-G and Ctrl-Alt-G are another useful functions. The dialog which will open on using this
+</p><!--l. 220--><p class="noindent" >Alt-G and Ctrl-Alt-G are another useful functions. The dialog which will open on using this
 shortcut, lets you select files/functions and then jumps to the implementation of the selected
 function (see <a 
 href="#x3-17006r6">Figure&#x00A0;1.6</a>) or opens the selected file in the editor. You may use wildcards like <code class="lstinline"><span style="color:#000000">*</span></code> or
@@ -880,7 +920,7 @@ href="#x3-17006r6">Figure&#x00A0;1.6</a>) or opens the selected file in the edit
  id="x3-17006r6"></a>
                                                                                        
                                                                                        
-<!--l. 212--><p class="noindent" ><img 
+<!--l. 222--><p class="noindent" ><img 
 src="select_function.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -891,7 +931,7 @@ class="content">Search for functions</td></tr></table></div><!--tex4ht:label?: x
 </div><hr class="endfigure" />
 <div class="center" 
 >
-<!--l. 214--><p class="noindent" >
+<!--l. 224--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox6"><span 
@@ -899,7 +939,7 @@ class="cmbx-12">Note:</span><br
 class="newline" />With the Ctrl-PgUp shortcut you can jump to the previous function,
 and via Ctrl-PgDn you can jump to the next function.              </div>
 </div>
-<!--l. 216--><p class="noindent" >In the editor, you can open a new Open Files dialog via Ctrl-Tab and you can switch between
+<!--l. 226--><p class="noindent" >In the editor, you can open a new Open Files dialog via Ctrl-Tab and you can switch between
 the listed entries. If the Ctrl-key is pressed, then a file can be selected in different
 ways:
       </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
@@ -919,12 +959,12 @@ class="enumerate-enumitem">If you move the mouse over the listed entries, then t
 class="enumerate-enumitem">If  the  mouse  pointer  is  outside  the  highlighted  selection,  then  you  can  use  the
       mouse-wheel to switch between the entries. Releasing the Crtl-key will open the
       selected file.</dd></dl>
-<!--l. 225--><p class="noindent" >A common procedure when developing software is to struggle with a set of functions which are
+<!--l. 235--><p class="noindent" >A common procedure when developing software is to struggle with a set of functions which are
 implemented in different files. The Browse Tracker plugin will help you solve this problem by
 showing you the order in which the files were selected. You can then comfortably navigate the
 function calls (see <a 
 href="#x3-660002.4">section&#x00A0;2.4</a>).
-</p><!--l. 227--><p class="noindent" >The display of line numbers in Code::Blocks can be activated via &#8217;Settings&#8217; <span 
+</p><!--l. 237--><p class="noindent" >The display of line numbers in Code::Blocks can be activated via &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;General Settings&#8217;
 in the field &#8217;Show line numbers&#8217;. The shortcut Ctrl-G or the menu command &#8217;Search&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Goto
@@ -932,7 +972,7 @@ line&#8217;  will help you jump to the desired line.
 </p>
 <div class="center" 
 >
-<!--l. 229--><p class="noindent" >
+<!--l. 239--><p class="noindent" >
 </p>
                                                                                        
                                                                                        
@@ -944,13 +984,13 @@ you can perform e.g. a Google search via the context menu.         </div>
 </div>
 <h4 class="subsectionHead"><span class="titlemark">1.10.6</span>&#x00A0;&#x00A0;<a 
  id="x3-180001.10.6"></a>Symbol view</h4>
-<!--l. 233--><p class="noindent" >The Code::Blocks Management window offers a tree view for symbols of C/C++ sources for
+<!--l. 243--><p class="noindent" >The Code::Blocks Management window offers a tree view for symbols of C/C++ sources for
 navigating via functions or variables. As the scope of this view, you can set the current file or
 project, or the whole workspace.
 </p>
 <div class="center" 
 >
-<!--l. 235--><p class="noindent" >
+<!--l. 245--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox8"><span 
@@ -959,34 +999,34 @@ class="newline" />Entering a search term or symbol names in the &#8217;Search&#8
 of the Symbol Browser results in a filtered view of the symbols if any
 hits occurred.                                                      </div>
 </div>
-<!--l. 237--><p class="noindent" >The following categories exist for the symbols:
+<!--l. 247--><p class="noindent" >The following categories exist for the symbols:
       </p><dl class="description"><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Global functions</span> </dt><dd 
 class="description">
-      <!--l. 240--><p class="noindent" >Lists the implementation of global functions.
+      <!--l. 250--><p class="noindent" >Lists the implementation of global functions.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Global typedefs</span> </dt><dd 
 class="description">
-      <!--l. 241--><p class="noindent" >Lists the use of <code class="lstinline"><span style="color:#0000FF">typedef</span></code> definitions.
+      <!--l. 251--><p class="noindent" >Lists the use of <code class="lstinline"><span style="color:#0000FF">typedef</span></code> definitions.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Global variables</span> </dt><dd 
 class="description">
-      <!--l. 242--><p class="noindent" >Displays the symbols of global variables.
+      <!--l. 252--><p class="noindent" >Displays the symbols of global variables.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Preprocessor symbols</span> </dt><dd 
 class="description">
-      <!--l. 243--><p class="noindent" >Lists the pre-processor directives created by <code class="lstinline"><span style="color:#0000FF">#</span><span style="color:#0000FF">define</span></code>.
+      <!--l. 253--><p class="noindent" >Lists the pre-processor directives created by <code class="lstinline"><span style="color:#0000FF">#</span><span style="color:#0000FF">define</span></code>.
                                                                                        
                                                                                        
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Global macros</span> </dt><dd 
 class="description">
-      <!--l. 244--><p class="noindent" >Lists macros of pre-processor directives.</p></dd></dl>
+      <!--l. 254--><p class="noindent" >Lists macros of pre-processor directives.</p></dd></dl>
 <hr class="figure" /><div class="figure" 
 >
                                                                                        
@@ -995,7 +1035,7 @@ class="description">
  id="x3-18001r7"></a>
                                                                                        
                                                                                        
-<!--l. 247--><p class="noindent" ><img 
+<!--l. 257--><p class="noindent" ><img 
 src="symbols.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -1004,7 +1044,7 @@ class="content">Symbol view</td></tr></table></div><!--tex4ht:label?: x3-18001r7
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 249--><p class="noindent" >Structures and classes are displayed in the &#8217;bottom tree&#8217;  and the sort sequence can be modified
+<!--l. 259--><p class="noindent" >Structures and classes are displayed in the &#8217;bottom tree&#8217;  and the sort sequence can be modified
 via the context menu. If a category is selected by mouse-click, the found symbols will be
 displayed in the lower part of the window (see <a 
 href="#x3-18001r7">Figure&#x00A0;1.7</a>). Double-clicking the symbol will
@@ -1025,7 +1065,7 @@ affected.
  id="x3-18002r8"></a>
                                                                                        
                                                                                        
-<!--l. 251--><p class="noindent" ><img 
+<!--l. 261--><p class="noindent" ><img 
 src="cc_realtime_parsing.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -1036,7 +1076,7 @@ class="content">Enable real-time parsing</td></tr></table></div><!--tex4ht:label
 </div><hr class="endfigure" />
 <div class="center" 
 >
-<!--l. 253--><p class="noindent" >
+<!--l. 263--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox9"><span 
@@ -1047,15 +1087,15 @@ methods without implementation&#8217; .                                 </div>
 </div>
 <h4 class="subsectionHead"><span class="titlemark">1.10.7</span>&#x00A0;&#x00A0;<a 
  id="x3-190001.10.7"></a>Including external help files</h4>
-<!--l. 257--><p class="noindent" >Code::Blocks comes with just its own help file: normally, developers need much more help and
+<!--l. 267--><p class="noindent" >Code::Blocks comes with just its own help file: normally, developers need much more help and
 reference for language, libraries, protocols, file formats and so on. The help plugin makes
 all the needed documentation available from within Code::Blocks itself. Virtually
 any document can be integrated in the Code::Blocks help system, since the help
 plugin has the ability to launch external programs, if necessary, to view the added
 documents.
-</p><!--l. 259--><p class="noindent" >Once added a new help file or document, there will be a new entry in the &#8221;Help&#8221; menu to open
+</p><!--l. 269--><p class="noindent" >Once added a new help file or document, there will be a new entry in the &#8221;Help&#8221; menu to open
 it.
-</p><!--l. 261--><p class="noindent" >The Code::Blocks development environment supports the inclusion of external help files via the
+</p><!--l. 271--><p class="noindent" >The Code::Blocks development environment supports the inclusion of external help files via the
 menu &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Environment&#8217; . Include the manual of your choice in the chm format in &#8217;Help
 Files&#8217;  select &#8217;this is the default help file&#8217; (see <a 
@@ -1063,7 +1103,7 @@ href="#x3-19001r9">Figure&#x00A0;1.9</a>). The entry <code class="lstinline"><sp
 for a select item in your editor. Now you can select a function in an opened source file in
 Code::Blocks by mouse-click, and the corresponding documentation will appear while pressing
 F1.
-</p><!--l. 263--><p class="noindent" >If you have included multiple help files, you can select a term in the editor and choose a help file
+</p><!--l. 273--><p class="noindent" >If you have included multiple help files, you can select a term in the editor and choose a help file
 from the context menu &#8217;Locate in&#8217;  for Code::Blocks to search in.
 </p>
 <hr class="figure" /><div class="figure" 
@@ -1074,7 +1114,7 @@ from the context menu &#8217;Locate in&#8217;  for Code::Blocks to search in.
  id="x3-19001r9"></a>
                                                                                        
                                                                                        
-<!--l. 265--><p class="noindent" ><img 
+<!--l. 275--><p class="noindent" ><img 
 src="help_files.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -1083,10 +1123,10 @@ class="content">Settings for help files</td></tr></table></div><!--tex4ht:label?
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 267--><p class="noindent" >In Code::Blocks you can add even support for man pages. Just add a entry &#8217;man&#8217;  and specify
+<!--l. 277--><p class="noindent" >In Code::Blocks you can add even support for man pages. Just add a entry &#8217;man&#8217;  and specify
 the path as follows.
 </p>
-<!--l. 269-->
+<!--l. 279-->
 <pre class="lstlisting" id="listing-19"><span class="label"><a 
  id="x3-19002r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">man</span></span><span style="color:#000000"><span 
@@ -1096,18 +1136,18 @@ class="cmtt-10x-x-109">/</span></span><span style="color:#000000"><span
 class="cmtt-10x-x-109">share</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">/</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">man</span></span></pre>
-<!--l. 273--><p class="noindent" >On Linux, man pages are usually installed anyway, for Windows you might want to download
+<!--l. 283--><p class="noindent" >On Linux, man pages are usually installed anyway, for Windows you might want to download
 them e.g. from here: <a 
 href="https://www.win.tue.nl/~aeb/linux/man" class="url" ><span 
 class="cmtt-12">https://www.win.tue.nl/</span><span 
 class="cmtt-12">~</span><span 
 class="cmtt-12">aeb/linux/man</span></a>
-</p><!--l. 275--><p class="noindent" ><span 
+</p><!--l. 285--><p class="noindent" ><span 
 class="cmbx-12">Helpfile options</span>
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 278--><p class="noindent" >You can tell Code::Blocks to use a file as the default helpfile, checking the &#8221;This
+      <!--l. 288--><p class="noindent" >You can tell Code::Blocks to use a file as the default helpfile, checking the &#8221;This
       is the default help file&#8221; box. This way, that file will be shown whenever you press
       the &#8217;F1&#8217; key. Moreover, if you write the <span 
 class="tcrm-1200">$</span>(keyword) as default keyword (see below),
@@ -1116,7 +1156,7 @@ class="tcrm-1200">$</span>(keyword) as default keyword (see below),
       topic, if present.
       </p></li>
       <li class="itemize">
-      <!--l. 280--><p class="noindent" >You can tell Code::Blocks to open the helpfile on a topic of your choice, writing the
+      <!--l. 290--><p class="noindent" >You can tell Code::Blocks to open the helpfile on a topic of your choice, writing the
       correspondent keyword in the &#8221;Default keyword value&#8221; textbox. If the helpfile is the
       default helpfile and you use <span 
 class="tcrm-1200">$</span>(keyword) as default keyword, the editor will use the
@@ -1130,9 +1170,9 @@ class="tcrm-1200">$</span>(keyword) as default keyword, the editor will use the
       but you will loose this feature for the language keywords.
       </p></li>
       <li class="itemize">
-      <!--l. 282--><p class="noindent" >If your helpfile is an HTML file, you can tell Code::Blocks to open it with the
+      <!--l. 292--><p class="noindent" >If your helpfile is an HTML file, you can tell Code::Blocks to open it with the
       embedded HTML viewer, checking the corresponding option.</p></li></ul>
-<!--l. 285--><p class="noindent" >Code::Blocks provides an &#8217;Embedded HTML Viewer&#8217;, which can be used to display simple html
+<!--l. 295--><p class="noindent" >Code::Blocks provides an &#8217;Embedded HTML Viewer&#8217;, which can be used to display simple html
 file and find keywords within this file. Just configure the path to the html file, which should be
 parsed and enable the checkbox &#8217;Open this file with embedded help viewer&#8217;  via the menu
 &#8217;Settings&#8217; <span 
@@ -1149,7 +1189,7 @@ class="cmsy-10x-x-120">&#x2192;</span>&#8217;Help Files&#8217; .
  id="x3-19003r10"></a>
                                                                                        
                                                                                        
-<!--l. 287--><p class="noindent" ><img 
+<!--l. 297--><p class="noindent" ><img 
 src="embedded_html_viewer.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -1160,7 +1200,7 @@ class="content">Embedded HTML Viewer</td></tr></table></div><!--tex4ht:label?: x
 </div><hr class="endfigure" />
 <div class="center" 
 >
-<!--l. 289--><p class="noindent" >
+<!--l. 299--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox10"><span 
@@ -1170,15 +1210,15 @@ class="newline" />If you select a html file with a double-click within the file 
 href="#x3-900002.11">section&#x00A0;2.11</a>) then the embedded html viewer will be started, as
 long as no association for html files is made in file extensions handler.</div>
 </div>
-<!--l. 291--><p class="noindent" ><span 
+<!--l. 301--><p class="noindent" ><span 
 class="cmbx-12">CHM Files</span>
-</p><!--l. 293--><p class="noindent" >You can find c++ chm help files on the web. Just add them via the dialog.
-</p><!--l. 295--><p class="noindent" >For Linux you have to install a chm viewer to be able to open chm files. There are severals like
+</p><!--l. 303--><p class="noindent" >You can find c++ chm help files on the web. Just add them via the dialog.
+</p><!--l. 305--><p class="noindent" >For Linux you have to install a chm viewer to be able to open chm files. There are severals like
 gnochm, kchmviewer, xchm and so on.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.10.8</span>&#x00A0;&#x00A0;<a 
  id="x3-200001.10.8"></a>Including external tools</h4>
-<!--l. 303--><p class="noindent" >Including external tools is possible in Code::Blocks via &#8217;Tools&#8217; <span 
+<!--l. 313--><p class="noindent" >Including external tools is possible in Code::Blocks via &#8217;Tools&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Configure Tools&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Add&#8217; .
 Built-in variables (see <a 
@@ -1187,18 +1227,18 @@ are several kinds of launching options for starting external applications. Depen
 option, the externally started applications are stopped when Code::Blocks is quit. If the
 applications are to remain open after quitting Code::Blocks, the option &#8217;Launch tool visible
 detached&#8217;  must be set.
-</p><!--l. 305--><p class="noindent" >
+</p><!--l. 315--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.11</span>&#x00A0;&#x00A0;<a 
  id="x3-210001.11"></a>Tips for working with Code::Blocks</h3>
-<!--l. 307--><p class="noindent" >In this chapter we will present some useful settings in Code::Blocks.
-</p><!--l. 309--><p class="noindent" >
+<!--l. 317--><p class="noindent" >In this chapter we will present some useful settings in Code::Blocks.
+</p><!--l. 319--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.1</span>&#x00A0;&#x00A0;<a 
  id="x3-220001.11.1"></a>Tracking of Modifications</h4>
                                                                                        
                                                                                        
-<!--l. 311--><p class="noindent" >Code::Blocks provides a feature to track modifications within a source file and to show a bar in
+<!--l. 321--><p class="noindent" >Code::Blocks provides a feature to track modifications within a source file and to show a bar in
 the margin for the changes. Modifications are marked with a yellow changebar and
 modifications that are already saved will use a green changebar (see <a 
 href="#x3-22001r11">Figure&#x00A0;1.11</a>). You can
@@ -1216,7 +1256,7 @@ Ctrl-F3 and Ctrl-Shift-F3.
  id="x3-22001r11"></a>
                                                                                        
                                                                                        
-<!--l. 313--><p class="noindent" ><img 
+<!--l. 323--><p class="noindent" ><img 
 src="changebar.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -1225,14 +1265,14 @@ class="content">Tracking of modifications</td></tr></table></div><!--tex4ht:labe
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 315--><p class="noindent" >This feature can be enabled or disabled with the checkbox &#8217;Use Changebar&#8217;  in the menu
+<!--l. 325--><p class="noindent" >This feature can be enabled or disabled with the checkbox &#8217;Use Changebar&#8217;  in the menu
 &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Editor&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Margins and caret&#8217; .
 </p>
 <div class="center" 
 >
-<!--l. 317--><p class="noindent" >
+<!--l. 327--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox11"><span 
@@ -1245,13 +1285,13 @@ history even if the file is kept open.                                 </div>
 </div>
 <h4 class="subsectionHead"><span class="titlemark">1.11.2</span>&#x00A0;&#x00A0;<a 
  id="x3-230001.11.2"></a>Data Exchange with other applications</h4>
-<!--l. 321--><p class="noindent" >Data can be exchanged between Code::Blocks and other applications. For this interprocess
+<!--l. 331--><p class="noindent" >Data can be exchanged between Code::Blocks and other applications. For this interprocess
 communication DDE (Dynamic Data Exchange) is used for windows and under different
 operating systems it is a TCP based communication.
-</p><!--l. 323--><p class="noindent" >With this interface different commands with the following syntax can be sent to a Code::Blocks
+</p><!--l. 333--><p class="noindent" >With this interface different commands with the following syntax can be sent to a Code::Blocks
 instance.
 </p>
-<!--l. 325-->
+<!--l. 335-->
 <pre class="lstlisting" id="listing-20"><span class="label"><a 
  id="x3-23001r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">[&#x003C;</span></span><span style="color:#000000"><span 
@@ -1263,14 +1303,14 @@ class="cmtt-10x-x-109">parameter</span></span><span style="color:#FF0000"><span
 class="cmtt-10x-x-109">&#x003E;</span></span><span style="color:#FF0000"><span 
 class="cmtt-10x-x-109">"</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">)]</span></span></pre>
-<!--l. 329--><p class="noindent" >These commands are currently available:
+<!--l. 339--><p class="noindent" >These commands are currently available:
       </p><dl class="description"><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Open</span> </dt><dd 
 class="description">
-      <!--l. 332--><p class="noindent" >The command
+      <!--l. 342--><p class="noindent" >The command
 </p>
-      <!--l. 334-->
+      <!--l. 344-->
       <pre class="lstlisting" id="listing-21"><span class="label"><a 
  id="x3-23002r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">[</span></span><span style="color:#000000"><span 
@@ -1287,7 +1327,7 @@ class="cmtt-10x-x-109">txt</span></span><span style="color:#FF0000"><span
 class="cmtt-10x-x-109">"</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">)]</span></span></pre>
       
-      <!--l. 338--><p class="noindent" >uses the parameter, in our case it is a file specified with an absolute path, and opens it in
+      <!--l. 348--><p class="noindent" >uses the parameter, in our case it is a file specified with an absolute path, and opens it in
       an existing Code::Blocks instance or starts a first instance if required.
                                                                                        
                                                                                        
@@ -1295,10 +1335,10 @@ class="cmtt-10x-x-109">)]</span></span></pre>
 <span 
 class="cmssbx-10x-x-120">OpenLine</span> </dt><dd 
 class="description">
-      <!--l. 339--><p class="noindent" >This command opens a file at a given line number in a Code::Blocks instance. The line
+      <!--l. 349--><p class="noindent" >This command opens a file at a given line number in a Code::Blocks instance. The line
       number is specified with <code class="lstinline"><span style="color:#000000">:</span><span style="color:#000000">line</span></code>.
 </p>
-      <!--l. 341-->
+      <!--l. 351-->
       <pre class="lstlisting" id="listing-23"><span class="label"><a 
  id="x3-23003r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">[</span></span><span style="color:#000000"><span 
@@ -1320,14 +1360,14 @@ class="cmtt-10x-x-109">)]</span></span></pre>
 <span 
 class="cmssbx-10x-x-120">Raise</span> </dt><dd 
 class="description">
-      <!--l. 345--><p class="noindent" >Set the focus to the Code::Blocks instance. A parameter must not be passed.</p></dd></dl>
-<!--l. 348--><p class="noindent" >
+      <!--l. 355--><p class="noindent" >Set the focus to the Code::Blocks instance. A parameter must not be passed.</p></dd></dl>
+<!--l. 358--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.3</span>&#x00A0;&#x00A0;<a 
  id="x3-240001.11.3"></a>Configuring environmental variables</h4>
-<!--l. 350--><p class="noindent" >See also &#8221;Environment Variables Plugin&#8221; in <a 
+<!--l. 360--><p class="noindent" >See also &#8221;Environment Variables Plugin&#8221; in <a 
 href="#x3-890002.10">section&#x00A0;2.10</a>.
-</p><!--l. 352--><p class="noindent" >The configuration for an operating system is specified by so-called environmental variables. The
+</p><!--l. 362--><p class="noindent" >The configuration for an operating system is specified by so-called environmental variables. The
 environmental variable <code class="lstinline"><span style="color:#000000">PATH</span></code> for example contains the path to an installed compiler. The
 operating system will process this environmental variable from beginning to end, i.e. the entries
 at the end will be searched last. If different versions of a compiler or other applications are
@@ -1335,11 +1375,11 @@ installed, the following situations can occur:
 </p>
       <ul class="itemize1">
       <li class="itemize">
-      <!--l. 355--><p class="noindent" >An incorrect version of a software is called
+      <!--l. 365--><p class="noindent" >An incorrect version of a software is called
       </p></li>
       <li class="itemize">
-      <!--l. 356--><p class="noindent" >Installed software packages call each other</p></li></ul>
-<!--l. 359--><p class="noindent" >So it might be the case that different versions of a compilers or other tools are mandatory for
+      <!--l. 366--><p class="noindent" >Installed software packages call each other</p></li></ul>
+<!--l. 369--><p class="noindent" >So it might be the case that different versions of a compilers or other tools are mandatory for
 different projects. One possibility in such a case is to change the environmental variables in the
 system control for every project. However, this procedure is error-prone and not flexible. For
 this requirement, Code::Blocks offers an elegant solution. Different configurations of
@@ -1360,7 +1400,7 @@ configuration is created via the &#8217;Create&#8217; button.
  id="x3-24001r12"></a>
                                                                                        
                                                                                        
-<!--l. 361--><p class="noindent" ><img 
+<!--l. 371--><p class="noindent" ><img 
 src="env_variables.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -1369,13 +1409,13 @@ class="content">Environmental variables</td></tr></table></div><!--tex4ht:label?
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 363--><p class="noindent" >Access and scope of the environmental variables created here, is limited to Code::Blocks. You
+<!--l. 373--><p class="noindent" >Access and scope of the environmental variables created here, is limited to Code::Blocks. You
 can expand these environmental variables just like other Code::Blocks variables via
 <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(</span><span style="color:#000000">NAME</span><span style="color:#000000">)</span></code>.
 </p>
 <div class="center" 
 >
-<!--l. 365--><p class="noindent" >
+<!--l. 375--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox12"><span 
@@ -1384,9 +1424,9 @@ class="newline" />A configuration for the environmental variable for each projec
 be selected in the context menu &#8217;Properties&#8217;  of the &#8217;EnvVars options&#8217;
 tab.                                                               </div>
 </div>
-<!--l. 367--><p class="noindent" ><span 
+<!--l. 377--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Example</span>
-</p><!--l. 369--><p class="noindent" >You can write the used environment into a postbuild Step (see <a 
+</p><!--l. 379--><p class="noindent" >You can write the used environment into a postbuild Step (see <a 
 href="#x3-80001.6">section&#x00A0;1.6</a>) in a file
 <span 
 class="cmmi-12">&#x003C;</span><span 
@@ -1394,7 +1434,7 @@ class="cmtt-12">project</span><span
 class="cmmi-12">&#x003E;</span><span 
 class="cmtt-12">.env </span>and archive it within your project.
 </p>
-<!--l. 371-->
+<!--l. 381-->
 <pre class="lstlisting" id="listing-26"><span class="label"><a 
  id="x3-24002r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">cmd</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
@@ -1409,9 +1449,9 @@ class="cmtt-10x-x-109">&#x003E;</span></span><span style="color:#000000"> </span
 class="cmtt-10x-x-109">project</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">.</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">env</span></span></pre>
-<!--l. 375--><p class="noindent" >or under Linux
+<!--l. 385--><p class="noindent" >or under Linux
 </p>
-<!--l. 377-->
+<!--l. 387-->
 <pre class="lstlisting" id="listing-27"><span class="label"><a 
  id="x3-24003r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">echo</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
@@ -1424,7 +1464,7 @@ class="cmtt-10x-x-109">.</span></span><span style="color:#000000"><span
 class="cmtt-10x-x-109">env</span></span></pre>
 <h4 class="subsectionHead"><span class="titlemark">1.11.4</span>&#x00A0;&#x00A0;<a 
  id="x3-250001.11.4"></a>Switching between perspectives</h4>
-<!--l. 383--><p class="noindent" >Depending on the task in hand, it can be useful to have different configurations or views in
+<!--l. 393--><p class="noindent" >Depending on the task in hand, it can be useful to have different configurations or views in
 Code::Blocks and to save these configurations/views. By default, the settings (e. g. show/hide
 symbol bars, layout, etc.) are stored in the <span 
 class="cmtt-12">default.conf </span>configuration file. By using the
@@ -1456,7 +1496,7 @@ keys.
 </p>
 <div class="center" 
 >
-<!--l. 385--><p class="noindent" >
+<!--l. 395--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox13"><span 
@@ -1465,28 +1505,28 @@ class="newline" />Another example is editing a file in Full Screen mode without 
 bars. You can create a perspective such as &#8217;Full&#8217; and assign a hot key
 for this purpose.                                                   </div>
 </div>
-<!--l. 387--><p class="noindent" >
+<!--l. 397--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.5</span>&#x00A0;&#x00A0;<a 
  id="x3-260001.11.5"></a>Switching between projects or files</h4>
-<!--l. 389--><p class="noindent" >If several projects or files are opened at the same time, the user needs a way to switch
+<!--l. 399--><p class="noindent" >If several projects or files are opened at the same time, the user needs a way to switch
 quickly between the projects or files. Code::Blocks has a number of shortcuts for such
 situations.
       </p><dl class="description"><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Alt-F5</span> </dt><dd 
 class="description">
-      <!--l. 392--><p class="noindent" >Activates the previous project from the project view.
+      <!--l. 402--><p class="noindent" >Activates the previous project from the project view.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">Alt-F6</span> </dt><dd 
 class="description">
-      <!--l. 393--><p class="noindent" >Activates the next project from the project view.
+      <!--l. 403--><p class="noindent" >Activates the next project from the project view.
       </p></dd><dt class="description">
 <span 
 class="cmssbx-10x-x-120">F11</span> </dt><dd 
 class="description">
-      <!--l. 394--><p class="noindent" >Switches within the editor between a source file <span 
+      <!--l. 404--><p class="noindent" >Switches within the editor between a source file <span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">name</span><span 
 class="cmmi-12">&#x003E;</span><span 
@@ -1498,11 +1538,11 @@ class="cmmi-12">&#x003E;</span><span
 class="cmtt-12">.h</span></p></dd></dl>
                                                                                        
                                                                                        
-<!--l. 397--><p class="noindent" >
+<!--l. 407--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.6</span>&#x00A0;&#x00A0;<a 
  id="x3-270001.11.6"></a>Displaying several files on the same screen</h4>
-<!--l. 399--><p class="noindent" >As seen above, F11 is usefull to switch between a file <span 
+<!--l. 409--><p class="noindent" >As seen above, F11 is usefull to switch between a file <span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">name</span><span 
 class="cmmi-12">&#x003E;</span><span 
@@ -1516,7 +1556,7 @@ one file on the screen in two parts, horizontally or vertically. This is obtaine
 on the tab containing the name of the desired file, and choosing the right option in
 the split view sub-menu. Then you can navigate independantly in each part of the
 file.
-</p><!--l. 401--><p class="noindent" >Nevertheless, it&#8217;s also usefull to split the display window into two (or more) parts and
+</p><!--l. 411--><p class="noindent" >Nevertheless, it&#8217;s also usefull to split the display window into two (or more) parts and
 display in each sub-view a different file (for example a source file <span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">name</span><span 
@@ -1542,7 +1582,7 @@ release.
  id="x3-27001r13"></a>
                                                                                        
                                                                                        
-<!--l. 403--><p class="noindent" ><img 
+<!--l. 413--><p class="noindent" ><img 
 src="splitting_horizontally.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -1559,7 +1599,7 @@ class="content">Drag and release to obtain a horizontal splitted view with two d
  id="x3-27002r14"></a>
                                                                                        
                                                                                        
-<!--l. 404--><p class="noindent" ><img 
+<!--l. 414--><p class="noindent" ><img 
 src="splitting_vertically.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -1570,7 +1610,7 @@ class="content">Drag and release to obtain a vertical splitted view with two dif
 </div><hr class="endfigure" />
 <div class="center" 
 >
-<!--l. 406--><p class="noindent" >
+<!--l. 416--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox14"><span 
@@ -1580,7 +1620,7 @@ too many subwindows, not easy to read                            </div>
 </div>
 <h4 class="subsectionHead"><span class="titlemark">1.11.7</span>&#x00A0;&#x00A0;<a 
  id="x3-280001.11.7"></a>Extended settings for compilers</h4>
-<!--l. 410--><p class="noindent" >During the build process of a project, the compiler messages are displayed in the Messages
+<!--l. 420--><p class="noindent" >During the build process of a project, the compiler messages are displayed in the Messages
 window in the Build Log tab. If you wish to receive detailed information, the display can be
 extended. For this purpose click &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Compiler and Debugger&#8217;  and select &#8217;Other
@@ -1594,7 +1634,7 @@ Settings&#8217; in the drop-down field.
  id="x3-28001r15"></a>
                                                                                        
                                                                                        
-<!--l. 412--><p class="noindent" ><img 
+<!--l. 422--><p class="noindent" ><img 
 src="compiler_debugger.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -1603,7 +1643,7 @@ class="content">Setting detail information</td></tr></table></div><!--tex4ht:lab
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 414--><p class="noindent" >Take care that the correct compiler is selected. The &#8217;Full command line&#8217; setting in the Compiler
+<!--l. 424--><p class="noindent" >Take care that the correct compiler is selected. The &#8217;Full command line&#8217; setting in the Compiler
 Logging field outputs the complete information in the Build Log. In addition, this output can
 be logged in a HTML file. For this purpose select &#8217;Save build log to HTML file when
 finished&#8217;. Furthermore, Code::Blocks offers a progress bar for the build process in
@@ -1612,14 +1652,14 @@ setting.
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.8</span>&#x00A0;&#x00A0;<a 
  id="x3-290001.11.8"></a>Zooming within the editor</h4>
-<!--l. 419--><p class="noindent" >Code::Blocks offers a very efficient editor. This editor allows you to change the size
+<!--l. 429--><p class="noindent" >Code::Blocks offers a very efficient editor. This editor allows you to change the size
 in which the opened text is displayed. If you use a mouse with a wheel, you only
 need to press the Ctrl key and scroll via the mouse wheel to zoom in and out of the
 text.
 </p>
 <div class="center" 
 >
-<!--l. 421--><p class="noindent" >
+<!--l. 431--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox15"><span 
@@ -1631,11 +1671,11 @@ class="cmsy-10x-x-120">&#x2192;</span>&#8217;Zoom&#8217; <span
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Reset&#8217;  the original font size of the active file
 in the editor is restored.                                            </div>
 </div>
-<!--l. 423--><p class="noindent" >
+<!--l. 433--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.9</span>&#x00A0;&#x00A0;<a 
  id="x3-300001.11.9"></a>Wrap Mode</h4>
-<!--l. 425--><p class="noindent" >When editing text files, e. g. <span 
+<!--l. 435--><p class="noindent" >When editing text files, e. g. <span 
 class="cmtt-12">*.txt</span>, within Code::Blocks, it might be useful to have the text
 wrapped, meaning long lines will be displayed in several lines on the screen so that they can be
 properly edited. The &#8217;Word wrap&#8217; function can be activated via &#8217;Settings&#8217; <span 
@@ -1653,12 +1693,12 @@ pressed. If positioning the cursor at the beginning of the first line of the cur
 desired, the key combination &#8217;Alt-Home&#8217;  is to be used. The same applies analogously
 for &#8217;Alt-End&#8217;  for positioning the cursor at the end of the last line of the current
 paragraph.
-</p><!--l. 427--><p class="noindent" >
+</p><!--l. 437--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.10</span>&#x00A0;&#x00A0;<a 
  id="x3-310001.11.10"></a>Select modes in editor</h4>
-<!--l. 429--><p class="noindent" >Code::Blocks supports different modes for selecting or pasting of strings.
-</p><!--l. 432--><p class="noindent" >
+<!--l. 439--><p class="noindent" >Code::Blocks supports different modes for selecting or pasting of strings.
+</p><!--l. 442--><p class="noindent" >
       </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    1. </dt><dd 
 class="enumerate-enumitem">With the left mouse button a text in the active editor can be selected and then
@@ -1692,7 +1732,7 @@ class="cmsy-10x-x-120">&#x2192;</span>&#8217;Margins and Caret&#8217;  the &#821
       or replace a text at several positions.</dd></dl>
 <div class="center" 
 >
-<!--l. 438--><p class="noindent" >
+<!--l. 448--><p class="noindent" >
 </p>
                                                                                        
                                                                                        
@@ -1703,11 +1743,11 @@ class="newline" />Most  Linux  window  managers  use  ALT-LeftClickDrag  to  mov
 window, so you will have to disable this window manager behavior
 first for block select to work.                                       </div>
 </div>
-<!--l. 440--><p class="noindent" >
+<!--l. 450--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.11</span>&#x00A0;&#x00A0;<a 
  id="x3-320001.11.11"></a>Code folding</h4>
-<!--l. 442--><p class="noindent" >Code::Blocks supports so called code folding. With this feature you can fold e.g. functions
+<!--l. 452--><p class="noindent" >Code::Blocks supports so called code folding. With this feature you can fold e.g. functions
 within the Code::Blocks editor. A folding point is marked by minus symbol in the
 left margin of the editor view. In the margin the beginning and the end of a folding
 point is visible as vertical line. If you click the minus symbol with the left mouse
@@ -1718,7 +1758,7 @@ line.
 </p>
 <div class="center" 
 >
-<!--l. 445--><p class="noindent" >
+<!--l. 455--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox17"><span 
@@ -1728,11 +1768,11 @@ menu &#8217;Settings&#8217; <span
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Editor&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Folding&#8217; .                             </div>
 </div>
-<!--l. 447--><p class="noindent" >Code::Blocks provides the folding feature also for preprocessor directives. To enable this feature
+<!--l. 457--><p class="noindent" >Code::Blocks provides the folding feature also for preprocessor directives. To enable this feature
 select &#8217;Fold preprocessor commands&#8217; via the menu &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Editor&#8217;  in the folding
 entry.
-</p><!--l. 449--><p class="noindent" >Another possibility is to set user defined folding points. The start of folding point is entered as
+</p><!--l. 459--><p class="noindent" >Another possibility is to set user defined folding points. The start of folding point is entered as
 comment with a opening bracket and the end is market with a comment with a closing
 bracket.
                                                                                        
@@ -1743,12 +1783,12 @@ bracket.
 code&#x00A0;with&#x00A0;user&#x00A0;defined&#x00A0;folding
 //}
 </pre>
-<!--l. 455--><p class="nopar" >
-</p><!--l. 457--><p class="noindent" >
+<!--l. 465--><p class="nopar" >
+</p><!--l. 467--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.12</span>&#x00A0;&#x00A0;<a 
  id="x3-330001.11.12"></a>Auto complete</h4>
-<!--l. 459--><p class="noindent" >If you open a project in Code::Blocks the &#8217;Search directories&#8217; of your compiler and the
+<!--l. 469--><p class="noindent" >If you open a project in Code::Blocks the &#8217;Search directories&#8217; of your compiler and the
 project, the sources and headers of your project are parsed. In addition the keywords of
 the corresponding lexer file are parsed. The parse information is used for the auto
 complete feature in Code::Blocks. Please check the settings for the editor if this feature is
@@ -1757,18 +1797,18 @@ enabled. The auto completion is accessible with the shortcut Ctrl-Space. Via the
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Editor&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Syntax highlighting&#8217;  you can add user defined keywords to your
 lexer.
-</p><!--l. 461--><p class="noindent" >
+</p><!--l. 471--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.13</span>&#x00A0;&#x00A0;<a 
  id="x3-340001.11.13"></a>Find broken files</h4>
-<!--l. 463--><p class="noindent" >If a file is removed from disk, but is still included in the project file <span 
+<!--l. 473--><p class="noindent" >If a file is removed from disk, but is still included in the project file <span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">project</span><span 
 class="cmmi-12">&#x003E;</span><span 
 class="cmtt-12">.cbp</span>, then this
 &#8217;broken file&#8217; will be shown a broken symbol in the project view. You should use the menu
 &#8217;Remove file from project&#8217;  instead of deleting files.
-</p><!--l. 465--><p class="noindent" >In large projects with a lot of subdirectories the search for broken files can be time consuming.
+</p><!--l. 475--><p class="noindent" >In large projects with a lot of subdirectories the search for broken files can be time consuming.
 Code::Blocks offers with the plug-in ThreadSearch (see <a 
 href="#x3-1140002.21">section&#x00A0;2.21</a>) a simple solution for this
 problem. If you enter a search expression in ThreadSearch and select the option &#8217;Project files&#8217;
@@ -1777,18 +1817,18 @@ workspace. If a broken file is found ThreadSerch will issue an error with the mi
 file.
                                                                                        
                                                                                        
-</p><!--l. 467--><p class="noindent" >
+</p><!--l. 477--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.14</span>&#x00A0;&#x00A0;<a 
  id="x3-350001.11.14"></a>Including libraries</h4>
-<!--l. 469--><p class="noindent" >In the build options of a project, you can add the used libraries via the &#8217;Add&#8217; button in the
+<!--l. 479--><p class="noindent" >In the build options of a project, you can add the used libraries via the &#8217;Add&#8217; button in the
 &#8217;Link libraries&#8217; entry of the &#8217;Linker Settings&#8217;. In doing so, you can either use the
 absolute path to the library or just give the name without the <span 
 class="cmtt-12">lib </span>prefix and file
 extension.
-</p><!--l. 471--><p class="noindent" ><span 
+</p><!--l. 481--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Example</span>
-</p><!--l. 473--><p class="noindent" >For a library called <span 
+</p><!--l. 483--><p class="noindent" >For a library called <span 
 class="cmmi-12">&#x003C;</span><span 
 class="cmtt-12">path</span><span 
 class="cmmi-12">&#x003E;</span><span 
@@ -1807,7 +1847,7 @@ corresponding search paths will then include the libraries correctly.
 </p>
 <div class="center" 
 >
-<!--l. 475--><p class="noindent" >
+<!--l. 485--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox18"><span 
@@ -1817,7 +1857,7 @@ href="#x3-980002.15">section&#x00A0;2.15</a>.     </div>
 </div>
 <h4 class="subsectionHead"><span class="titlemark">1.11.15</span>&#x00A0;&#x00A0;<a 
  id="x3-360001.11.15"></a>Object linking order</h4>
-<!--l. 479--><p class="noindent" >During compiling, objects <span 
+<!--l. 489--><p class="noindent" >During compiling, objects <span 
 class="cmtt-12">name.o </span>are created from the sources <span 
 class="cmtt-12">name.c/cpp</span>. The linker then
 binds the individual objects into an application <span 
@@ -1827,11 +1867,11 @@ class="cmtt-12">name.elf</span>. In some cases, it might be desirable to predefi
 be linked. In Code::Blocks, this can be achieved by assigning priorities. In the context menu
 &#8217;Properties&#8217; , you can define the priorities of a file in the Build tab. A low priority will cause the
 file to be linked earlier.
-</p><!--l. 481--><p class="noindent" >
+</p><!--l. 491--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.16</span>&#x00A0;&#x00A0;<a 
  id="x3-370001.11.16"></a>Autosave</h4>
-<!--l. 483--><p class="noindent" >Code::Blocks offers ways of automatically storing projects and source files, or of creating backup
+<!--l. 493--><p class="noindent" >Code::Blocks offers ways of automatically storing projects and source files, or of creating backup
 copies. This feature can be activated in the menu &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Environment&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Autosave&#8217; . In
@@ -1839,11 +1879,11 @@ class="cmsy-10x-x-120">&#x2192;</span>&#8217;Autosave&#8217; . In
                                                                                        
 doing so, &#8217;Save to .save file&#8217; should be specified as the method for creating the backup
 copy.
-</p><!--l. 485--><p class="noindent" >
+</p><!--l. 495--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.11.17</span>&#x00A0;&#x00A0;<a 
  id="x3-380001.11.17"></a>Settings for file extensions</h4>
-<!--l. 487--><p class="noindent" >In Code::Blocks, you can choose between several ways of treating file extensions.
+<!--l. 497--><p class="noindent" >In Code::Blocks, you can choose between several ways of treating file extensions.
 The settings dialog can be opened via &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Files extension handling&#8217; . You
 can either use the applications assigned by Windows for each file extension (open it
@@ -1854,7 +1894,7 @@ editor).
 </p>
 <div class="center" 
 >
-<!--l. 490--><p class="noindent" >
+<!--l. 500--><p class="noindent" >
 </p>
 <div 
 class="colorbox" id="colorbox19"><span 
@@ -1864,23 +1904,23 @@ setting &#8217;Disable Code::Blocks while the external program is running&#8217;
 should be deactivated because otherwise Code::Blocks will be closed
 whenever a file with this extension is opened.                       </div>
 </div>
-<!--l. 492--><p class="noindent" >
+<!--l. 502--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.12</span>&#x00A0;&#x00A0;<a 
  id="x3-390001.12"></a>Code::Blocks at the command line</h3>
-<!--l. 494--><p class="noindent" >IDE Code::Blocks can be executed from the command line without a graphic interface. In such
+<!--l. 504--><p class="noindent" >IDE Code::Blocks can be executed from the command line without a graphic interface. In such
 a case, there are several switches available for controlling the build process of a project. Since
 Code::Blocks is thus scriptable, the creation of executables can be integrated into your own
 work processes.
                                                                                        
                                                                                        
-</p><!--l. 496--><p class="noindent" >
+</p><!--l. 506--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.12.1</span>&#x00A0;&#x00A0;<a 
  id="x3-400001.12.1"></a>Using command line arguments</h4>
-<!--l. 498--><p class="noindent" >If your enter in a command line:<br 
+<!--l. 508--><p class="noindent" >If your enter in a command line:<br 
 class="newline" /><code class="lstinline"><span style="color:#000000">codeblocks</span><span style="color:#000000"> </span><span style="color:#000000">/</span><span style="color:#000000">h</span></code><br 
-class="newline" />You will see a new window containing a list of arguments as this one: </p><!--l. 501-->
+class="newline" />You will see a new window containing a list of arguments as this one: </p><!--l. 511-->
 <pre class="lstlisting" id="listing-30"><span class="label"><a 
  id="x3-40001r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">Usage</span></span><span style="color:#000000"><span 
@@ -2129,9 +2169,9 @@ class="cmtt-10x-x-109">filename</span></span><span style="color:#000000"><span
 class="cmtt-10x-x-109">(</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">s</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">)...]</span></span></pre>
-<!--l. 514--><p class="noindent" ><span 
+<!--l. 524--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">Windows</span>
-</p><!--l. 515--><p class="noindent" >
+</p><!--l. 525--><p class="noindent" >
       </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    1. </dt><dd 
 class="enumerate-enumitem">Find the Code::Blocks shortcut in the Desktop or Start menu.
@@ -2148,25 +2188,25 @@ class="enumerate-enumitem">Append the command line arguments you want to use to 
       </dd><dt class="enumerate-enumitem">
    5. </dt><dd 
 class="enumerate-enumitem">Run Code::Blocks by using the shortcut you edited.</dd></dl>
-<!--l. 523--><p class="noindent" >Example:<br 
+<!--l. 533--><p class="noindent" >Example:<br 
 class="newline" /><span 
 class="cmtt-12">codeblocks /na /nd --no-splash-screen --build &#x003C;name&#x003E;.cbp --target=&#8217;Release&#8217;</span>
-</p><!--l. 528--><p class="noindent" ><span 
+</p><!--l. 538--><p class="noindent" ><span 
 class="cmssbx-10x-x-120">*nix</span>
-</p><!--l. 529--><p class="noindent" >
+</p><!--l. 539--><p class="noindent" >
       </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    1. </dt><dd 
 class="enumerate-enumitem">Launch a terminal client, such as XTerm, Gnome Terminal or Konsole.
       </dd><dt class="enumerate-enumitem">
    2. </dt><dd 
 class="enumerate-enumitem">Type &#8221;codeblocks&#8221; and then append the command line arguments you want to use.</dd></dl>
-<!--l. 533--><p class="noindent" ><span 
+<!--l. 543--><p class="noindent" ><span 
 class="cmbx-12">Note: </span>Code::Blocks can not run on a real console, X11 must be running and you must use a
 graphical terminal emulator.
-</p><!--l. 535--><p class="noindent" >Example:<br 
+</p><!--l. 545--><p class="noindent" >Example:<br 
 class="newline" /><span 
 class="cmtt-12">codeblocks --no-splash-screen --debug-log</span>
-</p><!--l. 542--><p class="noindent" >
+</p><!--l. 552--><p class="noindent" >
                                                                                        
                                                                                        
 </p>
@@ -2177,44 +2217,44 @@ class="cmtt-12">codeblocks --no-splash-screen --debug-log</span>
                                                                                        
 <img 
 src="main_codeblocks_en0x.png" alt=""  /></div>
-<!--l. 632--><p class="noindent" >
+<!--l. 642--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">1.13</span>&#x00A0;&#x00A0;<a 
  id="x3-420001.13"></a>Shortcuts</h3>
-<!--l. 634--><p class="noindent" >This section describes the shortcuts which are or can be used in Code::Blocks.
-</p><!--l. 636--><p class="noindent" >
+<!--l. 644--><p class="noindent" >This section describes the shortcuts which are or can be used in Code::Blocks.
+</p><!--l. 646--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.1</span>&#x00A0;&#x00A0;<a 
  id="x3-430001.13.1"></a>Introduction</h4>
-<!--l. 638--><p class="noindent" >This plugin can be used to bind one or more key shortcuts to the menu items.
-</p><!--l. 640--><p class="noindent" >Even if an IDE such as Code::Blocks is mainly handled by mouse, keyboard shortcuts are
+<!--l. 648--><p class="noindent" >This plugin can be used to bind one or more key shortcuts to the menu items.
+</p><!--l. 650--><p class="noindent" >Even if an IDE such as Code::Blocks is mainly handled by mouse, keyboard shortcuts are
 nevertheless a very helpful way of speeding up and simplifying work processes. In the below
 table, we have collected some of the available keyboard shortcuts.
-</p><!--l. 642--><p class="noindent" >
+</p><!--l. 652--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.2</span>&#x00A0;&#x00A0;<a 
  id="x3-440001.13.2"></a>Features</h4>
       <dl class="description"><dt class="description">
  </dt><dd 
 class="description">
-      <!--l. 644--><p class="noindent" >Includes  a  configuation  panel  and  a  complete  system  to  view/remove/add/edit
+      <!--l. 654--><p class="noindent" >Includes  a  configuation  panel  and  a  complete  system  to  view/remove/add/edit
       command shortcuts.
       </p></dd><dt class="description">
  </dt><dd 
 class="description">
-      <!--l. 645--><p class="noindent" >Supports multiple key profiles and a complete load/save system is present.
+      <!--l. 655--><p class="noindent" >Supports multiple key profiles and a complete load/save system is present.
       </p></dd><dt class="description">
  </dt><dd 
 class="description">
-      <!--l. 646--><p class="noindent" >Allows the users to customize any menu command they want, and define multiple
+      <!--l. 656--><p class="noindent" >Allows the users to customize any menu command they want, and define multiple
       key-shortcut to each command.</p></dd></dl>
                                                                                        
                                                                                        
-<!--l. 649--><p class="noindent" >
+<!--l. 659--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">1.13.3</span>&#x00A0;&#x00A0;<a 
  id="x3-450001.13.3"></a>Usage</h4>
-<!--l. 651--><p class="noindent" >The configuration page for the plugin can be accessed through the &#8217;Settings&#8217; <span 
+<!--l. 661--><p class="noindent" >The configuration page for the plugin can be accessed through the &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Editor&#8217;  menu,
 and then selecting the Keyboard Shortcuts section.
 </p>
@@ -2226,7 +2266,7 @@ and then selecting the Keyboard Shortcuts section.
  id="x3-45001r16"></a>
                                                                                        
                                                                                        
-<!--l. 653--><p class="noindent" ><img 
+<!--l. 663--><p class="noindent" ><img 
 src="KeyBindConfig.png" alt="PIC"  
  />
 <br /> </p><div class="caption"><table class="caption" 
@@ -2235,10 +2275,10 @@ class="content">Keyboard shortcuts configuration dialog</td></tr></table></div><
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
-<!--l. 655--><p class="noindent" >Selecting a command, from the Commands tree, shows the current shortcuts for that command
+<!--l. 665--><p class="noindent" >Selecting a command, from the Commands tree, shows the current shortcuts for that command
 on the right. In the picture Open... is selected and the default shortcut Ctrl-O is
 displayed.
-</p><!--l. 657--><p class="noindent" >To add a new shortcut, for the selected command, follow these steps:
+</p><!--l. 667--><p class="noindent" >To add a new shortcut, for the selected command, follow these steps:
       </p><dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
    1. </dt><dd 
 class="enumerate-enumitem">Place the focus on the text box under New Shortcut and press the keys, for example
@@ -2518,10 +2558,6 @@ class="content">Edit example</td></tr></table></div><!--tex4ht:label?: x3-55002r
                                                                                        
                                                                                        
                                                                                        
-<!--l. 1--><p class="noindent" >
-                                                                                       
-                                                                                       
-</p>
 <h2 class="chapterHead"><span class="titlemark">2</span>&#x00A0;&#x00A0;<a 
  id="x3-560002"></a>Plugins</h2>
 <!--l. 3--><p class="noindent" >Most of the plugins described ib this chapter are also in the Wiki. Texts and figures have
@@ -2573,11 +2609,11 @@ class="cmbx-12">not </span>install
 contrib plugins. You need to manually check the &#8221;contrib plugin&#8221; checkbox when
 asked for selected components to install. There is no way to install them manually
 afterwards.
-                                                                                       
-                                                                                       
 </p><!--l. 24--><p class="noindent" ><span 
 class="cmbx-12">If you are developing plugins</span>: Surely you can work with plugin as you like, but here are
 some suggestions:
+                                                                                       
+                                                                                       
 </p><!--l. 26--><p class="noindent" >&#x00A0;    Announce them in the plugin development board in the forums - including the (initial)
 source code.
 </p><!--l. 28--><p class="noindent" >OR
@@ -12205,12 +12241,56 @@ class="cmbx-12">must </span>close and re-open your project so the changes will t
       <!--l. 106--><p class="noindent" >If you are using a non-default compiler (to cross compile for example), you may
       need to make these settings in the default compiler, not the cross compiler where it
       seems to have no effect.</p></li></ul>
+<!--l. 109--><p class="noindent" ><span 
+class="cmssbx-10x-x-120">Another</span>
+<span 
+class="cmssbx-10x-x-120">example</span>
+<span 
+class="cmssbx-10x-x-120">-</span>
+<span 
+class="cmssbx-10x-x-120">Rust</span>
+</p><!--l. 110--><p class="noindent" >Some years ago, a Code::Blocks user, Barracuda72, has published some work to integrate the
+Rust language inside Code::Blocks. This work can be found on a git repository:<br 
+class="newline" /><a 
+href="https://github.com/Barracuda72/Codeblocks-Rust/" class="url" ><span 
+class="cmtt-12">https://github.com/Barracuda72/Codeblocks-Rust/</span></a>.<br 
+class="newline" />Simply follow the installation guide (in the readme.md). As this work is now quite old, and has
+not been updated for a while, you may encounter some missing keywords or other things, but it
+works. If needed, you can modify files in your installation to adjust them to your
+needs.<br 
+class="newline" />Of course, you&#8217;ll need to have installed a Rust/Cargo compiler.<br 
+class="newline" />For Windows users, if you use and have already msys2 toolchain installed on your PC, it&#8217;s quite
+easy to obtain: </p>
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 115--><p class="noindent" >Use pacman to download and install a rust package:<br 
+class="newline" /><code class="lstinline"><span style="color:#000000">pacman</span><span style="color:#000000"> </span><span style="color:#000000">-</span><span style="color:#000000">S</span><span style="color:#000000"> </span><span style="color:#000000">mingw</span><span style="color:#000000">-</span><span style="color:#000000">w64</span><span style="color:#000000">-</span><span style="color:#000000">x86_64</span><span style="color:#000000">-</span><span style="color:#000000">rust</span></code>,<br 
+class="newline" />which install rustc, cargo, and other tools inside the <span 
+class="cmsy-10x-x-120">\</span><span 
+class="cmtt-12">bin </span>sub-folder (by default in
+      <span 
+class="cmtt-12">C:</span><span 
+class="cmsy-10x-x-120">\</span><span 
+class="cmtt-12">msys64</span><span 
+class="cmsy-10x-x-120">\</span><span 
+class="cmtt-12">mingw64</span>) for a 64 bit installation;<br 
+class="newline" /><span 
+class="cmbx-12">Note</span>: There is an other package, mingw-w64-x86_64-rustup, but it seems to use
+      other tools more adapted to Visual Studio.
+      </p></li>
+      <li class="itemize">
+      <!--l. 119--><p class="noindent" >Next time you&#8217;ll start Code::Blocks, it will ask you to configure the environment
+      variable <code class="lstinline"><span style="color:#000000">$</span><span style="color:#000000">(#</span><span style="color:#000000">rust</span><span style="color:#000000">)</span></code>. Simply enter the path where rustc.exe is located (see above the
+      default value but without entering the <span 
+class="cmsy-10x-x-120">\</span><span 
+class="cmtt-12">bin </span>sub-folder);
+      </p></li>
+      <li class="itemize">
+      <!--l. 120--><p class="noindent" >You are now ready to use the rust template to create and run your Rust programs.</p></li></ul>
 <h3 class="sectionHead"><span class="titlemark">4.9</span>&#x00A0;&#x00A0;<a 
  id="x3-1910004.9"></a>Code::Blocks variable types synthesis</h3>
 <!--l. 3--><p class="noindent" >You will find here the different variable types available in Code::Blocks and when/how to use
 them. (copied from the Wiki)
-                                                                                       
-                                                                                       
 </p><!--l. 5--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">4.9.1</span>&#x00A0;&#x00A0;<a 
@@ -12220,6 +12300,8 @@ have another build systems besides Code::Blocks that uses environment variables 
 Makefiles). This way you can &#8221;share&#8221; this technology. The EnvVars plugin (<a 
 href="#x3-890002.10">section&#x00A0;2.10</a>) allows
 to setup different EnvVars sets which you can activate and/or refer to within per-project
+                                                                                       
+                                                                                       
 settings. This might be useful for e.g. platform specific settings or library path variables (under
 Linux).
 </p><!--l. 12--><p class="noindent" >
@@ -12348,7 +12430,7 @@ class="cmti-12">itself.</span>
 describes a collection of projects. But let&#8217;s see the contents of a sample workspace:
 </p>
 <!--l. 29-->
-<pre class="lstlisting" id="listing-193"><span class="label"><a 
+<pre class="lstlisting" id="listing-195"><span class="label"><a 
  id="x3-197001r1"></a></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">&#x003C;</span></span><span style="color:#000000"><span 
 class="cmtt-10x-x-109">?</span></span><span style="color:#0000FF"><span 
@@ -12524,6 +12606,109 @@ only one &#8221;Project&#8221; element inside the workspace. All it does is defi
 workspace projects will be the active one by default, when opening the workspace in
 Code::Blocks.
 </p><!--l. 55--><p class="noindent" >That&#8217;s all.
+</p><!--l. 1--><p class="noindent" >
+</p>
+<h3 class="sectionHead"><span class="titlemark">4.11</span>&#x00A0;&#x00A0;<a 
+ id="x3-1980004.11"></a>Dynamic or Static Linking</h3>
+                                                                                       
+                                                                                       
+<div class="center" 
+>
+<!--l. 4--><p class="noindent" >
+</p>
+<div 
+class="colorbox" id="colorbox68"><span 
+class="cmbx-12">Note:</span><br 
+class="newline" />This chapter has been written for users who don&#8217;t really understand
+the difference between these two linking process or don&#8217;t know why
+their  program  runs  correctly  inside  Code::Blocks  but  claims  that
+some dlls are missing when they are run as standalone programs.<br 
+class="newline" />You       can       find       detailled       explanations       on       
+<a 
+href="https://stackoverflow.com/questions/1993390/static-linking-vs-dynamic-linking" class="url" ><span 
+class="cmtt-12">https://stackoverflow.com/questions/1993390/static-linking-vs-dynamic-linking</span></a></div>
+</div>
+<!--l. 5--><p class="noindent" >Modern compilers/linkers generally produce dynamic linked codes by default. This means that
+executables need to load and use some dynamic libraries also called shared libraries (.dll files in
+Windows world, .so files in Linux world).<br 
+class="newline" />In the Windows world, those dlls are for example <code class="lstinline"><span style="color:#000000">libstdc</span><span style="color:#000000">++-6.</span><span style="color:#000000">dll</span></code>, <code class="lstinline"><span style="color:#000000">libgcc_s_seh</span><span style="color:#000000">-1.</span><span style="color:#000000">dll</span></code>,
+<code class="lstinline"><span style="color:#000000">libwinpthread</span><span style="color:#000000">-1.</span><span style="color:#000000">dll</span></code>, <code class="lstinline"><span style="color:#000000">libgfortran</span><span style="color:#000000">-5.</span><span style="color:#000000">dll</span></code>, <code class="lstinline"><span style="color:#000000">libgomp</span><span style="color:#000000">-1.</span><span style="color:#000000">dll</span></code>...<br 
+class="newline" />When the code is executed from inside Code::Blocks, it&#8217;s not a problem, because Code::Blocks
+adds for his own usage the path to these libraries. These paths are set in the compiler/linker
+configuration settings.<br 
+class="newline" />It&#8217;s also possible to link codes statically (linked with .a or .lib files). Simply add to
+compiler/linker options like <span 
+class="cmtt-12">-static -static-libgcc -static-libstdc++ </span>as found in
+compiler options box and eventually add some others to your own static libraries. Statically
+linked codes contain all that is needed at execution. This may be a good solution if you share or
+distribute this executable with other computers and you will have less problems with non
+concordant compiler updates.<br 
+class="newline" />The main advantage of dynamic linking is that it produces smaller executables than statically
+ones. More, if you execute simultaneously several codes using the same dynamic libraries, they
+are loaded in memory only once.<br 
+class="newline" />When the code is executed outside Code::Blocks, the operating system (OS) has to
+know where these libraries are stored: the operating system may not find them. This
+information is not stored inside your executable. So you have to <span 
+class="cmbx-12">help the OS </span>a little
+bit.<br 
+class="newline" />On Linux, you can add the dynamic libraries path to the system environment variable
+<code class="lstinline"><span style="color:#000000">LD_LIBRARY_PATH</span></code>.<br 
+class="newline" />On Windows, you can also add the path to the environment variable <code class="lstinline"><span style="color:#000000">PATH</span></code> (the system one or
+the user one). You can also copy the needed dlls in the same folder where your executable is
+located. It may be a nice solution when you distribute your code to install it on an other PC
+who has a different compiler installed, a different path access or no compiler at all. But don&#8217;t
+forget any dlls.<br 
+class="newline" />Generally, on Windows (at least for MinGW), this path is the same as the folder where gcc.exe
+and/or g++.exe is located (for C or C++ language). Adding this path to the system
+environment variable <code class="lstinline"><span style="color:#000000">PATH</span></code>, is a convenient solution, but may be not the best way, particularly if
+you have several compilers installed on your system, more if you have both 32 bit and 64 bit
+compilers. As told previously, you can add a copy of the necessary dlls in the same folder than
+                                                                                       
+                                                                                       
+your executable: this is a good solution to distribute your code, but you need to add all
+the necessary dlls. An other solution, on your local PC is to create a small batch
+file (.bat or .cmd) where on the first line you add the correct path to the needed
+dlls.<br 
+class="newline" />
+</p><!--l. 16--><p class="noindent" ><span 
+class="cmbx-12">Example:</span><br 
+class="newline" />Suppose you have an executable named my_executable.exe somewhere in a folder, and your
+compiler is installed in <span 
+class="cmtt-12">C:</span><span 
+class="cmsy-10x-x-120">\</span><span 
+class="cmtt-12">msys64</span><span 
+class="cmsy-10x-x-120">\</span><span 
+class="cmtt-12">mingw64</span><span 
+class="cmsy-10x-x-120">\</span><span 
+class="cmtt-12">bin</span>. Create in the folder of your executable a
+my_executable.bat file containing: </p><!--l. 19-->
+<pre class="lstlisting" id="listing-204"><span class="label"><a 
+ id="x3-198001r1"></a></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">set</span></span><span style="color:#000000"> </span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">PATH</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">=</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">C</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">:\</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">msys64</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">\</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">mingw64</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">\</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">bin</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">;%</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">PATH</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">%</span></span> 
+<span class="label"><a 
+ id="x3-198002r2"></a></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">my_excutable</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">.</span></span><span style="color:#000000"><span 
+class="cmtt-10x-x-109">exe</span></span></pre>
+<!--l. 23--><p class="noindent" >and launch this batch file.<br 
+class="newline" />This is also true for Linux: you can modify <code class="lstinline"><span style="color:#000000">LD_LIBRARY_PATH</span></code> in a batch file.<br 
+class="newline" />The advantage of such a solution is that you adapt each batch file to the compiler which has
+been used for building your executable: certainly the best solution when you have
+several compilers installed on your system, installed in several sub-folders. More, this
+modification of the <code class="lstinline"><span style="color:#000000">PATH</span></code> is local to your batch file and does not interfere with your other
+works.
                                                                                        
                                                                                        
                                                                                        
@@ -12532,23 +12717,26 @@ Code::Blocks.
                                                                                        
                                                                                        
                                                                                        
+                                                                                       
+                                                                                       
+</p><!--l. 1--><p class="noindent" >
                                                                                        
                                                                                        
 </p>
 <h2 class="chapterHead"><span class="titlemark">5</span>&#x00A0;&#x00A0;<a 
- id="x3-1980005"></a>Installing and Configuring CodeBlocks with MinGW</h2>
+ id="x3-1990005"></a>Installing and Configuring CodeBlocks with MinGW</h2>
 <!--l. 3--><p class="noindent" >This chapter describes how to install and configure Code::Blocks. Install process is here
 described for Windows, but may be adapted to other OS.
 </p>
 <h3 class="sectionHead"><span class="titlemark">5.1</span>&#x00A0;&#x00A0;<a 
- id="x3-1990005.1"></a>Installing the latest official version of Code::Blocks on Windows</h3>
+ id="x3-2000005.1"></a>Installing the latest official version of Code::Blocks on Windows</h3>
 <!--l. 6--><p class="noindent" >Install steps: </p>
       <ul class="itemize1">
       <li class="itemize">
       <!--l. 8--><p class="noindent" >Download the Code::Blocks installer (<a 
 href="https://codeblocks.org/downloads/26" class="url" ><span 
 class="cmtt-12">https://codeblocks.org/downloads/26</span></a>).
-      <span id="textcolor68">If you know you don&#8217;t have MinGW installed, or if you don&#8217;t know which one to
+      <span id="textcolor69">If you know you don&#8217;t have MinGW installed, or if you don&#8217;t know which one to
       choose, <span 
 class="cmbx-12">download the package which has MinGW bundled</span></span>. For 25.03 version,
       the name of the installer is: codeblocks-25.03mingw-setup.exe. Previous version was
@@ -12615,14 +12803,14 @@ class="cmsy-10x-x-120">\</span>MinGW64. Compiler
 <!--l. 28--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">5.2</span>&#x00A0;&#x00A0;<a 
- id="x3-2000005.2"></a>Configuring MinGW</h3>
+ id="x3-2010005.2"></a>Configuring MinGW</h3>
                                                                                        
                                                                                        
 <!--l. 30--><p class="noindent" >This section describes how to install and configure MinGW.
 </p><!--l. 32--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">5.2.1</span>&#x00A0;&#x00A0;<a 
- id="x3-2010005.2.1"></a>Overview</h4>
+ id="x3-2020005.2.1"></a>Overview</h4>
 <!--l. 34--><p class="noindent" >A compiler toolchain is what Code::Blocks uses to turn the code you type into it into numbers
 that the computer understands. As a compiler toolchain is a very complex undertaking <span 
 class="cmbx-12">it is</span>
@@ -12644,7 +12832,7 @@ program.
 </p><!--l. 38--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">5.2.2</span>&#x00A0;&#x00A0;<a 
- id="x3-2020005.2.2"></a>MinGW Compiler Toolchains</h4>
+ id="x3-2030005.2.2"></a>MinGW Compiler Toolchains</h4>
 <!--l. 40--><p class="noindent" >You can find on the web several MinGW distributions. Here is a list of distributions, which is
 not exhaustive.
       </p><dl class="description"><dt class="description">
@@ -12787,7 +12975,7 @@ class="cmtt-12">https://github.com/niXman/mingw-builds-binaries/releases/</span>
 <!--l. 55--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox69"><span 
+class="colorbox" id="colorbox70"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />Multilib versions are able to produce 32 or 64 bit code, useful if you
 need to produce executables for both environments. Other versions
@@ -12853,7 +13041,7 @@ bit. </p>
 <!--l. 73--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox70"><span 
+class="colorbox" id="colorbox71"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />Among the Msys2 packages, there are some that install Code::Blocks
 64 bits. They are based on more recent svn versions than those of
@@ -12910,7 +13098,7 @@ class="cmtt-12">pkg</span>.
                                                                                        
 </p>
 <h4 class="subsectionHead"><span class="titlemark">5.2.3</span>&#x00A0;&#x00A0;<a 
- id="x3-2030005.2.3"></a>Code::Blocks Configuration</h4>
+ id="x3-2040005.2.3"></a>Code::Blocks Configuration</h4>
 <!--l. 89--><p class="noindent" >Go to your Compiler settings:
 </p>
 <hr class="figure" /><div class="figure" 
@@ -12918,7 +13106,7 @@ class="cmtt-12">pkg</span>.
                                                                                        
                                                                                        
 <a 
- id="x3-203001r1"></a>
+ id="x3-204001r1"></a>
                                                                                        
                                                                                        
 <!--l. 91--><p class="noindent" ><img 
@@ -12926,7 +13114,7 @@ src="Compiler_Settings.png" alt="PIC"
  />
 <br /> </p><div class="caption"><table class="caption" 
 ><tr style="vertical-align:baseline;" class="caption"><td class="id">Figure&#x00A0;5.1: </td><td  
-class="content">Compiler Settings</td></tr></table></div><!--tex4ht:label?: x3-203001r1 -->
+class="content">Compiler Settings</td></tr></table></div><!--tex4ht:label?: x3-204001r1 -->
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
@@ -12943,7 +13131,7 @@ actual programs are.
                                                                                        
                                                                                        
 <a 
- id="x3-203002r2"></a>
+ id="x3-204002r2"></a>
                                                                                        
                                                                                        
 <!--l. 95--><p class="noindent" ><img 
@@ -12951,7 +13139,7 @@ src="CB_Toolchain.png" alt="PIC"
  />
 <br /> </p><div class="caption"><table class="caption" 
 ><tr style="vertical-align:baseline;" class="caption"><td class="id">Figure&#x00A0;5.2: </td><td  
-class="content">Code::Blocks Toolchain Configuration</td></tr></table></div><!--tex4ht:label?: x3-203002r2 -->
+class="content">Code::Blocks Toolchain Configuration</td></tr></table></div><!--tex4ht:label?: x3-204002r2 -->
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
@@ -12964,7 +13152,7 @@ class="cmbx-12">Note: </span>You can enter name as gcc.exe or x86_64-w64-mingw32
 <!--l. 99--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox71"><span 
+class="colorbox" id="colorbox72"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />To configure a new compiler, gfortran for example, enter gfortran.exe
 in the 3 first text fields in the tab &#8221;Program Files&#8221;, or the exact name
@@ -12975,7 +13163,7 @@ as it is in your distribution.                                        </div>
                                                                                        
                                                                                        
 <a 
- id="x3-203003r3"></a>
+ id="x3-204003r3"></a>
                                                                                        
                                                                                        
 <!--l. 101--><p class="noindent" ><img 
@@ -12983,7 +13171,7 @@ src="CB_Toolchain_gfortran.png" alt="PIC"
  />
 <br /> </p><div class="caption"><table class="caption" 
 ><tr style="vertical-align:baseline;" class="caption"><td class="id">Figure&#x00A0;5.3: </td><td  
-class="content">Code::Blocks Toolchain Configuration for gfortran</td></tr></table></div><!--tex4ht:label?: x3-203003r3 -->
+class="content">Code::Blocks Toolchain Configuration for gfortran</td></tr></table></div><!--tex4ht:label?: x3-204003r3 -->
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
@@ -12994,7 +13182,7 @@ class="content">Code::Blocks Toolchain Configuration for gfortran</td></tr></tab
                                                                                        
                                                                                        
 <a 
- id="x3-203004r4"></a>
+ id="x3-204004r4"></a>
                                                                                        
                                                                                        
 <!--l. 105--><p class="noindent" ><img 
@@ -13002,7 +13190,7 @@ src="Settings_Debugger.png" alt="PIC"
  />
 <br /> </p><div class="caption"><table class="caption" 
 ><tr style="vertical-align:baseline;" class="caption"><td class="id">Figure&#x00A0;5.4: </td><td  
-class="content">Settings Debugger</td></tr></table></div><!--tex4ht:label?: x3-203004r4 -->
+class="content">Settings Debugger</td></tr></table></div><!--tex4ht:label?: x3-204004r4 -->
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
@@ -13014,7 +13202,7 @@ for MinGW 64-bit (blue arrow).
                                                                                        
                                                                                        
 <a 
- id="x3-203005r5"></a>
+ id="x3-204005r5"></a>
                                                                                        
                                                                                        
 <!--l. 109--><p class="noindent" ><img 
@@ -13022,7 +13210,7 @@ src="Debugger_Default.png" alt="PIC"
  />
 <br /> </p><div class="caption"><table class="caption" 
 ><tr style="vertical-align:baseline;" class="caption"><td class="id">Figure&#x00A0;5.5: </td><td  
-class="content">Debugger Default Configuration</td></tr></table></div><!--tex4ht:label?: x3-203005r5 -->
+class="content">Debugger Default Configuration</td></tr></table></div><!--tex4ht:label?: x3-204005r5 -->
                                                                                        
                                                                                        
 </div><hr class="endfigure" />
@@ -13060,14 +13248,14 @@ class="cmtt-12">ftp://ftp.info-zip.org/pub/infozip/win32/</span></a> : please
 <!--l. 122--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox72"><span 
+class="colorbox" id="colorbox73"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />Don&#8217;t use zip.exe version provided by Msys2 (installed via pacman -S
 zip) to build Code::Blocks: it has apparently problems with standard
 backslashs used in Windows paths.                                 </div>
 </div>
 <h3 class="sectionHead"><span class="titlemark">5.3</span>&#x00A0;&#x00A0;<a 
- id="x3-2040005.3"></a>Nightly version of Code::Blocks on Windows</h3>
+ id="x3-2050005.3"></a>Nightly version of Code::Blocks on Windows</h3>
 <!--l. 126--><p class="noindent" >Nightly builds are provided &#8221;as is&#8221;. They are &#8221;binary&#8221; distributions, normally provided daily,
 representing the latest and greatest state of the Code::Blocks sources. Normally they are pretty
 stable, but however they can introduce new bugs, regressions, and on the other hand they can
@@ -13160,7 +13348,7 @@ dlls.
 <!--l. 147--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox73"><span 
+class="colorbox" id="colorbox74"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />wxWidgets and prerequisites dlls does not change so often. So, if you
 install a nightly over a previous one, it&#8217;s not always necessary to
@@ -13182,7 +13370,7 @@ update them. Read carefully the forum topic on this specific nightly.</div>
                                                                                        
 </p>
 <h2 class="chapterHead"><span class="titlemark">6</span>&#x00A0;&#x00A0;<a 
- id="x3-2050006"></a>Building CodeBlocks from sources</h2>
+ id="x3-2060006"></a>Building CodeBlocks from sources</h2>
 <!--l. 3--><p class="noindent" >This chapter describes how to build Code::Blocks itself.
 </p>
 <div class="center" 
@@ -13190,14 +13378,14 @@ update them. Read carefully the forum topic on this specific nightly.</div>
 <!--l. 5--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox74"><span 
+class="colorbox" id="colorbox75"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />This chapter existed in the version 1 original .tex files but was not
 published in all languages. It needs to be reviewed and completed at
 least for Linux users.                                               </div>
 </div>
 <h3 class="sectionHead"><span class="titlemark">6.1</span>&#x00A0;&#x00A0;<a 
- id="x3-2060006.1"></a>Introduction</h3>
+ id="x3-2070006.1"></a>Introduction</h3>
 <!--l. 9--><p class="noindent" >This section will describe the process used in creating the nightly builds, and can be used as a
 guideline if you want to build Code::Blocks yourself. It is described as a sequence of
 actions.
@@ -13227,7 +13415,7 @@ our cooking experiments
 <!--l. 22--><p class="noindent" >
 </p>
 <h3 class="sectionHead"><span class="titlemark">6.2</span>&#x00A0;&#x00A0;<a 
- id="x3-2070006.2"></a>Windows or Linux</h3>
+ id="x3-2080006.2"></a>Windows or Linux</h3>
 <!--l. 24--><p class="noindent" >This section is written for a Windows syntax, but can be easily adapted
 to Linux. Other detailed instructions may be found in the Wiki: 
 <a 
@@ -13239,7 +13427,7 @@ Code::Blocks when you download the FULL official package. With C::B 17.12 it was
 TDM 5.1.0 which was distributed, a rather old one. With C::B 20.03 we still used version 8.1.0,
 which works nicely and which was distributed with this Code::Blocks release, but you can find
 more recent ones (as shown in MinGW Compiler Toolchains (<a 
-href="#x3-2020005.2.2">section&#x00A0;5.2.2</a>). You can obtain
+href="#x3-2030005.2.2">section&#x00A0;5.2.2</a>). You can obtain
 two MinGW versions : for generating 32 bits code, or for 64 bits code on <a 
 href="https://sourceforge.net/projects/mingw-w64/files/" >mingw64</a>. Many
 sub-choices are available. For 32 bits, I would suggest i686-posix-sjlj and for 64 bits
@@ -13254,7 +13442,7 @@ class="cmtt-12">https://winlibs.com/</span></a>).
 <!--l. 29--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox75"><span 
+class="colorbox" id="colorbox76"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />The 64 bits version can produce 64 bits code and 32 bits code. Simply
 add  option  -m64  or  -m32  to  your  compilation  AND  link  options.
@@ -13367,7 +13555,7 @@ set&#x00A0;path=%PATH%;C:\MinGW64\bin;C:\MinGW64\x86_64-w64-mingw32\bin;
 </p><!--l. 62--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.1</span>&#x00A0;&#x00A0;<a 
- id="x3-2080006.2.1"></a>Initial Build System</h4>
+ id="x3-2090006.2.1"></a>Initial Build System</h4>
 <!--l. 64--><p class="noindent" >For <a 
 href="https://www.codeblocks.org/" >Code::Blocks </a> a project description <span 
 class="cmtt-12">CodeBlocks.cbp </span>is available. If you load this project file
@@ -13400,7 +13588,7 @@ executables&#8221; and adjust the MinGW path to your specific installation.
                                                                                        
                                                                                        
 <h4 class="subsectionHead"><span class="titlemark">6.2.2</span>&#x00A0;&#x00A0;<a 
- id="x3-2090006.2.2"></a>Version Control System</h4>
+ id="x3-2100006.2.2"></a>Version Control System</h4>
 <!--l. 76--><p class="noindent" >In order to be able to retrieve the latest and greatest Code::Blocks sources, we need to install a
 Version Control System.
 </p><!--l. 78--><p class="noindent" >The Code::Blocks developers provide their sources through the version control system
@@ -13433,7 +13621,7 @@ RapidSVN.
 </p><!--l. 90--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.3</span>&#x00A0;&#x00A0;<a 
- id="x3-2100006.2.3"></a>wxWidgets</h4>
+ id="x3-2110006.2.3"></a>wxWidgets</h4>
 <!--l. 92--><p class="noindent" ><a 
 href="https://www.wxwidgets.org/" >WxWidgets</a> is a platform abstraction that provides an API to support many things such as
 GUI, sockets, files, registry functionality <span class="cite">[<a 
@@ -13473,7 +13661,7 @@ class="cmmi-12">&#x003E;</span>
 <!--l. 103--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox76"><span 
+class="colorbox" id="colorbox77"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />User PBfordev has created a very nice guide to compile, install and
 use wxWidgets on Windows. You can find it as a pdf file on his git
@@ -13595,7 +13783,7 @@ DEBUG_FLAG=0
 <!--l. 162--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox77"><span 
+class="colorbox" id="colorbox78"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />USE_OPENGL=1 creates an additional dll, used if your wxWidgets
 program   requires   an   OpenGL   windows,   particularly   when
@@ -13622,7 +13810,7 @@ VENDOR=cb_64
 <!--l. 173--><p class="noindent" >
 </p>
 <div 
-class="colorbox" id="colorbox78"><span 
+class="colorbox" id="colorbox79"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />If VENDOR is not specified, it&#8217;s equivalent to VENDOR=custom.
 VENDOR=cb is used by Code::Blocks team. So, to avoid confusion,
@@ -13684,7 +13872,7 @@ Code::Blocks.
 </p><!--l. 205--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.4</span>&#x00A0;&#x00A0;<a 
- id="x3-2110006.2.4"></a>Zip</h4>
+ id="x3-2120006.2.4"></a>Zip</h4>
 <!--l. 207--><p class="noindent" >During the build of Code::Blocks, several resources are going to be zipped in zip files. Therefore,
 the build process should have access to a zip.exe. We have to download that zip.exe (if it&#8217;s not
 already in your MinGW distribution) and put it somewhere in our path. A good place is:
@@ -13703,7 +13891,7 @@ the directory containing the most recent versions.
 </p><!--l. 213--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.5</span>&#x00A0;&#x00A0;<a 
- id="x3-2120006.2.5"></a>Workspace</h4>
+ id="x3-2130006.2.5"></a>Workspace</h4>
 <!--l. 214--><p class="noindent" >This brings us to the last preliminary task. The Code::Blocks code can be divided into 2 major
 parts: the core with internal plug-ins, and the contributed plug-ins. You always need to build
 the core/internal parts before building the contrib part.
@@ -13898,7 +14086,7 @@ give it the following content (here to generate a 64 bit version with wxWidgets 
                                                                                        
                                                                                        
 <div 
-class="colorbox" id="colorbox79"><span 
+class="colorbox" id="colorbox80"><span 
 class="cmbx-12">Note:</span><br 
 class="newline" />Several variants of this file exists, depending on the OS, wxWidgets
 version, 32 or 64 bits build.                                        </div>
@@ -13907,12 +14095,12 @@ version, 32 or 64 bits build.                                        </div>
 </p><!--l. 380--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.6</span>&#x00A0;&#x00A0;<a 
- id="x3-2130006.2.6"></a>Building Codeblocks</h4>
+ id="x3-2140006.2.6"></a>Building Codeblocks</h4>
 <!--l. 382--><p class="noindent" >This section describes the final process of building Code::Blocks.
 </p><!--l. 384--><p class="noindent" >
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.6.1  </span> <a 
- id="x3-2140006.2.6.1"></a>Windows</h5>
+ id="x3-2150006.2.6.1"></a>Windows</h5>
 <!--l. 386--><p class="noindent" >Finally we have arrived at the final step; our final goal. Run the Code::Blocks executable from
 your nightly build download. Choose Open from the File menu and browse for our
 above created workspace, and open it up. Be a little patient while Code::Blocks is
@@ -13985,7 +14173,7 @@ you&#8217;ll have your very own home-built Code::Blocks running.
 </p><!--l. 407--><p class="noindent" >
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.6.2  </span> <a 
- id="x3-2150006.2.6.2"></a>Linux</h5>
+ id="x3-2160006.2.6.2"></a>Linux</h5>
 <!--l. 409--><p class="noindent" ><span 
 class="cmbx-12">(Note: this section should be reviewed and completed. Does not seem to be totally</span>
 <span 
@@ -14030,12 +14218,12 @@ pkg_config and wx-config must be set correctly.
 </p><!--l. 435--><p class="noindent" >
 </p>
 <h4 class="subsectionHead"><span class="titlemark">6.2.7</span>&#x00A0;&#x00A0;<a 
- id="x3-2160006.2.7"></a>Generate plugins only</h4>
+ id="x3-2170006.2.7"></a>Generate plugins only</h4>
 <!--l. 437--><p class="noindent" >This section is for generating only plugins.
 </p><!--l. 439--><p class="noindent" >
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.7.1  </span> <a 
- id="x3-2170006.2.7.1"></a>Windows</h5>
+ id="x3-2180006.2.7.1"></a>Windows</h5>
 <!--l. 441--><p class="noindent" >Configure the global variables via &#8217;Settings&#8217; <span 
 class="cmsy-10x-x-120">&#x2192;</span>&#8217;Global Variables&#8217; .
 </p><!--l. 443--><p class="noindent" ><span 
@@ -14100,7 +14288,7 @@ execute <span
 class="cmtt-12">update.bat </span>once more.
 </p>
 <h5 class="subsubsectionHead"><span class="titlemark">6.2.7.2  </span> <a 
- id="x3-2180006.2.7.2"></a>Linux</h5>
+ id="x3-2190006.2.7.2"></a>Linux</h5>
 <!--l. 477--><p class="noindent" >Configure the <code class="lstinline"><span style="color:#000000">wx</span></code> variable with the global variables.
       </p><dl class="description"><dt class="description">
 <span 
@@ -14134,9 +14322,9 @@ class="description">
                                                                                        
                                                                                        
 <a 
- id="x3-218001r283"></a>
+ id="x3-219001r284"></a>
 <h2 class="appendixHead"><span class="titlemark">A</span>.&#x00A0;&#x00A0;<a 
- id="x3-219000A"></a>URL catalog</h2>
+ id="x3-220000A"></a>URL catalog</h2>
 <dl class="list1"><dt class="list">
 <span 
 class="cmr-10x-x-109">[ 7Z]</span></dt><dd 

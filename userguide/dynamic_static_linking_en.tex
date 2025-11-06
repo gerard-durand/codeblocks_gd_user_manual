@@ -1,0 +1,26 @@
+\section{Dynamic or Static Linking}\label{sec:dynamic_static}
+
+\hint{This chapter has been written for users who don't really understand the difference between these two linking process or don't know why their program runs correctly inside \codeblocks but claims that some dlls are missing when they are run as standalone programs.\\
+You can find detailled explanations on \url{https://stackoverflow.com/questions/1993390/static-linking-vs-dynamic-linking}}
+Modern compilers/linkers generally produce dynamic linked codes by default. This means that executables need to load and use some dynamic libraries also called shared libraries (.dll files in Windows world, .so files in Linux world).\\
+In the Windows world, those dlls are for example \codeline{libstdc++-6.dll}, \codeline{libgcc_s_seh-1.dll}, \codeline{libwinpthread-1.dll}, \codeline{libgfortran-5.dll}, \codeline{libgomp-1.dll}...\\
+When the code is executed from inside \codeblocks, it's not a problem, because \codeblocks adds for his own usage the path to these libraries. These paths are set in the compiler/linker configuration settings.\\
+It's also possible to link codes statically (linked with .a or .lib files). Simply add to compiler/linker options like \file{-static -static-libgcc -static-libstdc++} as found in compiler options box and eventually add some others to your own static libraries. Statically linked codes contain all that is needed at execution. This may be a good solution if you share or distribute this executable with other computers and you will have less problems with non concordant compiler updates.\\
+The main advantage of dynamic linking is that it produces smaller executables than statically ones. More, if you execute simultaneously several codes using the same dynamic libraries, they are loaded in memory only once.\\
+When the code is executed outside \codeblocks, the operating system (OS) has to know where these libraries are stored: the operating system may not find them. This information is not stored inside your executable. So you have to \textbf{help the OS} a little bit.\\
+On Linux, you can add the dynamic libraries path to the system environment variable \codeline{LD_LIBRARY_PATH}.\\
+On Windows, you can also add the path to the environment variable \codeline{PATH} (the system one or the user one). You can also copy the needed dlls in the same folder where your executable is located. It may be a nice solution when you distribute your code to install it on an other PC who has a different compiler installed, a different path access or no compiler at all. But don't forget any dlls.\\
+Generally, on Windows (at least for MinGW), this path is the same as the folder where gcc.exe and/or g++.exe is located (for C or C++ language).
+Adding this path to the system environment variable \codeline{PATH}, is a convenient solution, but may be not the best way, particularly if you have several compilers installed on your system, more if you have both 32 bit and 64 bit compilers. As told previously, you can add a copy of the necessary dlls in the same folder than your executable: this is a good solution to distribute your code, but you need to add all the necessary dlls. An other solution, on your local PC is to create a small batch file (.bat or .cmd) where on the first line you add the correct path to the needed dlls.\\
+
+\textbf{Example:}\\
+Suppose you have an executable named my\_executable.exe somewhere in a folder, and your compiler is installed in \file{C:\osp msys64\osp mingw64\osp bin}.
+Create in the folder of your executable a my\_executable.bat file containing:
+\begin{lstlisting}
+set PATH=C:\msys64\mingw64\bin;%PATH%
+my_excutable.exe
+\end{lstlisting}
+and launch this batch file.\\
+This is also true for Linux: you can modify \codeline{LD_LIBRARY_PATH} in a batch file.\\
+The advantage of such a solution is that you adapt each batch file to the compiler which has been used for building your executable: certainly the best solution when you have several compilers installed on your system, installed in several sub-folders. More, this modification of the \codeline{PATH} is local to your batch file and does not interfere with your other works.
+

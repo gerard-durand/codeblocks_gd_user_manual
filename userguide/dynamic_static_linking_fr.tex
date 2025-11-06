@@ -1,0 +1,26 @@
+\section{Édition de liens Dynamique ou Statique}\label{sec:dynamic_static}
+
+\hint{Ce chapitre a été rédigé à l'intention des utilisateurs qui ne comprennent pas vraiment la différence entre ces deux processus d'édition de liens ou qui ne savent pas pourquoi leur programme fonctionne correctement dans \codeblocks, mais signale que certaines dlls sont manquantes lorsqu'ils sont exécutés en tant que programmes autonomes.\\
+Vous trouverez des explications détaillées sur \url{https://stackoverflow.com/questions/1993390/static-linking-vs-dynamic-linking}}
+Les compilateurs/éditeurs de liens modernes produisent généralement des codes liés dynamiquement par défaut. Cela signifie que les exécutables doivent charger et utiliser certaines bibliothèques dynamiques, appelées aussi librairies partagées (fichiers .dll sous Windows, fichiers .so sous Linux).\\
+Dans le monde Windows, ces dlls sont par exemple \codeline{libstdc++-6.dll}, \codeline{libgcc_s_seh-1.dll}, \codeline{libwinpthread-1.dll}, \codeline{libgfortran-5.dll}, \codeline{libgomp-1.dll}...\\
+Lorsque le code est exécuté depuis \codeblocks, cela ne pose aucun problème, car \codeblocks ajoute pour son propre usage le chemin d'accès à ces bibliothèques. Ces chemins d'accès sont définis dans les paramètres de configuration du compilateur/éditeur de liens.\\
+Il est également possible de lier des codes de façon statique (liés à des fichiers .a ou .lib). Il suffit d'ajouter aux options du compilateur/éditeur de liens des options telles que \file{-static -static-libgcc -static-libstdc++}, comme indiqué dans la boîte d'options du compilateur, et éventuellement d'en ajouter d'autres vers vos propres bibliothèques statiques. Les codes liés statiquement contiennent tout ce qui est nécessaire à l'exécution. Cela peut être une bonne solution si vous partagez ou distribuez cet exécutable avec d'autres ordinateurs et vous aurez moins de soucis en cas de mises à jour de compilateurs non concordantes.\\
+Le principal avantage d'une édition de liens dynamique est que cela produit des exécutables plus petits que les exécutables statiques. De plus, si vous exécutez simultanément plusieurs codes utilisant les mêmes bibliothèques dynamiques, celles-ci ne sont chargées en mémoire qu'une seule fois.\\
+Lorsque le code est exécuté en dehors de \codeblocks, le système d'exploitation (OS) doit savoir où ces bibliothèques sont stockées : le système d'exploitation peut ne pas les trouver. Cette information n'est pas stockée dans l'exécutable. Vous devez donc un peu \textbf{aider l'OS}.\\
+Sous Linux, vous pouvez ajouter le chemin d'accès aux bibliothèques dynamiques à la variable d'environnement système \codeline{LD_LIBRARY_PATH}.\\
+Sous Windows, vous pouvez également ajouter le chemin d'accès à la variable d'environnement \codeline{PATH} (celle du système ou celle de l'utilisateur). Vous pouvez également copier les dlls nécessaires dans le même dossier que celui où se trouve votre exécutable. Cela peut être une bonne solution lorsque vous distribuez votre code pour l'installer sur un autre PC qui dispose d'un compilateur différent, des chemins d'accès différents ou qui n'en a pas du tout. Mais n'oubliez aucune dlls.\\
+En général, sous Windows (du moins pour MinGW), ce chemin est le même que celui du dossier où se trouvent gcc.exe et/ou g++.exe (pour les langages C ou C++).
+Une solution pratique est d'ajouter ce chemin d'accès dans votre variable d'environnement système \codeline{PATH}, mais ce n'est peut-être pas la meilleure, en particulier si plusieurs compilateurs sont installés sur votre système, et encore plus si vous disposez à la fois de compilateurs 32 bits et 64 bits. Comme indiqué précédemment, vous pouvez ajouter une copie des dlls nécessaires dans le même dossier que votre exécutable : c'est une bonne solution pour distribuer votre code, mais vous devez ajouter toutes les dlls nécessaires. Une autre solution, sur votre PC local, consiste à créer un petit fichier batch (.bat ou .cmd) dans lequel vous ajoutez, à la première ligne, le chemin d'accès correct aux dlls nécessaires.\\
+
+\textbf{Exemple:}\\
+Supposons que vous ayez un fichier exécutable nommé my\_executable.exe quelque part dans un dossier et que votre compilateur soit installé dans \file{C:\osp msys64\osp mingw64\osp bin}.
+Créez dans le dossier de votre exécutable un fichier my\_executable.bat contenant :
+\begin{lstlisting}
+set PATH=C:\msys64\mingw64\bin;%PATH%
+my_excutable.exe
+\end{lstlisting}
+et lancez ce fichier batch.\\
+Cela vaut également pour Linux : vous pouvez modifier \codeline{LD_LIBRARY_PATH} dans un fichier batch.\\
+L'avantage d'une telle solution est que vous adaptez chaque fichier batch au compilateur qui a été utilisé pour construire votre exécutable : certainement la meilleure solution lorsque vous avez plusieurs compilateurs installés sur votre système, installés dans plusieurs sous-dossiers. De plus, cette modification du \codeline{PATH} est locale à votre fichier batch et n'interfère pas avec vos autres travaux.
+

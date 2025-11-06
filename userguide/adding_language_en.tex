@@ -105,3 +105,17 @@ Generated files: $file_dir/$file_name.scanner.cc
 \item If you change any of the settings mentioned here in advanced compiler options, you \textbf{must} close and re-open your project so the changes will take effect. No message is displayed currently to note this.
 \item If you are using a non-default compiler (to cross compile for example), you may need to make these settings in the default compiler, not the cross compiler where it seems to have no effect.
 \end{itemize}
+
+\genterm{Another example - Rust}
+Some years ago, a \codeblocks user, Barracuda72, has published some work to integrate the Rust language inside \codeblocks. This work can be found on a git repository:\\ \url{https://github.com/Barracuda72/Codeblocks-Rust/}.\\
+Simply follow the installation guide (in the readme.md). As this work is now quite old, and has not been updated for a while, you may encounter some missing keywords or other things, but it works. If needed, you can modify files in your installation to adjust them to your needs.\\
+Of course, you'll need to have installed a Rust/Cargo compiler.\\
+For Windows users, if you use and have already msys2 toolchain installed on your PC, it's quite easy to obtain:
+\begin{itemize}
+\item Use pacman to download and install a rust package:\\
+	\codeline{pacman -S mingw-w64-x86\_64-rust},\\
+	which install rustc, cargo, and other tools inside the \file{\osp bin} sub-folder (by default in \file{C:\osp msys64\osp mingw64}) for a 64 bit installation;\\
+	\textbf{Note}: There is an other package, mingw-w64-x86\_64-rustup, but it seems to use other tools more adapted to Visual Studio.
+\item Next time you'll start \codeblocks, it will ask you to configure the environment variable \codeline{$(#rust)}. Simply enter the path where rustc.exe is located (see above the default value but without entering the \file{\osp bin} sub-folder);
+\item You are now ready to use the rust template to create and run your Rust programs.
+\end{itemize}

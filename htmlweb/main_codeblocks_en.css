@@ -16,11 +16,12 @@
 .cmbx-12x-x-207{ font-weight: bold;}
 .cmr-12x-x-120{font-size:120%;}
 .cmmi-12{font-style: italic;}
+.cmbx-12{ font-weight: bold;}
+.cmbx-12{ font-weight: bold;}
+.cmbx-12{ font-weight: bold;}
+.cmbx-12{ font-weight: bold;}
+.cmbxti-10x-x-120{ font-weight: bold; font-style: italic;}
 .ectt-1095{font-size:83%; font-family: monospace,monospace;}
-.cmbx-12{ font-weight: bold;}
-.cmbx-12{ font-weight: bold;}
-.cmbx-12{ font-weight: bold;}
-.cmbx-12{ font-weight: bold;}
 .cmr-10x-x-109{font-size:90%;}
 .cmtt-10x-x-109{font-size:90%;font-family: monospace,monospace;}
 .cmtt-10x-x-109{font-family: monospace,monospace;}
@@ -50,7 +51,6 @@
 .cmssbx-10{ font-family: sans-serif; font-weight: bold;}
 .cmssbx-10{ font-family: sans-serif; font-weight: bold;}
 .tcsx-1000{font-size:83%;}
-.cmbxti-10x-x-120{ font-weight: bold; font-style: italic;}
 body#tex4ht-menu {white-space: nowrap; }
 p{margin-top:0;margin-bottom:0}
 p.indent{text-indent:0;}
@@ -337,9 +337,9 @@ span#textcolor52{color:#0000FF}
 #colorbox66{background-color: rgb(238,255,204);}
 #colorbox67{border: solid 1px #000000;}
 #colorbox67{background-color: rgb(238,255,204);}
-span#textcolor68{color:#FF0000}
-#colorbox69{border: solid 1px #000000;}
-#colorbox69{background-color: rgb(238,255,204);}
+#colorbox68{border: solid 1px #000000;}
+#colorbox68{background-color: rgb(238,255,204);}
+span#textcolor69{color:#FF0000}
 #colorbox70{border: solid 1px #000000;}
 #colorbox70{background-color: rgb(238,255,204);}
 #colorbox71{border: solid 1px #000000;}
@@ -360,5 +360,7 @@ span#textcolor68{color:#FF0000}
 #colorbox78{background-color: rgb(238,255,204);}
 #colorbox79{border: solid 1px #000000;}
 #colorbox79{background-color: rgb(238,255,204);}
+#colorbox80{border: solid 1px #000000;}
+#colorbox80{background-color: rgb(238,255,204);}
 /* end css.sty */
 

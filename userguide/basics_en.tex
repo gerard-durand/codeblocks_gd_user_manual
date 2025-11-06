@@ -3,6 +3,16 @@
 The instructions in several paragraphs (for example \pxref{sec:plugins} or \pxref{sec:variables_types}) are official documentations of the \codeblocks Wiki site (eventually reviewed and amended) and available in english only.
 This documentation is an extension of the original version 1.1, compiled and/or written by Mario Cupelli.
 
+
+\textbf{\textit{What is an IDE?}}\\
+\codeblocks is an \textbf{IDE}. What does that mean?\\
+IDE is for \textbf{I}ntegrated \textbf{D}evelopment \textbf{E}nvironment. It is a graphical environment framework for working with source code and using compilers and linkers (in the case of \codeblocks, these can be several). For several languages, \codeblocks has a built-in syntax highlighting system and offers code completion which helps you to identify language-specific features as keywords, classes, functions, etc.\\
+With \codeblocks you'll be able to write codes in different high level languages as C, C++, fortran and some others. \codeblocks will help you to translate these source codes to binary executables. These translations are made with a compiler and a linker. \codeblocks itself, is \textbf{NOT} a compiler nor a linker, but it creates a graphic interface to these tools (and many others) to help you to build your executables by using \textbf{external} compilers and linkers. \codeblocks can use different compilers (and linkers), from Microsoft/Windows world as Visual C, C++, etc, but also from Unix/Linux world as many distributions of CC/C++/gcc/g++. Many compilers/linkers commonly used in Linux have been ported to Windows.\\
+If you use Linux, you have already compilers/linkers installed on your system.\\
+On Windows, it's generally not the case: no compiler/linker installed. For your convenience, a Windows version of \codeblocks is distributed with a compilation toolchain, MinGW/GCC in 64 or 32 bits, coming from the Linux world. However, this is provided "as-is" and not developed/maintained by the \codeblocks development team. You are not obliged to use this toolchain. Other Windows versions are distributed without a compiler but you'll have to install at least one to be able to build executables.\\
+\codeblocks is able to identify by itself some compilers/linkers during installation. In any case, it will be possible, afterwards, to configure \codeblocks to use them or to modify the configuration.\\
+It's also possible, in \codeblocks, to support languages that are not natively supported (for example D, java, fortran, rust,…) through the use of plugins that you can find inside \codeblocks distributions, built by users on Internet (on \codeblocks forums for example) or simply by configuring a new language by yourself (of course needs some knowledge and work by you).
+\newpage
 The below illustration shows the design of the \codeblocks user interface.
 
 \figures[H][width=\columnwidth]{codeblocks}{IDE \codeblocks}
